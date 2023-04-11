@@ -1,0 +1,32 @@
+.hero-area {
+    background-color: $color-hero-area;
+    position: relative;
+    min-height: $block-min-height-desktop;
+    height: $block-height-desktop;
+    max-height: $block-max-height-desktop;
+    margin-bottom: 1em;
+
+}
+
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+h2 {
+    font-size: 5.7em;
+    line-height: 6.5rem;
+    color: $font-color-white;
+    margin: 0;
+    text-align: center;
+}
+
+.hero-line {
+    margin-top: 20px;
+    background-color: $font-color-white;
+    height: 10px;
+}
