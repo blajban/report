@@ -1,0 +1,25 @@
+{# templates/report.html.twig #}
+
+{% include 'incl/header.html.twig' %}
+
+
+<body>
+    {% include 'incl/nav.html.twig' %}
+
+    {% include 'incl/hero_area.html.twig'%}
+
+    <div class="content-area-col">
+        <div class="column">
+            {{ contentLeft|raw }}
+        </div>
+        <div class="column">
+            {{ contentRight|raw }}
+        </div>
+    </div>
+
+    {% include 'incl/footer.html.twig' %}
+</body>
+
+</html>
+
+

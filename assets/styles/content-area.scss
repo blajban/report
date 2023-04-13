@@ -6,3 +6,20 @@
 .content {
     padding: 20px;
 }
+
+.content-area-col {
+    display: flex;
+    max-width: $content-max-width;
+    margin: auto;
+}
+
+.column {
+    flex: 50%;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }

@@ -1,7 +1,5 @@
 ### Om kursen DV1608 - Objektorienterade webbteknologier
 
-![Erik Sjöberg](img/mvc_diagram.png)
-
 I kursen lär vi oss objektorienterad programmering av webbapplikationer med fokus på designmönstret MVC (Model-View-Controller). Vi använder PHP-ramverket Symfony och lär oss mer om databaskopplingar med object relationalmapping (ORM), enhetstestning och om god kodkvalitet.
 
 #### Vad är MVC?
@@ -10,5 +8,3 @@ Ett arkitekturmönster som går ut på att separera data (Model) och presentatio
 [Kursens repo på Github](https://github.com/dbwebb-se/mvc)
 
 [Mitt kurs-repo på Github:](https://github.com/blajban/report)
-
-

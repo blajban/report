@@ -14,55 +14,88 @@ function parseMarkdown($fileName): string
     return $parseDown->text($content);
 }
 
+function jsonResponse($data): Response
+{
+    $response = new Response();
+    $response->setContent(json_encode($data));
+    $response->headers->set('Content-Type', 'application/json');
+
+    return $response;
+}
+
 class ReportController extends AbstractController
 {
-    /**
-     * @Route("/")
-     */
+    #[Route("/", name: "home")]
     public function main(): Response
     {
-        return $this->render('report.html.twig', [
+        return $this->render('report_1col.html.twig', [
             'title' => "Main",
             'heading' => "Välkommen",
             'content' => parseMarkdown('me.md')
         ]);
     }
 
-    /**
-     * @Route("/about")
-     */
+    #[Route("/about", name: "about")]
     public function about(): Response
     {
-        return $this->render('report.html.twig', [
+        return $this->render('report_2col.html.twig', [
             'title' => "About",
             'heading' => "DV1608",
-            'content' => parseMarkdown('mvc.md')
+            'contentLeft' => parseMarkdown('mvc-left.md'),
+            'contentRight' => parseMarkdown('mvc-right.md')
         ]);
     }
 
-    /**
-     * @Route("/report")
-     */
+    #[Route("/report", name: "report")]
     public function report(): Response
     {
-        return $this->render('report.html.twig', [
+        return $this->render('report_1col.html.twig', [
             'title' => "Report",
             'heading' => "Redovisning",
             'content' => parseMarkdown('report.md')
         ]);
     }
 
-    /**
-     * @route("/lucky")
-     */
+    #[Route("/lucky", name: "lucky")]
     public function lucky(): Response
     {
-        $number = random_int(0, 100);
+        $animals = [
+            "dog",
+            "cat",
+            "elephant",
+            "cow",
+            "horse",
+            "frog"
+        ];
 
-        return $this->render('report.html.twig', [
-            'title' => "Lucky!",
-            'heading' => "Lucky!",
-            'content' => $number
+        $number = random_int(0, count($animals) - 1);
+
+        $animal = $animals[$number];
+
+        return $this->render('report_1col_nohero.html.twig', [
+            'title' => $animal,
+            'heading' => $animal,
+            'content' => "<img src=\"img/$animal.jpg\">"
         ]);
+    }
+
+    #[Route("/api/quote")]
+    public function jsonQuote(): Response
+    {
+        $quotes = [
+            "What gets measured gets managed - Peter Drucker",
+            "People who count their chickens before they are hatched act very wisely because chickens run about so absurdly that it's impossible to count them accurately - Oscar Wilde",
+            "It doesn’t matter what temperature a room is, it’s always room temperature. - Steven Wright"
+        ];
+
+        $rand = random_int(0, count($quotes) - 1);
+
+        $res = [
+            'quote' => $quotes[$rand],
+            'date' => date('Y-m-d'),
+            'timestamp' => date('H:i:s')
+        ];
+
+        return jsonResponse($res);
     }
 }

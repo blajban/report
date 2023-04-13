@@ -5,11 +5,10 @@
         <h1>Erik Sjöberg</h1>
         
         <nav class="nav">
-            <a href="{{ relative_path('/') }}">Hem</a>
-            <a href="{{ relative_path('/about') }}">Om</a>
-            <a href="{{ relative_path('/report') }}">Redovisning</a>
-            <a href="{{ relative_path('/lucky') }}">Lucky</a>
-            <!--<a href="{{ relative_path('/card') }}">Kort</a>-->
+            <a href="{{ path('home') }}">Hem</a>
+            <a href="{{ path('about') }}">Om</a>
+            <a href="{{ path('report') }}">Redovisning</a>
+            <a href="{{ path('lucky') }}">Lucky</a>
         </nav>
     </div>
     
