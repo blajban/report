@@ -23,10 +23,10 @@
 
 [OK] Skapa ett Git repo av katalogen me/report. Koppla samman repot med GitHub, GitLab eller liknande tjänst.
 
-* Committa alla filer och lägg till en tagg 1.0.0. Om du gör uppdateringar så ökar du taggen till 1.0.1, 1.0.2, 1.1.0 eller liknande.
+[OK] Committa alla filer och lägg till en tagg 1.0.0. Om du gör uppdateringar så ökar du taggen till 1.0.1, 1.0.2, 1.1.0 eller liknande.
 
-* Kör dbwebb test kmom01 för att kolla att du inte har några uppenbara fel.
+[OK] Kör dbwebb test kmom01 för att kolla att du inte har några uppenbara fel.
 
-* Pusha upp repot till GitHub, inklusive taggarna.
+[OK] Pusha upp repot till GitHub, inklusive taggarna.
 
 * Gör en dbwebb publishpure report för att kolla att det fungerar på studentservern.
