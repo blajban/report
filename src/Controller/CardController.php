@@ -11,16 +11,26 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
+use App\Services\UtilityService;
+
+
 
 class CardController extends AbstractController
 {
+    private $utilityService;
+
+    public function __construct(UtilityService $utilityService)
+    {
+        $this->utilityService = $utilityService;
+    }
+
     #[Route("/card", name: "card")]
     public function card(): Response
     {
         return $this->render('1col_nohero.html.twig', [
             'title' => "Card",
             'heading' => "Card",
-            'content' => "Card content"
+            'content' => $this->utilityService->parseMarkdown('card.md')
         ]);
     }
 

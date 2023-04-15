@@ -5,33 +5,28 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Parsedown;
+use App\Services\UtilityService;
 
-function parseMarkdown($fileName): string
-{
-    $parseDown = new Parsedown();
-    $content = file_get_contents('../assets/content/' . $fileName);
-    return $parseDown->text($content);
-}
 
-function jsonResponse($data): Response
-{
-    $response = new Response();
-    $response->setContent(json_encode($data));
-    $response->headers->set('Content-Type', 'application/json');
 
-    return $response;
-}
+
 
 class ReportController extends AbstractController
 {
+    private $utilityService;
+
+    public function __construct(UtilityService $utilityService)
+    {
+        $this->utilityService = $utilityService;
+    }
+
     #[Route("/", name: "home")]
     public function main(): Response
     {
         return $this->render('1col.html.twig', [
             'title' => "Main",
             'heading' => "Välkommen",
-            'content' => parseMarkdown('me.md')
+            'content' => $this->utilityService->parseMarkdown('me.md')
         ]);
     }
 
@@ -41,8 +36,8 @@ class ReportController extends AbstractController
         return $this->render('2col.html.twig', [
             'title' => "About",
             'heading' => "DV1608",
-            'contentLeft' => parseMarkdown('mvc-left.md'),
-            'contentRight' => parseMarkdown('mvc-right.md')
+            'contentLeft' => $this->utilityService->parseMarkdown('mvc-left.md'),
+            'contentRight' => $this->utilityService->parseMarkdown('mvc-right.md')
         ]);
     }
 
@@ -52,7 +47,7 @@ class ReportController extends AbstractController
         return $this->render('1col.html.twig', [
             'title' => "Report",
             'heading' => "Redovisning",
-            'content' => parseMarkdown('report.md')
+            'content' => $this->utilityService->parseMarkdown('report.md')
         ]);
     }
 
@@ -96,6 +91,6 @@ class ReportController extends AbstractController
             'timestamp' => date('H:i:s')
         ];
 
-        return jsonResponse($res);
+        return $this->utilityService->jsonResponse($res);
     }
 }
