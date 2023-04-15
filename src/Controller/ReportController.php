@@ -28,7 +28,7 @@ class ReportController extends AbstractController
     #[Route("/", name: "home")]
     public function main(): Response
     {
-        return $this->render('report_1col.html.twig', [
+        return $this->render('1col.html.twig', [
             'title' => "Main",
             'heading' => "Välkommen",
             'content' => parseMarkdown('me.md')
@@ -38,7 +38,7 @@ class ReportController extends AbstractController
     #[Route("/about", name: "about")]
     public function about(): Response
     {
-        return $this->render('report_2col.html.twig', [
+        return $this->render('2col.html.twig', [
             'title' => "About",
             'heading' => "DV1608",
             'contentLeft' => parseMarkdown('mvc-left.md'),
@@ -49,7 +49,7 @@ class ReportController extends AbstractController
     #[Route("/report", name: "report")]
     public function report(): Response
     {
-        return $this->render('report_1col.html.twig', [
+        return $this->render('1col.html.twig', [
             'title' => "Report",
             'heading' => "Redovisning",
             'content' => parseMarkdown('report.md')
@@ -72,7 +72,7 @@ class ReportController extends AbstractController
 
         $animal = $animals[$number];
 
-        return $this->render('report_1col_nohero.html.twig', [
+        return $this->render('1col_nohero.html.twig', [
             'title' => $animal,
             'heading' => $animal,
             'content' => "<img src=\"img/$animal.jpg\">"

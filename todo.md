@@ -1,32 +1,66 @@
+## Klasser
+    - Card, ett kort
+    - CardHand, en giv av kort, en korthand
+    - DeckOfCards, en kortlek
 
-[OK] Uppdatera redovisningstexten
+Du skall ha 
+    * minst ett arv och här kan du välja att jobba med ett Card och ett CardGraphic som två olika kort. Du kan också välja att ha en DeckOfCards som har jokrar och en som inte har jokrar. Det är fritt så länge du har med minst ett arv.
 
-[OK] Gör en installation av Symfony och placera den i me/report. Den publika webbkatalogen skall ligga som me/report/public.
+## Flera små commits
 
-[OK] Skapa följande webbsidor, använd controller, templatefiler och en templatemotor, förslagsvis Twig.
-    [OK] Skapa en route / som ger en presentation av dig själv inklusive en bild. Det är okey att vara anonym och hitta på en figur att presentera.
-    [OK] Skapa en route /about som berättar om kursen mvc och dess syfte. Länka till kursens Git-repo. Lägg till en representativ bild. Skapa ytterligare en länk som leder till ditt egna GitHub-repo. 
-        [OK] Sidan skall ha två kolumner.
-    [OK] Skapa en route /report där du samlar dina redovisningstexter för kursens kmom.
-    [OK] Skapa även så att länken /report#kmom01 leder direkt till kursmomentets redovisningstext.
 
-[OK] Skapa en ny route /lucky som visar något dynamiskt värde när man laddar om sidan tillsammans med en/flera bilder. Det kan vara ett “lucky number” men kanske kan du hitta på något annat spännande att visa upp i sidan. Gör sidan lite snygg och stylad, kanske till och med lite “crazy”. Se om du kan vara lite kreativ.
+## Skapa klasser och använd dem i webbsidor
 
-[OK] Skapa en tilltalande och enhetlig style till webbplatsen. Du kan använda LESS/SASS eller liknande CSS preprocessorer. Du kan använda CSS ramverk. Fundera och gör ett val.
+Börja med att utveckla dina klasser och testa dem i webbsidor enligt följande.
 
-[OK] Sidorna skall ha en enhetlig layout och det skall finns:
-    [OK] En tydlig header överst på varje sida, med eller utan bild.
-    [OK] En navbar som gör att man kan navigera mellan samtliga sidor.
-    [OK] En footer längst ned som visar rimliga detaljer.
+[OK] Skapa en kontroller i Symfony där du kan skapa routes för denna delen av uppgiften.
 
-[OK] Skapa en route /api/quote där du ger ett JSON svar som innehåller dagens citat. Växla slumpmässigt mellan (minst) tre olika citat som du själv hittat på eller lånat av någon. JSON svaret skall även innehålla dagens datum och en tidsstämpel för när svaret genererades. Denna route ger alltså enbart ett JSON svar och inkluderar inte någon gemensam sidlayout som header, footer.
+* Gör en förstasida card som länkar till samtliga undersidor för denna uppgiften. Detta är din “landningssida” för denna uppgiften. Placera länken till sidan i din navbar så den är lätt att nå.
 
-[OK] Skapa ett Git repo av katalogen me/report. Koppla samman repot med GitHub, GitLab eller liknande tjänst.
+* På din landdningssida, berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. Rita ett UML klass diagram och visa i sidan.
 
-[OK] Committa alla filer och lägg till en tagg 1.0.0. Om du gör uppdateringar så ökar du taggen till 1.0.1, 1.0.2, 1.1.0 eller liknande.
+* Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
 
-[OK] Kör dbwebb test kmom01 för att kolla att du inte har några uppenbara fel.
+* Skapa en sida card/deck/shuffle som visar samtliga kort i kortleken när den har blandats.
 
-[OK] Pusha upp repot till GitHub, inklusive taggarna.
+* Skapa en sida card/deck/draw som drar ett kort från kortleken och visar upp det. Visa även antalet kort som är kvar i kortleken.
 
-* Gör en dbwebb publishpure report för att kolla att det fungerar på studentservern.
+* Skapa en sida card/deck/draw/:number som drar :number kort från kortleken och visar upp dem. Visa även antalet kort som är kvar i kortleken.
+
+* Kortleken skall sparas i sessionen så om man anropar sidorna draw och draw/:number så skall hela tiden antalet kort från korleken minskas tills kortleken är slut. När man gör card/deck/shuffle så kan kortleken återställas.
+
+* [OPTIONELLT] Skapa en sida card/deck/deal/:players/:cards som delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått. Visa även antalet kort som är kvar i kortleken.
+
+## Bygg JSON API
+
+Denna delen gäller främst JSON API krav.
+
+* Skapa en landningssida för routen api/ som visar en webbsida med en sammanställning av alla JSON routes som din webbplats erbjuder.
+
+* Börja med att lägga till den route du skapade i kmom01 api/quote, länka till den och ge en kort förklaring av vad routen gör.
+
+* Skapa en kontroller i Symfony där du kan skapa routes för ett JSON API för denna delen av uppgiften.
+
+* Skapa en route GET api/deck som returnerar en JSON struktur med hela kortleken sorterad per färg och värde.
+
+* Skapa en route POST api/deck/shuffle som blandar kortleken och därefter returnerar en JSON struktur med kortleken.
+
+* Skapa route POST api/deck/draw och POST api/deck/draw/:number som drar 1 eller :number kort från kortleken och visar upp dem i en JSON struktur samt antalet kort som är kvar i kortleken. Kortleken sparas i sessionen så om man anropar dem flera gånger så minskas antalet kort i kortleken.
+
+* [OPTIONELLT] Skapa en route POST api/deck/deal/:players/:cards som delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått i en JSON struktur. Visa även antalet kort som är kvar i kortleken.
+
+## Kodvalidering
+
+* Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
+
+
+## Publicera
+
+* Committa alla filer och lägg till en tagg 2.0.0. Om du gör uppdateringar så ökar du taggen till 2.0.1, 2.0.2, 2.1.0 eller liknande.
+
+* Kör dbwebb test kmom02 för att kolla att du inte har några uppenbara fel.
+
+* Pusha upp repot till GitHub, inklusive taggarna.
+
+* Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
+

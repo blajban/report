@@ -1,4 +1,4 @@
-{# templates/report.html.twig #}
+{# templates/2col.html.twig #}
 
 {% include 'incl/header.html.twig' %}
 
@@ -8,9 +8,12 @@
 
     {% include 'incl/hero_area.html.twig'%}
 
-    <div class="content-area">
-        <div class="content">
-            {{ content|raw }}
+    <div class="content-area-col">
+        <div class="column">
+            {{ contentLeft|raw }}
+        </div>
+        <div class="column">
+            {{ contentRight|raw }}
         </div>
     </div>
 
