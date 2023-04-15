@@ -1,0 +1,165 @@
+.playing-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-area {
+	margin: 0 auto;
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player-area {
+    background-color: $color-footer;
+    width: $content-max-width;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: $card-width;
+    height: $card-height;
+    margin: $gutter;
+	border-radius: $card-padding;
+	background: $card-background;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: $card-font-size;
+}
+
+.back {
+    background: $cardback-background;
+    color: $font-color-white;
+}
+
+.spades {
+    color: $card-color-black;
+
+    &:before {
+        content: attr(value) '♠';
+    }
+}
+
+.hearts {
+    color: $card-color-red;
+
+    &:before {
+        content: attr(value) '♥';
+    }
+}
+
+.clubs {
+    color: $card-color-black;
+
+    &:before {
+        content: attr(value) '♣';
+    }
+}
+
+.tiles {
+    color: $card-color-red;
+
+    &:before {
+        content: attr(value) '♦';
+    }
+}
+
+.joker {
+    color: green;
+
+    &:before {
+        content: attr(value) '🤡';
+    }
+}
+
+
+.value1 {
+    &:after {
+        content: attr(value) 'E';
+    }
+}
+
+.value2 {
+    &:after {
+        content: attr(value) '2';
+    }
+}
+
+.value3 {
+    &:after {
+        content: attr(value) '3';
+    }
+}
+
+.value4 {
+    &:after {
+        content: attr(value) '4';
+    }
+}
+
+.value5 {
+    &:after {
+        content: attr(value) '5';
+    }
+}
+
+.value6 {
+    &:after {
+        content: attr(value) '6';
+    }
+}
+
+.value7 {
+    &:after {
+        content: attr(value) '7';
+    }
+}
+
+.value8 {
+    &:after {
+        content: attr(value) '8';
+    }
+}
+
+.value9 {
+    &:after {
+        content: attr(value) '9';
+    }
+}
+
+.value10 {
+    &:after {
+        content: attr(value) '10';
+    }
+}
+
+.value11 {
+    &:after {
+        content: attr(value) 'J';
+    }
+}
+
+.value12 {
+    &:after {
+        content: attr(value) 'Q';
+    }
+}
+
+.value13 {
+    &:after {
+        content: attr(value) 'K';
+    }
+}
+
+.value14 {
+    &:after {
+        content: attr(value) 'E';
+    }
+}

@@ -35,10 +35,8 @@ class CardController extends AbstractController
     }
 
     
-    /**
-     * @Route("/card/deck")
-     */
-    /*public function deck(): Response
+    #[Route("/card/deck")]
+    public function deck(): Response
     {
         $deck = new Deck();
 
@@ -46,7 +44,7 @@ class CardController extends AbstractController
             'title' => "Deck",
             'displayed_deck' => $deck->getDeck()
         ]);
-    }*/
+    }
 
     /**
      * @Route("/card/deck/shuffle")

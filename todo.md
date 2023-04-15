@@ -15,11 +15,12 @@ Börja med att utveckla dina klasser och testa dem i webbsidor enligt följande.
 
 [OK] Skapa en kontroller i Symfony där du kan skapa routes för denna delen av uppgiften.
 
-* Gör en förstasida card som länkar till samtliga undersidor för denna uppgiften. Detta är din “landningssida” för denna uppgiften. Placera länken till sidan i din navbar så den är lätt att nå.
+[OK] Gör en förstasida card som länkar till samtliga undersidor för denna uppgiften. Detta är din “landningssida” för denna uppgiften. Placera länken till sidan i din navbar så den är lätt att nå.
 
 * På din landdningssida, berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. Rita ett UML klass diagram och visa i sidan.
 
 * Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
+    * Spara i session, fixa sortering
 
 * Skapa en sida card/deck/shuffle som visar samtliga kort i kortleken när den har blandats.
 

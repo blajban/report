@@ -1,0 +1,50 @@
+{# templates/report.html.twig #}
+
+{% include 'incl/header.html.twig' %}
+
+
+<body>
+    {% include 'incl/nav.html.twig' %}
+
+    <div class="content-area">
+        <div class="content">
+            
+            <div class="card-area">
+
+            {% if displayed_deck is defined %}
+                {% for card in displayed_deck %}
+                    <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if drawn_card is defined %}
+                <div class="card back">{{ remaining_cards }}</div>
+                <div class="card {{ drawn_card.getCssColor() }} value{{ drawn_card.getValue() }}">
+                </div>
+            {% endif %}
+
+            {% if drawn_cards is defined %}
+                <div class="card back">{{ remaining_cards }}</div>
+                {% for card in drawn_cards %}
+                    <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
+                    </div>
+                {% endfor %}
+                
+            {% endif %}
+
+
+
+            
+
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'incl/footer.html.twig' %}
+</body>
+
+</html>
+
+
