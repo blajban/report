@@ -9,6 +9,7 @@ interface CardHandInterface
 {
     public function addCard(Card $card);
     public function getHand(): array;
+    public function discardHand();
 }
 
 trait CardHandTrait
@@ -23,6 +24,11 @@ trait CardHandTrait
     public function getHand(): array
     {
         return $this->hand;
+    }
+
+    public function discardHand()
+    {
+        $this->hand = [];
     }
 }
 

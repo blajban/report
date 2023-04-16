@@ -8,6 +8,7 @@ Du skall ha
 
 ## Flera små commits
 
+* WORKING ON REFCTORING
 
 ## Skapa klasser och använd dem i webbsidor
 
@@ -19,7 +20,8 @@ Börja med att utveckla dina klasser och testa dem i webbsidor enligt följande.
 
 * På din landdningssida, berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. Rita ett UML klass diagram och visa i sidan.
 
-[OK] Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
+* Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
+    * Fixa till session här
 
 [OK] Skapa en sida card/deck/shuffle som visar samtliga kort i kortleken när den har blandats.
 
@@ -35,11 +37,11 @@ Börja med att utveckla dina klasser och testa dem i webbsidor enligt följande.
 
 Denna delen gäller främst JSON API krav.
 
-* Skapa en landningssida för routen api/ som visar en webbsida med en sammanställning av alla JSON routes som din webbplats erbjuder.
+[OK] Skapa en landningssida för routen api/ som visar en webbsida med en sammanställning av alla JSON routes som din webbplats erbjuder.
 
-* Börja med att lägga till den route du skapade i kmom01 api/quote, länka till den och ge en kort förklaring av vad routen gör.
+[OK] Börja med att lägga till den route du skapade i kmom01 api/quote, länka till den och ge en kort förklaring av vad routen gör.
 
-* Skapa en kontroller i Symfony där du kan skapa routes för ett JSON API för denna delen av uppgiften.
+[OK] Skapa en kontroller i Symfony där du kan skapa routes för ett JSON API för denna delen av uppgiften.
 
 * Skapa en route GET api/deck som returnerar en JSON struktur med hela kortleken sorterad per färg och värde.
 
@@ -55,6 +57,8 @@ Denna delen gäller främst JSON API krav.
 
 
 ## Publicera
+
+* npm run build!
 
 * Committa alla filer och lägg till en tagg 2.0.0. Om du gör uppdateringar så ökar du taggen till 2.0.1, 2.0.2, 2.1.0 eller liknande.
 

@@ -9,7 +9,6 @@ interface DeckInterface
     public function __construct();
     public function getDeck(): array;
     public function sortDeck();
-    public function resetDeck();
     public function isEmpty(): bool;
     public function remainingCards(): int;
     public function drawCard(): Card;
@@ -43,11 +42,6 @@ class Deck implements DeckInterface
     }
 
     public function sortDeck()
-    {
-        // TODO
-    }
-
-    public function resetDeck()
     {
         // TODO
     }
