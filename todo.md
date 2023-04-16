@@ -19,14 +19,13 @@ Börja med att utveckla dina klasser och testa dem i webbsidor enligt följande.
 
 * På din landdningssida, berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. Rita ett UML klass diagram och visa i sidan.
 
-* Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
-    * Spara i session, fixa sortering
+[OK] Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
 
-* Skapa en sida card/deck/shuffle som visar samtliga kort i kortleken när den har blandats.
+[OK] Skapa en sida card/deck/shuffle som visar samtliga kort i kortleken när den har blandats.
 
-* Skapa en sida card/deck/draw som drar ett kort från kortleken och visar upp det. Visa även antalet kort som är kvar i kortleken.
+[OK] Skapa en sida card/deck/draw som drar ett kort från kortleken och visar upp det. Visa även antalet kort som är kvar i kortleken.
 
-* Skapa en sida card/deck/draw/:number som drar :number kort från kortleken och visar upp dem. Visa även antalet kort som är kvar i kortleken.
+[OK] Skapa en sida card/deck/draw/:number som drar :number kort från kortleken och visar upp dem. Visa även antalet kort som är kvar i kortleken.
 
 * Kortleken skall sparas i sessionen så om man anropar sidorna draw och draw/:number så skall hela tiden antalet kort från korleken minskas tills kortleken är slut. När man gör card/deck/shuffle så kan kortleken återställas.
 

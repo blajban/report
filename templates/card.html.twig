@@ -9,6 +9,14 @@
     <div class="content-area">
         <div class="content">
             
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
             <div class="card-area">
 
             {% if displayed_deck is defined %}

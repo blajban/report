@@ -46,10 +46,8 @@ class CardController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/card/deck/shuffle")
-     */
-    /*public function shuffle(SessionInterface $session): Response
+    #[Route("/card/deck/shuffle")]
+    public function shuffle(SessionInterface $session): Response
     {
         $deck = new Deck();
 
@@ -62,16 +60,19 @@ class CardController extends AbstractController
             'title' => "Shuffle",
             'displayed_deck' => $deck->getDeck()
         ]);
-    }*/
+    }
 
-    /**
-     * @Route("/card/deck/draw")
-     */
-    /*public function draw(SessionInterface $session): Response
+    #[Route("/card/deck/draw")]
+    public function draw(SessionInterface $session): Response
     {
         $deck = $session->get("deck") ?? new Deck();
 
         if ($deck->isEmpty()) {
+            $this->addFlash(
+                'warning',
+                'Can\'t draw from an empty deck!'
+            );
+
             $cardDrawn = $session->get("last_card");
         } else {
             $cardDrawn = $deck->drawCard();
@@ -86,18 +87,21 @@ class CardController extends AbstractController
             'drawn_card' => $cardDrawn,
             'remaining_cards' => $deck->remainingCards()
         ]);
-    }*/
+    }
 
-    /**
-     * @Route("/card/deck/draw/{number}")
-     */
-    /*public function drawMany($number, SessionInterface $session): Response
+    #[Route("/card/deck/draw/{number}")]
+    public function drawMany($number, SessionInterface $session): Response
     {
         $deck = $session->get("deck") ?? new Deck();
 
         $cardsDrawn = [];
 
         if ($deck->remainingCards() < $number) {
+            $this->addFlash(
+                'warning',
+                'Trying to draw more cards than left in deck!'
+            );
+
             $cardsDrawn = $session->get("cards_drawn");
         } else {
             for ($i = 0; $i < $number; $i++) {
@@ -114,7 +118,7 @@ class CardController extends AbstractController
             'drawn_cards' => $cardsDrawn,
             'remaining_cards' => $deck->remainingCards()
         ]);
-    }*/
+    }
 
     /**
      * @Route("/card/deck/deal/{players}/{cards}")
