@@ -9,6 +9,7 @@ interface CardGameInterface
 {
     public function __construct($session);
     public function getDeck(): array;
+    public function getJsonDeck(): array;
     public function shuffle();
     public function sortDeck();
     public function draw($number): array;
@@ -31,6 +32,19 @@ class CardGame implements CardGameInterface
     {
         $this->deck = $this->session->get("deck") ?? new Deck();
         return $this->deck->getDeck();
+    }
+
+    public function getJsonDeck(): array
+    {
+        $this->deck = $this->session->get("deck") ?? new Deck();
+        $jsonDeck = [];
+
+        foreach ($this->deck->getDeck() as $card) {
+            $jsonDeck[] = $card->toArray();
+        }
+
+        return $jsonDeck;
+        
     }
 
     public function shuffle()

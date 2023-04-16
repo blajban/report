@@ -49,6 +49,7 @@ interface FrenchEnglishCardInterface
     public function changeAceValue();
     public function getValue(): int;
     public function getCssColor(): string;
+    public function toArray(): array;
 }
 
 interface JokerInterface
@@ -136,5 +137,15 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
             return Card::CSSCOLORS[Card::JOKER];
         }
         return Card::CSSCOLORS[$this->color];
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'value' => $this->getValue(),
+            'color' => Card::COLORNAMES[$this->color],
+            'name' => Card::CARDNAMES[$this->value],
+            'isAce' => $this->isAce()
+        ];
     }
 }
