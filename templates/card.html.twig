@@ -9,13 +9,7 @@
     <div class="content-area">
         <div class="content">
             
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="flash-{{ label }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
+            {% include 'incl/flash.html.twig' %}
 
             <div class="card-area">
 

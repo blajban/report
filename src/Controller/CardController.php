@@ -120,10 +120,8 @@ class CardController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/card/deck/deal/{players}/{cards}")
-     */
-    /*public function dealCards($players, $cards, SessionInterface $session): Response
+    #[Route("/card/deck/deal/{players}/{cards}")]
+    public function dealCards($players, $cards, SessionInterface $session): Response
     {
         $deck = $session->get("deck") ?? new Deck();
         $activePlayers = [];
@@ -138,6 +136,11 @@ class CardController extends AbstractController
                     $pl->addCard($deck->drawCard());
                 }
             }
+        } else {
+            $this->addFlash(
+                'warning',
+                'Not enough cards left in deck'
+            );
         }
 
         $session->set("deck", $deck);
@@ -147,7 +150,7 @@ class CardController extends AbstractController
             'remaining_cards' => $deck->remainingCards(),
             'players' => $activePlayers
         ]);
-    }*/
+    }
 
     /**
      * @Route("/card/deck2")
