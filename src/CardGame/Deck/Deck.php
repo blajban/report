@@ -41,9 +41,36 @@ class Deck implements DeckInterface
         return $this->deck;
     }
 
+    private function compareCards($card1, $card2) {
+        return $card1->getValue() - $card2->getValue();
+    }
+
     public function sortDeck()
     {
-        // TODO
+        $colors = [
+            "hearts" => [],
+            "spades" => [],
+            "tiles" => [],
+            "clubs" => [],
+            "joker" => []
+        ];
+
+        foreach ($this->deck as $card) {
+            $colors[$card->getCssColor()][] = $card;
+        }
+
+        foreach ($colors as $color => $cards) {
+            usort($cards, [$this, 'compareCards']);
+            $colors[$color] = $cards;
+        }
+
+        $this->deck = [];
+
+        foreach ($colors as $color => $cards) {
+            foreach ($cards as $card) {
+                $this->deck[] = $card;
+            }
+        }
     }
 
     public function isEmpty(): bool

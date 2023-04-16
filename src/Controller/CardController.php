@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-use App\CardGame\Deck\Deck;
-use App\CardGame\DeckWithJokers\DeckWithJokers;
 use App\CardGame\CardGame\CardGame;
-use App\CardGame\Player\Player;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,6 +47,8 @@ class CardController extends AbstractController
     public function deck(SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
+
+        $cardGame->sortDeck();
 
         return $this->render('card.html.twig', [
             'title' => "Deck",
@@ -114,63 +113,35 @@ class CardController extends AbstractController
     #[Route("/card/deck/deal/{players}/{cards}")]
     public function dealCards($players, $cards, SessionInterface $session): Response
     {
-        $deck = $session->get("deck") ?? new Deck();
-        $maxActivePlayers = $session->get("active_players") ?? $players;
-        if ($players >= $maxActivePlayers) {
-            $session->set("active_players", $players);
-        }
-        $activePlayers = [];
+        $cardGame = new CardGame($session);
 
-        for ($i = 1; $i <= $players; $i++) {
-            $player = "Player $i";
-            $activePlayers[] = $session->get($player) ?? new Player($player);
-        }
+        $deal = $cardGame->dealCards($players, $cards);
 
-        if ($deck->remainingCards() > $players * $cards) {
-            for ($i = 0; $i < $cards; $i++) {
-                foreach ($activePlayers as $pl) {
-                    $pl->addCard($deck->drawCard());
-                }
-            }
-        } else {
+        if (!$deal["success"]) {
             $this->addFlash(
                 'warning',
                 'Not enough cards left in deck'
             );
         }
 
-        $session->set("deck", $deck);
-
-        foreach ($activePlayers as $pl) {
-            $session->set($pl->getName(), $pl);
-        }
-
         return $this->render('table.html.twig', [
             'title' => "Deal",
-            'remaining_cards' => $deck->remainingCards(),
-            'players' => $activePlayers
+            'remaining_cards' => $cardGame->remainingCards(),
+            'players' => $deal["activePlayers"]
         ]);
     }
 
     #[Route("/card/deck/deal/reset")]
     public function resetPlayers(SessionInterface $session)
     {
-        $numActivePlayers = $session->get("active_players") ?? 0;
+        $cardGame = new CardGame($session);
 
-
-        for ($i = 1; $i <= $numActivePlayers; $i++) {
-            $playerName = "Player $i";
-            $player = $session->get($playerName);
-
-            $player->discardHand();
-
-            $session->set($playerName, $player);
-        }
+        $numResetted = $cardGame->resetPlayers();
 
         return $this->render('1col_nohero.html.twig', [
             'title' => "Reset players",
             'heading' => "Reset players",
-            'content' => "$numActivePlayers players resetted"
+            'content' => "$numResetted players resetted"
         ]);
     }
 

@@ -5,7 +5,7 @@
 
 [card/deck](/card/deck)
 
-[card/deck/shuffle](/card/deck/shuffle)
+[card/deck/shuffle (use this to reset deck)](/card/deck/shuffle)
 
 [card/deck/draw](/card/deck/draw)
 

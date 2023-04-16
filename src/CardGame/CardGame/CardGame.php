@@ -3,15 +3,18 @@
 namespace App\CardGame\CardGame;
 
 use App\CardGame\Deck\Deck;
-use App\CardGame\Card\Card;
+use App\CardGame\Player\Player;
 
 interface CardGameInterface
 {
     public function __construct($session);
     public function getDeck(): array;
     public function shuffle();
+    public function sortDeck();
     public function draw($number): array;
     public function remainingCards(): int;
+    public function dealCards($num_players, $num_cards): array;
+    public function resetPlayers(): int;
 }
 
 class CardGame implements CardGameInterface
@@ -35,6 +38,13 @@ class CardGame implements CardGameInterface
         $this->deck = new Deck();
         $this->deck->shuffleDeck();
         $this->session->set("deck", $this->deck);
+    }
+
+    public function sortDeck()
+    {
+        $this->deck = $this->session->get("deck") ?? new Deck();
+
+        $this->deck->sortDeck();
     }
 
     public function draw($number): array
@@ -63,5 +73,63 @@ class CardGame implements CardGameInterface
     {
         $this->deck = $this->session->get("deck") ?? new Deck();
         return $this->deck->remainingCards();
+    }
+
+    public function dealCards($num_players, $num_cards): array
+    {
+        $this->deck = $this->session->get("deck") ?? new Deck();
+
+        $maxActivePlayers = $this->session->get("active_players") ?? $num_players;
+        if ($num_players >= $maxActivePlayers) {
+            $this->session->set("active_players", $num_players);
+        }
+
+        $activePlayers = [];
+
+        for ($i = 1; $i <= $num_players; $i++) {
+            $player = "Player $i";
+            $activePlayers[] = $this->session->get($player) ?? new Player($player);
+        }
+
+        if ($this->remainingCards() < $num_players * $num_cards) {
+            return [
+                "success" => false,
+                "activePlayers" => $activePlayers
+            ];
+        }
+
+        for ($i = 0; $i < $num_cards; $i++) {
+            foreach ($activePlayers as $pl) {
+                $card = $this->draw(1)[0];
+                $pl->addCard($card);
+            }
+        }
+
+        $this->session->set("deck", $this->deck);
+
+        foreach ($activePlayers as $pl) {
+            $this->session->set($pl->getName(), $pl);
+        }
+
+        return [
+            "success" => true,
+            "activePlayers" => $activePlayers
+        ];
+    }
+
+    public function resetPlayers(): int
+    {
+        $numActivePlayers = $this->session->get("active_players") ?? 0;
+
+        for ($i = 1; $i <= $numActivePlayers; $i++) {
+            $playerName = "Player $i";
+            $player = $this->session->get($playerName);
+
+            $player->discardHand();
+
+            $this->session->set($playerName, $player);
+        }
+
+        return $numActivePlayers;
     }
 }
