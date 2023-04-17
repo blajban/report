@@ -64,13 +64,13 @@ Denna delen gäller främst JSON API krav.
 
 [OK] Kör dbwebb test kmom02 för att kolla att du inte har några uppenbara fel.
 
-* Pusha upp repot till GitHub, inklusive taggarna.
+[OK] Pusha upp repot till GitHub, inklusive taggarna.
 
 [OK] Skriv redovisningstext
 
 [OK] Fixal länkarna på landningssidorna
 
-* Uppdatera tagg och commita redovisningstext
+[OK] Uppdatera tagg och commita redovisningstext
 
 * Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
 

@@ -99,11 +99,11 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
     {
         switch ($this->value) {
             case 1: return true;
-            break;
+                break;
             case 14: return true;
-            break;
+                break;
             default: return false;
-            break;
+                break;
         }
     }
 
@@ -124,9 +124,9 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
     {
         switch ($this->value) {
             case 1: $this->value = 14;
-            break;
+                break;
             case 14: $this->value = 1;
-            break;
+                break;
             default: break;
         }
     }
