@@ -60,11 +60,15 @@ Denna delen gäller främst JSON API krav.
 
 [OK] npm run build!
 
-* Committa alla filer och lägg till en tagg 2.0.0. Om du gör uppdateringar så ökar du taggen till 2.0.1, 2.0.2, 2.1.0 eller liknande.
+[OK] Committa alla filer och lägg till en tagg 2.0.0. Om du gör uppdateringar så ökar du taggen till 2.0.1, 2.0.2, 2.1.0 eller liknande.
 
-* Kör dbwebb test kmom02 för att kolla att du inte har några uppenbara fel.
+[OK] Kör dbwebb test kmom02 för att kolla att du inte har några uppenbara fel.
 
 * Pusha upp repot till GitHub, inklusive taggarna.
+
+[OK] Skriv redovisningstext
+
+* Uppdatera tagg och commita redovisningstext
 
 * Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
 
