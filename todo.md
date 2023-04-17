@@ -68,6 +68,8 @@ Denna delen gäller främst JSON API krav.
 
 [OK] Skriv redovisningstext
 
+[OK] Fixal länkarna på landningssidorna
+
 * Uppdatera tagg och commita redovisningstext
 
 * Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
