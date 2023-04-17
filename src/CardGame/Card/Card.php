@@ -150,7 +150,8 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
             'value' => $this->getValue(),
             'color' => Card::COLORNAMES[$this->color],
             'name' => Card::CARDNAMES[$this->value],
-            'isAce' => $this->isAce()
+            'isAce' => $this->isAce(),
+            'isJoker' => $this->isJoker()
         ];
     }
 }

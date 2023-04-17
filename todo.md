@@ -4,11 +4,10 @@
     - DeckOfCards, en kortlek
 
 Du skall ha 
-    * minst ett arv och här kan du välja att jobba med ett Card och ett CardGraphic som två olika kort. Du kan också välja att ha en DeckOfCards som har jokrar och en som inte har jokrar. Det är fritt så länge du har med minst ett arv.
+    [OK] minst ett arv och här kan du välja att jobba med ett Card och ett CardGraphic som två olika kort. Du kan också välja att ha en DeckOfCards som har jokrar och en som inte har jokrar. Det är fritt så länge du har med minst ett arv.
 
 ## Flera små commits
 
-* WORKING ON REFCTORING
 
 ## Skapa klasser och använd dem i webbsidor
 
@@ -18,10 +17,11 @@ Börja med att utveckla dina klasser och testa dem i webbsidor enligt följande.
 
 [OK] Gör en förstasida card som länkar till samtliga undersidor för denna uppgiften. Detta är din “landningssida” för denna uppgiften. Placera länken till sidan i din navbar så den är lätt att nå.
 
-* På din landdningssida, berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. Rita ett UML klass diagram och visa i sidan.
+[OK] På din landdningssida, 
+    [OK] berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. 
+    [OK] Rita ett UML klass diagram och visa i sidan.
 
-* Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
-    * Fixa till session här
+[OK] Skapa en sida card/deck som visar samtliga kort i kortleken sorterade per färg och värde.
 
 [OK] Skapa en sida card/deck/shuffle som visar samtliga kort i kortleken när den har blandats.
 
@@ -58,7 +58,7 @@ Denna delen gäller främst JSON API krav.
 
 ## Publicera
 
-* npm run build!
+[OK] npm run build!
 
 * Committa alla filer och lägg till en tagg 2.0.0. Om du gör uppdateringar så ökar du taggen till 2.0.1, 2.0.2, 2.1.0 eller liknande.
 

@@ -3,6 +3,7 @@
 namespace App\CardGame\CardGame;
 
 use App\CardGame\Deck\Deck;
+use App\CardGame\DeckWithJokers\DeckWithJokers;
 use App\CardGame\Player\Player;
 
 interface CardGameInterface
@@ -30,13 +31,13 @@ class CardGame implements CardGameInterface
 
     public function getDeck(): array
     {
-        $this->deck = $this->session->get("deck") ?? new Deck();
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         return $this->deck->getDeck();
     }
 
     public function getJsonDeck(): array
     {
-        $this->deck = $this->session->get("deck") ?? new Deck();
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         $jsonDeck = [];
 
         foreach ($this->deck->getDeck() as $card) {
@@ -49,21 +50,21 @@ class CardGame implements CardGameInterface
 
     public function shuffle()
     {
-        $this->deck = new Deck();
+        $this->deck = new DeckWithJokers();
         $this->deck->shuffleDeck();
         $this->session->set("deck", $this->deck);
     }
 
     public function sortDeck()
     {
-        $this->deck = $this->session->get("deck") ?? new Deck();
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
 
         $this->deck->sortDeck();
     }
 
     public function draw($number): array
     {
-        $this->deck = $this->session->get("deck") ?? new Deck();
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         $cardsDrawn = [];
 
         if ($this->deck->remainingCards() < $number) {
@@ -85,13 +86,13 @@ class CardGame implements CardGameInterface
 
     public function remainingCards(): int
     {
-        $this->deck = $this->session->get("deck") ?? new Deck();
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         return $this->deck->remainingCards();
     }
 
     public function dealCards($num_players, $num_cards): array
     {
-        $this->deck = $this->session->get("deck") ?? new Deck();
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
 
         $maxActivePlayers = $this->session->get("active_players") ?? $num_players;
         if ($num_players >= $maxActivePlayers) {

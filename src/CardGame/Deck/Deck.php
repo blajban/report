@@ -8,6 +8,7 @@ interface DeckInterface
 {
     public function __construct();
     public function getDeck(): array;
+    public function compareCards($card1, $card2);
     public function sortDeck();
     public function isEmpty(): bool;
     public function remainingCards(): int;
@@ -41,7 +42,7 @@ class Deck implements DeckInterface
         return $this->deck;
     }
 
-    private function compareCards($card1, $card2)
+    public function compareCards($card1, $card2)
     {
         return $card1->getValue() - $card2->getValue();
     }
