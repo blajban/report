@@ -4,7 +4,6 @@ namespace App\CardGame\Player;
 
 use App\CardGame\Card\Card;
 
-
 interface CardHandInterface
 {
     public function addCard(Card $card);

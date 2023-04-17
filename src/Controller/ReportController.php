@@ -7,10 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Services\UtilityService;
 
-
-
-
-
 class ReportController extends AbstractController
 {
     private $utilityService;

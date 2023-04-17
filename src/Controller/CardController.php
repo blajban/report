@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 use App\Services\UtilityService;
 
-
-
 class CardController extends AbstractController
 {
     private $utilityService;
@@ -42,7 +40,7 @@ class CardController extends AbstractController
         ]);
     }
 
-    
+
     #[Route("/card/deck")]
     public function deck(SessionInterface $session): Response
     {

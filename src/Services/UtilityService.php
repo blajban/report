@@ -5,7 +5,8 @@ namespace App\Services;
 use Symfony\Component\HttpFoundation\Response;
 use Parsedown;
 
-class UtilityService {
+class UtilityService
+{
     public function parseMarkdown($fileName): string
     {
         $parseDown = new Parsedown();
@@ -22,4 +23,3 @@ class UtilityService {
         return $response;
     }
 }
-

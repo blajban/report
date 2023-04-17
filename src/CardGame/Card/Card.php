@@ -2,16 +2,15 @@
 
 namespace App\CardGame\Card;
 
-
 interface FrenchEnglishCardInterface
 {
-    const HEARTS = 1;
-    const SPADES = 2;
-    const CLUBS = 3;
-    const TILES = 4;
-    const JOKER = 5;
+    public const HEARTS = 1;
+    public const SPADES = 2;
+    public const CLUBS = 3;
+    public const TILES = 4;
+    public const JOKER = 5;
 
-    const CARDNAMES = [
+    public const CARDNAMES = [
         0 => 'Joker',
         1 => 'Ess',
         2 => 'Två',
@@ -28,14 +27,14 @@ interface FrenchEnglishCardInterface
         13 => 'Kung',
         14 => 'Ess'
     ];
-    const COLORNAMES = [
+    public const COLORNAMES = [
         1 => "Hjärter",
         2 => "Spader",
         3 => "Klöver",
         4 => "Ruter",
         5 => "Joker"
     ];
-    const CSSCOLORS = [
+    public const CSSCOLORS = [
         1 => "hearts",
         2 => "spades",
         3 => "clubs",
@@ -75,7 +74,7 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
 
     public function asString(): string
     {
-        
+
         if ($this->isJoker()) {
             $color = Card::COLORNAMES[Card::JOKER];
             $name = Card::CARDNAMES[Card::JOKER];
@@ -99,9 +98,12 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
     public function isAce(): bool
     {
         switch ($this->value) {
-            case 1: return true; break;
-            case 14: return true; break;
-            default: return false; break;
+            case 1: return true;
+            break;
+            case 14: return true;
+            break;
+            default: return false;
+            break;
         }
     }
 
@@ -121,8 +123,10 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
     public function changeAceValue()
     {
         switch ($this->value) {
-            case 1: $this->value = 14; break;
-            case 14: $this->value = 1; break;
+            case 1: $this->value = 14;
+            break;
+            case 14: $this->value = 1;
+            break;
             default: break;
         }
     }
@@ -132,7 +136,8 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
         return $this->value;
     }
 
-    public function getCssColor(): string {
+    public function getCssColor(): string
+    {
         if ($this->isJoker()) {
             return Card::CSSCOLORS[Card::JOKER];
         }

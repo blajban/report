@@ -49,11 +49,11 @@ Denna delen gäller främst JSON API krav.
 
 [OK] Skapa route POST api/deck/draw och POST api/deck/draw/:number som drar 1 eller :number kort från kortleken och visar upp dem i en JSON struktur samt antalet kort som är kvar i kortleken. Kortleken sparas i sessionen så om man anropar dem flera gånger så minskas antalet kort i kortleken.
 
-* [OPTIONELLT] Skapa en route POST api/deck/deal/:players/:cards som delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått i en JSON struktur. Visa även antalet kort som är kvar i kortleken.
+[OK] [OPTIONELLT] Skapa en route POST api/deck/deal/:players/:cards som delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått i en JSON struktur. Visa även antalet kort som är kvar i kortleken.
 
 ## Kodvalidering
 
-* Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
+[OK] Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
 
 
 ## Publicera

@@ -90,4 +90,43 @@ class CardControllerJson extends AbstractController
 
     }
 
+    #[Route("/api/deck/deal/{players}/{cards}", methods: ['POST'])]
+    public function dealCards($players, $cards, SessionInterface $session): Response
+    {
+        $cardGame = new CardGame($session);
+
+        $deal = $cardGame->dealCards($players, $cards);
+
+        $status = "Success";
+
+        if (!$deal["success"]) {
+            $status = "Failed - not enough cards left";
+        }
+
+        $data = [
+            'status' => $status,
+            'players' => [],
+            'remaining_cards' => $cardGame->remainingCards()
+        ];
+
+        foreach ($deal['activePlayers'] as $player) {
+            foreach ($player->getHand() as $card) {
+                $data['players'][$player->getName()][] = $card->toArray();
+            }
+        }
+
+        return $this->utilityService->jsonResponse($data);
+    }
+
+    #[Route("/api/deck/deal/reset", methods: ['POST'])]
+    public function resetPlayers(SessionInterface $session)
+    {
+        $cardGame = new CardGame($session);
+
+        $numResetted = $cardGame->resetPlayers();
+
+        return $this->utilityService->jsonResponse("$numResetted players resetted");
+
+    }
+
 }

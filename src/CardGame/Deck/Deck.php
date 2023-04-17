@@ -28,7 +28,7 @@ class Deck implements DeckInterface
         $this->addCardsToDeck(Card::CLUBS);
     }
 
-    private function addCardsToDeck(int $color) 
+    private function addCardsToDeck(int $color)
     {
         $maxEachColor = 14;
         for ($i = 1; $i < $maxEachColor; $i++) {
@@ -41,7 +41,8 @@ class Deck implements DeckInterface
         return $this->deck;
     }
 
-    private function compareCards($card1, $card2) {
+    private function compareCards($card1, $card2)
+    {
         return $card1->getValue() - $card2->getValue();
     }
 

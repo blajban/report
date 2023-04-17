@@ -14,4 +14,3 @@ class DeckWithJokers extends Deck
         $this->deck[] = new Card(0, Card::JOKER, true);
     }
 }
-

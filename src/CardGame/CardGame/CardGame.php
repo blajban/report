@@ -44,7 +44,7 @@ class CardGame implements CardGameInterface
         }
 
         return $jsonDeck;
-        
+
     }
 
     public function shuffle()
