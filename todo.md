@@ -76,11 +76,11 @@ Denna delen gäller främst JSON API krav.
 
 [OK] Fixa till mappstrukturen
 
-* Fixa get tillsammans med post
+[OK] Fixa get tillsammans med post
 
-* fixa snyggare jsonutskrift
+[OK] fixa snyggare jsonutskrift
 
-* Reset session route
+[OK] Reset session route
 
 * ny tagg och publishpure
 

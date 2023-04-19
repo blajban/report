@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Parsedown;
 
 class UtilityService
@@ -14,11 +14,12 @@ class UtilityService
         return $parseDown->text($content);
     }
 
-    public function jsonResponse($data): Response
+    public function jsonResponse($data): JsonResponse
     {
-        $response = new Response();
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+        );
 
         return $response;
     }
