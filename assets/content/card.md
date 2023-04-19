@@ -11,6 +11,8 @@
 
 [card/deck/deal/reset (reset all player hands in session)](./card/deck/deal/reset)
 
+[card/deck/resetsession](./card/deck/resetsession)
+
 ### Om klasserna
 
 ![UML-diagram](img/uml-card.png)

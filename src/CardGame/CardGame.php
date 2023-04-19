@@ -1,9 +1,9 @@
 <?php
 
-namespace App\CardGame\CardGame;
+namespace App\CardGame;
 
-use App\CardGame\DeckWithJokers\DeckWithJokers;
-use App\CardGame\Player\Player;
+use App\CardGame\DeckWithJokers;
+use App\CardGame\Player;
 
 interface CardGameInterface
 {
@@ -91,6 +91,8 @@ class CardGame implements CardGameInterface
 
     public function dealCards($num_players, $num_cards): array
     {
+        class_exists(Player::class);
+
         $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
 
         $maxActivePlayers = $this->session->get("active_players") ?? $num_players;

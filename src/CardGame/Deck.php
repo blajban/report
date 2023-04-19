@@ -1,8 +1,8 @@
 <?php
 
-namespace App\CardGame\Deck;
+namespace App\CardGame;
 
-use App\CardGame\Card\Card;
+use App\CardGame\Card;
 
 interface DeckInterface
 {

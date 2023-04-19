@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\CardGame\CardGame\CardGame;
+use App\CardGame\CardGame;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -140,6 +140,18 @@ class CardController extends AbstractController
             'title' => "Reset players",
             'heading' => "Reset players",
             'content' => "$numResetted players resetted"
+        ]);
+    }
+
+    #[Route("/card/deck/resetsession")]
+    public function resetSession(SessionInterface $session)
+    {
+        $session->clear();
+
+        return $this->render('1col_nohero.html.twig', [
+            'title' => "Reset session",
+            'heading' => "Reset session",
+            'content' => "Session resetted"
         ]);
     }
 

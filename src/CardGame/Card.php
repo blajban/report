@@ -1,6 +1,6 @@
 <?php
 
-namespace App\CardGame\Card;
+namespace App\CardGame;
 
 interface FrenchEnglishCardInterface
 {

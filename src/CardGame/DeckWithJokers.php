@@ -1,9 +1,9 @@
 <?php
 
-namespace App\CardGame\DeckWithJokers;
+namespace App\CardGame;
 
-use App\CardGame\Deck\Deck;
-use App\CardGame\Card\Card;
+use App\CardGame\Deck;
+use App\CardGame\Card;
 
 class DeckWithJokers extends Deck
 {

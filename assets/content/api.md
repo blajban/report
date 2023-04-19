@@ -15,11 +15,11 @@ POST [api/deck/draw](./api/deck/draw)
 
 Returns 1 drawn card and the number of cards left in deck.
 
-POST [api/deck/draw/:number](./api/deck/draw/:number)
+POST [api/deck/draw/:number](./api/deck/draw/3)
 
 Returns {number} drawn cards and the number of cards left in deck.
 
-POST [api/deck/deal/:players/:cards](./api/deck/deal/:players/:cards)
+POST [api/deck/deal/:players/:cards](./api/deck/deal/3/3)
 
 Returns the {cards} dealt to each {players} and the number of cards left in deck.
 

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\CardGame\CardGame\CardGame;
+use App\CardGame\CardGame;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,7 +31,7 @@ class CardControllerJson extends AbstractController
         return $this->utilityService->jsonResponse($deck);
     }
 
-    #[Route("/api/deck/shuffle", methods: ['POST'])]
+    #[Route("/api/deck/shuffle", methods: ['GET', 'POST'])]
     public function shuffle(SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
@@ -42,7 +42,7 @@ class CardControllerJson extends AbstractController
         return $this->utilityService->jsonResponse($deck);
     }
 
-    #[Route("/api/deck/draw", methods: ['POST'])]
+    #[Route("/api/deck/draw", methods: ['GET', 'POST'])]
     public function draw(SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
@@ -64,7 +64,7 @@ class CardControllerJson extends AbstractController
 
     }
 
-    #[Route("/api/deck/draw/{number}", methods: ['POST'])]
+    #[Route("/api/deck/draw/{number}", methods: ['GET', 'POST'])]
     public function drawMany($number, SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
@@ -90,7 +90,7 @@ class CardControllerJson extends AbstractController
 
     }
 
-    #[Route("/api/deck/deal/{players}/{cards}", methods: ['POST'])]
+    #[Route("/api/deck/deal/{players}/{cards}", methods: ['GET', 'POST'])]
     public function dealCards($players, $cards, SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
@@ -118,7 +118,7 @@ class CardControllerJson extends AbstractController
         return $this->utilityService->jsonResponse($data);
     }
 
-    #[Route("/api/deck/deal/reset", methods: ['POST'])]
+    #[Route("/api/deck/deal/reset", methods: ['GET', 'POST'])]
     public function resetPlayers(SessionInterface $session)
     {
         $cardGame = new CardGame($session);
