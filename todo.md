@@ -72,5 +72,15 @@ Denna delen gäller främst JSON API krav.
 
 [OK] Uppdatera tagg och commita redovisningstext
 
-* Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
+[OK] Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
+
+[OK] Fixa till mappstrukturen
+
+* Fixa get tillsammans med post
+
+* fixa snyggare jsonutskrift
+
+* Reset session route
+
+* ny tagg och publishpure
 

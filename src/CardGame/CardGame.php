@@ -2,7 +2,6 @@
 
 namespace App\CardGame\CardGame;
 
-use App\CardGame\Deck\Deck;
 use App\CardGame\DeckWithJokers\DeckWithJokers;
 use App\CardGame\Player\Player;
 
