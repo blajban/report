@@ -45,27 +45,39 @@ interface FrenchEnglishCardInterface
     public function __construct(int $value, int $colorEnum);
     public function asString(): string;
     public function isAce(): bool;
+
+    /**
+     * @return void
+     */
     public function changeAceValue();
     public function getValue(): int;
     public function getCssColor(): string;
+
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array;
 }
 
 interface JokerInterface
 {
-    public function __construct(int $value, int $colorEnum, $isJoker = false);
+    public function __construct(int $value, int $colorEnum, bool $isJoker = false);
     public function isJoker(): bool;
+
+    /**
+     * @return void
+     */
     public function changeJokerColorAndValue(int $color, int $value);
 }
 
 
 class Card implements FrenchEnglishCardInterface, JokerInterface
 {
-    private $value;
-    private $color;
-    private $joker;
+    private int $value;
+    private int $color;
+    private bool $joker;
 
-    public function __construct(int $value, int $colorEnum, $isJoker = false)
+    public function __construct(int $value, int $colorEnum, bool $isJoker = false)
     {
         $this->value = $value;
         $this->color = $colorEnum;
@@ -99,11 +111,8 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
     {
         switch ($this->value) {
             case 1: return true;
-                break;
             case 14: return true;
-                break;
             default: return false;
-                break;
         }
     }
 

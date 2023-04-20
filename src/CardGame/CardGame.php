@@ -43,7 +43,7 @@ interface CardGameInterface
     /**
      * @return array<Mixed>
      */
-    public function dealCards(int $num_players, int $num_cards): array;
+    public function dealCards(int $numPlayers, int $numCards): array;
     public function resetPlayers(): int;
 }
 
@@ -62,18 +62,7 @@ class CardGame implements CardGameInterface
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
-        $this->deck = $this->getDeckFromSession();
-    }
-
-    private function getDeckFromSession(): DeckWithJokers
-    {
-        $deckFromSession = $this->session->get("deck");
-        if ($deckFromSession === null) {
-            return new DeckWithJokers();
-        }
-        
-        assert($deckFromSession instanceof DeckWithJokers);
-        return $deckFromSession;
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
     }
 
     public function getDeck(): array
@@ -111,10 +100,6 @@ class CardGame implements CardGameInterface
 
         if ($this->deck->remainingCards() < $number) {
             $cardsDrawn = $this->session->get("cards_drawn");
-            assert(is_array($cardsDrawn));
-            foreach ($cardsDrawn as $card) {
-                assert($card instanceof Card);
-            }
             $this->session->set("deck", $this->deck);
             return $cardsDrawn;
         }
@@ -135,30 +120,33 @@ class CardGame implements CardGameInterface
         return $this->deck->remainingCards();
     }
 
-    public function dealCards(int $num_players, int $num_cards): array
+    public function dealCards(int $numPlayers, int $numCards): array
     {
         class_exists(Player::class);
 
-        $maxActivePlayers = $this->session->get("active_players") ?? $num_players;
-        if ($num_players >= $maxActivePlayers) {
-            $this->session->set("active_players", $num_players);
+        $maxActivePlayers = $this->session->get("active_players") ?? $numPlayers;
+        if ($numPlayers >= $maxActivePlayers) {
+            $this->session->set("active_players", $numPlayers);
         }
 
+        /**
+         * @var array<Player> $activePlayers
+         */
         $activePlayers = [];
 
-        for ($i = 1; $i <= $num_players; $i++) {
+        for ($i = 1; $i <= $numPlayers; $i++) {
             $player = "Player $i";
             $activePlayers[] = $this->session->get($player) ?? new Player($player);
         }
 
-        if ($this->remainingCards() < $num_players * $num_cards) {
+        if ($this->remainingCards() < $numPlayers * $numCards) {
             return [
                 "success" => false,
                 "activePlayers" => $activePlayers
             ];
         }
 
-        for ($i = 0; $i < $num_cards; $i++) {
+        for ($i = 0; $i < $numCards; $i++) {
             foreach ($activePlayers as $pl) {
                 $card = $this->draw(1)[0];
                 $pl->addCard($card);
