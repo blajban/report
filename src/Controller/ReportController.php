@@ -9,7 +9,7 @@ use App\Services\UtilityService;
 
 class ReportController extends AbstractController
 {
-    private $utilityService;
+    private UtilityService $utilityService;
 
     public function __construct(UtilityService $utilityService)
     {

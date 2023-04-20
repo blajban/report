@@ -13,7 +13,7 @@ use App\Services\UtilityService;
 
 class CardController extends AbstractController
 {
-    private $utilityService;
+    private UtilityService $utilityService;
 
     public function __construct(UtilityService $utilityService)
     {
@@ -88,7 +88,7 @@ class CardController extends AbstractController
     }
 
     #[Route("/card/deck/draw/{number}")]
-    public function drawMany($number, SessionInterface $session): Response
+    public function drawMany(int $number, SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
         $cardsDrawn = $cardGame->draw($number);
@@ -109,7 +109,7 @@ class CardController extends AbstractController
     }
 
     #[Route("/card/deck/deal/{players}/{cards}")]
-    public function dealCards($players, $cards, SessionInterface $session): Response
+    public function dealCards(int $players, int $cards, SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
 
@@ -130,7 +130,7 @@ class CardController extends AbstractController
     }
 
     #[Route("/card/deck/deal/reset")]
-    public function resetPlayers(SessionInterface $session)
+    public function resetPlayers(SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
 
@@ -144,7 +144,7 @@ class CardController extends AbstractController
     }
 
     #[Route("/card/deck/resetsession")]
-    public function resetSession(SessionInterface $session)
+    public function resetSession(SessionInterface $session): Response
     {
         $session->clear();
 

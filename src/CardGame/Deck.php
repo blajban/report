@@ -6,19 +6,38 @@ use App\CardGame\Card;
 
 interface DeckInterface
 {
+    /**
+     * @return void
+     */
     public function __construct();
+
+    /**
+     * @return array<Card>
+     */
     public function getDeck(): array;
-    public function compareCards($card1, $card2);
+
+    public function compareCards(Card $card1, Card $card2): int;
+
+    /**
+     * @return void
+     */
     public function sortDeck();
     public function isEmpty(): bool;
     public function remainingCards(): int;
-    public function drawCard(): Card;
-    public function peek(): Card;
+    public function drawCard(): Card|false;
+    public function peek(): Card|false;
+
+    /**
+     * @return void
+     */
     public function shuffleDeck();
 }
 
 class Deck implements DeckInterface
 {
+    /**
+     * @var array<Card> $deck
+     */
     protected $deck = [];
 
     public function __construct()
@@ -29,6 +48,9 @@ class Deck implements DeckInterface
         $this->addCardsToDeck(Card::CLUBS);
     }
 
+    /**
+     * @return void
+     */
     private function addCardsToDeck(int $color)
     {
         $maxEachColor = 14;
@@ -42,7 +64,7 @@ class Deck implements DeckInterface
         return $this->deck;
     }
 
-    public function compareCards($card1, $card2)
+    public function compareCards(Card $card1, Card $card2): int
     {
         return $card1->getValue() - $card2->getValue();
     }
@@ -89,14 +111,14 @@ class Deck implements DeckInterface
         return count($this->deck);
     }
 
-    public function drawCard(): Card
+    public function drawCard(): Card|false
     {
         $cardToDraw = $this->peek();
         array_pop($this->deck);
         return $cardToDraw;
     }
 
-    public function peek(): Card
+    public function peek(): Card|false
     {
         return end($this->deck);
     }

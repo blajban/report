@@ -7,14 +7,14 @@ use Parsedown;
 
 class UtilityService
 {
-    public function parseMarkdown($fileName): string
+    public function parseMarkdown(string $fileName): string
     {
         $parseDown = new Parsedown();
         $content = file_get_contents('../assets/content/' . $fileName);
         return $parseDown->text($content);
     }
 
-    public function jsonResponse($data): JsonResponse
+    public function jsonResponse(Mixed $data): JsonResponse
     {
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

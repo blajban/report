@@ -12,7 +12,7 @@ use App\Services\UtilityService;
 
 class CardControllerJson extends AbstractController
 {
-    private $utilityService;
+    private UtilityService $utilityService;
 
     public function __construct(UtilityService $utilityService)
     {
@@ -65,7 +65,7 @@ class CardControllerJson extends AbstractController
     }
 
     #[Route("/api/deck/draw/{number}", methods: ['GET', 'POST'])]
-    public function drawMany($number, SessionInterface $session): Response
+    public function drawMany(int $number, SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
         $cardsDrawn = $cardGame->draw($number);
@@ -91,7 +91,7 @@ class CardControllerJson extends AbstractController
     }
 
     #[Route("/api/deck/deal/{players}/{cards}", methods: ['GET', 'POST'])]
-    public function dealCards($players, $cards, SessionInterface $session): Response
+    public function dealCards(int $players, int $cards, SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
 
@@ -119,7 +119,7 @@ class CardControllerJson extends AbstractController
     }
 
     #[Route("/api/deck/deal/reset", methods: ['GET', 'POST'])]
-    public function resetPlayers(SessionInterface $session)
+    public function resetPlayers(SessionInterface $session): Response
     {
         $cardGame = new CardGame($session);
 

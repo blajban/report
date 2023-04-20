@@ -4,39 +4,85 @@ namespace App\CardGame;
 
 use App\CardGame\DeckWithJokers;
 use App\CardGame\Player;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 interface CardGameInterface
 {
-    public function __construct($session);
+    /**
+     * @return void
+     */
+    public function __construct(SessionInterface $session);
+
+    /**
+     * @return array<Card>
+     */
     public function getDeck(): array;
+
+    /**
+     * @return array<Mixed>
+     */
     public function getJsonDeck(): array;
+
+    /**
+     * @return void
+     */
     public function shuffle();
+
+    /**
+     * @return void
+     */
     public function sortDeck();
-    public function draw($number): array;
+
+    /**
+     * @return array<Card>
+     */
+    public function draw(int $number): array;
+
     public function remainingCards(): int;
-    public function dealCards($num_players, $num_cards): array;
+
+    /**
+     * @return array<Mixed>
+     */
+    public function dealCards(int $num_players, int $num_cards): array;
     public function resetPlayers(): int;
 }
 
 class CardGame implements CardGameInterface
 {
+    /**
+     * @var DeckWithJokers $deck
+     */
     protected $deck;
+
+    /**
+     * @var SessionInterface $session
+     */
     protected $session;
 
-    public function __construct($session)
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
+        $this->deck = $this->getDeckFromSession();
+    }
+
+    private function getDeckFromSession(): DeckWithJokers
+    {
+        $deckFromSession = $this->session->get("deck");
+        if ($deckFromSession === null) {
+            return new DeckWithJokers();
+        }
+        
+        assert($deckFromSession instanceof DeckWithJokers);
+        return $deckFromSession;
     }
 
     public function getDeck(): array
     {
-        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         return $this->deck->getDeck();
     }
 
     public function getJsonDeck(): array
     {
-        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         $jsonDeck = [];
 
         foreach ($this->deck->getDeck() as $card) {
@@ -56,18 +102,19 @@ class CardGame implements CardGameInterface
 
     public function sortDeck()
     {
-        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
-
         $this->deck->sortDeck();
     }
 
-    public function draw($number): array
+    public function draw(int $number): array
     {
-        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         $cardsDrawn = [];
 
         if ($this->deck->remainingCards() < $number) {
             $cardsDrawn = $this->session->get("cards_drawn");
+            assert(is_array($cardsDrawn));
+            foreach ($cardsDrawn as $card) {
+                assert($card instanceof Card);
+            }
             $this->session->set("deck", $this->deck);
             return $cardsDrawn;
         }
@@ -85,15 +132,12 @@ class CardGame implements CardGameInterface
 
     public function remainingCards(): int
     {
-        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
         return $this->deck->remainingCards();
     }
 
-    public function dealCards($num_players, $num_cards): array
+    public function dealCards(int $num_players, int $num_cards): array
     {
         class_exists(Player::class);
-
-        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
 
         $maxActivePlayers = $this->session->get("active_players") ?? $num_players;
         if ($num_players >= $maxActivePlayers) {

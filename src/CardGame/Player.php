@@ -6,14 +6,29 @@ use App\CardGame\Card;
 
 interface CardHandInterface
 {
+    /**
+     * @param Card $card
+     * @return void
+     */
     public function addCard(Card $card);
+
+    /**
+     * @return array<Card>
+     */
     public function getHand(): array;
+
+    /**
+     * @return void
+     */
     public function discardHand();
 }
 
 trait CardHandTrait
 {
-    private $hand = [];
+    /**
+     * @var array<Card> $hand
+     */
+    private array $hand = [];
 
     public function addCard(Card $card)
     {
@@ -36,7 +51,7 @@ class Player implements CardHandInterface
 {
     use CardHandTrait;
 
-    private $name;
+    private string $name;
 
     public function __construct(string $playerName)
     {
