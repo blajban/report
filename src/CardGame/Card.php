@@ -61,6 +61,9 @@ interface FrenchEnglishCardInterface
 
 interface JokerInterface
 {
+    /**
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     */
     public function __construct(int $value, int $colorEnum, bool $isJoker = false);
     public function isJoker(): bool;
 
@@ -77,6 +80,9 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
     private int $color;
     private bool $joker;
 
+    /**
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     */
     public function __construct(int $value, int $colorEnum, bool $isJoker = false)
     {
         $this->value = $value;
