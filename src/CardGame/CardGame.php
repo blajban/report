@@ -6,64 +6,8 @@ use App\CardGame\DeckWithJokers;
 use App\CardGame\Player;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-interface CardGameInterface
-{
-    /**
-     * @return void
-     */
-    public function __construct(SessionInterface $session);
-
-    /**
-     * @return array<Card>
-     */
-    public function getDeck(): array;
-
-    /**
-     * @return array<Mixed>
-     */
-    public function getJsonDeck(): array;
-
-    public function remainingCards(): int;
-
-    
-}
-
-trait CardGameTrait
-{
-    /**
-     * @var Deck $deck
-     */
-    protected $deck;
-
-    /**
-     * @var SessionInterface $session
-     */
-    protected $session;
-
-    public function getDeck(): array
-    {
-        return $this->deck->getDeck();
-    }
-
-    public function getJsonDeck(): array
-    {
-        $jsonDeck = [];
-
-        foreach ($this->deck->getDeck() as $card) {
-            $jsonDeck[] = $card->toArray();
-        }
-
-        return $jsonDeck;
-
-    }
-
-    public function remainingCards(): int
-    {
-        return $this->deck->remainingCards();
-    }
-
-}
-
+use App\CardGame\CardGameInterface;
+use App\CardGame\CardGameTrait;
 
 
 class CardGame implements CardGameInterface

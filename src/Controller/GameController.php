@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-//use App\CardGame\Game;
+use App\CardGame\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,12 +41,14 @@ class GameController extends AbstractController
     }
 
     #[Route("/game/play", name: "game/play")]
-    public function play(): Response
+    public function play(SessionInterface $session): Response
     {
+        $game = new Game($session);
+
         return $this->render('game_play.html.twig', [
             'title' => "Play",
             'heading' => "Play",
-            'content' => "Play!"
+            'gameState' => $game->getGameState()
         ]);
     }
 

@@ -13,22 +13,24 @@
 
             <div class="card-area">
 
+                {{ dump(gameState) }}
+
                 <h4>Remaining cards</h4>
                 <div class="player-area">
-                    <div class="card back">{{ remaining_cards }}</div>
+                    <div class="card back">{{ gameState["remaining_cards"] }}</div>
                 </div>
 
-                <h4>{{ bank.getName() }}</h4>
+                <h4>{{ gameState["bank"]["name"] }}</h4>
                     <div class="player-area">
-                        {% for card in bank.getHand() %}
+                        {% for card in gameState["bank"]["hand"] %}
                             <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
                             </div>
                         {% endfor %}
                     </div>
 
-                <h4>{{ player.getName() }}</h4>
+                <h4>{{ gameState["player"]["name"] }}</h4>
                     <div class="player-area">
-                        {% for card in player.getHand() %}
+                        {% for card in gameState["player"]["hand"] %}
                             <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
                             </div>
                         {% endfor %}

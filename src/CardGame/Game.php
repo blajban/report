@@ -9,7 +9,7 @@ use App\CardGame\Deck;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
-
+/*
 $gameState = [
     'player' => [
         'name' => $name,
@@ -22,7 +22,7 @@ $gameState = [
     ],
     'remaining_cards' => $cardGame->remainingCards()
 ];
-
+*/
 
 class Bank
 {
@@ -33,16 +33,22 @@ class Game implements CardGameInterface
 {
     use CardGameTrait;
 
-    private Player $player;
-    private Bank $bank;
     private const MAXPOINTS = 21;
+    private const DECK_SESSIONNAME = '21deck';
+    private const PLAYERNAME_SESSIONNAME = '21player_name';
+    private const PLAYER_SESSIONNAME = '21player';
+
+    private Player $player;
+    //private Bank $bank;
+    
     private array $gameState = [
         'player' => [
-            'name' => '',
+            'name' => 'spelaren',
             'score' => 0,
             'hand' => []
         ],
         'bank' => [
+            'name' => 'banken',
             'score' => 0,
             'hand' => []
         ],
@@ -52,17 +58,18 @@ class Game implements CardGameInterface
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
+        $this->updateGameState();
         
     }
 
     private function updateGameState()
     {
 
-        $this->deck = $this->session->get("21deck") ?? new Deck();
+        $this->deck = $this->session->get(Game::DECK_SESSIONNAME) ?? new Deck();
         $this->gameState['remaining_cards'] = $this->deck->remainingCards();
 
-        $playerName = $this->session->get("21player_name") ?? "Player";
-        $this->player = $this->session->get("21player") ?? new Player($playerName);
+        $playerName = $this->session->get(Game::PLAYERNAME_SESSIONNAME) ?? "Player";
+        $this->player = $this->session->get(Game::PLAYER_SESSIONNAME) ?? new Player($playerName);
         $this->gameState['player']['hand'] = $this->player->getHand();
     }
 
@@ -75,7 +82,7 @@ class Game implements CardGameInterface
     {
         $this->deck = new Deck();
         $this->deck->shuffleDeck();
-        $this->session->set("21deck", $this->deck);
+        $this->session->set(Game::DECK_SESSIONNAME, $this->deck);
         $this->updateGameState();
     }
 
@@ -107,5 +114,10 @@ class Game implements CardGameInterface
     public function determineWinner()
     {
         
+    }
+
+    public function reset()
+    {
+
     }
 }
