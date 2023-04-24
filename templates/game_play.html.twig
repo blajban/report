@@ -1,0 +1,49 @@
+{# templates/report.html.twig #}
+
+{% include 'incl/header.html.twig' %}
+
+
+<body>
+    {% include 'incl/nav.html.twig' %}
+
+    <div class="content-area">
+        <div class="content">
+            
+            {% include 'incl/flash.html.twig' %}
+
+            <div class="card-area">
+
+                <h4>Remaining cards</h4>
+                <div class="player-area">
+                    <div class="card back">{{ remaining_cards }}</div>
+                </div>
+
+                <h4>{{ bank.getName() }}</h4>
+                    <div class="player-area">
+                        {% for card in bank.getHand() %}
+                            <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>{{ player.getName() }}</h4>
+                    <div class="player-area">
+                        {% for card in player.getHand() %}
+                            <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+
+            </div>
+
+            
+            
+        </div>
+    </div>
+
+    {% include 'incl/footer.html.twig' %}
+</body>
+
+</html>
+
+

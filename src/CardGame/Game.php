@@ -9,12 +9,6 @@ use App\CardGame\Deck;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
-//use App\CardGame\Bank;
-
-class GameState
-{
-
-}
 
 $gameState = [
     'player' => [
@@ -63,8 +57,13 @@ class Game implements CardGameInterface
 
     private function updateGameState()
     {
+
         $this->deck = $this->session->get("21deck") ?? new Deck();
         $this->gameState['remaining_cards'] = $this->deck->remainingCards();
+
+        $playerName = $this->session->get("21player_name") ?? "Player";
+        $this->player = $this->session->get("21player") ?? new Player($playerName);
+        $this->gameState['player']['hand'] = $this->player->getHand();
     }
 
     public function getGameState(): array

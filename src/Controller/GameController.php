@@ -23,7 +23,7 @@ class GameController extends AbstractController
     #[Route("/game", name: "game")]
     public function game(): Response
     {
-        return $this->render('1col_nohero.html.twig', [
+        return $this->render('game_start.html.twig', [
             'title' => "Game",
             'heading' => "Game",
             'content' => $this->utilityService->parseMarkdown('game.md')
@@ -40,13 +40,13 @@ class GameController extends AbstractController
         ]);
     }
 
-    #[Route("/game/go", name: "game/go")]
-    public function gameGo(): Response
+    #[Route("/game/play", name: "game/play")]
+    public function play(): Response
     {
-        return $this->render('1col_nohero.html.twig', [
-            'title' => "Go",
-            'heading' => "Go",
-            'content' => $this->utilityService->parseMarkdown('gamedoc.md')
+        return $this->render('game_play.html.twig', [
+            'title' => "Play",
+            'heading' => "Play",
+            'content' => "Play!"
         ]);
     }
 
