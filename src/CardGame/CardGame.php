@@ -23,34 +23,15 @@ interface CardGameInterface
      */
     public function getJsonDeck(): array;
 
-    /**
-     * @return void
-     */
-    public function shuffle();
-
-    /**
-     * @return void
-     */
-    public function sortDeck();
-
-    /**
-     * @return array<Card>
-     */
-    public function draw(int $number): array;
-
     public function remainingCards(): int;
 
-    /**
-     * @return array<Mixed>
-     */
-    public function dealCards(int $numPlayers, int $numCards): array;
-    public function resetPlayers(): int;
+    
 }
 
-class CardGame implements CardGameInterface
+trait CardGameTrait
 {
     /**
-     * @var DeckWithJokers $deck
+     * @var Deck $deck
      */
     protected $deck;
 
@@ -58,12 +39,6 @@ class CardGame implements CardGameInterface
      * @var SessionInterface $session
      */
     protected $session;
-
-    public function __construct(SessionInterface $session)
-    {
-        $this->session = $session;
-        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
-    }
 
     public function getDeck(): array
     {
@@ -82,6 +57,28 @@ class CardGame implements CardGameInterface
 
     }
 
+    public function remainingCards(): int
+    {
+        return $this->deck->remainingCards();
+    }
+
+}
+
+
+
+class CardGame implements CardGameInterface
+{
+    use CardGameTrait;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+        $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
+    }
+
+    /**
+     * @return void
+     */
     public function shuffle()
     {
         $this->deck = new DeckWithJokers();
@@ -89,11 +86,17 @@ class CardGame implements CardGameInterface
         $this->session->set("deck", $this->deck);
     }
 
+    /**
+     * @return void
+     */
     public function sortDeck()
     {
         $this->deck->sortDeck();
     }
 
+    /**
+     * @return array<Card>
+     */
     public function draw(int $number): array
     {
         $cardsDrawn = [];
@@ -115,11 +118,9 @@ class CardGame implements CardGameInterface
         return $cardsDrawn;
     }
 
-    public function remainingCards(): int
-    {
-        return $this->deck->remainingCards();
-    }
-
+    /**
+     * @return array<Mixed>
+     */
     public function dealCards(int $numPlayers, int $numCards): array
     {
         class_exists(Player::class);

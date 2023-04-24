@@ -36,7 +36,7 @@ Du skall problemlösa det spelet du valt med flödesschema och pseudokod. Gör d
 
 [OK] och länka till dokumentationssidan från din landningssida.
 
-* Skapa ett flödesschema som representerar hur du tänker lösa grunderna i spelet. Resultatet kan du placera som en bild i webbsidan för dokumentationen. Det behöver inte vara en komplett lösning, en dellösning räcker bra.
+[OK] Skapa ett flödesschema som representerar hur du tänker lösa grunderna i spelet. Resultatet kan du placera som en bild i webbsidan för dokumentationen. Det behöver inte vara en komplett lösning, en dellösning räcker bra.
 
 * Skapa psuedokod som visar hur du tänker lösa delar av spelet. Du kan spara resultatet som text eller bild men visa upp det i webbsidan för dokumentationen. Det behöver inte vara en komplett lösning, en dellösning räcker bra.
 
@@ -94,3 +94,7 @@ Publicera
 
 
 
+
+## Anteckningar till redovisning
+
+* Gjorde om lite i cardgame-klassen, lättade upp interfacet och la till ett trait för att kunna återanvända kod mellan klasserna. Game-klassen implementerar cardgame-interfacet och använder traitet. Blev mycket bra!

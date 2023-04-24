@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\CardGame\CardGame;
+//use App\CardGame\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,5 +39,16 @@ class GameController extends AbstractController
             'content' => $this->utilityService->parseMarkdown('gamedoc.md')
         ]);
     }
+
+    #[Route("/game/go", name: "game/go")]
+    public function gameGo(): Response
+    {
+        return $this->render('1col_nohero.html.twig', [
+            'title' => "Go",
+            'heading' => "Go",
+            'content' => $this->utilityService->parseMarkdown('gamedoc.md')
+        ]);
+    }
+
 
 }

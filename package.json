@@ -20,7 +20,7 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
-        "start": "php -S localhost:8889 -t public",
+        "start": "php -S localhost:8888 -t public",
         "routes": "php bin/console debug:router"
     },
     "dependencies": {
