@@ -9,21 +9,6 @@ use App\CardGame\Deck;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
-/*
-$gameState = [
-    'player' => [
-        'name' => $name,
-        'score' => $points,
-        'hand' => []
-    ],
-    'bank' => [
-        'score' => $points,
-        'hand' => []
-    ],
-    'remaining_cards' => $cardGame->remainingCards()
-];
-*/
-
 class Bank
 {
 
