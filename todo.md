@@ -1,4 +1,4 @@
-* Add GameSession class to handle everything with sessions
+
 * Fix methods returning multiple types
 * Ignore errors from session phpstan
 
@@ -24,9 +24,10 @@ En spelrunda kan se ut så här när en spelare spelar mot banken.
 
 [OK] Skapa en landdningssida för spelet game/ där du samlar information om spelet och kan starta spelet. Placera länken i webbplatsens navbar.
 
-* I din landningssida, inled med en kort beskrivning av ditt kortspel och reglerna för hur det fungerar.
+[OK] I din landningssida, inled med en kort beskrivning av ditt kortspel och reglerna för hur det fungerar.
 
 * Placera en knapp eller länk som leder till att spelet börjar.
+    * Resetta sessionen i post routen 
 
 # Problemlösning
 
@@ -47,6 +48,12 @@ Följande krav är optionella och du gör dem om du har tid och lust.
 * Rita ett UML klass diagram som du också visar i webbsidan för dokumentationen.
 
 # Kortspel
+
+* Ta bort var dumpen
+
+* Fixa vinnarskärmen
+
+* Lägg till poäng på spelskärmen
 
 Bygg ditt kortspel i Symfony med objektorienterade konstruktioner i PHP och försök tänka till så att du får “snygg kod”.
 

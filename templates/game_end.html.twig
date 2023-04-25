@@ -15,12 +15,6 @@
 
             <form method="post" action="">
                 <p>
-                    <input type="submit" name="Dra kort" value="draw"
-                        onClick="this.form.action='{{ path('game_draw') }}';"
-                    >
-                    <input type="submit" name="Stanna" value="stop"
-                        onClick="this.form.action='{{ path('game_stop') }}';"
-                    >
                     <input type="submit" name="Starta om" value="restart"
                         onClick="this.form.action='{{ path('game_init') }}';"
                     >
@@ -29,9 +23,7 @@
 
             <div class="card-area">
 
-                
-                
-
+                <h3>END</h3>
                 <h4>Remaining cards</h4>
                 <div class="player-area">
                     <div class="card back">{{ gameState["remaining_cards"] }}</div>

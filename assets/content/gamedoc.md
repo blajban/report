@@ -27,9 +27,9 @@ public function playerTakesCard(SessionInterface $session): Response
         
         CALL Game:: check if player is full
         IF player is full THEN
-            RETURN redirect to playing field
-        
-        RETURN redirect to end screen
+            RETURN redirect to end screen
+
+        RETURN redirect to playing field
     }
 ```
 
