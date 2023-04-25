@@ -26,8 +26,8 @@ En spelrunda kan se ut så här när en spelare spelar mot banken.
 
 [OK] I din landningssida, inled med en kort beskrivning av ditt kortspel och reglerna för hur det fungerar.
 
-* Placera en knapp eller länk som leder till att spelet börjar.
-    * Resetta sessionen i post routen 
+[OK] Placera en knapp eller länk som leder till att spelet börjar.
+ 
 
 # Problemlösning
 
@@ -55,6 +55,8 @@ Följande krav är optionella och du gör dem om du har tid och lust.
 
 * Lägg till poäng på spelskärmen
 
+* Lägg till status i gamestate (not started, playing, player/bank winner)
+
 Bygg ditt kortspel i Symfony med objektorienterade konstruktioner i PHP och försök tänka till så att du får “snygg kod”.
 
 * All applikationskod placerar du i klasser som din kontroller använder. Se till att du har så lite kod som möjligt i din kontroller. Om du har mycket kod där så flyttar du den till en egen klass. Tänk att kontrollern skall vara tunn (lite kod) och modellerna (applikationens klasser) kan vara tjocka (mycket kod).
@@ -63,7 +65,7 @@ Bygg ditt kortspel i Symfony med objektorienterade konstruktioner i PHP och för
 
 * Bygg spelet så att det fungerar minst enligt de regler som visas i introduktionen ovan.
 
-* Banken behöver inte vara speciellt intelligent i sitt kortspel. Det räcker att den kan utföra sin uppgift och spela spelet. En enkel variant är att banken alltid plockar kort tills den har 17 eller mer, sedan stannar den.
+[OK] Banken behöver inte vara speciellt intelligent i sitt kortspel. Det räcker att den kan utföra sin uppgift och spela spelet. En enkel variant är att banken alltid plockar kort tills den har 17 eller mer, sedan stannar den.
 
 Följande krav är optionella och du gör dem om du har tid och lust.
 
@@ -81,7 +83,7 @@ Följande krav är optionella och du gör dem om du har tid och lust.
 
 Kortspel JSON
 
-* I din landningssida för api/ lägger du till routen api/game som visar upp den aktuella ställningen för spelet i en JSON struktur.
+[OK] I din landningssida för api/ lägger du till routen api/game som visar upp den aktuella ställningen för spelet i en JSON struktur.
 
 # Kodvalidering
 

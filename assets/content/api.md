@@ -23,3 +23,7 @@ POST [api/deck/deal/:players/:cards](./api/deck/deal/3/3)
 
 Returns the {cards} dealt to each {players} and the number of cards left in deck.
 
+GET [api/game](./api/game)
+
+Returns gamestate of current 21 game.
+

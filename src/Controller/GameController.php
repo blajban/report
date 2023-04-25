@@ -119,5 +119,14 @@ class GameController extends AbstractController
         ]);
     }
 
+    #[Route("/api/game")]
+    public function gameJson(SessionInterface $session): Response
+    {
+        $game = new Game($session);
+        $gameState = $game->getGameStateJson();
+
+        return $this->utilityService->jsonResponse($gameState);
+    }
+
 
 }

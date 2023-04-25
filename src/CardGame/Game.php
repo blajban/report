@@ -98,6 +98,19 @@ class Game implements CardGameInterface
         return $this->gameState;
     }
 
+    public function getGameStateJson(): array
+    {
+        foreach ($this->gameState['player']['hand'] as $card) {
+            $this->gameState['player']['handAsString'][] = $card->toArray();
+        }
+
+        foreach ($this->gameState['bank']['hand'] as $card) {
+            $this->gameState['bank']['handAsString'][] = $card->toArray();
+        }
+
+        return $this->gameState;
+    }
+
     public function shuffle()
     {
         $this->resetGameStateSession();
@@ -119,6 +132,7 @@ class Game implements CardGameInterface
 
         $card = $this->deck->drawCard();
         $this->player->addCard($card);
+        $this->gameState['player']['handAsString'][] = $card->toArray();
 
         $this->gameState['player']['score'] = $this->calculatePoints($this->player->getHand());
 

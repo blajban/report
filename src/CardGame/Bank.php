@@ -12,7 +12,7 @@ class Bank implements CardHandInterface
 
     public function willContinue($score)
     {
-        if ($score < 17) {
+        if ($score < 18) {
             return true;
         }
 
