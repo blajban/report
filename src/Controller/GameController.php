@@ -76,10 +76,7 @@ class GameController extends AbstractController
         try {
             $game->playerDraw();
         } catch (Exception $e) {
-            $this->addFlash(
-                'warning',
-                $e->getMessage()
-            );
+            
         }
 
 
@@ -94,7 +91,17 @@ class GameController extends AbstractController
     public function banksTurn(SessionInterface $session): Response
     {
         $game = new Game($session);
-        $game->bankDraw();
+        
+        try {
+            $game->bankDraw();
+        } catch (Exception $e) {
+            
+            $this->addFlash(
+                'warning',
+                $e->getMessage()
+            );
+        }
+        
 
         return $this->redirectToRoute('game/end');
     }

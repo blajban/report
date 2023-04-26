@@ -151,6 +151,9 @@ class Game implements CardGameInterface
     public function bankDraw()
     {
         while ($this->bank->willContinue($this->gameState['bank']['score'])) {
+            if ($this->deck->remainingCards() < 1) {
+                throw new Exception('Deck empty');
+            }
             $card = $this->deck->drawCard();
             $this->bank->addCard($card);
             $this->gameState['bank']['score'] = $this->calculatePoints($this->bank->getHand());
@@ -162,6 +165,7 @@ class Game implements CardGameInterface
 
     public function determineWinner()
     {
+        // make this determine winner
         $this->gameState['winner'] = "player";
         $this->setGameStateSession();
     }
