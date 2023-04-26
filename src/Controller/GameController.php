@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Exception;
+use Symfony\Component\HttpFoundation\Request;
 
 
 use App\Services\UtilityService;
@@ -42,12 +43,18 @@ class GameController extends AbstractController
     }
 
     #[Route("/game", name: "game_init", methods: ['POST'])]
-    public function initCallback(SessionInterface $session): Response
+    public function initCallback(SessionInterface $session, Request $request): Response
     {
-        // Handle player name
 
         $game = new Game($session);
+
+        if ($request->request->has('playerName')) {
+            $playerName = $request->request->get('playerName');
+            $game->setPlayerName($playerName);
+        }
+
         $game->shuffle();
+        
 
         return $this->redirectToRoute('game/play');
     }

@@ -19,6 +19,7 @@ class Game implements CardGameInterface
     private const DECK_SESSION_NAME = '21deck';
     private const PLAYER_SESSION_NAME = '21player';
     private const PLAYER_SCORE_SESSION_NAME = '21player_score';
+    private const PLAYERNAME_SESSION_NAME = '21playername';
     private const BANK_SESSION_NAME = '21bank';
     private const BANK_SCORE_SESSION_NAME = '21bank_score';
     
@@ -52,7 +53,9 @@ class Game implements CardGameInterface
         $this->deck = $this->session->get(Game::DECK_SESSION_NAME) ?? new Deck();
         $this->gameState['remaining_cards'] = $this->deck->remainingCards();
 
-        $this->player = $this->session->get(Game::PLAYER_SESSION_NAME) ?? new Player('spelare');
+        $playerName = $this->session->get(Game::PLAYERNAME_SESSION_NAME) ?? 'Player name not defined';
+        $this->player = $this->session->get(Game::PLAYER_SESSION_NAME) ?? new Player($playerName);
+        $this->gameState['player']['name'] = $this->player->getName();
         $this->gameState['player']['hand'] = $this->player->getHand();
 
         $this->gameState['player']['score'] = $this->session->get(GAME::PLAYER_SCORE_SESSION_NAME) ?? 0;
@@ -91,6 +94,11 @@ class Game implements CardGameInterface
         }
 
         return $points;
+    }
+
+    public function setPlayerName($name)
+    {
+        $this->session->set(Game::PLAYERNAME_SESSION_NAME, $name);
     }
 
     public function getGameState(): array
