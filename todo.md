@@ -8,17 +8,17 @@ Spelets idé är att med två eller flera kort försöka uppnå det sammanlagda 
 
 En spelrunda kan se ut så här när en spelare spelar mot banken.
 
-* Spelet leder till en landningssida där man kan läsa spelregler och se dokumentation om spelet samt påbörja ett spel.
-* Spelplanen visas och spelaren och banken har inte tagit några kort.
-* Spelaren tar ett kort. Kortet visas.
-* Spelaren kan bestämma att stanna eller ta ytterligare ett kort.
+[OK] Spelet leder till en landningssida där man kan läsa spelregler och se dokumentation om spelet samt påbörja ett spel.
+[OK] Spelplanen visas och spelaren och banken har inte tagit några kort.
+[OK] Spelaren tar ett kort. Kortet visas.
+[OK] Spelaren kan bestämma att stanna eller ta ytterligare ett kort.
     * Om spelaren får över 21 vinner banken.
-* När spelaren stannar så är det bankens tur.
-* Banken är inte medveten om spelarens korthand.
+[OK] När spelaren stannar så är det bankens tur.
+[OK] Banken är inte medveten om spelarens korthand.
 * Banken plockar kort tills den stannar eller har över 21.
     * Banken vinner vid lika eller om banken har mer än spelaren.
     * Spelaren vinner om banken får över 21.
-* Därefter kan man påbörja en ny omgång.
+[OK] Därefter kan man påbörja en ny omgång.
 
 # Landningssida och intro
 
@@ -54,6 +54,10 @@ Följande krav är optionella och du gör dem om du har tid och lust.
 * Fixa vinnarskärmen
 
 * Lägg till poäng på spelskärmen
+
+* hantering av ess
+
+* Winner session
 
 * Lägg till status i gamestate (not started, playing, player/bank winner)
 

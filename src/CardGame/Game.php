@@ -38,7 +38,8 @@ class Game implements CardGameInterface
             'score' => 0,
             'hand' => []
         ],
-        'remaining_cards' => 0
+        'remaining_cards' => 0,
+        'winner' => ''
     ];
 
     public function __construct(SessionInterface $session)
@@ -161,7 +162,8 @@ class Game implements CardGameInterface
 
     public function determineWinner()
     {
-        
+        $this->gameState['winner'] = "player";
+        $this->setGameStateSession();
     }
 
     

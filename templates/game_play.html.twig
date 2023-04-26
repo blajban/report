@@ -27,31 +27,35 @@
                 </p>
             </form>
 
+            <p>Din poäng: {{ gameState["player"]["score"]}}</p>
+            <p>Bankens poäng: {{ gameState["bank"]["score"]}}</p>
+
             <div class="card-area">
-
-                
-                
-
                 <h4>Remaining cards</h4>
                 <div class="player-area">
                     <div class="card back">{{ gameState["remaining_cards"] }}</div>
                 </div>
 
-                <h4>{{ gameState["bank"]["name"] }}</h4>
+                <h4>{{ gameState["bank"]["name"] }}</h4><br>
+                
                 <div class="player-area">
                     {% for card in gameState["bank"]["hand"] %}
                         <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
                         </div>
                     {% endfor %}
                 </div>
+                
 
                 <h4>{{ gameState["player"]["name"] }}</h4>
+                
+                
                 <div class="player-area">
                     {% for card in gameState["player"]["hand"] %}
                         <div class="card {{ card.getCssColor() }} value{{ card.getValue() }}">
                         </div>
                     {% endfor %}
                 </div>
+                
 
                 
 

@@ -21,9 +21,19 @@
                 </p>
             </form>
 
-            <div class="card-area">
+            {% if gameState["winner"] is defined %}
+                {% if gameState["winner"] == "player" %}
+                    <h3>Grattis, du vann!</h3>
+                {% else %}
+                    <h3>Tyvärr, banken vann</h3>
+                {% endif %}
+            {% endif %}
 
-                <h3>END</h3>
+            
+            <p>Din poäng: {{ gameState["player"]["score"]}}</p>
+            <p>Bankens poäng: {{ gameState["bank"]["score"]}}</p>
+
+            <div class="card-area">
                 <h4>Remaining cards</h4>
                 <div class="player-area">
                     <div class="card back">{{ gameState["remaining_cards"] }}</div>
