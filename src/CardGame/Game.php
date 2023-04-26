@@ -22,6 +22,7 @@ class Game implements CardGameInterface
     private const PLAYERNAME_SESSION_NAME = '21playername';
     private const BANK_SESSION_NAME = '21bank';
     private const BANK_SCORE_SESSION_NAME = '21bank_score';
+    private const WINNER_SESSION_NAME = '21winner';
     
 
     private Player $player;
@@ -59,12 +60,14 @@ class Game implements CardGameInterface
         $this->gameState['player']['name'] = $this->player->getName();
         $this->gameState['player']['hand'] = $this->player->getHand();
 
-        $this->gameState['player']['score'] = $this->session->get(GAME::PLAYER_SCORE_SESSION_NAME) ?? 0;
+        $this->gameState['player']['score'] = $this->session->get(Game::PLAYER_SCORE_SESSION_NAME) ?? 0;
 
         $this->bank = $this->session->get(Game::BANK_SESSION_NAME) ?? new Bank();
         $this->gameState['bank']['hand'] = $this->bank->getHand();
 
-        $this->gameState['bank']['score'] = $this->session->get(GAME::BANK_SCORE_SESSION_NAME) ?? 0;
+        $this->gameState['bank']['score'] = $this->session->get(Game::BANK_SCORE_SESSION_NAME) ?? 0;
+
+        $this->gameState['winner'] = $this->session->get(Game::WINNER_SESSION_NAME) ?? '';
 
     }
 
@@ -75,6 +78,7 @@ class Game implements CardGameInterface
         $this->session->set(Game::PLAYER_SCORE_SESSION_NAME, $this->gameState['player']['score']);
         $this->session->set(Game::BANK_SESSION_NAME, $this->bank);
         $this->session->set(Game::BANK_SCORE_SESSION_NAME, $this->gameState['bank']['score']);
+        $this->session->set(Game::WINNER_SESSION_NAME, $this->gameState['winner']);
     }
 
     private function resetGameStateSession()
@@ -130,6 +134,10 @@ class Game implements CardGameInterface
 
     public function isFull()
     {
+        if ($this->gameState['player']['score'] > Game::MAX_POINTS) {
+            return true;
+        }
+
         return false;
     }
 
@@ -150,7 +158,7 @@ class Game implements CardGameInterface
 
     public function bankDraw()
     {
-        while ($this->bank->willContinue($this->gameState['bank']['score'])) {
+        while ($this->bank->willContinue($this->gameState['bank']['score']) && $this->gameState['bank']['score'] <= Game::MAX_POINTS) {
             if ($this->deck->remainingCards() < 1) {
                 throw new Exception('Deck empty');
             }
@@ -162,11 +170,33 @@ class Game implements CardGameInterface
         $this->setGameStateSession();
     }
 
+    private function setWinner()
+    {
+        $playerScore = $this->gameState['player']['score'];
+        $bankScore = $this->gameState['bank']['score'];
+        
+        if ($playerScore > Game::MAX_POINTS) {
+            $this->gameState['winner'] = "bank";
+            return;
+        }
+
+        if ($bankScore > Game::MAX_POINTS) {
+            $this->gameState['winner'] = "player";
+            return;
+        }
+
+        if ($bankScore >= $playerScore) {
+            $this->gameState['winner'] = "bank";
+            return;
+        }
+
+        $this->gameState['winner'] = "player";
+    }
 
     public function determineWinner()
     {
-        // make this determine winner
-        $this->gameState['winner'] = "player";
+        $this->setWinner();
+
         $this->setGameStateSession();
     }
 

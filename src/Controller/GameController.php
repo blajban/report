@@ -95,13 +95,11 @@ class GameController extends AbstractController
         try {
             $game->bankDraw();
         } catch (Exception $e) {
-            
             $this->addFlash(
                 'warning',
                 $e->getMessage()
             );
         }
-        
 
         return $this->redirectToRoute('game/end');
     }
@@ -126,10 +124,26 @@ class GameController extends AbstractController
 
         $game->determineWinner();
 
+        $gameState = $game->getGameState();
+        $endHeading = 'Tyvärr, banken vann';
+
+        if ($gameState['winner'] == 'player') {
+            $endHeading = 'Grattis, du vann!';
+            if ($gameState['bank']['score'] > 21) {
+                $endHeading = 'Banken fick över 21, du vann!';
+            }
+        }
+
+        if ($gameState['winner'] == 'bank') {
+            if ($gameState['player']['score'] > 21) {
+                $endHeading = 'Du fick över 21, banken vann';
+            }
+        }
+
         return $this->render('game_end.html.twig', [
-            'title' => "Play",
-            'heading' => "Play",
-            'gameState' => $game->getGameState()
+            'title' => "End",
+            'heading' => $endHeading,
+            'gameState' => $gameState
         ]);
     }
 
