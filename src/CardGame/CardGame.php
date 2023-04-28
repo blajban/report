@@ -16,6 +16,8 @@ class CardGame implements CardGameInterface
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
+
+        /** @phpstan-ignore-next-line */
         $this->deck = $this->session->get("deck") ?? new DeckWithJokers();
     }
 
@@ -42,9 +44,11 @@ class CardGame implements CardGameInterface
      */
     public function draw(int $number): array
     {
+        /** @var Card[] $cardsDrawn */
         $cardsDrawn = [];
 
         if ($this->deck->remainingCards() < $number) {
+            /** @var Card[] $cardsDrawn */
             $cardsDrawn = $this->session->get("cards_drawn");
             $this->session->set("deck", $this->deck);
             return $cardsDrawn;
@@ -111,10 +115,13 @@ class CardGame implements CardGameInterface
 
     public function resetPlayers(): int
     {
+        /** @var int $numActivePlayers */
         $numActivePlayers = $this->session->get("active_players") ?? 0;
 
         for ($i = 1; $i <= $numActivePlayers; $i++) {
             $playerName = "Player $i";
+
+            /** @var Player $player */
             $player = $this->session->get($playerName);
 
             $player->discardHand();

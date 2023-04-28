@@ -3,6 +3,7 @@
 namespace App\CardGame;
 
 use App\CardGame\Card;
+use Exception;
 
 interface DeckInterface
 {
@@ -111,16 +112,23 @@ class Deck implements DeckInterface
         return count($this->deck);
     }
 
-    public function drawCard(): Card|false
+    public function drawCard(): Card
     {
         $cardToDraw = $this->peek();
         array_pop($this->deck);
         return $cardToDraw;
     }
 
-    public function peek(): Card|false
+    public function peek(): Card
     {
-        return end($this->deck);
+        if (empty($this->deck)) {
+            throw new Exception('Deck empty');
+        }
+    
+        /** @var Card $cardToPeek */
+        $cardToPeek = end($this->deck);
+    
+        return $cardToPeek;
     }
 
     public function shuffleDeck()

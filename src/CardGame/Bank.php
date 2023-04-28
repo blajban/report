@@ -9,7 +9,7 @@ class Bank implements CardHandInterface
 {
     use CardHandTrait;
 
-    public function willContinue($score)
+    public function willContinue(int $score): bool
     {
         if ($score < 18) {
             return true;

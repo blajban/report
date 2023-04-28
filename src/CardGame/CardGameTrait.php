@@ -2,17 +2,14 @@
 
 namespace App\CardGame;
 
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\CardGame\Deck;
+use App\CardGame\DeckWithJokers;
+
 trait CardGameTrait
 {
-    /**
-     * @var Deck $deck
-     */
-    protected $deck;
-
-    /**
-     * @var SessionInterface $session
-     */
-    protected $session;
+    protected Deck|DeckWithJokers $deck;
+    protected SessionInterface $session;
 
     public function getDeck(): array
     {
