@@ -49,6 +49,7 @@ class GameController extends AbstractController
         $game = new Game($session);
 
         if ($request->request->has('playerName')) {
+            /** @var string $playerName */
             $playerName = $request->request->get('playerName');
             $game->setPlayerName($playerName);
         }

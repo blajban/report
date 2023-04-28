@@ -27,6 +27,14 @@ class Game implements CardGameInterface
     private Player $player;
     private Bank $bank;
 
+    /**
+     * @var array{
+     *   player: array{name: string, score: int, hand: array<Card>},
+     *   bank: array{name: string, score: int, hand: array<Card>},
+     *   remaining_cards: int,
+     *   winner: string
+     * }
+     */
     private array $gameState = [
         'player' => [
             'name' => 'spelaren',
@@ -46,22 +54,28 @@ class Game implements CardGameInterface
     {
         $this->session = $session;
         $this->getGameStateSession();
-
     }
 
+    /**
+     * @return void
+     */
     private function getGameStateSession()
     {
         $this->deck = $this->session->get(Game::DECK_SESSION_NAME) ?? new Deck();
+        /** @phpstan-ignore-next-line */
         $this->gameState['remaining_cards'] = $this->deck->remainingCards();
 
         $playerName = $this->session->get(Game::PLAYERNAME_SESSION_NAME) ?? 'Player name not defined';
         $this->player = $this->session->get(Game::PLAYER_SESSION_NAME) ?? new Player($playerName);
+        /** @phpstan-ignore-next-line */
         $this->gameState['player']['name'] = $this->player->getName();
+        /** @phpstan-ignore-next-line */
         $this->gameState['player']['hand'] = $this->player->getHand();
 
         $this->gameState['player']['score'] = $this->session->get(Game::PLAYER_SCORE_SESSION_NAME) ?? 0;
 
         $this->bank = $this->session->get(Game::BANK_SESSION_NAME) ?? new Bank();
+        /** @phpstan-ignore-next-line */
         $this->gameState['bank']['hand'] = $this->bank->getHand();
 
         $this->gameState['bank']['score'] = $this->session->get(Game::BANK_SCORE_SESSION_NAME) ?? 0;
@@ -70,6 +84,9 @@ class Game implements CardGameInterface
 
     }
 
+    /**
+     * @return void
+     */
     private function setGameStateSession()
     {
         $this->session->set(Game::DECK_SESSION_NAME, $this->deck);
@@ -80,6 +97,9 @@ class Game implements CardGameInterface
         $this->session->set(Game::WINNER_SESSION_NAME, $this->gameState['winner']);
     }
 
+    /**
+     * @return void
+     */
     private function resetGameStateSession()
     {
         $this->session->remove(Game::DECK_SESSION_NAME);
@@ -89,9 +109,14 @@ class Game implements CardGameInterface
         $this->session->remove(Game::BANK_SCORE_SESSION_NAME);
     }
 
-    private function calculateHand($hand): int
+
+    /**
+     * @param array<Card> $hand
+     */
+    private function calculateHand(array $hand): int
     {
         $points = 0;
+
         foreach ($hand as $card) {
             $points += $card->getValue();
         }
@@ -99,7 +124,10 @@ class Game implements CardGameInterface
         return $points;
     }
 
-    private function calculatePoints($hand): int
+    /**
+     * @param array<Card> $hand
+     */
+    private function calculatePoints(array $hand): int
     {
         $aceLow = 1;
         $aceHigh = 14;
@@ -112,8 +140,6 @@ class Game implements CardGameInterface
 
         $points = $this->calculateHand($hand);
 
-
-
         foreach ($hand as $card) {
             if ($card->isAce() && ($points + $aceHigh - $aceLow <= Game::MAX_POINTS)) {
                 $card->changeAceValue();
@@ -124,16 +150,35 @@ class Game implements CardGameInterface
         return $points;
     }
 
-    public function setPlayerName($name)
+    /**
+     * @return void
+     */
+    public function setPlayerName(string $name)
     {
         $this->session->set(Game::PLAYERNAME_SESSION_NAME, $name);
     }
 
+    /**
+     * @return array{
+     *   player: array{name: string, score: int, hand: array<Card>},
+     *   bank: array{name: string, score: int, hand: array<Card>},
+     *   remaining_cards: int,
+     *   winner: string
+     * }
+     */
     public function getGameState(): array
     {
         return $this->gameState;
     }
 
+    /**
+     * @return array{
+     *   player: array{name: string, score: int, hand: array<Card>, handAsString?: array<array<string, mixed>>},
+     *   bank: array{name: string, score: int, hand: array<Card>, handAsString?: array<array<string, mixed>>},
+     *   remaining_cards: int,
+     *   winner: string
+     * }
+     */
     public function getGameStateJson(): array
     {
         foreach ($this->gameState['player']['hand'] as $card) {
@@ -147,6 +192,9 @@ class Game implements CardGameInterface
         return $this->gameState;
     }
 
+    /**
+     * @return void
+     */
     public function shuffle()
     {
         $this->resetGameStateSession();
@@ -155,7 +203,8 @@ class Game implements CardGameInterface
         $this->setGameStateSession();
     }
 
-    public function isFull()
+    
+    public function isFull(): bool
     {
         if ($this->gameState['player']['score'] > Game::MAX_POINTS) {
             return true;
@@ -164,6 +213,9 @@ class Game implements CardGameInterface
         return false;
     }
 
+    /**
+     * @return void
+     */
     public function playerDraw()
     {
         if ($this->deck->remainingCards() < 1) {
@@ -179,6 +231,9 @@ class Game implements CardGameInterface
         $this->setGameStateSession();
     }
 
+    /**
+     * @return void
+     */
     public function bankDraw()
     {
         while ($this->bank->willContinue($this->gameState['bank']['score']) && $this->gameState['bank']['score'] <= Game::MAX_POINTS) {
@@ -193,6 +248,9 @@ class Game implements CardGameInterface
         $this->setGameStateSession();
     }
 
+    /**
+     * @return void
+     */
     private function setWinner()
     {
         $playerScore = $this->gameState['player']['score'];
@@ -216,6 +274,9 @@ class Game implements CardGameInterface
         $this->gameState['winner'] = "player";
     }
 
+    /**
+     * @return void
+     */
     public function determineWinner()
     {
         $this->setWinner();
