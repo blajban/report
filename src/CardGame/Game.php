@@ -10,7 +10,6 @@ use App\CardGame\Deck;
 use Exception;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 class Game implements CardGameInterface
 {
     use CardGameTrait;
@@ -23,11 +22,11 @@ class Game implements CardGameInterface
     private const BANK_SESSION_NAME = '21bank';
     private const BANK_SCORE_SESSION_NAME = '21bank_score';
     private const WINNER_SESSION_NAME = '21winner';
-    
+
 
     private Player $player;
     private Bank $bank;
-    
+
     private array $gameState = [
         'player' => [
             'name' => 'spelaren',
@@ -47,7 +46,7 @@ class Game implements CardGameInterface
     {
         $this->session = $session;
         $this->getGameStateSession();
-        
+
     }
 
     private function getGameStateSession()
@@ -90,12 +89,36 @@ class Game implements CardGameInterface
         $this->session->remove(Game::BANK_SCORE_SESSION_NAME);
     }
 
-    private function calculatePoints($hand): int
+    private function calculateHand($hand): int
     {
         $points = 0;
-        
         foreach ($hand as $card) {
-            $points += $card->getValue(); // fix ace
+            $points += $card->getValue();
+        }
+
+        return $points;
+    }
+
+    private function calculatePoints($hand): int
+    {
+        $aceLow = 1;
+        $aceHigh = 14;
+
+        foreach ($hand as $card) {
+            if ($card->isAce() && $card->getValue() == $aceHigh) {
+                $card->changeAceValue();
+            }
+        }
+
+        $points = $this->calculateHand($hand);
+
+
+
+        foreach ($hand as $card) {
+            if ($card->isAce() && ($points + $aceHigh - $aceLow <= Game::MAX_POINTS)) {
+                $card->changeAceValue();
+                $points = $this->calculateHand($hand);
+            }
         }
 
         return $points;
@@ -174,7 +197,7 @@ class Game implements CardGameInterface
     {
         $playerScore = $this->gameState['player']['score'];
         $bankScore = $this->gameState['bank']['score'];
-        
+
         if ($playerScore > Game::MAX_POINTS) {
             $this->gameState['winner'] = "bank";
             return;
@@ -200,5 +223,5 @@ class Game implements CardGameInterface
         $this->setGameStateSession();
     }
 
-    
+
 }

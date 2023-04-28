@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\CardGame\CardGameInterface;
 use App\CardGame\CardGameTrait;
 
-
 class CardGame implements CardGameInterface
 {
     use CardGameTrait;

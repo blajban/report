@@ -51,7 +51,10 @@ Följande krav är optionella och du gör dem om du har tid och lust.
 
 [OK] Fixa vinnarskärmen
 
-* hantering av ess
+[OK] hantering av ess
+    [OK] Banken
+    [OK] Spelaren
+
 
 [OK] Winner session
 
@@ -61,7 +64,7 @@ Bygg ditt kortspel i Symfony med objektorienterade konstruktioner i PHP och för
 
 [OK] Använd templatefiler för att rendera webbsidorna.
 
-* Bygg spelet så att det fungerar minst enligt de regler som visas i introduktionen ovan.
+[OK] Bygg spelet så att det fungerar minst enligt de regler som visas i introduktionen ovan.
 
 [OK] Banken behöver inte vara speciellt intelligent i sitt kortspel. Det räcker att den kan utföra sin uppgift och spela spelet. En enkel variant är att banken alltid plockar kort tills den har 17 eller mer, sedan stannar den.
 

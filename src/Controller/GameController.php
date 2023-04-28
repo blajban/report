@@ -54,7 +54,7 @@ class GameController extends AbstractController
         }
 
         $game->shuffle();
-        
+
 
         return $this->redirectToRoute('game/play');
     }
@@ -62,21 +62,12 @@ class GameController extends AbstractController
     #[Route("/game/draw", name: "game_draw", methods: ['POST'])]
     public function playerTakesCard(SessionInterface $session): Response
     {
-        // CREATE Game object
-        // CALL Game:: player draws card
-
-        // CALL Game:: check if player is full
-        // IF player is full THEN
-           // RETURN redirect to end screen
-
-        // RETURN redirect to playing field
-
         $game = new Game($session);
 
         try {
             $game->playerDraw();
         } catch (Exception $e) {
-            
+
         }
 
 
@@ -91,7 +82,7 @@ class GameController extends AbstractController
     public function banksTurn(SessionInterface $session): Response
     {
         $game = new Game($session);
-        
+
         try {
             $game->bankDraw();
         } catch (Exception $e) {

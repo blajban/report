@@ -23,5 +23,5 @@ interface CardGameInterface
 
     public function remainingCards(): int;
 
-    
+
 }

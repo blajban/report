@@ -5,7 +5,6 @@ namespace App\CardGame;
 use App\CardGame\CardHandInterface;
 use App\CardGame\CardHandTrait;
 
-
 class Player implements CardHandInterface
 {
     use CardHandTrait;
