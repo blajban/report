@@ -31,7 +31,13 @@ Totalt sett ett kul kursmoment och jag tycker att det blev snyggt och prydligt p
 
 ### Kmom03
 
-Redovisningstext.
+Det kändes givetvis lite jobbigt att dra igång modellerandet av spelet, men jag vet sedan tidigare och fick nu bekräftat igen att det är oerhört nyttigt och värdefullt. Jag gjorde flödesdiagrammen i två delar, först ett övergripande utifrån användarens perspektiv, själva spelflödet, och sedan bröt jag ner de olika delarna med fokus på kodflödet. Det funkade bra och blev en jättestor hjälp i själva kodandet. Allt blev inte exakt så som jag tänkt, men näst intill. Pseudokoden var också väldigt värdefull, även om det var lite svårt att veta vilken nivå man skulle hålla det på. Jag valde att göra en del av flödet som pseudokod. 
+
+Jag har hållt kontrollerna väldigt små och försökt tänka att de alla i princip ska fungera likadant: skapa ett Game-objekt, gör eventuellt något, och skicka sedan game state till template-filen. Själva spelet hanteras helt i Game-klassen. Man skulle kunna tänka sig att bryta ner den i fler klasser också, t ex en klass som hanterar själva spelsessionen. Det mesta var ganska straight forward, det jag pillade mest med var hanteringen av ess. I slutändan löste jag det genom en algoritm som först räknar poäng om ess är 1, och sedan testar om poängen är under 21 om man gör om till esset till 14. Jag hoppas att jag hittat alla edge cases i algoritmen, annars kommer det kanske visa sig i nästa kursmoment som jag förstår handlar om testning. 
+
+Jag tycker symfony känns bra och rimligt, även om det känns väldigt omfattande med många filer jämfört t ex med express. 
+
+Totalt sett är jag mycket nöjd. Mitt TIL för kursmomentet är nog ytterligare bekräftelse på att jag är rätt bra på att göra flödesscheman och tänka kring koden innan.
 
 <a name="kmom04"></a>
 

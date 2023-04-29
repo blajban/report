@@ -82,13 +82,13 @@ Kortspel JSON
 
 Publicera
 
-* Committa alla filer och lägg till en tagg 3.0.0. Om du gör uppdateringar så ökar du taggen till 3.0.1, 3.0.2, 3.1.0 eller liknande.
+[OK] Committa alla filer och lägg till en tagg 3.0.0. Om du gör uppdateringar så ökar du taggen till 3.0.1, 3.0.2, 3.1.0 eller liknande.
 
-* Kör dbwebb test kmom03 för att kolla att du inte har några uppenbara fel.
+[OK] Kör dbwebb test kmom03 för att kolla att du inte har några uppenbara fel.
 
-* Pusha upp repot till GitHub, inklusive taggarna.
+[OK] Pusha upp repot till GitHub, inklusive taggarna.
 
-* Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
+[OK] Gör en dbwebb publishpure report och kontrollera att att det fungerar på studentservern.
 
 
 
