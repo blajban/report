@@ -76,9 +76,9 @@ Kortspel JSON
 
 # Kodvalidering
 
-* Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
+[OK] Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
 
-* Kolla din kod hur den matchar dina linters genom att köra composer lint. Får du fel så kollar du vad det är och rättar de sakerna du anser rimliga. Försök få en ren och tom rapport, utan valideringsfel.
+[OK] Kolla din kod hur den matchar dina linters genom att köra composer lint. Får du fel så kollar du vad det är och rättar de sakerna du anser rimliga. Försök få en ren och tom rapport, utan valideringsfel.
 
 Publicera
 

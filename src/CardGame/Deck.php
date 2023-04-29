@@ -124,10 +124,10 @@ class Deck implements DeckInterface
         if (empty($this->deck)) {
             throw new Exception('Deck empty');
         }
-    
+
         /** @var Card $cardToPeek */
         $cardToPeek = end($this->deck);
-    
+
         return $cardToPeek;
     }
 

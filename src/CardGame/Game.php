@@ -61,25 +61,32 @@ class Game implements CardGameInterface
      */
     private function getGameStateSession()
     {
+        /** @phpstan-ignore-next-line */
         $this->deck = $this->session->get(Game::DECK_SESSION_NAME) ?? new Deck();
         /** @phpstan-ignore-next-line */
         $this->gameState['remaining_cards'] = $this->deck->remainingCards();
 
+        /** @var string $playerName */
         $playerName = $this->session->get(Game::PLAYERNAME_SESSION_NAME) ?? 'Player name not defined';
+        /** @phpstan-ignore-next-line */
         $this->player = $this->session->get(Game::PLAYER_SESSION_NAME) ?? new Player($playerName);
         /** @phpstan-ignore-next-line */
         $this->gameState['player']['name'] = $this->player->getName();
         /** @phpstan-ignore-next-line */
         $this->gameState['player']['hand'] = $this->player->getHand();
 
+        /** @phpstan-ignore-next-line */
         $this->gameState['player']['score'] = $this->session->get(Game::PLAYER_SCORE_SESSION_NAME) ?? 0;
 
+        /** @phpstan-ignore-next-line */
         $this->bank = $this->session->get(Game::BANK_SESSION_NAME) ?? new Bank();
         /** @phpstan-ignore-next-line */
         $this->gameState['bank']['hand'] = $this->bank->getHand();
 
+        /** @phpstan-ignore-next-line */
         $this->gameState['bank']['score'] = $this->session->get(Game::BANK_SCORE_SESSION_NAME) ?? 0;
 
+        /** @phpstan-ignore-next-line */
         $this->gameState['winner'] = $this->session->get(Game::WINNER_SESSION_NAME) ?? '';
 
     }
@@ -203,7 +210,7 @@ class Game implements CardGameInterface
         $this->setGameStateSession();
     }
 
-    
+
     public function isFull(): bool
     {
         if ($this->gameState['player']['score'] > Game::MAX_POINTS) {
