@@ -6,8 +6,6 @@
 
 ## Bygg en test suite
 
-* Undersök var jag borde mocka (t ex testSortDeck)
-
 * Skapa en test suite för ditt kortspel.
 
 * Dina modellklasser är dina testobjekt och varje modellklass skall ha minst en testklass med testfall.

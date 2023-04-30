@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test cases for class Bank.
  */
-class CardHandTest extends TestCase
+class CardHandTraitTest extends TestCase
 {
     /**
      * Verify that a card is added to hand.
