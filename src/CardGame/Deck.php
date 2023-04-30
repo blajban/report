@@ -17,8 +17,6 @@ interface DeckInterface
      */
     public function getDeck(): array;
 
-    public function compareCards(Card $card1, Card $card2): int;
-
     /**
      * @return void
      */
@@ -65,7 +63,7 @@ class Deck implements DeckInterface
         return $this->deck;
     }
 
-    public function compareCards(Card $card1, Card $card2): int
+    private function compareCards(Card $card1, Card $card2): int
     {
         return $card1->getValue() - $card2->getValue();
     }
