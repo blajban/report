@@ -15,6 +15,7 @@ class GameClassMock extends Game
     }
 }
 
+
 /**
  * Test cases for class Bank.
  */
