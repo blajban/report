@@ -10,30 +10,16 @@ use PHPUnit\Framework\TestCase;
 class PlayerTest extends TestCase
 {
     /**
-     * Verify willContinue method returns false when score is high.
+     * Verify that object is created with correct name.
      */
-    public function testWillContinueHighScore()
+    public function testConstructPlayer()
     {
-        $bank = new Bank();
-        $this->assertInstanceOf("\App\CardGame\Bank", $bank);
+        $player = new Player("Test");
+        $this->assertInstanceOf("\App\CardGame\Player", $player);
 
-        $score = 18;
-        $res = $bank->willContinue($score);
-
-        $this->assertFalse($res);
-    }
-
-    /**
-     * Verify willContinue method returns true when score is low.
-     */
-    public function testWillContinueLowScore()
-    {
-        $bank = new Bank();
-
-        $score = 17;
-        $res = $bank->willContinue($score);
-
-        $this->assertTrue($res);
+        $res = $player->getName();
+        $exp = "Test";
+        $this->assertEquals($exp, $res);
     }
 
 }
