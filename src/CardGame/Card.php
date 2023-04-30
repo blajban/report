@@ -95,7 +95,7 @@ class Card implements FrenchEnglishCardInterface, JokerInterface
 
         if ($this->isJoker()) {
             $color = Card::COLORNAMES[Card::JOKER];
-            $name = Card::CARDNAMES[Card::JOKER];
+            $name = Card::CARDNAMES[$this->value];
             return "{$color} {$name} ({$this->value} poäng)";
         }
 

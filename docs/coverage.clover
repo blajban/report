@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1682853466">
-  <project timestamp="1682853466">
+<coverage generated="1682867767">
+  <project timestamp="1682867767">
     <file name="/home/blajban/dbwebb-kurser/mvc/me/report/src/CardGame/Bank.php">
       <class name="App\CardGame\Bank" namespace="global">
         <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
@@ -13,58 +13,58 @@
     </file>
     <file name="/home/blajban/dbwebb-kurser/mvc/me/report/src/CardGame/Card.php">
       <class name="App\CardGame\Card" namespace="global">
-        <metrics complexity="20" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="7" elements="49" coveredelements="10"/>
+        <metrics complexity="20" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="40" elements="49" coveredelements="49"/>
       </class>
-      <line num="86" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="88" type="stmt" count="2"/>
-      <line num="89" type="stmt" count="2"/>
-      <line num="90" type="stmt" count="2"/>
-      <line num="93" type="method" name="asString" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <line num="99" type="stmt" count="0"/>
-      <line num="102" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="105" type="stmt" count="0"/>
-      <line num="106" type="stmt" count="0"/>
-      <line num="107" type="stmt" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="113" type="stmt" count="0"/>
-      <line num="116" type="method" name="isAce" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="118" type="stmt" count="0"/>
-      <line num="119" type="stmt" count="0"/>
-      <line num="120" type="stmt" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="125" type="method" name="isJoker" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="127" type="stmt" count="2"/>
-      <line num="130" type="method" name="changeJokerColorAndValue" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="132" type="stmt" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="134" type="stmt" count="0"/>
-      <line num="138" type="method" name="changeAceValue" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="143" type="stmt" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="145" type="stmt" count="0"/>
-      <line num="149" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="151" type="stmt" count="1"/>
-      <line num="154" type="method" name="getCssColor" visibility="public" complexity="2" crap="2.15" count="1"/>
-      <line num="156" type="stmt" count="1"/>
-      <line num="157" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="1"/>
-      <line num="162" type="method" name="toArray" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="164" type="stmt" count="0"/>
-      <line num="165" type="stmt" count="0"/>
-      <line num="166" type="stmt" count="0"/>
-      <line num="167" type="stmt" count="0"/>
-      <line num="168" type="stmt" count="0"/>
-      <line num="169" type="stmt" count="0"/>
-      <line num="170" type="stmt" count="0"/>
-      <metrics loc="173" ncloc="158" classes="1" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="7" elements="49" coveredelements="10"/>
+      <line num="86" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="88" type="stmt" count="12"/>
+      <line num="89" type="stmt" count="12"/>
+      <line num="90" type="stmt" count="12"/>
+      <line num="93" type="method" name="asString" visibility="public" complexity="4" crap="4" count="3"/>
+      <line num="96" type="stmt" count="3"/>
+      <line num="97" type="stmt" count="1"/>
+      <line num="98" type="stmt" count="1"/>
+      <line num="99" type="stmt" count="1"/>
+      <line num="102" type="stmt" count="2"/>
+      <line num="103" type="stmt" count="2"/>
+      <line num="105" type="stmt" count="2"/>
+      <line num="106" type="stmt" count="1"/>
+      <line num="107" type="stmt" count="1"/>
+      <line num="108" type="stmt" count="1"/>
+      <line num="110" type="stmt" count="1"/>
+      <line num="113" type="stmt" count="1"/>
+      <line num="116" type="method" name="isAce" visibility="public" complexity="4" crap="4" count="4"/>
+      <line num="118" type="stmt" count="4"/>
+      <line num="119" type="stmt" count="4"/>
+      <line num="120" type="stmt" count="4"/>
+      <line num="121" type="stmt" count="2"/>
+      <line num="125" type="method" name="isJoker" visibility="public" complexity="1" crap="1" count="10"/>
+      <line num="127" type="stmt" count="10"/>
+      <line num="130" type="method" name="changeJokerColorAndValue" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="132" type="stmt" count="1"/>
+      <line num="133" type="stmt" count="1"/>
+      <line num="134" type="stmt" count="1"/>
+      <line num="138" type="method" name="changeAceValue" visibility="public" complexity="4" crap="4" count="1"/>
+      <line num="140" type="stmt" count="1"/>
+      <line num="141" type="stmt" count="1"/>
+      <line num="142" type="stmt" count="1"/>
+      <line num="143" type="stmt" count="1"/>
+      <line num="144" type="stmt" count="1"/>
+      <line num="145" type="stmt" count="1"/>
+      <line num="149" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="151" type="stmt" count="5"/>
+      <line num="154" type="method" name="getCssColor" visibility="public" complexity="2" crap="2" count="3"/>
+      <line num="156" type="stmt" count="3"/>
+      <line num="157" type="stmt" count="1"/>
+      <line num="159" type="stmt" count="2"/>
+      <line num="162" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="164" type="stmt" count="1"/>
+      <line num="165" type="stmt" count="1"/>
+      <line num="166" type="stmt" count="1"/>
+      <line num="167" type="stmt" count="1"/>
+      <line num="168" type="stmt" count="1"/>
+      <line num="169" type="stmt" count="1"/>
+      <line num="170" type="stmt" count="1"/>
+      <metrics loc="173" ncloc="158" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="40" elements="49" coveredelements="49"/>
     </file>
     <file name="/home/blajban/dbwebb-kurser/mvc/me/report/src/CardGame/CardGame.php">
       <class name="App\CardGame\CardGame" namespace="global">
@@ -635,6 +635,6 @@
       <line num="24" type="stmt" count="0"/>
       <metrics loc="27" ncloc="27" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
-    <metrics files="17" loc="1516" ncloc="1358" classes="14" methods="84" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="454" coveredstatements="10" elements="538" coveredelements="14"/>
+    <metrics files="17" loc="1516" ncloc="1358" classes="14" methods="84" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="454" coveredstatements="43" elements="538" coveredelements="53"/>
   </project>
 </coverage>
