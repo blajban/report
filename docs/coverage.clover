@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1682852110">
-  <project timestamp="1682852110">
+<coverage generated="1682853466">
+  <project timestamp="1682853466">
     <file name="/home/blajban/dbwebb-kurser/mvc/me/report/src/CardGame/Bank.php">
       <class name="App\CardGame\Bank" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </class>
-      <line num="12" type="method" name="willContinue" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="14" type="stmt" count="0"/>
-      <line num="15" type="stmt" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <metrics loc="23" ncloc="23" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+      <line num="12" type="method" name="willContinue" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="14" type="stmt" count="2"/>
+      <line num="15" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <metrics loc="23" ncloc="23" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
     </file>
     <file name="/home/blajban/dbwebb-kurser/mvc/me/report/src/CardGame/Card.php">
       <class name="App\CardGame\Card" namespace="global">
-        <metrics complexity="20" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="0" elements="49" coveredelements="0"/>
+        <metrics complexity="20" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="7" elements="49" coveredelements="10"/>
       </class>
-      <line num="86" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
-      <line num="90" type="stmt" count="0"/>
+      <line num="86" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="88" type="stmt" count="2"/>
+      <line num="89" type="stmt" count="2"/>
+      <line num="90" type="stmt" count="2"/>
       <line num="93" type="method" name="asString" visibility="public" complexity="4" crap="20" count="0"/>
       <line num="96" type="stmt" count="0"/>
       <line num="97" type="stmt" count="0"/>
@@ -37,8 +37,8 @@
       <line num="119" type="stmt" count="0"/>
       <line num="120" type="stmt" count="0"/>
       <line num="121" type="stmt" count="0"/>
-      <line num="125" type="method" name="isJoker" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="127" type="stmt" count="0"/>
+      <line num="125" type="method" name="isJoker" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="127" type="stmt" count="2"/>
       <line num="130" type="method" name="changeJokerColorAndValue" visibility="public" complexity="2" crap="6" count="0"/>
       <line num="132" type="stmt" count="0"/>
       <line num="133" type="stmt" count="0"/>
@@ -50,12 +50,12 @@
       <line num="143" type="stmt" count="0"/>
       <line num="144" type="stmt" count="0"/>
       <line num="145" type="stmt" count="0"/>
-      <line num="149" type="method" name="getValue" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="151" type="stmt" count="0"/>
-      <line num="154" type="method" name="getCssColor" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="156" type="stmt" count="0"/>
+      <line num="149" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="151" type="stmt" count="1"/>
+      <line num="154" type="method" name="getCssColor" visibility="public" complexity="2" crap="2.15" count="1"/>
+      <line num="156" type="stmt" count="1"/>
       <line num="157" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
+      <line num="159" type="stmt" count="1"/>
       <line num="162" type="method" name="toArray" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="164" type="stmt" count="0"/>
       <line num="165" type="stmt" count="0"/>
@@ -64,7 +64,7 @@
       <line num="168" type="stmt" count="0"/>
       <line num="169" type="stmt" count="0"/>
       <line num="170" type="stmt" count="0"/>
-      <metrics loc="173" ncloc="158" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="0" elements="49" coveredelements="0"/>
+      <metrics loc="173" ncloc="158" classes="1" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="7" elements="49" coveredelements="10"/>
     </file>
     <file name="/home/blajban/dbwebb-kurser/mvc/me/report/src/CardGame/CardGame.php">
       <class name="App\CardGame\CardGame" namespace="global">
@@ -635,6 +635,6 @@
       <line num="24" type="stmt" count="0"/>
       <metrics loc="27" ncloc="27" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
-    <metrics files="17" loc="1516" ncloc="1358" classes="14" methods="84" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="454" coveredstatements="0" elements="538" coveredelements="0"/>
+    <metrics files="17" loc="1516" ncloc="1358" classes="14" methods="84" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="454" coveredstatements="10" elements="538" coveredelements="14"/>
   </project>
 </coverage>
