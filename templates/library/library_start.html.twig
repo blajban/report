@@ -1,0 +1,24 @@
+{# templates/game_start.html.twig #}
+
+{% include 'incl/header.html.twig' %}
+
+
+<body>
+    {% include 'incl/nav.html.twig' %}
+
+
+    <div class="content-area">
+        <div class="content">
+            {% include 'incl/flash.html.twig' %}
+            <h2>{{ heading }}</h2>
+            {{ content|raw }}
+
+            
+        </div>
+    </div>
+    {% include 'incl/footer.html.twig' %}
+</body>
+
+</html>
+
+

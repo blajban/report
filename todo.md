@@ -1,47 +1,55 @@
-## Installera och konfigurera
+## Introduktion och förberedelse
 
-[OK] Installera phpunit och lägg till det som ett skript composer phpunit.
+Du skall göra en mindre CRUD applikation i Symfony med Doctrine. Du kan välja fokus för din applikation. Standardfokuset på uppgiften är “Bibliotek med böcker” men du kan ändra fokus och spara andra saker i din databas.
 
-[OK] Gör så att kodtäckningsrapport för HTML genereras till katalogen docs/coverage.
+Du kan välja mellan SQLite och MariaDB. Om du väljer SQLite så ligger hela databasen i en fil och följer med till produktionsmiljön (studentservern). Du har alltså samma databas lokalt och på produktionsmiljön. Om du jobbar med MariaDB så har du en databas lokalt och en annan databas på produktionsservern. Det blir lite mer “riktigt” men också lite mer konfiguration att hantera. Är du osäker så kan du börja med SQLite och den enklare vägen. Du kan alltid byta databas i ett senare skede.
+Krav
 
-## Bygg en test suite
+## Bibliotek CRUD
 
-[OK] Skapa en test suite för ditt kortspel.
+[OK] Skapa en landningssida library/ för din “Bibliotek” applikation. Placera landningssidan i din navbar.
 
-[OK] Dina modellklasser är dina testobjekt och varje modellklass skall ha minst en testklass med testfall.
+* Fixa innehåll för landningssidan
 
-[OK] Varje testfall har minst en assertion.
+* Skapa en databas som innehåller en tabell med böcker. Lägg in minst tre böcker (riktiga eller påhittade) med deras titel, ISBN och författare samt en bild som representerar boken.
 
-[OK] Du har en kodtäckning som överträffar 70% på varje testobjekt men sikta mot att nå över 90% kodtäckning.
+* [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
 
-[OK] Det är helt okey om du vill uppdatera din källkod för att göra den bättre eller mer testbar. Code refactoring (att skriva om sin kod för att förbättra den) är ofta ett bra alternativ.
+* [READ ONE] Skapa en webbsida där man kan se detaljer om en viss bok.
 
-* [OPTINELLT] Som en extra utmaning kan du se om dina controllers är testbara med phpunit och i vilken mån du kan testa dem eller vad som krävs för att du skall kunna testa dem.
+* [READ MANY] Skapa en webbsida där man kan se samtliga böcker i en HTML tabell (eller liknande). Man skall kunna klicka på en bok och komma vidare till en sida som enbart visar detaljer om den boken.
 
-## Dokumentara kod
+* [UPDATE] Man skall kunna uppdatera detaljer om en bok. Det skall finnas en sida som visar bokens detaljer i ett formulär och man skall kunna uppdatera bokens detaljer och spara dem.
 
-[OK] Välj ut minst en av dina klasser och lägg till kommentarer med PHP DockBlock. Dina kommentarer skall minst innehålla en rads beskrivning av vad metoderna och klassen gör.
-    [OK] Deck
-    [OK] CardGameInterface
-    [OK] Game
+* [DELETE] Man skall kunna radera en bok.
 
-[OK] Generera dokumentationen till katalogen docs/api med kommandot composer phpdoc.
+* Använd GET och POST. Kom ihåg att alltid använda POST när du gör en uppdatering i databasen.
+
+* Inkludera möjligheten att återställa databasen till sitt ursprungliga innehåll via routen library/reset.
+
+* Alla delar av “Biblioteket” skall fungera tillsammans som en applikation. Det finns länkar och formulär som är sammankopplade och man får en “user experience” av att applikationen hänger ihop.
+
+## Bibliotek JSON
+
+* I din landningssida för api/ lägger du till routen api/library/books som visar upp samtliga böcker i biblioteket i en JSON struktur.
+
+* Lägg till routen api/library/book/<isbn> där man kan se en av böckerna via dess ISBN nummer. Lägg till ett exempel som länkar direkt till en av böckerna i biblioteket.
 
 ## Utvecklingsmiljö
 
-[OK] Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
+* Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
 
-[OK] Kolla din kod hur den matchar dina linters genom att köra composer lint.
+* Kolla din kod hur den matchar dina linters genom att köra composer lint.
 
-[OK] Dubbelkolla att dina testfall passerar med composer phpunit.
+* Dubbelkolla att dina testfall passerar med composer phpunit.
 
-[OK] Generera documentation av din kod med composer phpdoc.
+* Generera documentation av din kod med composer phpdoc.
 
 ## Publicera
 
-* Committa alla filer och lägg till en tagg 4.0.0. Om du gör uppdateringar så ökar du taggen till 4.0.1, 4.0.2, 4.1.0 eller liknande.
+* Committa alla filer och lägg till en tagg 5.0.0. Om du gör uppdateringar så ökar du taggen till 5.0.1, 5.0.2, 5.1.0 eller liknande.
 
-* Kör dbwebb test kmom04 för att kolla att du inte har några fel.
+* Kör dbwebb test kmom05 för att kolla att du inte har några fel.
 
 * Pusha upp repot till GitHub, inklusive taggarna.
 
