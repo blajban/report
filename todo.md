@@ -20,10 +20,10 @@
 
 ## Dokumentara kod
 
-* Välj ut minst en av dina klasser och lägg till kommentarer med PHP DockBlock. Dina kommentarer skall minst innehålla en rads beskrivning av vad metoderna och klassen gör.
+[OK] Välj ut minst en av dina klasser och lägg till kommentarer med PHP DockBlock. Dina kommentarer skall minst innehålla en rads beskrivning av vad metoderna och klassen gör.
     [OK] Deck
-    * CardGameInterface
-    * Game
+    [OK] CardGameInterface
+    [OK] Game
 
 * Generera dokumentationen till katalogen docs/api med kommandot composer phpdoc.
 

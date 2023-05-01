@@ -10,6 +10,9 @@ use App\CardGame\Deck;
 use Exception;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+/**
+ * Game class.
+ */
 class Game implements CardGameInterface
 {
     use CardGameTrait;
@@ -50,6 +53,10 @@ class Game implements CardGameInterface
         'winner' => ''
     ];
 
+    /**
+     * Constructor.
+     * @param SessionInterface $session
+     */
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
@@ -57,6 +64,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Load gamestate from session or construct new objects.
      * @return void
      */
     private function getGameStateSession()
@@ -92,6 +100,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Save current state to session.
      * @return void
      */
     private function setGameStateSession()
@@ -105,6 +114,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Remove game state from session.
      * @return void
      */
     private function resetGameStateSession()
@@ -118,7 +128,9 @@ class Game implements CardGameInterface
 
 
     /**
+     * Calculate total points of a hand of cards.
      * @param array<Card> $hand
+     * @return int
      */
     private function calculateHand(array $hand): int
     {
@@ -132,7 +144,9 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Calculate the total points of a hand of cards considering aces.
      * @param array<Card> $hand
+     * @return int
      */
     private function calculatePoints(array $hand): int
     {
@@ -158,6 +172,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Set player name.
      * @return void
      */
     public function setPlayerName(string $name)
@@ -166,6 +181,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Get current game state.
      * @return array{
      *   player: array{name: string, score: int, hand: array<Card>},
      *   bank: array{name: string, score: int, hand: array<Card>},
@@ -179,6 +195,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Get current game state prepared for json.
      * @return array{
      *   player: array{name: string, score: int, hand: array<Card>, handAsString?: array<array<string, mixed>>},
      *   bank: array{name: string, score: int, hand: array<Card>, handAsString?: array<array<string, mixed>>},
@@ -200,6 +217,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Shuffle deck and reset game.
      * @return void
      */
     public function shuffle()
@@ -210,7 +228,10 @@ class Game implements CardGameInterface
         $this->setGameStateSession();
     }
 
-
+    /**
+     * Check if players score is above max points.
+     * @return bool
+     */
     public function isFull(): bool
     {
         if ($this->gameState['player']['score'] > Game::MAX_POINTS) {
@@ -221,6 +242,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Draw a card for player.
      * @return void
      */
     public function playerDraw()
@@ -239,6 +261,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Draw cards for bank.
      * @return void
      */
     public function bankDraw()
@@ -256,6 +279,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Check and set winner.
      * @return void
      */
     private function setWinner()
@@ -282,6 +306,7 @@ class Game implements CardGameInterface
     }
 
     /**
+     * Determine winner and update game state.
      * @return void
      */
     public function determineWinner()

@@ -216,11 +216,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-CardGame-CardGameInterface.html"
         },                {
-            "fqsen": "\\App\\CardGame\\CardGameInterface\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/App-CardGame-CardGameInterface.html#method___construct"
-        },                {
             "fqsen": "\\App\\CardGame\\CardGameInterface\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
             "summary": "",
@@ -268,22 +263,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\CardGame\\CardHandInterface",
             "name": "CardHandInterface",
-            "summary": "",
+            "summary": "Cardhand\u0020interface.",
             "url": "classes/App-CardGame-CardHandInterface.html"
         },                {
             "fqsen": "\\App\\CardGame\\CardHandInterface\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
-            "summary": "",
+            "summary": "Add\u0020card\u0020to\u0020hand.",
             "url": "classes/App-CardGame-CardHandInterface.html#method_addCard"
         },                {
             "fqsen": "\\App\\CardGame\\CardHandInterface\u003A\u003AgetHand\u0028\u0029",
             "name": "getHand",
-            "summary": "",
+            "summary": "Get\u0020current\u0020hand.",
             "url": "classes/App-CardGame-CardHandInterface.html#method_getHand"
         },                {
             "fqsen": "\\App\\CardGame\\CardHandInterface\u003A\u003AdiscardHand\u0028\u0029",
             "name": "discardHand",
-            "summary": "",
+            "summary": "Discard\u0020hand.",
             "url": "classes/App-CardGame-CardHandInterface.html#method_discardHand"
         },                {
             "fqsen": "\\App\\CardGame\\CardHandTrait",
@@ -313,37 +308,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\CardGame\\Deck",
             "name": "Deck",
-            "summary": "",
+            "summary": "Deck\u0020class",
             "url": "classes/App-CardGame-Deck.html"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor",
             "url": "classes/App-CardGame-Deck.html#method___construct"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AaddCardsToDeck\u0028\u0029",
             "name": "addCardsToDeck",
-            "summary": "",
+            "summary": "Add\u0020cards\u0020with\u0020a\u0020specific\u0020color.",
             "url": "classes/App-CardGame-Deck.html#method_addCardsToDeck"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
-            "summary": "",
+            "summary": "Get\u0020the\u0020deck\u0020of\u0020cards\u0020as\u0020an\u0020array.",
             "url": "classes/App-CardGame-Deck.html#method_getDeck"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AcompareCards\u0028\u0029",
             "name": "compareCards",
-            "summary": "",
+            "summary": "Compare\u0020two\u0020cards\u0020based\u0020on\u0020their\u0020values.",
             "url": "classes/App-CardGame-Deck.html#method_compareCards"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AsortDeck\u0028\u0029",
             "name": "sortDeck",
-            "summary": "",
+            "summary": "Sort\u0020the\u0020deck\u0020by\u0020color\u0020and\u0020value.",
             "url": "classes/App-CardGame-Deck.html#method_sortDeck"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AisEmpty\u0028\u0029",
             "name": "isEmpty",
-            "summary": "",
+            "summary": "Check\u0020if\u0020deck\u0020is\u0020empty.",
             "url": "classes/App-CardGame-Deck.html#method_isEmpty"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AremainingCards\u0028\u0029",
@@ -353,17 +348,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AdrawCard\u0028\u0029",
             "name": "drawCard",
-            "summary": "",
+            "summary": "Get\u0020the\u0020number\u0020of\u0020cards\u0020left\u0020in\u0020deck.cards",
             "url": "classes/App-CardGame-Deck.html#method_drawCard"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003Apeek\u0028\u0029",
             "name": "peek",
-            "summary": "",
+            "summary": "Look\u0020at\u0020the\u0020top\u0020card\u0020of\u0020deck\u0020without\u0020removing\u0020it.",
             "url": "classes/App-CardGame-Deck.html#method_peek"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003AshuffleDeck\u0028\u0029",
             "name": "shuffleDeck",
-            "summary": "",
+            "summary": "Shuffle\u0020deck.",
             "url": "classes/App-CardGame-Deck.html#method_shuffleDeck"
         },                {
             "fqsen": "\\App\\CardGame\\Deck\u003A\u003A\u0024deck",
@@ -373,142 +368,132 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface",
             "name": "DeckInterface",
-            "summary": "",
+            "summary": "Deck\u0020interface",
             "url": "classes/App-CardGame-DeckInterface.html"
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor",
             "url": "classes/App-CardGame-DeckInterface.html#method___construct"
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
-            "summary": "",
+            "summary": "Get\u0020the\u0020deck\u0020of\u0020cards\u0020as\u0020an\u0020array.",
             "url": "classes/App-CardGame-DeckInterface.html#method_getDeck"
-        },                {
-            "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003AcompareCards\u0028\u0029",
-            "name": "compareCards",
-            "summary": "",
-            "url": "classes/App-CardGame-DeckInterface.html#method_compareCards"
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003AsortDeck\u0028\u0029",
             "name": "sortDeck",
-            "summary": "",
+            "summary": "Sort\u0020the\u0020deck\u0020by\u0020color\u0020and\u0020value.",
             "url": "classes/App-CardGame-DeckInterface.html#method_sortDeck"
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003AisEmpty\u0028\u0029",
             "name": "isEmpty",
-            "summary": "",
+            "summary": "Check\u0020if\u0020deck\u0020is\u0020empty.",
             "url": "classes/App-CardGame-DeckInterface.html#method_isEmpty"
-        },                {
-            "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003AremainingCards\u0028\u0029",
-            "name": "remainingCards",
-            "summary": "",
-            "url": "classes/App-CardGame-DeckInterface.html#method_remainingCards"
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003AdrawCard\u0028\u0029",
             "name": "drawCard",
-            "summary": "",
+            "summary": "Get\u0020the\u0020number\u0020of\u0020cards\u0020left\u0020in\u0020deck.cards",
             "url": "classes/App-CardGame-DeckInterface.html#method_drawCard"
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003Apeek\u0028\u0029",
             "name": "peek",
-            "summary": "",
+            "summary": "Look\u0020at\u0020the\u0020top\u0020card\u0020of\u0020deck\u0020without\u0020removing\u0020it.",
             "url": "classes/App-CardGame-DeckInterface.html#method_peek"
         },                {
             "fqsen": "\\App\\CardGame\\DeckInterface\u003A\u003AshuffleDeck\u0028\u0029",
             "name": "shuffleDeck",
-            "summary": "",
+            "summary": "Shuffle\u0020deck.",
             "url": "classes/App-CardGame-DeckInterface.html#method_shuffleDeck"
         },                {
             "fqsen": "\\App\\CardGame\\DeckWithJokers",
             "name": "DeckWithJokers",
-            "summary": "",
+            "summary": "Deck\u0020class",
             "url": "classes/App-CardGame-DeckWithJokers.html"
         },                {
             "fqsen": "\\App\\CardGame\\DeckWithJokers\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor",
             "url": "classes/App-CardGame-DeckWithJokers.html#method___construct"
         },                {
             "fqsen": "\\App\\CardGame\\Game",
             "name": "Game",
-            "summary": "",
+            "summary": "Game\u0020class.",
             "url": "classes/App-CardGame-Game.html"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor.",
             "url": "classes/App-CardGame-Game.html#method___construct"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AgetGameStateSession\u0028\u0029",
             "name": "getGameStateSession",
-            "summary": "",
+            "summary": "Load\u0020gamestate\u0020from\u0020session\u0020or\u0020construct\u0020new\u0020objects.",
             "url": "classes/App-CardGame-Game.html#method_getGameStateSession"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AsetGameStateSession\u0028\u0029",
             "name": "setGameStateSession",
-            "summary": "",
+            "summary": "Save\u0020current\u0020state\u0020to\u0020session.",
             "url": "classes/App-CardGame-Game.html#method_setGameStateSession"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AresetGameStateSession\u0028\u0029",
             "name": "resetGameStateSession",
-            "summary": "",
+            "summary": "Remove\u0020game\u0020state\u0020from\u0020session.",
             "url": "classes/App-CardGame-Game.html#method_resetGameStateSession"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AcalculateHand\u0028\u0029",
             "name": "calculateHand",
-            "summary": "",
+            "summary": "Calculate\u0020total\u0020points\u0020of\u0020a\u0020hand\u0020of\u0020cards.",
             "url": "classes/App-CardGame-Game.html#method_calculateHand"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AcalculatePoints\u0028\u0029",
             "name": "calculatePoints",
-            "summary": "",
+            "summary": "Calculate\u0020the\u0020total\u0020points\u0020of\u0020a\u0020hand\u0020of\u0020cards\u0020considering\u0020aces.",
             "url": "classes/App-CardGame-Game.html#method_calculatePoints"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AsetPlayerName\u0028\u0029",
             "name": "setPlayerName",
-            "summary": "",
+            "summary": "Set\u0020player\u0020name.",
             "url": "classes/App-CardGame-Game.html#method_setPlayerName"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AgetGameState\u0028\u0029",
             "name": "getGameState",
-            "summary": "",
+            "summary": "Get\u0020current\u0020game\u0020state.",
             "url": "classes/App-CardGame-Game.html#method_getGameState"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AgetGameStateJson\u0028\u0029",
             "name": "getGameStateJson",
-            "summary": "",
+            "summary": "Get\u0020current\u0020game\u0020state\u0020prepared\u0020for\u0020json.",
             "url": "classes/App-CardGame-Game.html#method_getGameStateJson"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003Ashuffle\u0028\u0029",
             "name": "shuffle",
-            "summary": "",
+            "summary": "Shuffle\u0020deck\u0020and\u0020reset\u0020game.",
             "url": "classes/App-CardGame-Game.html#method_shuffle"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AisFull\u0028\u0029",
             "name": "isFull",
-            "summary": "",
+            "summary": "Check\u0020if\u0020players\u0020score\u0020is\u0020above\u0020max\u0020points.",
             "url": "classes/App-CardGame-Game.html#method_isFull"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AplayerDraw\u0028\u0029",
             "name": "playerDraw",
-            "summary": "",
+            "summary": "Draw\u0020a\u0020card\u0020for\u0020player.",
             "url": "classes/App-CardGame-Game.html#method_playerDraw"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AbankDraw\u0028\u0029",
             "name": "bankDraw",
-            "summary": "",
+            "summary": "Draw\u0020cards\u0020for\u0020bank.",
             "url": "classes/App-CardGame-Game.html#method_bankDraw"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AsetWinner\u0028\u0029",
             "name": "setWinner",
-            "summary": "",
+            "summary": "Check\u0020and\u0020set\u0020winner.",
             "url": "classes/App-CardGame-Game.html#method_setWinner"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AdetermineWinner\u0028\u0029",
             "name": "determineWinner",
-            "summary": "",
+            "summary": "Determine\u0020winner\u0020and\u0020update\u0020game\u0020state.",
             "url": "classes/App-CardGame-Game.html#method_determineWinner"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AMAX_POINTS",
