@@ -43,7 +43,14 @@ Totalt sett är jag mycket nöjd. Mitt TIL för kursmomentet är nog ytterligare
 
 ### Kmom04
 
-Redovisningstext.
+I föreläsningen pratade Mos om hur testerna ger förtroende för koden, och jag håller verkligen med. Jag har nu ett högt förtroende för att min kod fungerar, vilket känns bra. Tyckte det fungerade bra att skriva testerna, PHPUnit är lättanvänt. Jag skrev tester för alla klasser utom CardGame-klassen (som hör till kmom01-02), och lyckades nå 100 procent på alla klasser förutom Game-klassen där jag nådde 89 procent. Totalt sett var koden testbar utan att jag behövde göra för mycket ändringar eller avancerade testkonstruktioner, men i Game-klassen gjorde min implementation och hanteringen av sessionen att testbarheten blev lidande. Det hade kunnat utvecklas. Jag fick till exempel lägga till en klass som ärver från game-klassen bara för att kunna testa den privata leken i game-klassen.
+
+Testbar och snygg och ren kod hänger definitivt ihop. Optimalt vill man ju ha metoder som tar in en eller ett par parametrar, gör något och returnerar något. Den typen av metoder utan sidoeffekter är också ren och snygg kod. Jag tror att jag hade för mycket sidoeffekter i min game-klass till exempel.
+
+Jag skrev om små delar av koden här och där för att underlätta testningen, men inget större. Man hade kunnat göra om game-klassen, men jag är samtidigt nöjd med implementationen. Det var framför allt sessionshanteringen som var problemet.
+
+Mitt TIL gäller väl att fundera igenom testbarhets-aspekterna innan implementation, så att game-klassen hade blivit lite lättare att testa.
+
 
 <a name="kmom05"></a>
 
