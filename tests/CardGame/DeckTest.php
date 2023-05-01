@@ -12,6 +12,7 @@ class DeckTest extends TestCase
 {
     /**
      * Verify that deck is constructed in the correct way.
+     * @return void
      */
     public function testConstructDeck()
     {
@@ -25,6 +26,7 @@ class DeckTest extends TestCase
 
     /**
      * Verify that the deck is an array of Cards.
+     * @return void
      */
     public function testGetDeck()
     {
@@ -37,6 +39,7 @@ class DeckTest extends TestCase
 
     /**
      * Verify that a shuffled deck can be sorted.
+     * @return void
      */
     public function testSortDeck()
     {
@@ -61,6 +64,7 @@ class DeckTest extends TestCase
 
     /**
      * Verify that an empty deck reports being empty.
+     * @return void
      */
     public function testIsEmpty()
     {
@@ -79,6 +83,7 @@ class DeckTest extends TestCase
 
     /**
      * Verify that remainingCards returns the correct amount of remaining cards.
+     * @return void
      */
     public function testRemainingCards()
     {
@@ -99,6 +104,7 @@ class DeckTest extends TestCase
 
     /**
      * Verify drawCard returns a Card and removes a card from deck.
+     * @return void
      */
     public function testDrawCard()
     {
@@ -114,6 +120,7 @@ class DeckTest extends TestCase
 
     /**
      * Verify peek returns a Card and throws error if empty.
+     * @return void
      */
     public function testPeek()
     {
@@ -136,6 +143,7 @@ class DeckTest extends TestCase
 
     /**
      * Verify that the deck shuffles correctly.
+     * @return void
      */
     public function testShuffle()
     {

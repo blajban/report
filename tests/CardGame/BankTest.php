@@ -11,6 +11,7 @@ class BankTest extends TestCase
 {
     /**
      * Verify willContinue method returns false when score is high.
+     * @return void
      */
     public function testWillContinueHighScore()
     {
@@ -25,6 +26,7 @@ class BankTest extends TestCase
 
     /**
      * Verify willContinue method returns true when score is low.
+     * @return void
      */
     public function testWillContinueLowScore()
     {

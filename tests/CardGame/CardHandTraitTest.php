@@ -11,6 +11,7 @@ class CardHandTraitTest extends TestCase
 {
     /**
      * Verify that a card is added to hand.
+     * @return void
      */
     public function testAddCard()
     {
@@ -25,6 +26,7 @@ class CardHandTraitTest extends TestCase
 
     /**
      * Verify that the hand can be discarded.
+     * @return void
      */
     public function testDiscardHand()
     {

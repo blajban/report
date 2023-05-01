@@ -23,6 +23,7 @@ class CardGameTraitTest extends TestCase
 {
     /**
      * Verify that a deck array of Cards is returned.
+     * @return void
      */
     public function testGetDeck()
     {
@@ -40,6 +41,7 @@ class CardGameTraitTest extends TestCase
 
     /**
      * Verify that an array of cards as string is returned.
+     * @return void
      */
     public function testGetJsonDeck()
     {
@@ -70,6 +72,7 @@ class CardGameTraitTest extends TestCase
 
     /**
      * Verify that remainingCards method in Deck is called once.
+     * @return void
      */
     public function testRemainingCards()
     {

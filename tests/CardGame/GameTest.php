@@ -14,6 +14,7 @@ class GameTest extends TestCase
 {
     /**
      * Verify that Game object is constructed correctly and that game state is returned correctly.
+     * @return void
      */
     public function testConstructGameAndGetGameState()
     {
@@ -43,6 +44,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that session method is called when setting players name.
+     * @return void
      */
     public function testSetPlayerName()
     {
@@ -59,6 +61,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that game state with hand as string is returned correctly.
+     * @return void
      */
     public function testGetGameStateJson()
     {
@@ -70,6 +73,7 @@ class GameTest extends TestCase
 
         $exp = 1;
 
+        /** @phpstan-ignore-next-line */
         $res = count($game->getGameStateJson()['player']['handAsString']);
 
         $this->assertEquals($exp, $res);
@@ -77,6 +81,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that the deck shuffles correctly.
+     * @return void
      */
     public function testShuffle()
     {
@@ -94,6 +99,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that the isFull method returns true/false correctly.
+     * @return void
      */
     public function testIsFull()
     {
@@ -105,6 +111,7 @@ class GameTest extends TestCase
         $gameStateProperty->setAccessible(true);
 
         $gameState = $gameStateProperty->getValue($game);
+        /** @phpstan-ignore-next-line */
         $gameState['player']['score'] = 21;
         $gameStateProperty->setValue($game, $gameState);
 
@@ -112,6 +119,7 @@ class GameTest extends TestCase
 
         $this->assertFalse($res);
 
+        /** @phpstan-ignore-next-line */
         $gameState['player']['score'] = 22;
         $gameStateProperty->setValue($game, $gameState);
 
@@ -122,6 +130,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that exception is thrown if deck is empty when drawing.
+     * @return void
      */
     public function testPlayerDrawException()
     {
@@ -140,6 +149,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that card is drawn by player.
+     * @return void
      */
     public function testPlayerDrawsCard()
     {
@@ -161,6 +171,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that exception is thrown if deck is empty when bank drawing.
+     * @return void
      */
     public function testBankDrawException()
     {
@@ -179,6 +190,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that bank draws cards correctly.
+     * @return void
      */
     public function testBankDrawsCard()
     {
@@ -200,6 +212,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that the correct winner is determined (player over 21).
+     * @return void
      */
     public function testDetermineWinnerPlayerOver21()
     {
@@ -211,6 +224,7 @@ class GameTest extends TestCase
         $gameStateProperty->setAccessible(true);
 
         $gameState = $gameStateProperty->getValue($game);
+        /** @phpstan-ignore-next-line */
         $gameState['player']['score'] = 22;
         $gameStateProperty->setValue($game, $gameState);
 
@@ -224,6 +238,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that the correct winner is determined (player less than 21, bank over 21).
+     * @return void
      */
     public function testDetermineWinnerPlayerLessThan21BankOver21()
     {
@@ -235,7 +250,9 @@ class GameTest extends TestCase
         $gameStateProperty->setAccessible(true);
 
         $gameState = $gameStateProperty->getValue($game);
+        /** @phpstan-ignore-next-line */
         $gameState['player']['score'] = 20;
+        /** @phpstan-ignore-next-line */
         $gameState['bank']['score'] = 22;
         $gameStateProperty->setValue($game, $gameState);
 
@@ -249,6 +266,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that the correct winner is determined (equal score).
+     * @return void
      */
     public function testDetermineWinnerEqualScore()
     {
@@ -260,7 +278,9 @@ class GameTest extends TestCase
         $gameStateProperty->setAccessible(true);
 
         $gameState = $gameStateProperty->getValue($game);
+        /** @phpstan-ignore-next-line */
         $gameState['player']['score'] = 20;
+        /** @phpstan-ignore-next-line */
         $gameState['bank']['score'] = 20;
         $gameStateProperty->setValue($game, $gameState);
 
@@ -274,6 +294,7 @@ class GameTest extends TestCase
 
     /**
      * Verify that the correct winner is determined (player highest score).
+     * @return void
      */
     public function testDetermineWinnerPlayerHighestScore()
     {
@@ -285,7 +306,9 @@ class GameTest extends TestCase
         $gameStateProperty->setAccessible(true);
 
         $gameState = $gameStateProperty->getValue($game);
+        /** @phpstan-ignore-next-line */
         $gameState['player']['score'] = 21;
+        /** @phpstan-ignore-next-line */
         $gameState['bank']['score'] = 20;
         $gameStateProperty->setValue($game, $gameState);
 

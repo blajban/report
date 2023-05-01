@@ -68,7 +68,7 @@ class GameController extends AbstractController
         try {
             $game->playerDraw();
         } catch (Exception $e) {
-
+            return $this->redirectToRoute('game/play');
         }
 
 

@@ -11,6 +11,7 @@ class DeckWithJokersTest extends TestCase
 {
     /**
      * Verify that deck is constructed in the correct way.
+     * @return void
      */
     public function testConstructDeck()
     {

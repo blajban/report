@@ -11,6 +11,7 @@ class PlayerTest extends TestCase
 {
     /**
      * Verify that object is created with correct name.
+     * @return void
      */
     public function testConstructPlayer()
     {

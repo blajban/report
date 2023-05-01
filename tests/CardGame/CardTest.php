@@ -11,6 +11,7 @@ class CardTest extends TestCase
 {
     /**
      * Verify construct object no joker.
+     * @return void
      */
     public function testConstructObjectNoJoker()
     {
@@ -33,6 +34,7 @@ class CardTest extends TestCase
 
     /**
      * Verify construct object as joker.
+     * @return void
      */
     public function testConstructObjectJoker()
     {
@@ -46,6 +48,7 @@ class CardTest extends TestCase
 
     /**
      * Verify asString method (no joker, no ace).
+     * @return void
      */
     public function testAsStringNoJokerNoAce()
     {
@@ -64,6 +67,7 @@ class CardTest extends TestCase
 
     /**
      * Verify asString method (ace).
+     * @return void
      */
     public function testAsStringAce()
     {
@@ -83,6 +87,7 @@ class CardTest extends TestCase
 
     /**
      * Verify asString method (joker).
+     * @return void
      */
     public function testAsStringJoker()
     {
@@ -101,6 +106,7 @@ class CardTest extends TestCase
 
     /**
      * Verify isJoker method.
+     * @return void
      */
     public function testIsJoker()
     {
@@ -119,6 +125,7 @@ class CardTest extends TestCase
 
     /**
      * Verify that value of joker can be changed.
+     * @return void
      */
     public function testchangeJokerColorAndValue()
     {
@@ -138,6 +145,7 @@ class CardTest extends TestCase
 
     /**
      * Verify isAce and changeAceValue method.
+     * @return void
      */
     public function testIsAceAndChangeAceValue()
     {
@@ -173,6 +181,7 @@ class CardTest extends TestCase
 
     /**
      * Verify that getValue returns current card value.
+     * @return void
      */
     public function testGetValue()
     {
@@ -189,6 +198,7 @@ class CardTest extends TestCase
 
     /**
      * Verify that getCsscolor returns correct card color (no joker).
+     * @return void
      */
     public function testGetCssColorNoJoker()
     {
@@ -205,6 +215,7 @@ class CardTest extends TestCase
 
     /**
      * Verify that getCsscolor returns correct card color (joker).
+     * @return void
      */
     public function testGetCssColorJoker()
     {
@@ -221,6 +232,7 @@ class CardTest extends TestCase
 
     /**
      * Verify that card information is returned as an array with toArray method.
+     * @return void
      */
     public function testToArray()
     {
