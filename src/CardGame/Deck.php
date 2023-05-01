@@ -36,7 +36,7 @@ interface DeckInterface
 
     /**
      * Get the number of cards left in deck.cards
-     */ 
+     */
     public function drawCard(): Card|false;
 
     /**

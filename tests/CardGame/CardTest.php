@@ -128,7 +128,7 @@ class CardTest extends TestCase
         $card = new Card($value, $color, true);
 
         $card->changeJokerColorAndValue(2, 5);
-        
+
         $res = $card->getValue();
         $exp = 5;
         $this->assertEquals($exp, $res);
@@ -183,7 +183,8 @@ class CardTest extends TestCase
 
         $res = $card->getValue();
         $exp = $value;
-        $this->assertEquals($exp, $res);;
+        $this->assertEquals($exp, $res);
+        ;
     }
 
     /**
@@ -198,7 +199,8 @@ class CardTest extends TestCase
 
         $res = $card->getCssColor();
         $exp = 'hearts';
-        $this->assertEquals($exp, $res);;
+        $this->assertEquals($exp, $res);
+        ;
     }
 
     /**
@@ -213,7 +215,8 @@ class CardTest extends TestCase
 
         $res = $card->getCssColor();
         $exp = 'joker';
-        $this->assertEquals($exp, $res);;
+        $this->assertEquals($exp, $res);
+        ;
     }
 
     /**
@@ -236,7 +239,8 @@ class CardTest extends TestCase
             'isJoker' => false
         ];
 
-        $this->assertEquals($exp, $res);;
+        $this->assertEquals($exp, $res);
+        ;
     }
 
 }

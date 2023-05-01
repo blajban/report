@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 interface CardGameInterface
 {
-
     /**
      * @return array<Card>
      */

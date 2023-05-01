@@ -56,7 +56,7 @@ class DeckTest extends TestCase
         $this->assertEquals($exp1, $res[1]->getValue());
         $this->assertEquals($exp2, $res[2]->getValue());
         $this->assertEquals($exp3, $res[3]->getValue());
-        
+
     }
 
     /**

@@ -88,7 +88,7 @@ class GameTest extends TestCase
         $game->shuffle();
 
         $newDeck = $game->getDeck();
-        
+
         $this->assertNotEquals($oldDeck, $newDeck);
     }
 
