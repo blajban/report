@@ -135,7 +135,7 @@ class DeckTest extends TestCase
     }
 
     /**
-     * Verify drawCard returns a Card and removes a card from deck.
+     * Verify that the deck shuffles correctly.
      */
     public function testShuffle()
     {
