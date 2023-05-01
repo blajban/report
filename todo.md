@@ -25,17 +25,17 @@
     [OK] CardGameInterface
     [OK] Game
 
-* Generera dokumentationen till katalogen docs/api med kommandot composer phpdoc.
+[OK] Generera dokumentationen till katalogen docs/api med kommandot composer phpdoc.
 
 ## Utvecklingsmiljö
 
-* Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
+[OK] Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
 
-* Kolla din kod hur den matchar dina linters genom att köra composer lint.
+[OK] Kolla din kod hur den matchar dina linters genom att köra composer lint.
 
-* Dubbelkolla att dina testfall passerar med composer phpunit.
+[OK] Dubbelkolla att dina testfall passerar med composer phpunit.
 
-* Generera documentation av din kod med composer phpdoc.
+[OK] Generera documentation av din kod med composer phpdoc.
 
 ## Publicera
 
