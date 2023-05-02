@@ -11,7 +11,9 @@ Krav
 
 * Fixa innehåll för landningssidan
 
-* Skapa en databas som innehåller en tabell med böcker. Lägg in minst tre böcker (riktiga eller påhittade) med deras 
+[OK] Skapa en databas som innehåller en tabell med böcker. 
+
+* Lägg in minst tre böcker (riktiga eller påhittade) med deras 
     * titel, 
     * ISBN och 
     * författare samt en 
@@ -22,6 +24,8 @@ Krav
 * [READ ONE] Skapa en webbsida där man kan se detaljer om en viss bok.
 
 * [READ MANY] Skapa en webbsida där man kan se samtliga böcker i en HTML tabell (eller liknande). Man skall kunna klicka på en bok och komma vidare till en sida som enbart visar detaljer om den boken.
+
+* Fixa tabell-css
 
 * [UPDATE] Man skall kunna uppdatera detaljer om en bok. Det skall finnas en sida som visar bokens detaljer i ett formulär och man skall kunna uppdatera bokens detaljer och spara dem.
 

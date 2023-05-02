@@ -13,6 +13,41 @@
             <h2>{{ heading }}</h2>
             {{ content|raw }}
 
+            {{ dump(books) }}
+            <form method="post" action="">
+                <p>
+                    <input type="submit" name="add" value="Lägg till ny bok"
+                        onClick="this.form.action='{{ path('library') }}';"
+                    >
+                </p>
+            
+
+
+            <table>
+                <tr>
+                  <th>Titel</th>
+                  <th>Författare</th>
+                  <th>ISBN</th>
+                  <th>Visa/uppdatera</th>
+                  <th>Ta bort</th>
+                </tr>
+                {% for book in books %}
+                    <tr>
+                    <td>{{ book.getTitle() }}</td>
+                    <td>{{ book.getAuthor() }}</td>
+                    <td>{{ book.getIsbn() }}</td>
+                    <td><input type="submit" name="view_edit" value="Visa/uppdatera"
+                        onClick="this.form.action='{{ path('library') }}';"
+                    ></td>
+                    <td><input type="submit" name="view_edit" value="&#10006"
+                        onClick="this.form.action='{{ path('library') }}';"
+                    ></td>
+                    </tr>
+                {% endfor %}
+
+              </table> 
+
+            </form>
             
         </div>
     </div>
