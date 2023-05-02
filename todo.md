@@ -11,7 +11,11 @@ Krav
 
 * Fixa innehåll för landningssidan
 
-* Skapa en databas som innehåller en tabell med böcker. Lägg in minst tre böcker (riktiga eller påhittade) med deras titel, ISBN och författare samt en bild som representerar boken.
+* Skapa en databas som innehåller en tabell med böcker. Lägg in minst tre böcker (riktiga eller påhittade) med deras 
+    * titel, 
+    * ISBN och 
+    * författare samt en 
+    * bild som representerar boken.
 
 * [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
 
