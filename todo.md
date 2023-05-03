@@ -19,6 +19,8 @@ Krav
     * författare samt en 
     * bild som representerar boken.
 
+* Kolla hur man kan ladda upp en bild i databasen
+
 * [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
 
 * [READ ONE] Skapa en webbsida där man kan se detaljer om en viss bok.

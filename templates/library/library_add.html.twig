@@ -1,0 +1,33 @@
+{# templates/game_start.html.twig #}
+
+{% include 'incl/header.html.twig' %}
+
+
+<body>
+    {% include 'incl/nav.html.twig' %}
+
+
+    <div class="content-area">
+        <div class="content">
+            {% include 'incl/flash.html.twig' %}
+            <h2>{{ heading }}</h2>
+            {{ content|raw }}
+
+            <form method="post" action="">
+                <input type="input" name="title" placeholder="Titel (*)" required>
+                <input type="input" name="author" placeholder="Författare">
+                <input type="input" name="isbn" placeholder="ISBN (*)" required>
+                <input type="input" name="picture" placeholder="Bild">
+                <input type="submit" name="add" value="Lägg till bok"
+                    onClick="this.form.action='{{ path('library_add_callback') }}';"
+                >
+            </form>
+        </div>
+    </div>
+
+    {% include 'incl/footer.html.twig' %}
+</body>
+
+</html>
+
+

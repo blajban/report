@@ -13,11 +13,16 @@
             <h2>{{ heading }}</h2>
             {{ content|raw }}
 
-            {{ dump(books) }}
             <form method="post" action="">
                 <p>
                     <input type="submit" name="add" value="Lägg till ny bok"
-                        onClick="this.form.action='{{ path('library') }}';"
+                        onClick="this.form.action='{{ path('library_add') }}';this.form.method='get';"
+                    >
+                    <input type="submit" name="remove" value="Visa/redigera markerade"
+                        onClick="this.form.action='{{ path('library_edit') }}';this.form.method='get';"
+                    >
+                    <input type="submit" name="remove" value="Ta bort markerade"
+                        onClick="this.form.action='{{ path('library_confirm_callback') }}';"
                     >
                 </p>
             
@@ -28,20 +33,14 @@
                   <th>Titel</th>
                   <th>Författare</th>
                   <th>ISBN</th>
-                  <th>Visa/uppdatera</th>
-                  <th>Ta bort</th>
+                  <th>Markera</th>
                 </tr>
                 {% for book in books %}
                     <tr>
                     <td>{{ book.getTitle() }}</td>
                     <td>{{ book.getAuthor() }}</td>
                     <td>{{ book.getIsbn() }}</td>
-                    <td><input type="submit" name="view_edit" value="Visa/uppdatera"
-                        onClick="this.form.action='{{ path('library') }}';"
-                    ></td>
-                    <td><input type="submit" name="view_edit" value="&#10006"
-                        onClick="this.form.action='{{ path('library') }}';"
-                    ></td>
+                    <td><input type="checkbox" id="{{ book.getId() }}" name="book_ids[]" value="{{ book.getId() }}"></td>
                     </tr>
                 {% endfor %}
 
