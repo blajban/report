@@ -22,18 +22,29 @@
             </form>
 
             {% for book in books %}
-                <form method="post" action="">
+                <form method="post" action="" enctype="multipart/form-data">
                     {% for b in books %}
                         <input type="hidden" name="selected_books[]" value="{{ b.getId() }}">
                     {% endfor %}
-                    <input type="hidden" name="book_to_update" value="{{ book.getId() }}">
-                    <input type="input" name="title" value="{{ book.getTitle() }}" required>
-                    <input type="input" name="author" value="{{ book.getAuthor() }}">
-                    <input type="input" name="isbn" value="{{ book.getIsbn() }}" required>
-                    <input type="input" name="picture" value="Bild">
-                    <input type="submit" name="edit" value="Spara ändringar"
-                        onClick="this.form.action='{{ path('library_edit_callback') }}';"
-                    >
+                    <p>
+                        <input type="hidden" name="book_to_update" value="{{ book.getId() }}">
+                        <input type="input" name="title" value="{{ book.getTitle() }}" required>
+                        <input type="input" name="author" value="{{ book.getAuthor() }}">
+                        <input type="input" name="isbn" value="{{ book.getIsbn() }}" required>
+                    </p>
+                    <p>
+                        {% if book.getPicture() %}
+                            <img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="100">
+                            <label>Ändra bild:
+                                <input type="file" name="picture" accept="image/*">
+                            </label>
+                        {% endif %}
+                    </p>
+                    <p>
+                        <input type="submit" name="edit" value="Spara ändringar"
+                            onClick="this.form.action='{{ path('library_edit_callback') }}';"
+                        >
+                    </p>
                 </form>
             {% endfor %}
 

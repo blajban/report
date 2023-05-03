@@ -11,6 +11,10 @@ Krav
 
 * Fixa innehåll för landningssidan
 
+* Refaktorera till modellklass
+
+* Skriv tester för modellklass
+
 [OK] Skapa en databas som innehåller en tabell med böcker. 
 
 * Lägg in minst tre böcker (riktiga eller påhittade) med deras 
@@ -19,11 +23,10 @@ Krav
     * författare samt en 
     * bild som representerar boken.
 
-* Kolla hur man kan ladda upp en bild i databasen
+[OK] Kolla hur man kan ladda upp en bild i databasen
 
-* [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
-
-* Hur göra med bilden?
+[OK] [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
+* Felhantering, validering av formulär
 
 * [READ ONE] Skapa en webbsida där man kan se detaljer om en viss bok.
 * Skapa en "presentationssida"?
@@ -36,9 +39,9 @@ Krav
 
 * Hantera att man inte kan uppdatera flera på en gång. Antingen alltid uppdatera alla? Eller gråa ut dom man inte kan uppdatera?
 
-* [DELETE] Man skall kunna radera en bok.
+[OK] [DELETE] Man skall kunna radera en bok.
 
-* Använd GET och POST. Kom ihåg att alltid använda POST när du gör en uppdatering i databasen.
+[OK] Använd GET och POST. Kom ihåg att alltid använda POST när du gör en uppdatering i databasen.
 
 * Inkludera möjligheten att återställa databasen till sitt ursprungliga innehåll via routen library/reset.
 

@@ -22,10 +22,30 @@ class LibraryController extends AbstractController
         $this->utilityService = $utilityService;
     }
 
+    #[Route('/book_picture/{id}', name: 'book_picture')]
+    public function bookPicture(int $id, BookRepository $bookRepository): Response
+    {
+        $book = $bookRepository->find($id);
+
+        if (!$book || !$book->getPicture()) {
+            throw $this->createNotFoundException('No book picture found for id ' . $id);
+        }
+
+        $pictureData = stream_get_contents($book->getPicture());
+
+        $response = new Response($pictureData);
+        $response->headers->set('Content-Type', 'image');
+
+        return $response;
+    }
+
     #[Route("/library", name: "library", methods: ['GET'])]
     public function libraryLanding(BookRepository $bookRepository): Response
     {
         $books = $bookRepository->findAll();
+
+        $encodedBookPictures = [];
+
         return $this->render('library/library_start.html.twig', [
             'title' => "Bibliotek",
             'heading' => "Bibliotek",
@@ -47,7 +67,6 @@ class LibraryController extends AbstractController
     #[Route('/library/add', name: 'library_add_callback', methods: ['POST'])]
     public function addBookCallback(BookRepository $bookRepository, Request $request): Response 
     {
-        // ADD SUPPORT FOR PICTURE
         // ADD FORM INPUT VALIDATION
         // ADD EXCEPTION HANDLING
 
@@ -55,10 +74,22 @@ class LibraryController extends AbstractController
         $author = $request->request->get('author');
         $isbn = $request->request->get('isbn');
 
+        /** @var UploadedFile $pictureFile */
+        $pictureFile = $request->files->get('picture');
+
+        $pictureData = null;
+        if ($pictureFile) {
+            $pictureData = file_get_contents($pictureFile->getPathname());
+        }
+
         $book = new Book();
         $book->setTitle($title);
         $book->setAuthor($author);
         $book->setIsbn($isbn);
+
+        if ($pictureData) {
+            $book->setPicture($pictureData);
+        }
 
         $bookRepository->save($book, true);
 
@@ -104,6 +135,14 @@ class LibraryController extends AbstractController
         $isbn = $request->request->get('isbn');
         $bookId = $request->request->get('book_to_update');
 
+        /** @var UploadedFile $pictureFile */
+        $pictureFile = $request->files->get('picture');
+
+        $pictureData = null;
+        if ($pictureFile) {
+            $pictureData = file_get_contents($pictureFile->getPathname());
+        }
+
         $book = $bookRepository->find($bookId);
 
         if (!$book) {
@@ -115,6 +154,11 @@ class LibraryController extends AbstractController
         $book->setTitle($title);
         $book->setAuthor($author);
         $book->setIsbn($isbn);
+
+        if ($pictureData) {
+            $book->setPicture($pictureData);
+        }
+
         $bookRepository->save($book, true);
 
         $submittedData = $request->request->all();

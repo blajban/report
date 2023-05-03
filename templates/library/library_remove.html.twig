@@ -13,8 +13,6 @@
             <h2>{{ heading }}</h2>
             {{ content|raw }}
 
-            {{ dump(books) }}
-
             <form method="post" action="">
                 {% for book in books %}
                         <input type="hidden" name="book_ids[]" value="{{ book.getId() }}">

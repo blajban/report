@@ -30,17 +30,23 @@
 
             <table>
                 <tr>
-                  <th>Titel</th>
-                  <th>Författare</th>
-                  <th>ISBN</th>
-                  <th>Markera</th>
+                    <th>Bild</th>
+                    <th>Titel</th>
+                    <th>Författare</th>
+                    <th>ISBN</th>
+                    <th>Markera</th>
                 </tr>
                 {% for book in books %}
                     <tr>
-                    <td>{{ book.getTitle() }}</td>
-                    <td>{{ book.getAuthor() }}</td>
-                    <td>{{ book.getIsbn() }}</td>
-                    <td><input type="checkbox" id="{{ book.getId() }}" name="book_ids[]" value="{{ book.getId() }}"></td>
+                        {% if book.getPicture() %}
+                            <td><img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="100"></td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        <td>{{ book.getTitle() }}</td>
+                        <td>{{ book.getAuthor() }}</td>
+                        <td>{{ book.getIsbn() }}</td>
+                        <td><input type="checkbox" id="{{ book.getId() }}" name="book_ids[]" value="{{ book.getId() }}"></td>
                     </tr>
                 {% endfor %}
 
