@@ -25,6 +25,9 @@ class LibraryController extends AbstractController
     #[Route('/book_picture/{id}', name: 'book_picture')]
     public function bookPicture(int $id, BookRepository $bookRepository): Response
     {
+        // $library = new Library($bookRepository)
+
+        // $library->getPictureData($id);
         $book = $bookRepository->find($id);
 
         if (!$book || !$book->getPicture()) {
@@ -43,8 +46,6 @@ class LibraryController extends AbstractController
     public function libraryLanding(BookRepository $bookRepository): Response
     {
         $books = $bookRepository->findAll();
-
-        $encodedBookPictures = [];
 
         return $this->render('library/library_start.html.twig', [
             'title' => "Bibliotek",
@@ -81,6 +82,15 @@ class LibraryController extends AbstractController
         if ($pictureFile) {
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
+
+        //$library = new Library($bookRepository);
+        
+        /*$library->newBook([
+            'title' => $title,
+            'author' => $author,
+            'isbn' => $isbn,
+            'picture' => $pictureData
+        ]);*/
 
         $book = new Book();
         $book->setTitle($title);
@@ -143,6 +153,15 @@ class LibraryController extends AbstractController
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
 
+        //$library = new Library($bookRepository);
+        
+        /*$library->updateBook($id, [
+            'title' => $title,
+            'author' => $author,
+            'isbn' => $isbn,
+            'picture' => $pictureData
+        ]);*/
+
         $book = $bookRepository->find($bookId);
 
         if (!$book) {
@@ -194,6 +213,9 @@ class LibraryController extends AbstractController
         $submittedData = $request->request->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
+        //$library = new Library($bookRepository);
+
+        //$library->removeBooks($ids);
         foreach ($bookIds as $bookId) {
             $book = $bookRepository->find($bookId);
             $bookRepository->remove($book, true);
@@ -202,54 +224,4 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('library');
     }
 
-
-
-    #[Route('/library/show', name: 'library_show_all')]
-    public function showAllBooks(BookRepository $bookRepository): Response 
-    {
-        $books = $bookRepository->findAll();
-
-        return $this->json($books);
-    }
-
-    #[Route('/library/show/{id}', name: 'library_show_by_id')]
-    public function showBookById(BookRepository $bookRepository, int $id): Response
-    {
-        $book = $bookRepository->find($id);
-
-        return $this->json($book);
-    }
-
-    #[Route('/library/delete/{id}', name: 'library_delete_by_id')]
-    public function deleteBookById(BookRepository $bookRepository, int $id): Response
-    {
-        $book = $bookRepository->find($id);
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
-        }
-
-        $bookRepository->remove($book, true);
-
-        return $this->redirectToRoute('library_show_all');
-    }
-
-    #[Route('/library/update/{id}/{title}', name: 'library_update')]
-    public function updateBook(BookRepository $bookRepository, int $id, string $title): Response
-    {
-        $book = $bookRepository->find($id);
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
-        }
-
-        $book->setTitle($title);
-        $bookRepository->save($book, true);
-
-        return $this->redirectToRoute('library_show_all');
-    }
 }
