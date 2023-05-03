@@ -10,6 +10,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\BookRepository;
 
+use App\Library\Library;
+
 
 use App\Services\UtilityService;
 
@@ -68,12 +70,7 @@ class LibraryController extends AbstractController
     #[Route('/library/add', name: 'library_add_callback', methods: ['POST'])]
     public function addBookCallback(BookRepository $bookRepository, Request $request): Response 
     {
-        // ADD FORM INPUT VALIDATION
-        // ADD EXCEPTION HANDLING
-
-        $title = $request->request->get('title');
-        $author = $request->request->get('author');
-        $isbn = $request->request->get('isbn');
+        // ADD FORM INPUT VALIDATION FOR ISBN
 
         /** @var UploadedFile $pictureFile */
         $pictureFile = $request->files->get('picture');
@@ -83,25 +80,14 @@ class LibraryController extends AbstractController
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
 
-        //$library = new Library($bookRepository);
+        $library = new Library($bookRepository);
         
-        /*$library->newBook([
-            'title' => $title,
-            'author' => $author,
-            'isbn' => $isbn,
+        $library->add([
+            'title' => $request->request->get('title'),
+            'author' => $request->request->get('author'),
+            'isbn' => $request->request->get('isbn'),
             'picture' => $pictureData
-        ]);*/
-
-        $book = new Book();
-        $book->setTitle($title);
-        $book->setAuthor($author);
-        $book->setIsbn($isbn);
-
-        if ($pictureData) {
-            $book->setPicture($pictureData);
-        }
-
-        $bookRepository->save($book, true);
+        ]);
 
         return $this->redirectToRoute('library');
     }
@@ -133,16 +119,11 @@ class LibraryController extends AbstractController
     #[Route('/library/edit', name: 'library_edit_callback', methods: ['POST'])]
     public function editBooksCallback(BookRepository $bookRepository, Request $request): Response 
     {
-        // MAKE CHANGES IN DB
-        // ADD SUPPORT FOR PICTURE
-        // ADD FORM INPUT VALIDATION
+        // ADD FORM INPUT VALIDATION FOR ISBN
         // ADD EXCEPTION HANDLING
         // RETURN TO SAME ROUTE?
         // ADD PITVUTE
 
-        $title = $request->request->get('title');
-        $author = $request->request->get('author');
-        $isbn = $request->request->get('isbn');
         $bookId = $request->request->get('book_to_update');
 
         /** @var UploadedFile $pictureFile */
@@ -153,32 +134,14 @@ class LibraryController extends AbstractController
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
 
-        //$library = new Library($bookRepository);
+        $library = new Library($bookRepository);
         
-        /*$library->updateBook($id, [
-            'title' => $title,
-            'author' => $author,
-            'isbn' => $isbn,
+        $library->update($bookId, [
+            'title' => $request->request->get('title'),
+            'author' => $request->request->get('author'),
+            'isbn' => $request->request->get('isbn'),
             'picture' => $pictureData
-        ]);*/
-
-        $book = $bookRepository->find($bookId);
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$bookId
-            );
-        }
-
-        $book->setTitle($title);
-        $book->setAuthor($author);
-        $book->setIsbn($isbn);
-
-        if ($pictureData) {
-            $book->setPicture($pictureData);
-        }
-
-        $bookRepository->save($book, true);
+        ]);
 
         $submittedData = $request->request->all();
         $selectedBooks = isset($submittedData['selected_books']) ? $submittedData['selected_books'] : [];
@@ -213,13 +176,10 @@ class LibraryController extends AbstractController
         $submittedData = $request->request->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
-        //$library = new Library($bookRepository);
+        $library = new Library($bookRepository);
 
-        //$library->removeBooks($ids);
-        foreach ($bookIds as $bookId) {
-            $book = $bookRepository->find($bookId);
-            $bookRepository->remove($book, true);
-        }
+        $library->remove($bookIds);
+        
 
         return $this->redirectToRoute('library');
     }
