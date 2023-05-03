@@ -18,11 +18,11 @@
                     <input type="submit" name="add" value="Lägg till ny bok"
                         onClick="this.form.action='{{ path('library_add') }}';this.form.method='get';"
                     >
-                    <input type="submit" name="remove" value="Visa/redigera markerade"
+                    <input type="submit" name="edit" value="Visa/redigera markerade"
                         onClick="this.form.action='{{ path('library_edit') }}';this.form.method='get';"
                     >
                     <input type="submit" name="remove" value="Ta bort markerade"
-                        onClick="this.form.action='{{ path('library_confirm_callback') }}';"
+                        onClick="this.form.action='{{ path('library_remove') }}';this.form.method='get';"
                     >
                 </p>
             

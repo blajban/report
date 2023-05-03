@@ -23,13 +23,18 @@ Krav
 
 * [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
 
+* Hur göra med bilden?
+
 * [READ ONE] Skapa en webbsida där man kan se detaljer om en viss bok.
+* Skapa en "presentationssida"?
 
 * [READ MANY] Skapa en webbsida där man kan se samtliga böcker i en HTML tabell (eller liknande). Man skall kunna klicka på en bok och komma vidare till en sida som enbart visar detaljer om den boken.
 
 * Fixa tabell-css
 
 * [UPDATE] Man skall kunna uppdatera detaljer om en bok. Det skall finnas en sida som visar bokens detaljer i ett formulär och man skall kunna uppdatera bokens detaljer och spara dem.
+
+* Hantera att man inte kan uppdatera flera på en gång. Antingen alltid uppdatera alla? Eller gråa ut dom man inte kan uppdatera?
 
 * [DELETE] Man skall kunna radera en bok.
 

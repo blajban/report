@@ -65,24 +65,18 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('library');
     }
 
-    #[Route("/library/edit/handle_checkboxes", name: "library_edit_handle_checkboxes", methods: ['POST'])]
-    public function editBooksHandleCheckboxes(BookRepository $bookRepository, Request $request): Response
-    {
-        $submittedData = $request->request->all();
-        $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
-
-        return $this->redirectToRoute('library_edit', ['book_ids' => $bookIds]);
-    }
-
     #[Route("/library/edit", name: "library_edit", methods: ['GET'])]
     public function editBooks(BookRepository $bookRepository, Request $request): Response
     {
-        $submittedData = $request->request->all();
+        // ADD SUPPORT FOR PICTURE
+        // ADD FORM INPUT VALIDATION
+        // ADD EXCEPTION HANDLING
+
+        $submittedData = $request->query->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
         $books = [];
 
-        // Handle the checked checkboxes here
         foreach ($bookIds as $bookId) {
             $books[] = $bookRepository->find($bookId);
         }
@@ -98,28 +92,69 @@ class LibraryController extends AbstractController
     #[Route('/library/edit', name: 'library_edit_callback', methods: ['POST'])]
     public function editBooksCallback(BookRepository $bookRepository, Request $request): Response 
     {
-        return $this->redirectToRoute('library');
+        // MAKE CHANGES IN DB
+        // ADD SUPPORT FOR PICTURE
+        // ADD FORM INPUT VALIDATION
+        // ADD EXCEPTION HANDLING
+        // RETURN TO SAME ROUTE?
+        // ADD PITVUTE
+
+        $title = $request->request->get('title');
+        $author = $request->request->get('author');
+        $isbn = $request->request->get('isbn');
+        $bookId = $request->request->get('book_to_update');
+
+        $book = $bookRepository->find($bookId);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$bookId
+            );
+        }
+
+        $book->setTitle($title);
+        $book->setAuthor($author);
+        $book->setIsbn($isbn);
+        $bookRepository->save($book, true);
+
+        $submittedData = $request->request->all();
+        $selectedBooks = isset($submittedData['selected_books']) ? $submittedData['selected_books'] : [];
+
+
+        return $this->redirectToRoute('library_edit', ['book_ids' => $selectedBooks]);
     }
 
     #[Route("/library/remove", name: "library_remove", methods: ['GET'])]
-    public function removeBook(): Response
+    public function removeBook(BookRepository $bookRepository, Request $request): Response
     {
+        $submittedData = $request->query->all();
+        $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
+
+        $books = [];
+
+        foreach ($bookIds as $bookId) {
+            $books[] = $bookRepository->find($bookId);
+        }
+
         return $this->render('library/library_remove.html.twig', [
             'title' => "Vill du verkligen ta bort boken?",
             'heading' => "Vill du verkligen ta bort boken?",
-            'content' => $this->utilityService->parseMarkdown('library.md')
+            'content' => $this->utilityService->parseMarkdown('library.md'),
+            'books' => $books
         ]);
     }
 
-    #[Route('/library/confirm', name: 'library_confirm_callback', methods: ['POST'])]
-    public function confirmRemoveBookCallback(BookRepository $bookRepository, Request $request): Response 
-    {
-        return $this->redirectToRoute('library_remove');
-    }
-
-    #[Route('/library/edit', name: 'library_remove_callback', methods: ['POST'])]
+    #[Route('/library/remove', name: 'library_remove_callback', methods: ['POST'])]
     public function removeBookCallback(BookRepository $bookRepository, Request $request): Response 
     {
+        $submittedData = $request->request->all();
+        $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
+
+        foreach ($bookIds as $bookId) {
+            $book = $bookRepository->find($bookId);
+            $bookRepository->remove($book, true);
+        }
+
         return $this->redirectToRoute('library');
     }
 

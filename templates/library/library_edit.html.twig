@@ -21,15 +21,23 @@
                 >
             </form>
 
-            <form method="post" action="">
-                <input type="input" name="title" placeholder="Titel (*)" required>
-                <input type="input" name="author" placeholder="Författare">
-                <input type="input" name="isbn" placeholder="ISBN (*)" required>
-                <input type="input" name="picture" placeholder="Bild">
-                <input type="submit" name="edit" value="Spara ändringar"
-                    onClick="this.form.action='{{ path('library_edit_callback') }}';"
-                >
-            </form>
+            {% for book in books %}
+                <form method="post" action="">
+                    {% for b in books %}
+                        <input type="hidden" name="selected_books[]" value="{{ b.getId() }}">
+                    {% endfor %}
+                    <input type="hidden" name="book_to_update" value="{{ book.getId() }}">
+                    <input type="input" name="title" value="{{ book.getTitle() }}" required>
+                    <input type="input" name="author" value="{{ book.getAuthor() }}">
+                    <input type="input" name="isbn" value="{{ book.getIsbn() }}" required>
+                    <input type="input" name="picture" value="Bild">
+                    <input type="submit" name="edit" value="Spara ändringar"
+                        onClick="this.form.action='{{ path('library_edit_callback') }}';"
+                    >
+                </form>
+            {% endfor %}
+
+            
         </div>
     </div>
 
