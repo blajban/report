@@ -28,27 +28,31 @@
             
 
 
-            <table>
-                <tr>
-                    <th>Bild</th>
-                    <th>Titel</th>
-                    <th>Författare</th>
-                    <th>ISBN</th>
-                    <th>Markera</th>
-                </tr>
-                {% for book in books %}
+            <table class="library-table">
+                <thead>
                     <tr>
-                        {% if book.getPicture() %}
-                            <td><img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="100"></td>
-                        {% else %}
-                            <td></td>
-                        {% endif %}
-                        <td>{{ book.getTitle() }}</td>
-                        <td>{{ book.getAuthor() }}</td>
-                        <td>{{ book.getIsbn() }}</td>
-                        <td><input type="checkbox" id="{{ book.getId() }}" name="book_ids[]" value="{{ book.getId() }}"></td>
+                        <th>Bild</th>
+                        <th>Titel</th>
+                        <th>Författare</th>
+                        <th>ISBN</th>
+                        <th>Markera</th>
                     </tr>
-                {% endfor %}
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            {% if book.getPicture() %}
+                                <td><img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="100"></td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            <td>{{ book.getTitle() }}</td>
+                            <td>{{ book.getAuthor() }}</td>
+                            <td>{{ book.getIsbn() }}</td>
+                            <td><input type="checkbox" id="{{ book.getId() }}" name="book_ids[]" value="{{ book.getId() }}"></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
 
               </table> 
 

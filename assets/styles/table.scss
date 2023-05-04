@@ -1,0 +1,45 @@
+.library-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.library-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.library-table th,
+.library-table td {
+    padding: 12px 15px;
+}
+
+.library-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.library-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.library-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+
+
+
