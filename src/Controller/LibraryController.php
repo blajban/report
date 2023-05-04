@@ -6,14 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Book;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\BookRepository;
 
-//use App\Library\Library;
-
-
 use App\Services\UtilityService;
+use Exception;
 
 class LibraryController extends AbstractController
 {
@@ -30,7 +27,7 @@ class LibraryController extends AbstractController
         $book = $bookRepository->find($id);
 
         if (!$book || !$book->getPicture()) {
-            throw $this->createNotFoundException('No book picture found for id ' . $id);
+            throw new Exception('No book picture found for id ' . $id);
         }
 
         return $this->utilityService->imageResponse($book->getPicture());
@@ -51,8 +48,11 @@ class LibraryController extends AbstractController
     #[Route("/library/show/{id}", name: "library_show", methods: ['GET'])]
     public function libraryShowBook(BookRepository $bookRepository, int $id): Response
     {
-        // Add exception handling
         $book = $bookRepository->find($id);
+
+        if (!$book) {
+            throw new Exception('No book found for id ' . $id);
+        }
 
         return $this->render('library/library_show.html.twig', [
             'title' => $book->getTitle(),
@@ -73,8 +73,6 @@ class LibraryController extends AbstractController
     #[Route('/library/add', name: 'library_add_callback', methods: ['POST'])]
     public function addBookCallback(BookRepository $bookRepository, Request $request): Response 
     {
-        // ADD FORM INPUT VALIDATION FOR ISBN
-
         /** @var UploadedFile $pictureFile */
         $pictureFile = $request->files->get('picture');
 
@@ -92,9 +90,6 @@ class LibraryController extends AbstractController
     #[Route("/library/edit", name: "library_edit", methods: ['GET'])]
     public function editBooks(BookRepository $bookRepository, Request $request): Response
     {
-        // ADD FORM INPUT VALIDATION
-        // ADD EXCEPTION HANDLING
-
         $submittedData = $request->query->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
@@ -155,5 +150,24 @@ class LibraryController extends AbstractController
 
         return $this->redirectToRoute('library');
     }
+
+    #[Route('/library/reset', name: 'library_reset', methods: ['GET'])]
+    public function resetDatabase(BookRepository $bookRepository): Response 
+    {
+        return $this->redirectToRoute('library');
+    }
+
+    #[Route("/api/library/books", methods: ['GET'])]
+    public function allBooksJson(): Response
+    {
+        return $this->utilityService->jsonResponse("/api/library/books");
+    }
+
+    #[Route("/api/library/book/{isbn}", methods: ['GET'])]
+    public function bookByIsbnJson(): Response
+    {
+        return $this->utilityService->jsonResponse("/api/library/book/{isbn}");
+    }
+
 
 }
