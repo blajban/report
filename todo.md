@@ -23,6 +23,8 @@ Krav
     * författare samt en 
     * bild som representerar boken.
 
+* Sätt bild till null om inte värde hänger med?
+
 [OK] Kolla hur man kan ladda upp en bild i databasen
 
 [OK] [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 
 /**
  * @extends ServiceEntityRepository<Book>
@@ -19,6 +20,59 @@ class BookRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Book::class);
+    }
+
+    private function getMethod($type, $attribute, $object)
+    {
+        $method = $type . ucfirst($attribute);
+        if (method_exists($object, $method)) {
+            return $method;
+        }
+
+        throw new Exception('Method does not exist');
+    }
+
+    private function process($obj, $arr)
+    {
+        foreach ($arr as $key => $value) {
+            if ($value) {
+                $method = $this->getMethod('set', $key, $obj);
+                $obj->$method($value);
+            }
+        }
+
+        $this->save($obj, true);
+    }
+
+    public function add($book, $arr)
+    {
+        $this->process($book, $arr);
+    }
+
+    public function update($id, $arr)
+    {
+        $book = $this->find($id);
+
+        if (!$book) {
+            throw new Exception('Found no book with '.$id);
+        }
+
+        $this->process($book, $arr);
+    }
+    
+    public function delete($ids)
+    {
+        foreach ($ids as $id) {
+            $book = $this->find($id);
+
+            if (!$book) {
+                throw new Exception('Found no book with '.$id);
+            }
+
+            $this->getEntityManager()->remove($book);
+        }
+
+        $this->getEntityManager()->flush();
     }
 
     public function save(Book $entity, bool $flush = false): void

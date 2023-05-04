@@ -10,7 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\BookRepository;
 
-use App\Library\Library;
+//use App\Library\Library;
 
 
 use App\Services\UtilityService;
@@ -80,9 +80,10 @@ class LibraryController extends AbstractController
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
 
-        $library = new Library($bookRepository);
+        //$library = new Library();
         
-        $library->add([
+        $book = new Book();
+        $bookRepository->add($book, [
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
@@ -134,9 +135,9 @@ class LibraryController extends AbstractController
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
 
-        $library = new Library($bookRepository);
+        //$library = new Library();
         
-        $library->update($bookId, [
+        $bookRepository->update($bookId, [
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
@@ -176,9 +177,9 @@ class LibraryController extends AbstractController
         $submittedData = $request->request->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
-        $library = new Library($bookRepository);
+        //$library = new Library();
 
-        $library->remove($bookIds);
+        $bookRepository->delete($bookIds);
         
 
         return $this->redirectToRoute('library');
