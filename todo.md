@@ -20,7 +20,7 @@ Krav
     [OK] bild som representerar boken.
 
 
-* Hantera bilder i utilityservice?
+
 * Hantera att man inte kan uppdatera flera på en gång. Antingen alltid uppdatera alla? Eller gråa ut dom man inte kan uppdatera?
 * Lägg till en flagga som säger att uppdateringarna sparats när man klickat på spara uppdateringar
 

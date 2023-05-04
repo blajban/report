@@ -33,12 +33,7 @@ class LibraryController extends AbstractController
             throw $this->createNotFoundException('No book picture found for id ' . $id);
         }
 
-        $pictureData = stream_get_contents($book->getPicture());
-
-        $response = new Response($pictureData);
-        $response->headers->set('Content-Type', 'image');
-
-        return $response;
+        return $this->utilityService->imageResponse($book->getPicture());
     }
 
     #[Route("/library", name: "library", methods: ['GET'])]
@@ -83,17 +78,12 @@ class LibraryController extends AbstractController
         /** @var UploadedFile $pictureFile */
         $pictureFile = $request->files->get('picture');
 
-        $pictureData = null;
-        if ($pictureFile) {
-            $pictureData = file_get_contents($pictureFile->getPathname());
-        }
-
         $book = new Book();
         $bookRepository->add($book, [
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
-            'picture' => $pictureData
+            'picture' => $this->utilityService->generatePictureData($pictureFile)
         ]);
 
         return $this->redirectToRoute('library');
@@ -125,16 +115,11 @@ class LibraryController extends AbstractController
         /** @var UploadedFile $pictureFile */
         $pictureFile = $request->files->get('picture');
 
-        $pictureData = null;
-        if ($pictureFile) {
-            $pictureData = file_get_contents($pictureFile->getPathname());
-        }
-        
         $bookRepository->update($bookId, [
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
-            'picture' => $pictureData
+            'picture' => $this->utilityService->generatePictureData($pictureFile)
         ]);
 
         $submittedData = $request->request->all();
