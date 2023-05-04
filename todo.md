@@ -19,35 +19,38 @@ Krav
     [OK] författare samt en 
     [OK] bild som representerar boken.
 
-* Kolla varför det inte finns någon välj bild-form om den inte har bild från början
 
 * Lägg till möjlighet att ta bort bild
+* Felhantering, validering av formulär
+* Fortsätta jobba med style/innehåll
+* Hantera bilder i utilityservice?
+* Hantera att man inte kan uppdatera flera på en gång. Antingen alltid uppdatera alla? Eller gråa ut dom man inte kan uppdatera?
+* Lägg till en flagga som säger att uppdateringarna sparats när man klickat på spara uppdateringar
+
 
 [OK] Kolla hur man kan ladda upp en bild i databasen
 
 [OK] [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
-* Felhantering, validering av formulär
 
-* [READ ONE] Skapa en webbsida där man kan se detaljer om en viss bok.
-* Skapa en "presentationssida"?
+[OK] [READ ONE] Skapa en webbsida där man kan se detaljer om en viss bok.
 
-* [READ MANY] Skapa en webbsida där man kan se samtliga böcker i en HTML tabell (eller liknande). Man skall kunna klicka på en bok och komma vidare till en sida som enbart visar detaljer om den boken.
 
-* Fixa tabell-css
+[OK] [READ MANY] Skapa en webbsida där man kan se samtliga böcker i en HTML tabell (eller liknande).
 
-* [UPDATE] Man skall kunna uppdatera detaljer om en bok. Det skall finnas en sida som visar bokens detaljer i ett formulär och man skall kunna uppdatera bokens detaljer och spara dem.
+[OK] Man skall kunna klicka på en bok och komma vidare till en sida som enbart visar detaljer om den boken.
 
-* Hantera att man inte kan uppdatera flera på en gång. Antingen alltid uppdatera alla? Eller gråa ut dom man inte kan uppdatera?
+
+
+[OK] [UPDATE] Man skall kunna uppdatera detaljer om en bok. Det skall finnas en sida som visar bokens detaljer i ett formulär och man skall kunna uppdatera bokens detaljer och spara dem.
+
 
 [OK] [DELETE] Man skall kunna radera en bok.
 
 [OK] Använd GET och POST. Kom ihåg att alltid använda POST när du gör en uppdatering i databasen.
 
-* Hantera bilder i utilityservice?
-
 * Inkludera möjligheten att återställa databasen till sitt ursprungliga innehåll via routen library/reset.
 
-* Alla delar av “Biblioteket” skall fungera tillsammans som en applikation. Det finns länkar och formulär som är sammankopplade och man får en “user experience” av att applikationen hänger ihop.
+[OK] Alla delar av “Biblioteket” skall fungera tillsammans som en applikation. Det finns länkar och formulär som är sammankopplade och man får en “user experience” av att applikationen hänger ihop.
 
 ## Bibliotek JSON
 

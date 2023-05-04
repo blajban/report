@@ -49,7 +49,6 @@ class LibraryController extends AbstractController
         return $this->render('library/library_start.html.twig', [
             'title' => "Bibliotek",
             'heading' => "Bibliotek",
-            'content' => $this->utilityService->parseMarkdown('library.md'),
             'books' => $books
         ]);
     }
@@ -63,7 +62,6 @@ class LibraryController extends AbstractController
         return $this->render('library/library_show.html.twig', [
             'title' => $book->getTitle(),
             'heading' => $book->getTitle(),
-            'content' => $this->utilityService->parseMarkdown('library.md'),
             'book' => $book
         ]);
     }
@@ -73,8 +71,7 @@ class LibraryController extends AbstractController
     {
         return $this->render('library/library_add.html.twig', [
             'title' => "Lägg till bok",
-            'heading' => "Lägg till bok",
-            'content' => $this->utilityService->parseMarkdown('library.md')
+            'heading' => "Lägg till bok"
         ]);
     }
 
@@ -116,7 +113,6 @@ class LibraryController extends AbstractController
         return $this->render('library/library_edit.html.twig', [
             'title' => "Böcker",
             'heading' => "Böcker",
-            'content' => $this->utilityService->parseMarkdown('library.md'),
             'books' => $books
         ]);
     }
@@ -159,7 +155,6 @@ class LibraryController extends AbstractController
         return $this->render('library/library_remove.html.twig', [
             'title' => "Vill du verkligen ta bort?",
             'heading' => "Vill du verkligen ta bort?",
-            'content' => $this->utilityService->parseMarkdown('library.md'),
             'books' => $books
         ]);
     }

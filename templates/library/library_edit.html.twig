@@ -11,7 +11,6 @@
         <div class="content">
             {% include 'incl/flash.html.twig' %}
             <h2>{{ heading }}</h2>
-            {{ content|raw }}
 
             <form method="get" action="">
                 <input type="submit" name="back" value="Tillbaka till översikt"
@@ -34,6 +33,10 @@
                         {% if book.getPicture() %}
                             <img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="100">
                             <label>Ändra bild:
+                                <input type="file" name="picture" accept="image/*">
+                            </label>
+                        {% else %}
+                            <label>Lägg till bild:
                                 <input type="file" name="picture" accept="image/*">
                             </label>
                         {% endif %}
