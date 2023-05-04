@@ -23,4 +23,17 @@ class UtilityService
 
         return $response;
     }
+
+    public function getPictureData()
+    {
+
+    }
 }
+
+/** @var UploadedFile $pictureFile */
+/*$pictureFile = $request->files->get('picture');
+
+$pictureData = null;
+if ($pictureFile) {
+    $pictureData = file_get_contents($pictureFile->getPathname());
+}*/

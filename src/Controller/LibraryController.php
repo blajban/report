@@ -27,9 +27,6 @@ class LibraryController extends AbstractController
     #[Route('/book_picture/{id}', name: 'book_picture')]
     public function bookPicture(int $id, BookRepository $bookRepository): Response
     {
-        // $library = new Library($bookRepository)
-
-        // $library->getPictureData($id);
         $book = $bookRepository->find($id);
 
         if (!$book || !$book->getPicture()) {
@@ -80,8 +77,6 @@ class LibraryController extends AbstractController
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
 
-        //$library = new Library();
-        
         $book = new Book();
         $bookRepository->add($book, [
             'title' => $request->request->get('title'),
@@ -96,18 +91,13 @@ class LibraryController extends AbstractController
     #[Route("/library/edit", name: "library_edit", methods: ['GET'])]
     public function editBooks(BookRepository $bookRepository, Request $request): Response
     {
-        // ADD SUPPORT FOR PICTURE
         // ADD FORM INPUT VALIDATION
         // ADD EXCEPTION HANDLING
 
         $submittedData = $request->query->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
-        $books = [];
-
-        foreach ($bookIds as $bookId) {
-            $books[] = $bookRepository->find($bookId);
-        }
+        $books = $bookRepository->findManybyId($bookIds);
 
         return $this->render('library/library_edit.html.twig', [
             'title' => "Böcker",
@@ -120,11 +110,6 @@ class LibraryController extends AbstractController
     #[Route('/library/edit', name: 'library_edit_callback', methods: ['POST'])]
     public function editBooksCallback(BookRepository $bookRepository, Request $request): Response 
     {
-        // ADD FORM INPUT VALIDATION FOR ISBN
-        // ADD EXCEPTION HANDLING
-        // RETURN TO SAME ROUTE?
-        // ADD PITVUTE
-
         $bookId = $request->request->get('book_to_update');
 
         /** @var UploadedFile $pictureFile */
@@ -134,8 +119,6 @@ class LibraryController extends AbstractController
         if ($pictureFile) {
             $pictureData = file_get_contents($pictureFile->getPathname());
         }
-
-        //$library = new Library();
         
         $bookRepository->update($bookId, [
             'title' => $request->request->get('title'),
@@ -157,15 +140,11 @@ class LibraryController extends AbstractController
         $submittedData = $request->query->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
-        $books = [];
-
-        foreach ($bookIds as $bookId) {
-            $books[] = $bookRepository->find($bookId);
-        }
+        $books = $bookRepository->findManybyId($bookIds);
 
         return $this->render('library/library_remove.html.twig', [
-            'title' => "Vill du verkligen ta bort boken?",
-            'heading' => "Vill du verkligen ta bort boken?",
+            'title' => "Vill du verkligen ta bort?",
+            'heading' => "Vill du verkligen ta bort?",
             'content' => $this->utilityService->parseMarkdown('library.md'),
             'books' => $books
         ]);
@@ -176,8 +155,6 @@ class LibraryController extends AbstractController
     {
         $submittedData = $request->request->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
-
-        //$library = new Library();
 
         $bookRepository->delete($bookIds);
         

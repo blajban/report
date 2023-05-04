@@ -11,10 +11,6 @@ Krav
 
 * Fixa innehåll för landningssidan
 
-* Refaktorera till modellklass
-
-* Skriv tester för modellklass
-
 [OK] Skapa en databas som innehåller en tabell med böcker. 
 
 * Lägg in minst tre böcker (riktiga eller påhittade) med deras 
@@ -24,6 +20,10 @@ Krav
     * bild som representerar boken.
 
 * Sätt bild till null om inte värde hänger med?
+
+* Kolla varför det inte finns någon välj bild-form om den inte har bild från början
+
+* Lägg till möjlighet att ta bort bild
 
 [OK] Kolla hur man kan ladda upp en bild i databasen
 
@@ -44,6 +44,8 @@ Krav
 [OK] [DELETE] Man skall kunna radera en bok.
 
 [OK] Använd GET och POST. Kom ihåg att alltid använda POST när du gör en uppdatering i databasen.
+
+* Hantera bilder i utilityservice?
 
 * Inkludera möjligheten att återställa databasen till sitt ursprungliga innehåll via routen library/reset.
 

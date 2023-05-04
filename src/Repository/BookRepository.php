@@ -59,6 +59,16 @@ class BookRepository extends ServiceEntityRepository
 
         $this->process($book, $arr);
     }
+
+    public function findManybyId($ids): array
+    {
+        $res = [];
+        foreach ($ids as $id) {
+            $res[] = $this->find($id);
+        }
+
+        return $res;
+    }
     
     public function delete($ids)
     {
