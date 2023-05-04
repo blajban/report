@@ -81,7 +81,7 @@ class LibraryController extends AbstractController
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
-            'picture' => $this->utilityService->generatePictureData($pictureFile)
+            'picture' => $this->utilityService->generatePictureDataFromUploaded($pictureFile)
         ]);
 
         return $this->redirectToRoute('library');
@@ -114,7 +114,7 @@ class LibraryController extends AbstractController
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
-            'picture' => $this->utilityService->generatePictureData($pictureFile)
+            'picture' => $this->utilityService->generatePictureDataFromUploaded($pictureFile)
         ]);
 
         $submittedData = $request->request->all();
@@ -151,9 +151,51 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('library');
     }
 
-    #[Route('/library/reset', name: 'library_reset', methods: ['GET'])]
+    #[Route('/library/reset', name: 'library_reset', methods: ['GET', 'POST'])]
     public function resetDatabase(BookRepository $bookRepository): Response 
     {
+        $baseDir = $this->getParameter('kernel.project_dir') . '/public/img/';
+
+        $imaginaryBooks = [
+            "book1" => [
+                "title" => "Frogs in the Garden",
+                "author" => "Lily Greenpond",
+                "isbn" => "978-1-2345-6789-1",
+                "picture" => $this->utilityService->generatePictureDataFromFile($baseDir . 'frog.jpg')
+            ],
+            "book2" => [
+                "title" => "The Galloping Adventures",
+                "author" => "William Whinny",
+                "isbn" => "978-1-2345-6789-2",
+                "picture" => $this->utilityService->generatePictureDataFromFile($baseDir . 'horse.jpg')
+            ],
+            "book3" => [
+                "title" => "The Curious Cat Chronicles",
+                "author" => "Felicity Feline",
+                "isbn" => "978-1-2345-6789-3",
+                "picture" => $this->utilityService->generatePictureDataFromFile($baseDir . 'cat.jpg')
+            ],
+            "book4" => [
+                "title" => "Dogs of the Golden Park",
+                "author" => "Charles Canine",
+                "isbn" => "978-1-2345-6789-4",
+                "picture" => $this->utilityService->generatePictureDataFromFile($baseDir . 'dog.jpg')
+            ],
+        ];
+
+        $currentBooks = $bookRepository->findAll();
+        $currentBookIds = [];
+        foreach ($currentBooks as $currentBook) {
+            $currentBookIds[] = $currentBook->getId();
+        }
+
+        $bookRepository->delete($currentBookIds);
+
+        foreach ($imaginaryBooks as $imaginaryBook) {
+            $book = new Book();
+            $bookRepository->add($book, $imaginaryBook);
+        }
+
         return $this->redirectToRoute('library');
     }
 

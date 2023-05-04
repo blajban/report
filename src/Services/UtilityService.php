@@ -25,7 +25,7 @@ class UtilityService
         return $response;
     }
 
-    public function generatePictureData($pictureFile): string
+    public function generatePictureDataFromUploaded($pictureFile): string|null
     {
         if ($pictureFile) {
             return file_get_contents($pictureFile->getPathname());
@@ -33,6 +33,16 @@ class UtilityService
 
         return null;
     }
+
+    public function generatePictureDataFromFile($pictureFilePath): string|null
+    {
+        if (file_exists($pictureFilePath)) {
+            return file_get_contents($pictureFilePath);
+        }
+
+        return null;
+    }
+
     public function imageResponse($pictureBlob)
     {
         $pictureData = stream_get_contents($pictureBlob);

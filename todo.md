@@ -46,7 +46,7 @@ Krav
 
 [OK] Använd GET och POST. Kom ihåg att alltid använda POST när du gör en uppdatering i databasen.
 
-* Inkludera möjligheten att återställa databasen till sitt ursprungliga innehåll via routen library/reset.
+[OK] Inkludera möjligheten att återställa databasen till sitt ursprungliga innehåll via routen library/reset.
 
 [OK] Alla delar av “Biblioteket” skall fungera tillsammans som en applikation. Det finns länkar och formulär som är sammankopplade och man får en “user experience” av att applikationen hänger ihop.
 
@@ -67,6 +67,8 @@ Krav
 * Generera documentation av din kod med composer phpdoc.
 
 ## Publicera
+
+* TESTA ALLT
 
 * Committa alla filer och lägg till en tagg 5.0.0. Om du gör uppdateringar så ökar du taggen till 5.0.1, 5.0.2, 5.1.0 eller liknande.
 
