@@ -1,0 +1,48 @@
+{# templates/game_start.html.twig #}
+
+{% include 'incl/header.html.twig' %}
+
+
+<body>
+    {% include 'incl/nav.html.twig' %}
+
+
+    <div class="content-area">
+        <div class="content">
+            {% include 'incl/flash.html.twig' %}
+            
+            <h2>{{ heading }}</h2>
+
+            <form method="get" action="">
+                <input type="hidden" id="{{ book.getId() }}" name="book_ids[]" value="{{ book.getId() }}">
+                <input type="submit" name="back" value="Tillbaka till översikt"
+                    onClick="this.form.action='{{ path('library') }}';"
+                >
+                <input type="submit" name="edit" value="Redigera bok"
+                    onClick="this.form.action='{{ path('library_edit') }}';"
+                >
+            </form>
+
+                {% if book.getPicture() %}
+                <p>
+                    <img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="600">
+                </p>
+                {% endif %}
+
+                <h3>Författare</h3>
+                <p>{{ book.getAuthor() }}</p>
+                <h3>ISBN</h3>
+                <p>{{ book.getIsbn() }}</p>
+
+
+                
+                
+            
+        </div>
+    </div>
+    {% include 'incl/footer.html.twig' %}
+</body>
+
+</html>
+
+

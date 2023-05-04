@@ -54,6 +54,20 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    #[Route("/library/show/{id}", name: "library_show", methods: ['GET'])]
+    public function libraryShowBook(BookRepository $bookRepository, int $id): Response
+    {
+        // Add exception handling
+        $book = $bookRepository->find($id);
+
+        return $this->render('library/library_show.html.twig', [
+            'title' => $book->getTitle(),
+            'heading' => $book->getTitle(),
+            'content' => $this->utilityService->parseMarkdown('library.md'),
+            'book' => $book
+        ]);
+    }
+
     #[Route("/library/add", name: "library_add", methods: ['GET'])]
     public function addBook(): Response
     {

@@ -9,17 +9,15 @@ Krav
 
 [OK] Skapa en landningssida library/ för din “Bibliotek” applikation. Placera landningssidan i din navbar.
 
-* Fixa innehåll för landningssidan
+[OK] Fixa innehåll för landningssidan
 
 [OK] Skapa en databas som innehåller en tabell med böcker. 
 
 * Lägg in minst tre böcker (riktiga eller påhittade) med deras 
-    * titel, 
-    * ISBN och 
-    * författare samt en 
-    * bild som representerar boken.
-
-* Sätt bild till null om inte värde hänger med?
+    [OK] titel, 
+    [OK] ISBN och 
+    [OK] författare samt en 
+    [OK] bild som representerar boken.
 
 * Kolla varför det inte finns någon välj bild-form om den inte har bild från början
 
