@@ -55,7 +55,9 @@ Krav
 
 [OK] I din landningssida för api/ lägger du till routen api/library/books som visar upp samtliga böcker i biblioteket i en JSON struktur.
 
-* Lägg till routen api/library/book/<isbn> där man kan se en av böckerna via dess ISBN nummer. Lägg till ett exempel som länkar direkt till en av böckerna i biblioteket.
+[OK] Lägg till routen api/library/book/<isbn> där man kan se en av böckerna via dess ISBN nummer. Lägg till ett exempel som länkar direkt till en av böckerna i biblioteket.
+
+* Lägg till i landningssidan för api (exempel och länk till alla)
 
 ## Utvecklingsmiljö
 
