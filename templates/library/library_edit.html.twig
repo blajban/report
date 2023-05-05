@@ -18,42 +18,55 @@
                 >
             </form>
 
+
+        <table class="library-table">
+            <tbody>
             {% for book in books %}
-                <form method="post" action="" enctype="multipart/form-data">
-                    {% for b in books %}
-                        <input type="hidden" name="selected_books[]" value="{{ b.getId() }}">
-                    {% endfor %}
-                    <p>
-                        <input type="hidden" name="book_to_update" value="{{ book.getId() }}">
-                        <input type="input" name="title" value="{{ book.getTitle() }}" required>
-                        <input type="input" name="author" value="{{ book.getAuthor() }}">
-                        <input type="input" name="isbn" value="{{ book.getIsbn() }}" required>
-                    </p>
-                    <p>
-                        {% if book.getPicture() %}
-                            <img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="100">
-                            <label>Ändra bild:
-                                <input type="file" name="picture" accept="image/*">
-                            </label>
-                        {% else %}
-                            <label>Lägg till bild:
-                                <input type="file" name="picture" accept="image/*">
-                            </label>
-                        {% endif %}
-                    </p>
-                    <p>
-                        <input type="submit" name="edit" value="Spara ändringar"
-                            onClick="this.form.action='{{ path('library_edit_callback') }}';"
-                        >
-                    </p>
-                </form>
+                <tr>
+                    <td>
+                    <form method="post" action="" enctype="multipart/form-data">
+                        {% for b in books %}
+                            <input type="hidden" name="selected_books[]" value="{{ b.getId() }}">
+                        {% endfor %}
+                        <p>
+                            <input type="hidden" name="book_to_update" value="{{ book.getId() }}">
+                            <input type="input" name="title" value="{{ book.getTitle() }}" required>
+                            <input type="input" name="author" value="{{ book.getAuthor() }}">
+                            <input type="input" name="isbn" value="{{ book.getIsbn() }}" required>
+                        </p>
+                        <p>
+                            {% if book.getPicture() %}
+                                <img src="{{ path('book_picture', {'id': book.getId()}) }}" alt="Book picture" width="100">
+                                <label>Ändra bild:
+                                    <input type="file" name="picture" accept="image/*">
+                                </label>
+                            {% else %}
+                                <label>Lägg till bild:
+                                    <input type="file" name="picture" accept="image/*">
+                                </label>
+                            {% endif %}
+                        </p>
+                        <p>
+                            <input type="submit" class="save-button" disabled name="edit" value="Spara ändringar" 
+                                onClick="this.form.action='{{ path('library_edit_callback') }}';"
+                            >
+                        </p>
+                    </form>
+                    </td>
+                </tr>
             {% endfor %}
+            </tbody>
+        </table> 
 
             
         </div>
     </div>
 
     {% include 'incl/footer.html.twig' %}
+
+    {% block javascripts %}
+        <script src="{{ asset('build/libraryEdit.js') }}"></script>
+    {% endblock %}
 </body>
 
 </html>

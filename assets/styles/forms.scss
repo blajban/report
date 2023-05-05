@@ -13,5 +13,15 @@ input[type=button], input[type=submit], input[type=reset] {
       }
 }
 
+input.save-button {
+  background-color: lightgray;
+  cursor: default;
+
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+
 
 

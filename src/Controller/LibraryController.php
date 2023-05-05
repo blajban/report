@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Book;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\BookRepository;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use App\Services\UtilityService;
 use Exception;
@@ -71,7 +72,7 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/add', name: 'library_add_callback', methods: ['POST'])]
-    public function addBookCallback(BookRepository $bookRepository, Request $request): Response 
+    public function addBookCallback(BookRepository $bookRepository, Request $request): Response
     {
         /** @var UploadedFile $pictureFile */
         $pictureFile = $request->files->get('picture');
@@ -103,11 +104,12 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/edit', name: 'library_edit_callback', methods: ['POST'])]
-    public function editBooksCallback(BookRepository $bookRepository, Request $request): Response 
+    public function editBooksCallback(BookRepository $bookRepository, Request $request): Response
     {
         $bookId = $request->request->get('book_to_update');
 
         /** @var UploadedFile $pictureFile */
+
         $pictureFile = $request->files->get('picture');
 
         $bookRepository->update($bookId, [
@@ -140,20 +142,21 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/remove', name: 'library_remove_callback', methods: ['POST'])]
-    public function removeBookCallback(BookRepository $bookRepository, Request $request): Response 
+    public function removeBookCallback(BookRepository $bookRepository, Request $request): Response
     {
         $submittedData = $request->request->all();
         $bookIds = isset($submittedData['book_ids']) ? $submittedData['book_ids'] : [];
 
         $bookRepository->delete($bookIds);
-        
+
 
         return $this->redirectToRoute('library');
     }
 
     #[Route('/library/reset', name: 'library_reset', methods: ['GET', 'POST'])]
-    public function resetDatabase(BookRepository $bookRepository): Response 
+    public function resetDatabase(BookRepository $bookRepository): Response
     {
+        /** @var string $baseDir */
         $baseDir = $this->getParameter('kernel.project_dir') . '/public/img/';
 
         $imaginaryBooks = [

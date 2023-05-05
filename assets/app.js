@@ -12,6 +12,4 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
-import lucky from './js/lucky';
 
-console.log(lucky());

@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/blajban/dbwebb-kurser/mvc/me/report/src/Services</title>
+  <title>Dashboard for /home/blajban/dbwebb-kurser/mvc/me/report/src/Entity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../_css/bootstrap.min.css?v=9.2.26" rel="stylesheet" type="text/css">
   <link href="../_css/nv.d3.min.css?v=9.2.26" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../index.html">/home/blajban/dbwebb-kurser/mvc/me/report/src</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Services</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Entity</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -58,7 +58,7 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="UtilityService.php.html#9">App\Services\UtilityService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#9">App\Entity\Book</a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -75,7 +75,6 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="UtilityService.php.html#9">App\Services\UtilityService</a></td><td class="text-right">56</td></tr>
 
        </tbody>
       </table>
@@ -113,11 +112,15 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="UtilityService.php.html#11"><abbr title="App\Services\UtilityService::parseMarkdown">parseMarkdown</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="UtilityService.php.html#18"><abbr title="App\Services\UtilityService::jsonResponse">jsonResponse</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="UtilityService.php.html#28"><abbr title="App\Services\UtilityService::generatePictureDataFromUploaded">generatePictureDataFromUploaded</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="UtilityService.php.html#37"><abbr title="App\Services\UtilityService::generatePictureDataFromFile">generatePictureDataFromFile</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="UtilityService.php.html#46"><abbr title="App\Services\UtilityService::imageResponse">imageResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#29"><abbr title="App\Entity\Book::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#34"><abbr title="App\Entity\Book::getTitle">getTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#39"><abbr title="App\Entity\Book::setTitle">setTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#46"><abbr title="App\Entity\Book::getIsbn">getIsbn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#51"><abbr title="App\Entity\Book::setIsbn">setIsbn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#58"><abbr title="App\Entity\Book::getAuthor">getAuthor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#63"><abbr title="App\Entity\Book::setAuthor">setAuthor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#70"><abbr title="App\Entity\Book::getPicture">getPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Book.php.html#75"><abbr title="App\Entity\Book::setPicture">setPicture</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -134,8 +137,6 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="UtilityService.php.html#28"><abbr title="App\Services\UtilityService::generatePictureDataFromUploaded">generatePictureDataFromUploaded</abbr></a></td><td class="text-right">6</td></tr>
-       <tr><td><a href="UtilityService.php.html#37"><abbr title="App\Services\UtilityService::generatePictureDataFromFile">generatePictureDataFromFile</abbr></a></td><td class="text-right">6</td></tr>
 
        </tbody>
       </table>
@@ -182,7 +183,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([5,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .datum(getCoverageDistributionData([9,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -232,7 +233,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[0,7,"<a href=\"UtilityService.php.html#9\">App\\Services\\UtilityService<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[0,9,"<a href=\"Book.php.html#9\">App\\Entity\\Book<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -256,7 +257,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"UtilityService.php.html#11\">App\\Services\\UtilityService::parseMarkdown<\/a>"],[0,1,"<a href=\"UtilityService.php.html#18\">App\\Services\\UtilityService::jsonResponse<\/a>"],[0,2,"<a href=\"UtilityService.php.html#28\">App\\Services\\UtilityService::generatePictureDataFromUploaded<\/a>"],[0,2,"<a href=\"UtilityService.php.html#37\">App\\Services\\UtilityService::generatePictureDataFromFile<\/a>"],[0,1,"<a href=\"UtilityService.php.html#46\">App\\Services\\UtilityService::imageResponse<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[0,1,"<a href=\"Book.php.html#29\">App\\Entity\\Book::getId<\/a>"],[0,1,"<a href=\"Book.php.html#34\">App\\Entity\\Book::getTitle<\/a>"],[0,1,"<a href=\"Book.php.html#39\">App\\Entity\\Book::setTitle<\/a>"],[0,1,"<a href=\"Book.php.html#46\">App\\Entity\\Book::getIsbn<\/a>"],[0,1,"<a href=\"Book.php.html#51\">App\\Entity\\Book::setIsbn<\/a>"],[0,1,"<a href=\"Book.php.html#58\">App\\Entity\\Book::getAuthor<\/a>"],[0,1,"<a href=\"Book.php.html#63\">App\\Entity\\Book::setAuthor<\/a>"],[0,1,"<a href=\"Book.php.html#70\">App\\Entity\\Book::getPicture<\/a>"],[0,1,"<a href=\"Book.php.html#75\">App\\Entity\\Book::setPicture<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

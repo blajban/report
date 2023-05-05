@@ -69,7 +69,7 @@ class BookRepository extends ServiceEntityRepository
 
         return $res;
     }
-    
+
     public function delete($ids)
     {
         foreach ($ids as $id) {

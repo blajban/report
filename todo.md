@@ -21,10 +21,7 @@ Krav
 
 
 
-* Hantera att man inte kan uppdatera flera på en gång. Antingen alltid uppdatera alla? Eller gråa ut dom man inte kan uppdatera?
-* Gråa ut knappen om man inte gjort några ändringar?
-* Lägg till en flagga som säger att uppdateringarna sparats när man klickat på spara uppdateringar
-* Gör en table på redigera-sidan istället?
+* Gör ett "bokkort" på visa bok-sidan
 
 
 [OK] Kolla hur man kan ladda upp en bild i databasen
