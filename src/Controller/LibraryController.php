@@ -200,15 +200,33 @@ class LibraryController extends AbstractController
     }
 
     #[Route("/api/library/books", methods: ['GET'])]
-    public function allBooksJson(): Response
+    public function allBooksJson(BookRepository $bookRepository): Response
     {
-        return $this->utilityService->jsonResponse("/api/library/books");
+        $books = $bookRepository->findAll();
+
+        $jsonBooks = [];
+
+        foreach ($books as $book) {
+            $jsonBooks[] =  [
+                'id' => $book->getId(),
+                'title' => $book->getTitle(),
+                'author' => $book->getAuthor(),
+                'isbn' => $book->getIsbn(),
+                'picture' => $book->getPicture() ? base64_encode(stream_get_contents($book->getPicture())) : null,
+            ];
+        }
+        return $this->json($jsonBooks, 200, [], [
+            'json_encode_options' => JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+        ]);
     }
 
     #[Route("/api/library/book/{isbn}", methods: ['GET'])]
     public function bookByIsbnJson(): Response
     {
-        return $this->utilityService->jsonResponse("/api/library/book/{isbn}");
+
+        return $this->json($jsonBooks, 200, [], [
+            'json_encode_options' => JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+        ]);
     }
 
 
