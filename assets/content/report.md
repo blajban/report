@@ -56,7 +56,13 @@ Mitt TIL gäller väl att fundera igenom testbarhets-aspekterna innan implementa
 
 ### Kmom05
 
-Redovisningstext.
+Superkul kursmoment, bra att bryta av kort-delen av kursen litegrann. Det kändes bra att knyta ihop säcken hela vägen med backend med databas och frontend med templates och forms. Kul! Jag tyckte det fungerade bra och var logiskt helt vägen.
+
+Jag försökte göra ett bra och logiskt användargränssnitt, enkelt i grunden men försökte utmana mig själv genom att göra det möjligt att visa upp och redigera/ta bort flera böcker på en gång. Nådde inte riktigt hela vägen med användargränssnittet för redigeringsdelen, men tycker det fungerar bra nog för uppgiften. Annars har jag följt instruktionerna i kursmomentet och funktionaliteten finns där. jag valde att lägga all kod i controllern och i repository-klassen, det fanns liksom inte så mycket logik som inte handlade om att lägga till/uppdatera databasen. Tycker det blev rent och snyggt. 
+
+ORM fungerade också bra, det blev lite med känslan av att jobba med en dokumentdatabas. Jag ser definitivt fördelar med ORM, till exempel enkelheten och att det fungerar med många olika databaser. Samtidigt finns det ju nackdelar. Säg att jag jobbar med många olika teknologier, t ex php, python, nodejs, då måste jag ju lära mig ORM-bibliotek inom flera olika teknologier.
+
+Mitt TIL för kursmomentet är nog helheten, att jag kunde utveckla en liten mini-applikation hela vägen från databas till ux utan några större bekymmer. Man har lärt sig en del ändå!
 
 <a name="kmom06"></a>
 
