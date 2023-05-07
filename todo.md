@@ -62,9 +62,7 @@ Krav
 
 ## Publicera
 
-* TESTA ALLT
-
-* Redovisningstext
+[OK] Redovisningstext
 
 * Committa alla filer och lägg till en tagg 5.0.0. Om du gör uppdateringar så ökar du taggen till 5.0.1, 5.0.2, 5.1.0 eller liknande.
 
