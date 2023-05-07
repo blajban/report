@@ -20,10 +20,6 @@ Krav
     [OK] bild som representerar boken.
 
 
-
-* Gör ett "bokkort" på visa bok-sidan
-
-
 [OK] Kolla hur man kan ladda upp en bild i databasen
 
 [OK] [CREATE] Skapa en möjlighet att lägga till en ny bok. Man skall kunna mata in detaljer om boken i ett formulär.
@@ -54,21 +50,21 @@ Krav
 
 [OK] Lägg till routen api/library/book/<isbn> där man kan se en av böckerna via dess ISBN nummer. Lägg till ett exempel som länkar direkt till en av böckerna i biblioteket.
 
-* Lägg till i landningssidan för api (exempel och länk till alla)
-
 ## Utvecklingsmiljö
 
-* Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
+[OK] Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
 
-* Kolla din kod hur den matchar dina linters genom att köra composer lint.
+[OK] Kolla din kod hur den matchar dina linters genom att köra composer lint.
 
-* Dubbelkolla att dina testfall passerar med composer phpunit.
+[OK] Dubbelkolla att dina testfall passerar med composer phpunit.
 
-* Generera documentation av din kod med composer phpdoc.
+[OK] Generera documentation av din kod med composer phpdoc.
 
 ## Publicera
 
 * TESTA ALLT
+
+* Redovisningstext
 
 * Committa alla filer och lägg till en tagg 5.0.0. Om du gör uppdateringar så ökar du taggen till 5.0.1, 5.0.2, 5.1.0 eller liknande.
 

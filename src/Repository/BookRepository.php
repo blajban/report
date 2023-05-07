@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 
 /**
+ * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  * @extends ServiceEntityRepository<Book>
  *
  * @method Book|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,7 +23,7 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
-    private function getMethod($type, $attribute, $object)
+    private function getMethod(string $type, string $attribute, Book $object): string
     {
         $method = $type . ucfirst($attribute);
         if (method_exists($object, $method)) {
@@ -32,7 +33,11 @@ class BookRepository extends ServiceEntityRepository
         throw new Exception('Method does not exist');
     }
 
-    private function process($obj, $arr)
+    /**
+     * @param array<string, mixed> $arr
+     * @return void
+     */
+    private function process(Book $obj, array $arr)
     {
         foreach ($arr as $key => $value) {
             if ($value) {
@@ -44,12 +49,21 @@ class BookRepository extends ServiceEntityRepository
         $this->save($obj, true);
     }
 
-    public function add($book, $arr)
+    /**
+     * @param array<string, mixed> $arr
+     * @return void
+     */
+    public function add(Book $book, array $arr)
     {
         $this->process($book, $arr);
     }
 
-    public function update($id, $arr)
+    /**
+     * @SuppressWarnings(PHPMD.ShortVariable)
+     * @param array<string, mixed> $arr
+     * @return void
+     */
+    public function update(int $id, array $arr)
     {
         $book = $this->find($id);
 
@@ -60,7 +74,11 @@ class BookRepository extends ServiceEntityRepository
         $this->process($book, $arr);
     }
 
-    public function findManybyId($ids): array
+    /**
+     * @param array<int> $ids
+     * @return array<?Book>
+     */
+    public function findManybyId(array $ids): array
     {
         $res = [];
         foreach ($ids as $id) {
@@ -70,7 +88,11 @@ class BookRepository extends ServiceEntityRepository
         return $res;
     }
 
-    public function delete($ids)
+    /**
+     * @param array<int> $ids
+     * @return void
+     */
+    public function delete(array $ids)
     {
         foreach ($ids as $id) {
             $book = $this->find($id);
@@ -103,13 +125,16 @@ class BookRepository extends ServiceEntityRepository
         }
     }
 
-    public function findOnebyIsbn($isbn): ?Book
+    public function findOnebyIsbn(string $isbn): ?Book
     {
-        return $this->createQueryBuilder('b')
+        /** @var Book|null $res */
+        $res = $this->createQueryBuilder('b')
             ->andWhere('b.isbn = :val')
             ->setParameter('val', $isbn)
             ->getQuery()
             ->getOneOrNullResult();
+
+        return $res;
     }
 
 //    /**

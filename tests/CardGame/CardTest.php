@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for class Card.
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class CardTest extends TestCase
 {

@@ -54,6 +54,7 @@ interface DeckInterface
 
 /**
  * Deck class
+ * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
  */
 class Deck implements DeckInterface
 {

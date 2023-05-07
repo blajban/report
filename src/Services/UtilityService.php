@@ -4,7 +4,9 @@ namespace App\Services;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Parsedown;
+use phpDocumentor\Reflection\Types\Resource_;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UtilityService
 {
@@ -25,26 +27,24 @@ class UtilityService
         return $response;
     }
 
-    public function generatePictureDataFromUploaded($pictureFile): string|null
+    public function generatePictureDataFromUploaded(UploadedFile $pictureFile): string|false
     {
-        if ($pictureFile) {
-            return file_get_contents($pictureFile->getPathname());
-        }
-
-        return null;
+        return file_get_contents($pictureFile->getPathname());
     }
 
-    public function generatePictureDataFromFile($pictureFilePath): string|null
+    public function generatePictureDataFromFile(string $pictureFilePath): string|false
     {
         if (file_exists($pictureFilePath)) {
             return file_get_contents($pictureFilePath);
         }
 
-        return null;
+        return false;
     }
 
-    public function imageResponse($pictureBlob)
+    /** @phpstan-ignore-next-line */
+    public function imageResponse($pictureBlob): Response
     {
+        /** @var string $pictureData */
         $pictureData = stream_get_contents($pictureBlob);
 
         $response = new Response($pictureData);

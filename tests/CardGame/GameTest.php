@@ -9,6 +9,7 @@ use Exception;
 
 /**
  * Test cases for class Bank.
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class GameTest extends TestCase
 {

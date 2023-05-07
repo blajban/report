@@ -27,3 +27,10 @@ GET [api/game](./api/game)
 
 Returns gamestate of current 21 game.
 
+GET [api/library/books](./api/library/books)
+
+Return all books in library.
+
+GET [api/library/book/:isbn](./api/library/book/978-1-2345-6789-1)
+
+Return book with {isbn}.

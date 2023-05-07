@@ -13,6 +13,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Services\UtilityService;
 use Exception;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class LibraryController extends AbstractController
 {
     private UtilityService $utilityService;
@@ -22,6 +25,9 @@ class LibraryController extends AbstractController
         $this->utilityService = $utilityService;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ShortVariable)
+     */
     #[Route('/book_picture/{id}', name: 'book_picture')]
     public function bookPicture(int $id, BookRepository $bookRepository): Response
     {
@@ -46,6 +52,9 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ShortVariable)
+     */
     #[Route("/library/show/{id}", name: "library_show", methods: ['GET'])]
     public function libraryShowBook(BookRepository $bookRepository, int $id): Response
     {
@@ -74,15 +83,20 @@ class LibraryController extends AbstractController
     #[Route('/library/add', name: 'library_add_callback', methods: ['POST'])]
     public function addBookCallback(BookRepository $bookRepository, Request $request): Response
     {
-        /** @var UploadedFile $pictureFile */
-        $pictureFile = $request->files->get('picture');
+        /** @var UploadedFile|null $pictureFile */
+        $pictureFile = $request->files->get('picture') ?? null;
+        $picture = null;
+        if ($pictureFile) {
+            $picture = $this->utilityService->generatePictureDataFromUploaded($pictureFile);
+
+        }
 
         $book = new Book();
         $bookRepository->add($book, [
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
-            'picture' => $this->utilityService->generatePictureDataFromUploaded($pictureFile)
+            'picture' => $picture
         ]);
 
         return $this->redirectToRoute('library');
@@ -106,17 +120,22 @@ class LibraryController extends AbstractController
     #[Route('/library/edit', name: 'library_edit_callback', methods: ['POST'])]
     public function editBooksCallback(BookRepository $bookRepository, Request $request): Response
     {
+        /** @var int $bookId */
         $bookId = $request->request->get('book_to_update');
 
-        /** @var UploadedFile $pictureFile */
+        /** @var UploadedFile|null $pictureFile */
+        $pictureFile = $request->files->get('picture') ?? null;
+        $picture = null;
+        if ($pictureFile) {
+            $picture = $this->utilityService->generatePictureDataFromUploaded($pictureFile);
 
-        $pictureFile = $request->files->get('picture');
+        }
 
         $bookRepository->update($bookId, [
             'title' => $request->request->get('title'),
             'author' => $request->request->get('author'),
             'isbn' => $request->request->get('isbn'),
-            'picture' => $this->utilityService->generatePictureDataFromUploaded($pictureFile)
+            'picture' => $picture
         ]);
 
         $submittedData = $request->request->all();
@@ -156,7 +175,7 @@ class LibraryController extends AbstractController
     #[Route('/library/reset', name: 'library_reset', methods: ['GET', 'POST'])]
     public function resetDatabase(BookRepository $bookRepository): Response
     {
-        /** @var string $baseDir */
+        /** @phpstan-ignore-next-line */
         $baseDir = $this->getParameter('kernel.project_dir') . '/public/img/';
 
         $imaginaryBooks = [
@@ -187,11 +206,14 @@ class LibraryController extends AbstractController
         ];
 
         $currentBooks = $bookRepository->findAll();
+
+
         $currentBookIds = [];
         foreach ($currentBooks as $currentBook) {
             $currentBookIds[] = $currentBook->getId();
         }
 
+        //** @phpstan-ignore-next-line */
         $bookRepository->delete($currentBookIds);
 
         foreach ($imaginaryBooks as $imaginaryBook) {
@@ -215,6 +237,7 @@ class LibraryController extends AbstractController
                 'title' => $book->getTitle(),
                 'author' => $book->getAuthor(),
                 'isbn' => $book->getIsbn(),
+                /** @phpstan-ignore-next-line */
                 'picture' => $book->getPicture() ? base64_encode(stream_get_contents($book->getPicture())) : null,
             ];
         }
@@ -235,6 +258,7 @@ class LibraryController extends AbstractController
                 'title' => $book->getTitle(),
                 'author' => $book->getAuthor(),
                 'isbn' => $book->getIsbn(),
+                /** @phpstan-ignore-next-line */
                 'picture' => $book->getPicture() ? base64_encode(stream_get_contents($book->getPicture())) : null,
             ];
         }

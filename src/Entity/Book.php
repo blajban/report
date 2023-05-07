@@ -6,6 +6,9 @@ use App\Repository\BookRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @SuppressWarnings(PHPMD.ShortVariable)
+ */
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
 {
@@ -24,7 +27,7 @@ class Book
     private ?string $author = null;
 
     #[ORM\Column(type: Types::BLOB, nullable: true)]
-    private $picture = null;
+    private $picture = null; /** @phpstan-ignore-line */
 
     public function getId(): ?int
     {
@@ -67,11 +70,13 @@ class Book
         return $this;
     }
 
+    /** @phpstan-ignore-next-line */
     public function getPicture()
     {
         return $this->picture;
     }
 
+    /** @phpstan-ignore-next-line */
     public function setPicture($picture): self
     {
         $this->picture = $picture;
