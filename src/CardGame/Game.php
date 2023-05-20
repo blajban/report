@@ -151,6 +151,16 @@ class Game implements CardGameInterface
         }
     }
 
+    private function changeAceValueIfFull(Card $card, int $aceLow, int $aceHigh, int $currentPoints): bool
+    {
+        if ($card->isAce() && ($currentPoints + $aceHigh - $aceLow <= Game::MAX_POINTS)) {
+            $card->changeAceValue();
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * Calculate the total points of a hand of cards considering aces.
      * @param array<Card> $hand
@@ -168,8 +178,7 @@ class Game implements CardGameInterface
         $points = $this->calculateHand($hand);
 
         foreach ($hand as $card) {
-            if ($card->isAce() && ($points + $aceHigh - $aceLow <= Game::MAX_POINTS)) {
-                $card->changeAceValue();
+            if ($this->changeAceValueIfFull($card, $aceLow, $aceHigh, $points)) {
                 $points = $this->calculateHand($hand);
             }
         }
