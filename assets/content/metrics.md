@@ -68,12 +68,11 @@ Anledningen är komplexiteten på 7. CRAP-scoren på Game::calculatePoints är b
 ### Förbättringar
 Med tanke på diskussionen ovan så vill jag förbättra följande:
 
-* Minska "expected bugs" (komplexiteten) på Game-klassen.
-* Öka maintainability-index på Game-klassen
-* Minska instabilitets-index på Game-klassen.
-* Minska komplexiteten på Game::calculatePoints-metoden genom att minska antalet beslutspunkter i koden. Jag tror att man kan göra detta genom att skriva om samt refaktorera. 
-* Minska komplexiteten på CardGame::dealCards-metoden på samma sätt.
-* Skriv tester för CardGame::dealCards-metoden för att komma till rätta med CRAP-scoren.
+* Minska instabilitets-index på Game-klassen genom att använda dependency injection. Värde innan förändringar i kod: 0,86.
+* Minska komplexiteten på Game::calculatePoints-metoden genom att minska antalet beslutspunkter i koden. Jag tror att man kan göra detta genom att skriva om/refaktorera. Värde innan förändringar i kod: 7.
+    * Detta kommer förhoppningsvis också minska "expected bugs" på hela klassen.
+* Minska komplexiteten på CardGame::dealCards-metoden på samma sätt (0,52 innan förändringar i kod).
+* Skriv tester för CardGame::dealCards-metoden för att komma till rätta med CRAP-scoren. Värde innan förändringar 56.
 
 
 ### Diskussion
