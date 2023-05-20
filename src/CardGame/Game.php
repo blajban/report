@@ -143,6 +143,14 @@ class Game implements CardGameInterface
         return $points;
     }
 
+    private function changeAceValueIfHigh(Card $card, int $aceHigh): void
+    {
+        
+        if ($card->isAce() && $card->getValue() == $aceHigh) {
+            $card->changeAceValue();
+        }
+    }
+
     /**
      * Calculate the total points of a hand of cards considering aces.
      * @param array<Card> $hand
@@ -154,9 +162,7 @@ class Game implements CardGameInterface
         $aceHigh = 14;
 
         foreach ($hand as $card) {
-            if ($card->isAce() && $card->getValue() == $aceHigh) {
-                $card->changeAceValue();
-            }
+            $this->changeAceValueIfHigh($card, $aceHigh);
         }
 
         $points = $this->calculateHand($hand);

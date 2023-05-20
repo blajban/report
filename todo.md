@@ -27,7 +27,7 @@ Krav
         * Fokusera på kvalitetsindex i Scrutinizer
         * Minska komplexiteten i class/metod
 
-    * Börja med att skriva om förbättringarna, vad du tänker göra, varför du väljer dem och hur du tror det kommer påverka mätvärdena för kvalitet.
+    [OK] Börja med att skriva om förbättringarna, vad du tänker göra, varför du väljer dem och hur du tror det kommer påverka mätvärdena för kvalitet.
     * Implementera sedan förbättringarna.
     * Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
     * Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
