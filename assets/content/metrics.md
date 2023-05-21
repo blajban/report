@@ -70,9 +70,9 @@ Med tanke på diskussionen ovan så vill jag förbättra följande:
 
 * Minska instabilitets-index på Game-klassen genom att använda dependency injection. 
     * Instabilitets-index innan förändringar: 0,86. Efter: X
-* Minska komplexiteten på Game::calculatePoints-metoden genom att minska antalet beslutspunkter i koden. Jag tror att man kan göra detta genom att skriva om/refaktorera. Detta kommer förhoppningsvis också minska "expected bugs" på hela klassen
-    * Komplexitet innan förändringar: 7. Efter: 5
-    * Expected bugs innan förändringar: 0,52. Efter: X
+* Minska komplexiteten på Game::calculatePoints-metoden genom att minska antalet beslutspunkter i koden. Jag tror att man kan göra detta genom att skriva om/refaktorera.
+    * Komplexitet innan förändringar: 7. Efter: 4
+    * Jag flyttade kontrollen kring ess-värden till två egna metoder.
 * Minska komplexiteten på CardGame::dealCards-metoden på samma sätt. 
     * Komplexitet innan förändringar: 7. Efter: X
 * Skriv tester för CardGame::dealCards-metoden för att komma till rätta med CRAP-scoren. 
@@ -80,3 +80,5 @@ Med tanke på diskussionen ovan så vill jag förbättra följande:
 
 
 ### Diskussion
+
+Det var enkelt att minska komplexitets-värdena på metoderna genom att refaktorera till fler metoder. Man kan däremot fundera på om kodens komplexitet verkligen minskade i just mitt fall. Jag tror det, men det är ett gränsfall. Å ena sidan ger metoderna som anropas en dokumentation om vad som händer i koden, å andra sidan blir det fler metoder för läsaren av koden att följa.

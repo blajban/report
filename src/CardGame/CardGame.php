@@ -65,13 +65,8 @@ class CardGame implements CardGameInterface
         return $cardsDrawn;
     }
 
-    /**
-     * @return array<Mixed>
-     */
-    public function dealCards(int $numPlayers, int $numCards): array
+    private function getActivePlayers(int $numPlayers): array
     {
-        class_exists(Player::class);
-
         $maxActivePlayers = $this->session->get("active_players") ?? $numPlayers;
         if ($numPlayers >= $maxActivePlayers) {
             $this->session->set("active_players", $numPlayers);
@@ -86,6 +81,18 @@ class CardGame implements CardGameInterface
             $player = "Player $i";
             $activePlayers[] = $this->session->get($player) ?? new Player($player);
         }
+
+        return $activePlayers;
+    }
+
+    /**
+     * @return array<Mixed>
+     */
+    public function dealCards(int $numPlayers, int $numCards): array
+    {
+        class_exists(Player::class);
+
+        $activePlayers = $this->getActivePlayers($numPlayers);
 
         if ($this->remainingCards() < $numPlayers * $numCards) {
             return [

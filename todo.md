@@ -27,10 +27,10 @@ Krav
         * Fokusera på kvalitetsindex i Scrutinizer
         * Minska komplexiteten i class/metod
 
-    [OK] Börja med att skriva om förbättringarna, vad du tänker göra, varför du väljer dem och hur du tror det kommer påverka mätvärdena för kvalitet.
-    * Implementera sedan förbättringarna.
-    * Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
-    * Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
+[OK] Börja med att skriva om förbättringarna, vad du tänker göra, varför du väljer dem och hur du tror det kommer påverka mätvärdena för kvalitet.
+* Implementera sedan förbättringarna.
+* Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
+* Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
 
 * Avsluta med ett stycke “Diskussion” där du diskuterar kort kring det du nyss gjort.
     * Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?

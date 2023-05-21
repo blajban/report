@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-05-11 11:28:36        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-05-20 07:45:10        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -274,14 +274,12 @@
         "relations": []
     },
     {
-        "name": "\\App\\Controller\\CardController",
+        "name": "\\App\\Controller\\MetricsController",
         "size": 3000,
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\App\\Services\\UtilityService",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-            "\\App\\CardGame\\CardGame"
+            "\\Symfony\\Component\\HttpFoundation\\Response"
         ]
     },
     {
@@ -303,6 +301,17 @@
         "name": "\\Symfony\\Component\\HttpFoundation\\Response",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\Controller\\CardController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\App\\Services\\UtilityService",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\CardGame\\CardGame"
+        ]
     },
     {
         "name": "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
@@ -354,6 +363,7 @@
             "\\App\\CardGame\\Deck",
             "\\App\\CardGame\\Player",
             "\\App\\CardGame\\Bank",
+            "\\App\\CardGame\\Card",
             "\\Exception"
         ]
     },
