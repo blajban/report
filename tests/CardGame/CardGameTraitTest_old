@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class GameClassMock extends Game
 {
-    public function __construct(Deck $deck)
+    public function __construct(SessionInterface $session, Deck $deck)
     {
-        parent::__construct('test');
+        parent::__construct($session);
         $this->deck = $deck;
     }
 }
@@ -27,13 +27,14 @@ class CardGameTraitTest extends TestCase
      */
     public function testGetDeck()
     {
+        $sessionMock = $this->createMock(SessionInterface::class);
         $deckMock = $this->createMock(Deck::class);
 
         $deckMock->expects($this->once())
                  ->method('getDeck')
                  ->willReturn([]);
 
-        $game = new GameClassMock($deckMock);
+        $game = new GameClassMock($sessionMock, $deckMock);
 
         $this->assertEquals([], $game->getDeck());
     }
@@ -44,6 +45,8 @@ class CardGameTraitTest extends TestCase
      */
     public function testGetJsonDeck()
     {
+        $sessionMock = $this->createMock(SessionInterface::class);
+
         $cardMock1 = $this->createMock(Card::class);
         $cardMock1->method('toArray')
                   ->willReturn(['value' => 1, 'color' => 'hearts']);
@@ -57,7 +60,7 @@ class CardGameTraitTest extends TestCase
                  ->method('getDeck')
                  ->willReturn([$cardMock1, $cardMock2]);
 
-        $game = new GameClassMock($deckMock);
+        $game = new GameClassMock($sessionMock, $deckMock);
 
         $exp = [
             ['value' => 1, 'color' => 'hearts'],
@@ -73,13 +76,14 @@ class CardGameTraitTest extends TestCase
      */
     public function testRemainingCards()
     {
+        $sessionMock = $this->createMock(SessionInterface::class);
         $deckMock = $this->createMock(Deck::class);
 
         $deckMock->expects($this->once())
                  ->method('remainingCards')
                  ->willReturn(52);
 
-        $game = new GameClassMock($deckMock);
+        $game = new GameClassMock($sessionMock, $deckMock);
 
         $this->assertEquals(52, $game->remainingCards());
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\CardGame;
+//namespace App\CardGame;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -19,11 +19,13 @@ class GameTest extends TestCase
      */
     public function testConstructGameAndGetGameState()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+
+        $game = new Game($sessionMock);
 
         $exp = [
             'player' => [
-                'name' => 'test',
+                'name' => 'Player name not defined',
                 'score' => 0,
                 'hand' => []
             ],
@@ -42,12 +44,31 @@ class GameTest extends TestCase
     }
 
     /**
+     * Verify that session method is called when setting players name.
+     * @return void
+     */
+    public function testSetPlayerName()
+    {
+        $sessionMock = $this->createMock(SessionInterface::class);
+
+        $sessionMock->expects($this->once())
+                 ->method('set');
+
+        $game = new Game($sessionMock);
+
+        $game->setPlayerName("Erik");
+
+    }
+
+    /**
      * Verify that game state with hand as string is returned correctly.
      * @return void
      */
     public function testGetGameStateJson()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+
+        $game = new Game($sessionMock);
 
         $game->playerDraw();
 
@@ -65,7 +86,8 @@ class GameTest extends TestCase
      */
     public function testShuffle()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+        $game = new Game($sessionMock);
 
         $oldDeck = $game->getDeck();
 
@@ -82,7 +104,8 @@ class GameTest extends TestCase
      */
     public function testIsFull()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+        $game = new Game($sessionMock);
 
         $reflection = new ReflectionClass(Game::class);
         $gameStateProperty = $reflection->getProperty('gameState');
@@ -90,7 +113,7 @@ class GameTest extends TestCase
 
         $gameState = $gameStateProperty->getValue($game);
         /** @phpstan-ignore-next-line */
-        $gameState->setPlayerScore(21);
+        $gameState['player']['score'] = 21;
         $gameStateProperty->setValue($game, $gameState);
 
         $res = $game->isFull();
@@ -98,7 +121,7 @@ class GameTest extends TestCase
         $this->assertFalse($res);
 
         /** @phpstan-ignore-next-line */
-        $gameState->setPlayerScore(22);
+        $gameState['player']['score'] = 22;
         $gameStateProperty->setValue($game, $gameState);
 
         $res = $game->isFull();
@@ -112,13 +135,14 @@ class GameTest extends TestCase
      */
     public function testPlayerDrawException()
     {
+        $sessionMock = $this->createMock(SessionInterface::class);
         $deckMock = $this->createMock(Deck::class);
 
         $deckMock->expects($this->once())
                  ->method('remainingCards')
                  ->willReturn(0);
 
-        $game = new GameClassMock($deckMock);
+        $game = new GameClassMock($sessionMock, $deckMock);
 
         $this->expectException(Exception::class);
         $game->playerDraw();
@@ -130,15 +154,17 @@ class GameTest extends TestCase
      */
     public function testPlayerDrawsCard()
     {
+        $sessionMock = $this->createMock(SessionInterface::class);
         $deckMock = $this->createMock(Deck::class);
 
         $deckMock->expects($this->once())
                  ->method('drawCard');
 
-        $deckMock->method('remainingCards')
+        $deckMock->expects($this->once())
+                 ->method('remainingCards')
                  ->willReturn(52);
 
-        $game = new GameClassMock($deckMock);
+        $game = new GameClassMock($sessionMock, $deckMock);
 
         $game->playerDraw();
 
@@ -150,13 +176,14 @@ class GameTest extends TestCase
      */
     public function testBankDrawException()
     {
+        $sessionMock = $this->createMock(SessionInterface::class);
         $deckMock = $this->createMock(Deck::class);
 
         $deckMock->expects($this->once())
                  ->method('remainingCards')
                  ->willReturn(0);
 
-        $game = new GameClassMock($deckMock);
+        $game = new GameClassMock($sessionMock, $deckMock);
 
         $this->expectException(Exception::class);
         $game->bankDraw();
@@ -168,15 +195,17 @@ class GameTest extends TestCase
      */
     public function testBankDrawsCard()
     {
+        $sessionMock = $this->createMock(SessionInterface::class);
         $deckMock = $this->createMock(Deck::class);
 
         $deckMock->expects($this->once())
                  ->method('drawCard');
 
-        $deckMock->method('remainingCards')
+        $deckMock->expects($this->once())
+                 ->method('remainingCards')
                  ->willReturn(52);
 
-        $game = new GameClassMock($deckMock);
+        $game = new GameClassMock($sessionMock, $deckMock);
 
         $game->playerDraw();
 
@@ -188,7 +217,8 @@ class GameTest extends TestCase
      */
     public function testDetermineWinnerPlayerOver21()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+        $game = new Game($sessionMock);
 
         $reflection = new ReflectionClass(Game::class);
         $gameStateProperty = $reflection->getProperty('gameState');
@@ -196,7 +226,7 @@ class GameTest extends TestCase
 
         $gameState = $gameStateProperty->getValue($game);
         /** @phpstan-ignore-next-line */
-        $gameState->setPlayerScore(22);
+        $gameState['player']['score'] = 22;
         $gameStateProperty->setValue($game, $gameState);
 
         $game->determineWinner();
@@ -213,7 +243,8 @@ class GameTest extends TestCase
      */
     public function testDetermineWinnerPlayerLessThan21BankOver21()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+        $game = new Game($sessionMock);
 
         $reflection = new ReflectionClass(Game::class);
         $gameStateProperty = $reflection->getProperty('gameState');
@@ -221,9 +252,9 @@ class GameTest extends TestCase
 
         $gameState = $gameStateProperty->getValue($game);
         /** @phpstan-ignore-next-line */
-        $gameState->setPlayerScore(20);
+        $gameState['player']['score'] = 20;
         /** @phpstan-ignore-next-line */
-        $gameState->setBankScore(22);
+        $gameState['bank']['score'] = 22;
         $gameStateProperty->setValue($game, $gameState);
 
         $game->determineWinner();
@@ -240,7 +271,8 @@ class GameTest extends TestCase
      */
     public function testDetermineWinnerEqualScore()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+        $game = new Game($sessionMock);
 
         $reflection = new ReflectionClass(Game::class);
         $gameStateProperty = $reflection->getProperty('gameState');
@@ -248,9 +280,9 @@ class GameTest extends TestCase
 
         $gameState = $gameStateProperty->getValue($game);
         /** @phpstan-ignore-next-line */
-        $gameState->setPlayerScore(20);
+        $gameState['player']['score'] = 20;
         /** @phpstan-ignore-next-line */
-        $gameState->setBankScore(20);
+        $gameState['bank']['score'] = 20;
         $gameStateProperty->setValue($game, $gameState);
 
         $game->determineWinner();
@@ -267,7 +299,8 @@ class GameTest extends TestCase
      */
     public function testDetermineWinnerPlayerHighestScore()
     {
-        $game = new Game('test');
+        $sessionMock = $this->createMock(SessionInterface::class);
+        $game = new Game($sessionMock);
 
         $reflection = new ReflectionClass(Game::class);
         $gameStateProperty = $reflection->getProperty('gameState');
@@ -275,9 +308,9 @@ class GameTest extends TestCase
 
         $gameState = $gameStateProperty->getValue($game);
         /** @phpstan-ignore-next-line */
-        $gameState->setPlayerScore(21);
+        $gameState['player']['score'] = 21;
         /** @phpstan-ignore-next-line */
-        $gameState->setBankScore(20);
+        $gameState['bank']['score'] = 20;
         $gameStateProperty->setValue($game, $gameState);
 
         $game->determineWinner();
