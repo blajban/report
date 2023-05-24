@@ -13,6 +13,8 @@ class CardGame implements CardGameInterface
 {
     use CardGameTrait;
 
+    private SessionInterface $session;
+
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;

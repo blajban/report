@@ -138,7 +138,7 @@ class DeckTest extends TestCase
         }
 
         $this->expectException(Exception::class);
-        $res = $deck->peek();
+        $deck->peek();
     }
 
     /**

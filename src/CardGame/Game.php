@@ -7,8 +7,8 @@ use App\CardGame\CardGameTrait;
 use App\CardGame\Player;
 use App\CardGame\Bank;
 use App\CardGame\Deck;
+use App\CardGame\GameState;
 use Exception;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Game class.
@@ -18,112 +18,24 @@ class Game implements CardGameInterface
     use CardGameTrait;
 
     private const MAX_POINTS = 21;
-    private const DECK_SESSION_NAME = '21deck';
-    private const PLAYER_SESSION_NAME = '21player';
-    private const PLAYER_SCORE_SESSION_NAME = '21player_score';
-    private const PLAYERNAME_SESSION_NAME = '21playername';
-    private const BANK_SESSION_NAME = '21bank';
-    private const BANK_SCORE_SESSION_NAME = '21bank_score';
-    private const WINNER_SESSION_NAME = '21winner';
 
 
     private Player $player;
     private Bank $bank;
-
-    /**
-     * @var array{
-     *   player: array{name: string, score: int, hand: array<Card>},
-     *   bank: array{name: string, score: int, hand: array<Card>},
-     *   remaining_cards: int,
-     *   winner: string
-     * }
-     */
-    private array $gameState = [
-        'player' => [
-            'name' => 'spelaren',
-            'score' => 0,
-            'hand' => []
-        ],
-        'bank' => [
-            'name' => 'Bank',
-            'score' => 0,
-            'hand' => []
-        ],
-        'remaining_cards' => 0,
-        'winner' => ''
-    ];
+    private GameState $gameState;
 
     /**
      * Constructor.
-     * @param SessionInterface $session
+     * @param string $playerName
      */
-    public function __construct(SessionInterface $session)
+    public function __construct(string $playerName)
     {
-        $this->session = $session;
-        $this->getGameStateSession();
-    }
+        $this->deck = new Deck();
+        $this->player = new Player($playerName);
+        $this->bank = new Bank();
+        $this->gameState = new GameState();
 
-    /**
-     * Load gamestate from session or construct new objects.
-     * @return void
-     */
-    private function getGameStateSession()
-    {
-        /** @phpstan-ignore-next-line */
-        $this->deck = $this->session->get(Game::DECK_SESSION_NAME) ?? new Deck();
-        /** @phpstan-ignore-next-line */
-        $this->gameState['remaining_cards'] = $this->deck->remainingCards();
-
-        /** @var string $playerName */
-        $playerName = $this->session->get(Game::PLAYERNAME_SESSION_NAME) ?? 'Player name not defined';
-        /** @phpstan-ignore-next-line */
-        $this->player = $this->session->get(Game::PLAYER_SESSION_NAME) ?? new Player($playerName);
-        /** @phpstan-ignore-next-line */
-        $this->gameState['player']['name'] = $this->player->getName();
-        /** @phpstan-ignore-next-line */
-        $this->gameState['player']['hand'] = $this->player->getHand();
-
-        /** @phpstan-ignore-next-line */
-        $this->gameState['player']['score'] = $this->session->get(Game::PLAYER_SCORE_SESSION_NAME) ?? 0;
-
-        /** @phpstan-ignore-next-line */
-        $this->bank = $this->session->get(Game::BANK_SESSION_NAME) ?? new Bank();
-        /** @phpstan-ignore-next-line */
-        $this->gameState['bank']['hand'] = $this->bank->getHand();
-
-        /** @phpstan-ignore-next-line */
-        $this->gameState['bank']['score'] = $this->session->get(Game::BANK_SCORE_SESSION_NAME) ?? 0;
-
-        /** @phpstan-ignore-next-line */
-        $this->gameState['winner'] = $this->session->get(Game::WINNER_SESSION_NAME) ?? '';
-
-    }
-
-    /**
-     * Save current state to session.
-     * @return void
-     */
-    private function setGameStateSession()
-    {
-        $this->session->set(Game::DECK_SESSION_NAME, $this->deck);
-        $this->session->set(Game::PLAYER_SESSION_NAME, $this->player);
-        $this->session->set(Game::PLAYER_SCORE_SESSION_NAME, $this->gameState['player']['score']);
-        $this->session->set(Game::BANK_SESSION_NAME, $this->bank);
-        $this->session->set(Game::BANK_SCORE_SESSION_NAME, $this->gameState['bank']['score']);
-        $this->session->set(Game::WINNER_SESSION_NAME, $this->gameState['winner']);
-    }
-
-    /**
-     * Remove game state from session.
-     * @return void
-     */
-    private function resetGameStateSession()
-    {
-        $this->session->remove(Game::DECK_SESSION_NAME);
-        $this->session->remove(Game::PLAYER_SESSION_NAME);
-        $this->session->remove(Game::PLAYER_SCORE_SESSION_NAME);
-        $this->session->remove(Game::BANK_SESSION_NAME);
-        $this->session->remove(Game::BANK_SCORE_SESSION_NAME);
+        $this->gameState->update($this->deck, $this->player, $this->bank);
     }
 
 
@@ -187,15 +99,6 @@ class Game implements CardGameInterface
     }
 
     /**
-     * Set player name.
-     * @return void
-     */
-    public function setPlayerName(string $name)
-    {
-        $this->session->set(Game::PLAYERNAME_SESSION_NAME, $name);
-    }
-
-    /**
      * Get current game state.
      * @return array{
      *   player: array{name: string, score: int, hand: array<Card>},
@@ -206,7 +109,7 @@ class Game implements CardGameInterface
      */
     public function getGameState(): array
     {
-        return $this->gameState;
+        return $this->gameState->get();
     }
 
     /**
@@ -220,15 +123,7 @@ class Game implements CardGameInterface
      */
     public function getGameStateJson(): array
     {
-        foreach ($this->gameState['player']['hand'] as $card) {
-            $this->gameState['player']['handAsString'][] = $card->toArray();
-        }
-
-        foreach ($this->gameState['bank']['hand'] as $card) {
-            $this->gameState['bank']['handAsString'][] = $card->toArray();
-        }
-
-        return $this->gameState;
+        return $this->gameState->getJson();
     }
 
     /**
@@ -237,10 +132,13 @@ class Game implements CardGameInterface
      */
     public function shuffle()
     {
-        $this->resetGameStateSession();
-        $this->getGameStateSession();
         $this->deck->shuffleDeck();
-        $this->setGameStateSession();
+        $this->player->discardHand();
+        $this->bank->discardHand();
+
+        $this->gameState->reset();
+        $this->gameState->update($this->deck, $this->player, $this->bank);
+
     }
 
     /**
@@ -249,7 +147,7 @@ class Game implements CardGameInterface
      */
     public function isFull(): bool
     {
-        if ($this->gameState['player']['score'] > Game::MAX_POINTS) {
+        if ($this->gameState->getPlayerScore() > Game::MAX_POINTS) {
             return true;
         }
 
@@ -268,11 +166,12 @@ class Game implements CardGameInterface
 
         $card = $this->deck->drawCard();
         $this->player->addCard($card);
-        $this->gameState['player']['handAsString'][] = $card->toArray();
+        //$this->gameState['player']['handAsString'][] = $card->toArray();
 
-        $this->gameState['player']['score'] = $this->calculatePoints($this->player->getHand());
+        $score = $this->calculatePoints($this->player->getHand());
+        $this->gameState->setPlayerScore($score);
 
-        $this->setGameStateSession();
+        $this->gameState->update($this->deck, $this->player, $this->bank);
     }
 
     /**
@@ -281,16 +180,18 @@ class Game implements CardGameInterface
      */
     public function bankDraw()
     {
-        while ($this->bank->willContinue($this->gameState['bank']['score']) && $this->gameState['bank']['score'] <= Game::MAX_POINTS) {
+        while ($this->bank->willContinue($this->gameState->getBankScore()) && $this->gameState->getBankScore() <= Game::MAX_POINTS) {
             if ($this->deck->remainingCards() < 1) {
                 throw new Exception('Deck empty');
             }
             $card = $this->deck->drawCard();
             $this->bank->addCard($card);
-            $this->gameState['bank']['score'] = $this->calculatePoints($this->bank->getHand());
+
+            $score = $this->calculatePoints($this->bank->getHand());
+            $this->gameState->setBankScore($score);
         }
 
-        $this->setGameStateSession();
+        $this->gameState->update($this->deck, $this->player, $this->bank);
     }
 
     /**
@@ -299,25 +200,25 @@ class Game implements CardGameInterface
      */
     private function setWinner()
     {
-        $playerScore = $this->gameState['player']['score'];
-        $bankScore = $this->gameState['bank']['score'];
+        $playerScore = $this->gameState->getPlayerScore();
+        $bankScore = $this->gameState->getBankScore();
 
         if ($playerScore > Game::MAX_POINTS) {
-            $this->gameState['winner'] = "bank";
+            $this->gameState->setWinner('bank');
             return;
         }
 
         if ($bankScore > Game::MAX_POINTS) {
-            $this->gameState['winner'] = "player";
+            $this->gameState->setWinner('player');
             return;
         }
 
         if ($bankScore >= $playerScore) {
-            $this->gameState['winner'] = "bank";
+            $this->gameState->setWinner('bank');
             return;
         }
 
-        $this->gameState['winner'] = "player";
+        $this->gameState->setWinner('player');
     }
 
     /**
@@ -328,7 +229,7 @@ class Game implements CardGameInterface
     {
         $this->setWinner();
 
-        $this->setGameStateSession();
+        $this->gameState->update($this->deck, $this->player, $this->bank);;
     }
 
 

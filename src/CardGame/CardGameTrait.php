@@ -9,7 +9,6 @@ use App\CardGame\DeckWithJokers;
 trait CardGameTrait
 {
     protected Deck|DeckWithJokers $deck;
-    protected SessionInterface $session;
 
     public function getDeck(): array
     {

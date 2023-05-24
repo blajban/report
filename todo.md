@@ -37,6 +37,8 @@ Krav
     * Finns det fördelar och kanske nackdelar?
     * Ser du andra möjligheter att jobba mot “clean code”?
 
+* Game: tog bort session från cardgametrait, skriv om testerna
+
 ### Utvecklingsmiljö
 
 Se till att köra verktygen i din utvecklingsmiljö så att de hanterar den uppdaterade koden.

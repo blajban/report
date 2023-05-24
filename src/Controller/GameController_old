@@ -45,18 +45,16 @@ class GameController extends AbstractController
     #[Route("/game", name: "game_init", methods: ['POST'])]
     public function initCallback(SessionInterface $session, Request $request): Response
     {
-        $playerName = $session->get('game_playerName') ?? '';
-        
+
+        $game = new Game($session);
 
         if ($request->request->has('playerName')) {
             /** @var string $playerName */
             $playerName = $request->request->get('playerName');
-            $session->set('game_playerName', $playerName);
+            $game->setPlayerName($playerName);
         }
 
-        $game = new Game($playerName);
         $game->shuffle();
-        $session->set('game_session', $game);
 
 
         return $this->redirectToRoute('game/play');
@@ -65,49 +63,43 @@ class GameController extends AbstractController
     #[Route("/game/draw", name: "game_draw", methods: ['POST'])]
     public function playerTakesCard(SessionInterface $session): Response
     {
-        $game = $session->get('game_session');
+        $game = new Game($session);
 
         try {
             $game->playerDraw();
         } catch (Exception $e) {
-            $session->set('game_session', $game);
             return $this->redirectToRoute('game/play');
         }
 
 
         if ($game->isFull()) {
-            $session->set('game_session', $game);
             return $this->redirectToRoute('game/end');
         }
 
-        $session->set('game_session', $game);
         return $this->redirectToRoute('game/play');
     }
 
     #[Route("/game/stop", name: "game_stop", methods: ['POST'])]
     public function banksTurn(SessionInterface $session): Response
     {
-        $game = $session->get('game_session');
+        $game = new Game($session);
 
         try {
             $game->bankDraw();
         } catch (Exception $e) {
-            $session->set('game_session', $game);
             $this->addFlash(
                 'warning',
                 $e->getMessage()
             );
         }
 
-        $session->set('game_session', $game);
         return $this->redirectToRoute('game/end');
     }
 
     #[Route("/game/play", name: "game/play")]
     public function play(SessionInterface $session): Response
     {
-        $game = $session->get('game_session');
-        $session->set('game_session', $game);
+        $game = new Game($session);
 
         return $this->render('game_play.html.twig', [
             'title' => "Play",
@@ -119,7 +111,8 @@ class GameController extends AbstractController
     #[Route("/game/end", name: "game/end")]
     public function end(SessionInterface $session): Response
     {
-        $game = $session->get('game_session');
+        // FIX
+        $game = new Game($session);
 
         $game->determineWinner();
 
@@ -139,7 +132,6 @@ class GameController extends AbstractController
             }
         }
 
-        $session->set('game_session', $game);
         return $this->render('game_end.html.twig', [
             'title' => "End",
             'heading' => $endHeading,
@@ -150,7 +142,7 @@ class GameController extends AbstractController
     #[Route("/api/game")]
     public function gameJson(SessionInterface $session): Response
     {
-        $game = $session->get('game_session');
+        $game = new Game($session);
         $gameState = $game->getGameStateJson();
 
         return $this->utilityService->jsonResponse($gameState);

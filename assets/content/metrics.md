@@ -2,8 +2,6 @@
 
 ### Introduktion
 
-
-
 #### Coverage
 Coverage handlar helt enkelt om hur stor del av kodbasen som täcks av tester. Det säger egentligen ingenting om huruvida det är rätt eller bra tester, men man kan ändå se det som någon form av positiv signal: jag utgår i alla fall från att en person som satt sig och gjort tester för att uppnå en hög täckning också har försökt göra ett bra jobb med testera. Men någon garanti finns så klart inte. Sammanfattningsvis: positiv signal men ingen garanti för kvalitet. Min coverage innan förändringar i koden ligger på 28 procent.
 
@@ -49,7 +47,7 @@ Jag tror att LibraryController-klassen får god object-varningen på grund av an
 
 ![Maintainability/complexity](img/metrics_6.png)
 
-Jag konstaterar också att Game-klassen både har **hög komplexitet och ett lågt maintainability-index. Här finns också potential för förbättring**. Den har dessutom ett högt **instabilitets-index på 0,86 vilket också bör åtgärdas**. 
+Jag konstaterar också att Game-klassen både har **hög komplexitet och ett lågt maintainability-index. Här finns också potential för förbättring**. Den har dessutom ett högt **instabilitets-index på 0,86**. 
 
 Totalt sett verkar det som att PHPMetrics pekar på Game-klassen som det enskilt största förbättringsområdet i min kod.
 
@@ -62,23 +60,30 @@ Det verkar inte som att Scrutinizer tittar på Halstead complexity measures på 
 
 ![B methods](img/metrics_8.png)
 
-Anledningen är komplexiteten på 7. CRAP-scoren på Game::calculatePoints är betydligt lägre än för CardGame::dealCards, vilket beror på att jag inte skrivit tester för CardGame-klassen. **Jag bedömer att komplexiteten på båda metoderna borde kunna minskas till åtminstone 5**. **Med tanke på CRAP-scoren för CardGame::dealCards vill jag också skriva tester för metoden**.
+Anledningen är komplexiteten på 7. CRAP-scoren på Game::calculatePoints är betydligt lägre än för CardGame::dealCards, vilket beror på att jag inte skrivit tester för CardGame-klassen. **Jag bedömer att komplexiteten på båda metoderna borde kunna minskas till åtminstone 5**.
 
 
 ### Förbättringar
 Med tanke på diskussionen ovan så vill jag förbättra följande:
 
-* Minska instabilitets-index på Game-klassen genom att använda dependency injection. 
-    * Instabilitets-index innan förändringar: 0,86. Efter: X
-* Minska komplexiteten på Game::calculatePoints-metoden genom att minska antalet beslutspunkter i koden. Jag tror att man kan göra detta genom att skriva om/refaktorera.
+* **Ta bort varningen om "probably bugged" på Game-klassen i PHPMetrics**. Minska instabilitets-index på Game-klassen genom att använda dependency injection. Jag tror att man kan göra det genom att refaktorera till fler metoder med mindre komplexitet, eventuellt refaktorera vissa delar till en annan klass:
+![Probably bugged](img/metrics_8.png)
+    * Jag började med att flytta ut sessionshanteringen till kontrollern, där den egentligen hör hemma, med resultatet att kontrollern fick varningar istället (antalet expected bugs minskade dock, men utan att varningen försvann).
+    * Sedan valde jag att flytta ut gamestate-hanteringen till en annan klass, med resultatet att expected bugs minskade till 0,29 och att varningen försvann. Mission accomplished!
+    * Överlag väldigt bra förändringar för koden, även om det också ledde till att testerna behövde skrivas om.
+
+* **Minska komplexiteten på Game::calculatePoints-metoden genom att minska antalet beslutspunkter i koden**. Jag tror att man kan göra detta genom att skriva om/refaktorera.
     * Komplexitet innan förändringar: 7. Efter: 4
     * Jag flyttade kontrollen kring ess-värden till två egna metoder.
-* Minska komplexiteten på CardGame::dealCards-metoden på samma sätt. 
-    * Komplexitet innan förändringar: 7. Efter: X
-* Skriv tester för CardGame::dealCards-metoden för att komma till rätta med CRAP-scoren. 
-    * CRAP innan förändringar 56. Efter: X
 
+* **Minska komplexiteten på CardGame::dealCards-metoden på samma sätt**. Förhoppningsvis minskar detta också CRAP-scoren.
+    * Komplexitet innan förändringar: 7. Efter: 5
+    * CRAP-score innan förändringar 56. Efter: 30
+    * Jag flyttade ut logiken för att hämta aktiva spelare till en egen metod.
 
 ### Diskussion
 
-Det var enkelt att minska komplexitets-värdena på metoderna genom att refaktorera till fler metoder. Man kan däremot fundera på om kodens komplexitet verkligen minskade i just mitt fall. Jag tror det, men det är ett gränsfall. Å ena sidan ger metoderna som anropas en dokumentation om vad som händer i koden, å andra sidan blir det fler metoder för läsaren av koden att följa.
+Det var enkelt att minska komplexitets-värdena på metoderna genom att refaktorera till fler metoder. Man kan däremot fundera på om kodens komplexitet verkligen minskade i just mitt fall. Jag tror det, men det är ett gränsfall. Å ena sidan ger metoderna som anropas en dokumentation om vad som händer i koden, å andra sidan blir det fler metoder för läsaren av koden att följa. Hur som helst så gick båda metoderna från B till A i Scrutinizer och totalbetyget i Scrutinizer är nu 10.
+
+Min tanke var först att minska instabilitets-index på Game-klassen. Men sedan tänkte jag om. Ett uppenbart sätt att göra det på skulle vara att injecta deck-/player-/bank-klasser etc i konstruktorn eller med olika setter-metoder. Men då skulle ju dessa objekt behöva instansieras i controllern istället. Hela grejen med Game-klassen är ju att kapsla in hela spelet så att det blir enkelt att använda i en controller. Jag valde därför att istället fokusera på varningen i PHPMetrics om "probably bugged".
+
