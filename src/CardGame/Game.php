@@ -57,7 +57,7 @@ class Game implements CardGameInterface
 
     private function changeAceValueIfHigh(Card $card, int $aceHigh): void
     {
-        
+
         if ($card->isAce() && $card->getValue() == $aceHigh) {
             $card->changeAceValue();
         }
@@ -229,7 +229,8 @@ class Game implements CardGameInterface
     {
         $this->setWinner();
 
-        $this->gameState->update($this->deck, $this->player, $this->bank);;
+        $this->gameState->update($this->deck, $this->player, $this->bank);
+        ;
     }
 
 

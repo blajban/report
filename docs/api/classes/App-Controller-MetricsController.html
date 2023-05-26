@@ -106,18 +106,31 @@
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-cardgame.html">CardGame</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-controller.html">Controller</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -trait">
+    <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    CardGameTrait
+    MetricsController
+
+        <span class="phpdocumentor-element__extends">
+        extends <abbr title="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">AbstractController</abbr>
+    </span>
+    
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Application.html">Application</a></li>
+                            </ul>
+        </div>
+    
+    
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/CardGame/CardGameTrait.php"><a href="files/src-cardgame-cardgametrait.html"><abbr title="src/CardGame/CardGameTrait.php">CardGameTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/MetricsController.php"><a href="files/src-controller-metricscontroller.html"><abbr title="src/Controller/MetricsController.php">MetricsController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
+    <span class="phpdocumentor-element-found-in__line">10</span>
 
     </aside>
 
@@ -137,31 +150,24 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/App-CardGame-CardGameTrait.html#property_deck">$deck</a>
+                    <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/App-Controller-MetricsController.html#property_utilityService">$utilityService</a>
     <span>
-                        &nbsp;: <a href="classes/App-CardGame-Deck.html"><abbr title="\App\CardGame\Deck">Deck</abbr></a>|<a href="classes/App-CardGame-DeckWithJokers.html"><abbr title="\App\CardGame\DeckWithJokers">DeckWithJokers</abbr></a>            </span>
+                        &nbsp;: <a href="classes/App-Services-UtilityService.html"><abbr title="\App\Services\UtilityService">UtilityService</abbr></a>            </span>
 </dt>
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-CardGame-CardGameTrait.html#method_getDeck">getDeck()</a>
+    <a href="classes/App-Controller-MetricsController.html#method___construct">__construct()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-CardGame-CardGameTrait.html#method_getJsonDeck">getJsonDeck()</a>
+    <a href="classes/App-Controller-MetricsController.html#method_libraryLanding">libraryLanding()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-CardGame-CardGameTrait.html#method_remainingCards">remainingCards()</a>
-    <span>
-                                &nbsp;: int    </span>
+                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr>    </span>
 </dt>
 <dd></dd>
 
@@ -170,36 +176,38 @@
 
 
         
+
+        
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/App-CardGame-CardGameTrait.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Controller-MetricsController.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="
             phpdocumentor-element
             -property
-            -protected
+            -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_deck">
-        $deck
-        <a href="classes/App-CardGame-CardGameTrait.html#property_deck" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_utilityService">
+        $utilityService
+        <a href="classes/App-Controller-MetricsController.html#property_utilityService" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/CardGame/CardGameTrait.php"><a href="files/src-cardgame-cardgametrait.html"><abbr title="src/CardGame/CardGameTrait.php">CardGameTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/MetricsController.php"><a href="files/src-controller-metricscontroller.html"><abbr title="src/Controller/MetricsController.php">MetricsController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type"><a href="classes/App-CardGame-Deck.html"><abbr title="\App\CardGame\Deck">Deck</abbr></a>|<a href="classes/App-CardGame-DeckWithJokers.html"><abbr title="\App\CardGame\DeckWithJokers">DeckWithJokers</abbr></a></span>
-    <span class="phpdocumentor-signature__name">$deck</span>
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/App-Services-UtilityService.html"><abbr title="\App\Services\UtilityService">UtilityService</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$utilityService</span>
     </code>
 
         <section class="phpdocumentor-description"></section>
@@ -214,7 +222,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/App-CardGame-CardGameTrait.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Controller-MetricsController.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -222,29 +230,40 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getDeck">
-        getDeck()
-        <a href="classes/App-CardGame-CardGameTrait.html#method_getDeck" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/App-Controller-MetricsController.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/CardGame/CardGameTrait.php"><a href="files/src-cardgame-cardgametrait.html"><abbr title="src/CardGame/CardGameTrait.php">CardGameTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/MetricsController.php"><a href="files/src-controller-metricscontroller.html"><abbr title="src/Controller/MetricsController.php">MetricsController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getDeck</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Services-UtilityService.html"><abbr title="\App\Services\UtilityService">UtilityService</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$utilityService</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$utilityService</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Services-UtilityService.html"><abbr title="\App\Services\UtilityService">UtilityService</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
         
     
@@ -255,21 +274,21 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getJsonDeck">
-        getJsonDeck()
-        <a href="classes/App-CardGame-CardGameTrait.html#method_getJsonDeck" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_libraryLanding">
+        libraryLanding()
+        <a href="classes/App-Controller-MetricsController.html#method_libraryLanding" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/CardGame/CardGameTrait.php"><a href="files/src-cardgame-cardgametrait.html"><abbr title="src/CardGame/CardGameTrait.php">CardGameTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/MetricsController.php"><a href="files/src-controller-metricscontroller.html"><abbr title="src/Controller/MetricsController.php">MetricsController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getJsonDeck</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">libraryLanding</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -277,40 +296,7 @@
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_remainingCards">
-        remainingCards()
-        <a href="classes/App-CardGame-CardGameTrait.html#method_remainingCards" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/CardGame/CardGameTrait.php"><a href="files/src-cardgame-cardgametrait.html"><abbr title="src/CardGame/CardGameTrait.php">CardGameTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">30</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">remainingCards</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span>
             &mdash;
         
     
@@ -393,7 +379,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/App-CardGame-CardGameTrait.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/App-Controller-MetricsController.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

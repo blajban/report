@@ -23,13 +23,16 @@ class GameState
 
     /**
      * Constructor.
-     * @param string $playerName
      */
     public function __construct()
     {
         $this->reset();
     }
 
+    /**
+     * Update game state.
+     * @return void
+     */
     public function update(Deck $deck, Player $player, Bank $bank)
     {
         $this->gameState['player']['name'] = $player->getName();
@@ -53,7 +56,7 @@ class GameState
     }
 
     /**
-     * Get current game state prepared for json.
+     * Get current game state prepared for json with cards as string.
      * @return array{
      *   player: array{name: string, score: int, hand: array<Card>, handAsString?: array<array<string, mixed>>},
      *   bank: array{name: string, score: int, hand: array<Card>, handAsString?: array<array<string, mixed>>},
@@ -74,6 +77,10 @@ class GameState
         return $this->gameState;
     }
 
+    /**
+     * Reset game state.
+     * @return void
+     */
     public function reset()
     {
         $this->gameState = [
@@ -92,26 +99,35 @@ class GameState
         ];
     }
 
-    public function getPlayerScore()
+    public function getPlayerScore(): int
     {
         return $this->gameState['player']['score'];
     }
 
+    /**
+     * @return void
+     */
     public function setPlayerScore(int $score)
     {
         $this->gameState['player']['score'] = $score;
     }
 
-    public function getBankScore()
+    public function getBankScore(): int
     {
         return $this->gameState['bank']['score'];
     }
 
+    /**
+     * @return void
+     */
     public function setBankScore(int $score)
     {
         $this->gameState['bank']['score'] = $score;
     }
 
+    /**
+     * @return void
+     */
     public function setWinner(string $winner)
     {
         $this->gameState['winner'] = $winner;

@@ -45,8 +45,11 @@ class GameController extends AbstractController
     #[Route("/game", name: "game_init", methods: ['POST'])]
     public function initCallback(SessionInterface $session, Request $request): Response
     {
+        /**
+         * @var string $playerName
+         */
         $playerName = $session->get('game_playerName') ?? '';
-        
+
 
         if ($request->request->has('playerName')) {
             /** @var string $playerName */
@@ -65,6 +68,9 @@ class GameController extends AbstractController
     #[Route("/game/draw", name: "game_draw", methods: ['POST'])]
     public function playerTakesCard(SessionInterface $session): Response
     {
+        /**
+         * @var Game $game
+         */
         $game = $session->get('game_session');
 
         try {
@@ -87,6 +93,9 @@ class GameController extends AbstractController
     #[Route("/game/stop", name: "game_stop", methods: ['POST'])]
     public function banksTurn(SessionInterface $session): Response
     {
+        /**
+         * @var Game $game
+         */
         $game = $session->get('game_session');
 
         try {
@@ -106,6 +115,9 @@ class GameController extends AbstractController
     #[Route("/game/play", name: "game/play")]
     public function play(SessionInterface $session): Response
     {
+        /**
+         * @var Game $game
+         */
         $game = $session->get('game_session');
         $session->set('game_session', $game);
 
@@ -119,6 +131,9 @@ class GameController extends AbstractController
     #[Route("/game/end", name: "game/end")]
     public function end(SessionInterface $session): Response
     {
+        /**
+         * @var Game $game
+         */
         $game = $session->get('game_session');
 
         $game->determineWinner();
@@ -150,6 +165,9 @@ class GameController extends AbstractController
     #[Route("/api/game")]
     public function gameJson(SessionInterface $session): Response
     {
+        /**
+         * @var Game $game
+         */
         $game = $session->get('game_session');
         $gameState = $game->getGameStateJson();
 

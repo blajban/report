@@ -1,5 +1,3 @@
-[Metrics]
-
 ### Introduktion
 
 #### Coverage
@@ -67,10 +65,11 @@ Anledningen är komplexiteten på 7. CRAP-scoren på Game::calculatePoints är b
 Med tanke på diskussionen ovan så vill jag förbättra följande:
 
 * **Ta bort varningen om "probably bugged" på Game-klassen i PHPMetrics**. Minska instabilitets-index på Game-klassen genom att använda dependency injection. Jag tror att man kan göra det genom att refaktorera till fler metoder med mindre komplexitet, eventuellt refaktorera vissa delar till en annan klass:
-![Probably bugged](img/metrics_8.png)
+
+![Probably bugged](img/metrics_9.png)
     * Jag började med att flytta ut sessionshanteringen till kontrollern, där den egentligen hör hemma, med resultatet att kontrollern fick varningar istället (antalet expected bugs minskade dock, men utan att varningen försvann).
     * Sedan valde jag att flytta ut gamestate-hanteringen till en annan klass, med resultatet att expected bugs minskade till 0,29 och att varningen försvann. Mission accomplished!
-    * Överlag väldigt bra förändringar för koden, även om det också ledde till att testerna behövde skrivas om.
+    * Överlag väldigt bra förändringar för koden, även om det också ledde till att testerna behövde skrivas om litegrann.
 
 * **Minska komplexiteten på Game::calculatePoints-metoden genom att minska antalet beslutspunkter i koden**. Jag tror att man kan göra detta genom att skriva om/refaktorera.
     * Komplexitet innan förändringar: 7. Efter: 4
@@ -86,4 +85,6 @@ Med tanke på diskussionen ovan så vill jag förbättra följande:
 Det var enkelt att minska komplexitets-värdena på metoderna genom att refaktorera till fler metoder. Man kan däremot fundera på om kodens komplexitet verkligen minskade i just mitt fall. Jag tror det, men det är ett gränsfall. Å ena sidan ger metoderna som anropas en dokumentation om vad som händer i koden, å andra sidan blir det fler metoder för läsaren av koden att följa. Hur som helst så gick båda metoderna från B till A i Scrutinizer och totalbetyget i Scrutinizer är nu 10.
 
 Min tanke var först att minska instabilitets-index på Game-klassen. Men sedan tänkte jag om. Ett uppenbart sätt att göra det på skulle vara att injecta deck-/player-/bank-klasser etc i konstruktorn eller med olika setter-metoder. Men då skulle ju dessa objekt behöva instansieras i controllern istället. Hela grejen med Game-klassen är ju att kapsla in hela spelet så att det blir enkelt att använda i en controller. Jag valde därför att istället fokusera på varningen i PHPMetrics om "probably bugged".
+
+Jag tror att dessa verktyg är jättebra att använda för att få en bra, snygg och funktionell kod. Mätvärdena i sig är vad de är, de kan vara "bättre" eller "sämre", men genom att använda mätvärdena som bas för att hitta förbättringar kan man definitivt få till en bättre kodbas. Ett bra sätt att få en code review innan man lämnar över det till andra om man så vill. Nackdelen skulle väl vara att man riskerar att stirra sig blind på mätvärdena och jagar optimering av mätvärdena istället till liten nytta. 
 

@@ -28,30 +28,29 @@ Krav
         * Minska komplexiteten i class/metod
 
 [OK] Börja med att skriva om förbättringarna, vad du tänker göra, varför du väljer dem och hur du tror det kommer påverka mätvärdena för kvalitet.
-* Implementera sedan förbättringarna.
-* Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
-* Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
+[OK] Implementera sedan förbättringarna.
+[OK] Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
+[OK] Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
 
-* Avsluta med ett stycke “Diskussion” där du diskuterar kort kring det du nyss gjort.
-    * Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?
-    * Finns det fördelar och kanske nackdelar?
-    * Ser du andra möjligheter att jobba mot “clean code”?
+[OK] Avsluta med ett stycke “Diskussion” där du diskuterar kort kring det du nyss gjort.
+    [OK] Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?
+    [OK] Finns det fördelar och kanske nackdelar?
+    [OK] Ser du andra möjligheter att jobba mot “clean code”?
 
-* Game: tog bort session från cardgametrait, skriv om testerna
 
 ### Utvecklingsmiljö
 
 Se till att köra verktygen i din utvecklingsmiljö så att de hanterar den uppdaterade koden.
 
-* Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
+[OK] Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
 
-* Kolla din kod hur den matchar dina linters genom att köra composer lint.
+[OK] Kolla din kod hur den matchar dina linters genom att köra composer lint.
 
-* Dubbelkolla att dina testfall passerar med composer phpunit.
+[OK] Dubbelkolla att dina testfall passerar med composer phpunit.
 
-* Generera dokumentation av din kod med composer phpdoc.
+[OK] Generera dokumentation av din kod med composer phpdoc.
 
-* Generera metrics för din kod composer metrics.
+[OK] Generera metrics för din kod composer metrics.
 
 ### Publicera
 

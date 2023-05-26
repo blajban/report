@@ -67,6 +67,9 @@ class CardGame implements CardGameInterface
         return $cardsDrawn;
     }
 
+    /**
+     * @return array<Player> $activePlayers
+     */
     private function getActivePlayers(int $numPlayers): array
     {
         $maxActivePlayers = $this->session->get("active_players") ?? $numPlayers;

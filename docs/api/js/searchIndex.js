@@ -201,6 +201,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-CardGame-CardGame.html#method_draw"
         },                {
+            "fqsen": "\\App\\CardGame\\CardGame\u003A\u003AgetActivePlayers\u0028\u0029",
+            "name": "getActivePlayers",
+            "summary": "",
+            "url": "classes/App-CardGame-CardGame.html#method_getActivePlayers"
+        },                {
             "fqsen": "\\App\\CardGame\\CardGame\u003A\u003AdealCards\u0028\u0029",
             "name": "dealCards",
             "summary": "",
@@ -210,6 +215,11 @@ Search.appendIndex(
             "name": "resetPlayers",
             "summary": "",
             "url": "classes/App-CardGame-CardGame.html#method_resetPlayers"
+        },                {
+            "fqsen": "\\App\\CardGame\\CardGame\u003A\u003A\u0024session",
+            "name": "session",
+            "summary": "",
+            "url": "classes/App-CardGame-CardGame.html#property_session"
         },                {
             "fqsen": "\\App\\CardGame\\CardGameInterface",
             "name": "CardGameInterface",
@@ -255,11 +265,6 @@ Search.appendIndex(
             "name": "deck",
             "summary": "",
             "url": "classes/App-CardGame-CardGameTrait.html#property_deck"
-        },                {
-            "fqsen": "\\App\\CardGame\\CardGameTrait\u003A\u003A\u0024session",
-            "name": "session",
-            "summary": "",
-            "url": "classes/App-CardGame-CardGameTrait.html#property_session"
         },                {
             "fqsen": "\\App\\CardGame\\CardHandInterface",
             "name": "CardHandInterface",
@@ -426,35 +431,25 @@ Search.appendIndex(
             "summary": "Constructor.",
             "url": "classes/App-CardGame-Game.html#method___construct"
         },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003AgetGameStateSession\u0028\u0029",
-            "name": "getGameStateSession",
-            "summary": "Load\u0020gamestate\u0020from\u0020session\u0020or\u0020construct\u0020new\u0020objects.",
-            "url": "classes/App-CardGame-Game.html#method_getGameStateSession"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003AsetGameStateSession\u0028\u0029",
-            "name": "setGameStateSession",
-            "summary": "Save\u0020current\u0020state\u0020to\u0020session.",
-            "url": "classes/App-CardGame-Game.html#method_setGameStateSession"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003AresetGameStateSession\u0028\u0029",
-            "name": "resetGameStateSession",
-            "summary": "Remove\u0020game\u0020state\u0020from\u0020session.",
-            "url": "classes/App-CardGame-Game.html#method_resetGameStateSession"
-        },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AcalculateHand\u0028\u0029",
             "name": "calculateHand",
             "summary": "Calculate\u0020total\u0020points\u0020of\u0020a\u0020hand\u0020of\u0020cards.",
             "url": "classes/App-CardGame-Game.html#method_calculateHand"
         },                {
+            "fqsen": "\\App\\CardGame\\Game\u003A\u003AchangeAceValueIfHigh\u0028\u0029",
+            "name": "changeAceValueIfHigh",
+            "summary": "",
+            "url": "classes/App-CardGame-Game.html#method_changeAceValueIfHigh"
+        },                {
+            "fqsen": "\\App\\CardGame\\Game\u003A\u003AchangeAceValueIfFull\u0028\u0029",
+            "name": "changeAceValueIfFull",
+            "summary": "",
+            "url": "classes/App-CardGame-Game.html#method_changeAceValueIfFull"
+        },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AcalculatePoints\u0028\u0029",
             "name": "calculatePoints",
             "summary": "Calculate\u0020the\u0020total\u0020points\u0020of\u0020a\u0020hand\u0020of\u0020cards\u0020considering\u0020aces.",
             "url": "classes/App-CardGame-Game.html#method_calculatePoints"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003AsetPlayerName\u0028\u0029",
-            "name": "setPlayerName",
-            "summary": "Set\u0020player\u0020name.",
-            "url": "classes/App-CardGame-Game.html#method_setPlayerName"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003AgetGameState\u0028\u0029",
             "name": "getGameState",
@@ -500,41 +495,6 @@ Search.appendIndex(
             "name": "MAX_POINTS",
             "summary": "",
             "url": "classes/App-CardGame-Game.html#constant_MAX_POINTS"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003ADECK_SESSION_NAME",
-            "name": "DECK_SESSION_NAME",
-            "summary": "",
-            "url": "classes/App-CardGame-Game.html#constant_DECK_SESSION_NAME"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003APLAYER_SESSION_NAME",
-            "name": "PLAYER_SESSION_NAME",
-            "summary": "",
-            "url": "classes/App-CardGame-Game.html#constant_PLAYER_SESSION_NAME"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003APLAYER_SCORE_SESSION_NAME",
-            "name": "PLAYER_SCORE_SESSION_NAME",
-            "summary": "",
-            "url": "classes/App-CardGame-Game.html#constant_PLAYER_SCORE_SESSION_NAME"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003APLAYERNAME_SESSION_NAME",
-            "name": "PLAYERNAME_SESSION_NAME",
-            "summary": "",
-            "url": "classes/App-CardGame-Game.html#constant_PLAYERNAME_SESSION_NAME"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003ABANK_SESSION_NAME",
-            "name": "BANK_SESSION_NAME",
-            "summary": "",
-            "url": "classes/App-CardGame-Game.html#constant_BANK_SESSION_NAME"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003ABANK_SCORE_SESSION_NAME",
-            "name": "BANK_SCORE_SESSION_NAME",
-            "summary": "",
-            "url": "classes/App-CardGame-Game.html#constant_BANK_SCORE_SESSION_NAME"
-        },                {
-            "fqsen": "\\App\\CardGame\\Game\u003A\u003AWINNER_SESSION_NAME",
-            "name": "WINNER_SESSION_NAME",
-            "summary": "",
-            "url": "classes/App-CardGame-Game.html#constant_WINNER_SESSION_NAME"
         },                {
             "fqsen": "\\App\\CardGame\\Game\u003A\u003A\u0024player",
             "name": "player",
@@ -1010,6 +970,86 @@ Search.appendIndex(
             "name": "findOnebyIsbn",
             "summary": "",
             "url": "classes/App-Repository-BookRepository.html#method_findOnebyIsbn"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState",
+            "name": "GameState",
+            "summary": "Game\u0020class.",
+            "url": "classes/App-CardGame-GameState.html"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor.",
+            "url": "classes/App-CardGame-GameState.html#method___construct"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "Update\u0020game\u0020state.",
+            "url": "classes/App-CardGame-GameState.html#method_update"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "Get\u0020current\u0020game\u0020state.",
+            "url": "classes/App-CardGame-GameState.html#method_get"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003AgetJson\u0028\u0029",
+            "name": "getJson",
+            "summary": "Get\u0020current\u0020game\u0020state\u0020prepared\u0020for\u0020json\u0020with\u0020cards\u0020as\u0020string.",
+            "url": "classes/App-CardGame-GameState.html#method_getJson"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003Areset\u0028\u0029",
+            "name": "reset",
+            "summary": "Reset\u0020game\u0020state.",
+            "url": "classes/App-CardGame-GameState.html#method_reset"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003AgetPlayerScore\u0028\u0029",
+            "name": "getPlayerScore",
+            "summary": "",
+            "url": "classes/App-CardGame-GameState.html#method_getPlayerScore"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003AsetPlayerScore\u0028\u0029",
+            "name": "setPlayerScore",
+            "summary": "",
+            "url": "classes/App-CardGame-GameState.html#method_setPlayerScore"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003AgetBankScore\u0028\u0029",
+            "name": "getBankScore",
+            "summary": "",
+            "url": "classes/App-CardGame-GameState.html#method_getBankScore"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003AsetBankScore\u0028\u0029",
+            "name": "setBankScore",
+            "summary": "",
+            "url": "classes/App-CardGame-GameState.html#method_setBankScore"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003AsetWinner\u0028\u0029",
+            "name": "setWinner",
+            "summary": "",
+            "url": "classes/App-CardGame-GameState.html#method_setWinner"
+        },                {
+            "fqsen": "\\App\\CardGame\\GameState\u003A\u003A\u0024gameState",
+            "name": "gameState",
+            "summary": "",
+            "url": "classes/App-CardGame-GameState.html#property_gameState"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003AlibraryLanding\u0028\u0029",
+            "name": "libraryLanding",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_libraryLanding"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003A\u0024utilityService",
+            "name": "utilityService",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#property_utilityService"
         },                {
             "fqsen": "\\",
             "name": "\\",
