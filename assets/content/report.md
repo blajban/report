@@ -68,7 +68,14 @@ Mitt TIL för kursmomentet är nog helheten, att jag kunde utveckla en liten min
 
 ### Kmom06
 
-Redovisningstext.
+Relativt segt kursmoment för mig, drog ut väldigt mycket på tiden. Men nu när det är klart så var det givetvis nyttigt och bra att dyka ner i rapporterna. PHPMetrics tycker jag kunde varit mycket bättre, med mer förklaringar och möjlighet att dyka ner i klasserna. T ex gick det inte att gå ner i en klass och se **vilka** metoder jag skulle fokusera på. Hade också önskat mer vägledning från systemet om vilka parametrar som ger en varning om probably bugged t ex, nu är det bara allmän information. Dock var det en del bra sammanställningar, till exempel coupling-sektionen. 
+
+Scrutinizier däremot var ju väldigt trevligt, lätt att komma igång, trevliga rapporter som går att klicka runt i, lätt att förstå. Skulle jag välja ett verktyg att använda så skulle det absolut vara Scrutinizer. Kanske berodde det på att känslan Scrutinizer gav mig var väldigt mycket mer positiv med ett första betyg på 9,94, till skillnad från PHPMetrics som visade ilskna röda bollar.
+
+För mig är hög kodkvalitet kod som gör det den ska och är lätt att läsa och ta del av. Självförklarande variabelnamn, logisk formatering med indrag. Jag ska inte behöva kommentarer för att förstå hur koden fungerar. 
+
+Mitt TIL för kursmomentet är absolut den cyklomatiska komplexiteten. Jag tror att den mesta koden blir av högre kvalitet om vi försöker minska den cyklomatiska komplexiteten så mycket som möjligt. Det kommer jag bära med mig.
+
 
 <a name="kmom10"></a>
 
