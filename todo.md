@@ -127,3 +127,60 @@ The rooms of the mansion would be still images with clickable areas. A 2D art st
 As players progress, they can unlock more rooms in the mansion and uncover the deeper story of the Chronos Mansion. There could be a grand puzzle that threads through all the eras/rooms which players slowly piece together.
 
 This adjusted idea should be more in line with your requirements! Let me know if you need any more help or if there's anything you'd like to change.
+
+
+## Grunden
+
+Äventyrsspel.
+
+Spelloopen:
+1. Presentera rum med [exits]
+2. Presentera [items] i rummet
+3. Gör ett val:
+    * Gå i en riktning
+    * Plocka upp en item 
+
+[GÖR ETT FLÖDESDIAGRAM]
+[GÖR ETT ER-DIAGRAM]
+
+
+* Quests, random slutpunkt, dynamisk "fusklapp"
+* Databas:
+    * Kartor/rum
+    * (Spara spel)
+    * Items
+* JSON-api (spelstatus, lägga till karta/rum, lägga till items, ?, ?)
+
+
+## Arkitektur/entiteter
+
+* Game
+* Map
+    * Room
+* Player
+* Inventory
+    * Item
+* QuestSystem
+    * Quest
+* GameState??
+
+## Att spara i databasen
+
+* Room
+    * Name
+    * Description
+    * Era
+* Items
+    * Name
+    * Description
+* GameState
+    * ID
+    * GameState 
+
+## Quests
+Om tid finns
+Annars är målet att hitta utgången.
+Olika typer av quests:
+    * "move [thing] to [room]
+    * "find [room]
+    * 
