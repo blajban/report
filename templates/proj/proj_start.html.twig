@@ -1,0 +1,24 @@
+{# templates/proj_start.html.twig #}
+
+{% include 'proj/proj_header.html.twig' %}
+
+
+<body>
+    {% include 'proj/proj_nav.html.twig' %}
+
+
+    <div class="content-area">
+        <div class="content">
+            {% include 'incl/flash.html.twig' %}
+            <h2>{{ heading }}</h2>
+            {{ content|raw }}
+
+        </div>
+    </div>
+
+    {% include 'proj/proj_footer.html.twig' %}
+</body>
+
+</html>
+
+
