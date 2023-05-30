@@ -170,9 +170,11 @@ Spelloopen:
     * Name
     * Description
     * Era
+    * Image
 * Items
     * Name
     * Description
+    * Image
 * GameState
     * ID
     * GameState 

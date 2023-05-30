@@ -7,26 +7,32 @@
     {% include 'proj/proj_nav.html.twig' %}
 
 
-    <div class="content-area">
-        <div class="content">
-            {% include 'incl/flash.html.twig' %}
-            <h2>{{ heading }}</h2>
-            {{ content|raw }}
+    
 
+            <h1>{{ heading }}</h1>
+            
 
-            <div class="room">
-                <div class="exit north"></div>
-                <div class="exit west"></div>
-                <div class="room-content">
-                  Room Name
-                </div>
-                <div class="exit east"></div>
-                <div class="exit south"></div>
+            <div class="room" style="background-image: url('img/cat.jpg')">
+              {% for direction, door in gameState.currentRoom.getDoors() %}
+                {% if (door) %}
+                  <div class="exit {{ direction }}"></div>
+                {% endif %}
+              {% endfor %}
+
+              <div class="room-content">
+                <h3>{{ gameState.currentRoom.getName() }}</h3>
               </div>
-              
+            </div>
+            <p>{{ gameState.currentRoom.getDescription() }}</p>
+              <h4>Items:</h4>
+              {% for item in gameState.currentRoom.getItems() %}
+                <p>{{item.name}}, {{item.description}}</p>
+              {% endfor %}
 
-        </div>
-    </div>
+            {{ dump(gameState) }}
+            {{ dump(grid) }}
+
+
 
     {% include 'proj/proj_footer.html.twig' %}
 </body>

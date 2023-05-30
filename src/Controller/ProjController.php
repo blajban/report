@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\CardGame\Game;
+use App\Proj\AdventureGame;
+use App\Proj\Map;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,10 +26,13 @@ class ProjController extends AbstractController
     #[Route("/proj", name: "proj")]
     public function landing(): Response
     {
+        $game = new AdventureGame();
         return $this->render('proj/proj_start.html.twig', [
             'title' => "Proj",
             'heading' => "Proj",
-            'content' => "project!"
+            'gameState' => $game->getState(),
+            'rooms' => $game->getMap()->getRooms(),
+            'grid' => $game->getMap()->getGrid()
         ]);
     }
 
