@@ -53,10 +53,11 @@ class Map
                 $this->generateEastDoor($row, $col);
                 $this->generateNorthDoor($row, $col);
                 $this->generateSouthDoor($row, $col);
-
-                // What if no doors are added?
+                $this->generateExtraDoors($row, $col);
             }
         }
+
+        $this->checkAccessibility();
     }
 
     private function generateWestDoor($row, $col)
@@ -109,6 +110,36 @@ class Map
         } catch (Exception $e) {
             return;
         }
+    }
+    private function generateExtraDoors($row, $col)
+    {
+        try {
+            $current = $this->grid[$row][$col];
+            $doors = $current->getDoors();
+            $doorCount = 0;
+            foreach ($doors as $door) {
+                if ($door) {
+                    $doorCount++;
+                }
+            }
+            if ($doorCount < 2) {
+                if (!$doors['south']) {
+                    $south = $this->grid[$row + 1][$col];
+                    $current->addDoor('south', $south);
+                }
+                if (!$doors['east']) {
+                    $east = $this->grid[$row][$col + 1];
+                    $current->addDoor('east', $east);
+                }
+            }
+        } catch (Exception $e) {
+            return;
+        }
+    }
+
+    private function checkAccessibility()
+    {
+
     }
 
     private function setStartingRoom()

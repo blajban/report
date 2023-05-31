@@ -186,3 +186,18 @@ Olika typer av quests:
     * "move [thing] to [room]
     * "find [room]
     * 
+
+Minicluedo?
+
+# TODO:
+* Enkel prototyp enligt flödesdiagram
+    * Gå mellan rum (lägg till i app-koden)
+* Styling
+* Bilder
+* Databas
+* Items
+* Quests/wincons
+
+## LÄNGRE FRAM
+* Fixa inaccessible rooms (checkaccessibility-funktionen i Map)
+* Skapa en doorgenerator-klass?

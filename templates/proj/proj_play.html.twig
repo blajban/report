@@ -1,0 +1,40 @@
+{# templates/proj_start.html.twig #}
+
+{% include 'proj/proj_header.html.twig' %}
+
+
+<body>
+    {% include 'proj/proj_nav.html.twig' %}
+
+
+
+            <div class="room" style="background-image: url('../img/cat.jpg')">
+              
+                {% for direction, door in gameState.currentRoom.getDoors() %}
+                  {% if (door) %}
+                  <form class="exit {{ direction }}" method="post" action="">
+                    <button type="submit" name="move" value="{{ direction }}"
+                      onClick="this.form.action='{{ path('proj/play_move_callback') }}';"
+                    ></button>
+                  </form>
+                  {% endif %}
+                {% endfor %}
+
+                <div class="room-content">
+                  <h3>{{ gameState.currentRoom.getName() }}</h3>
+                  <p>{{ gameState.currentRoom.getDescription() }}</p>
+                  <h4>Items:</h4>
+                  {% for item in gameState.currentRoom.getItems() %}
+                    <p>{{item.name}}, {{item.description}}</p>
+                  {% endfor %}
+                </div>
+            </div>
+            
+              
+
+    {% include 'proj/proj_footer.html.twig' %}
+</body>
+
+</html>
+
+
