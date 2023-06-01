@@ -1,0 +1,14 @@
+{# templates/proj_minimap.html.twig #}
+
+
+{% set maxColumns = gameState.grid[0]|length %}
+{% set columnWidth = 100 / maxColumns %}
+<div class="room-container-debug" style="grid-template-columns: repeat({{ maxColumns }}, minmax(0, {{ columnWidth }}%))">
+  {% for row in gameState.grid %}
+    {% for room in row %}
+      <div class="room-debug {% if room == gameState.currentRoom %}current-room-debug{% endif %}"></div>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+

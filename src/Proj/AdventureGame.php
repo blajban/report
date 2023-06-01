@@ -131,26 +131,19 @@ class AdventureGame
         $this->map = new Map($this->rooms);
     }
 
+    public function move($direction)
+    {
+        $this->map->move($direction);
+    }
+
     public function getState(): array
     {
-        // current room
-        // exits
-        // players inventory
-        // quests
-        // messages/feedback
-        // game status
-        //$currentRoom = ;
         return [
-            'currentRoom' => $this->map->getCurrentRoom()
+            'currentRoom' => $this->map->getCurrentRoom(),
+            'rooms' => $this->map->getRooms(),
+            'grid' => $this->map->getGrid()
         ];
-
     }
-
-    public function getMap(): Map
-    {
-        return $this->map;
-    }
-
 
 
 }

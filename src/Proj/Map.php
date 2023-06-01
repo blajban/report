@@ -154,6 +154,13 @@ class Map
         return $this->activeRoom;
     }
 
+    public function move($direction)
+    {
+        $doors = $this->activeRoom->getDoors();
+        $nextRoom = $doors[$direction];
+        $this->activeRoom = $nextRoom;
+    }
+
     public function getRooms(): array
     {
         return $this->rooms;

@@ -1,0 +1,27 @@
+{# templates/proj_room.html.twig #}
+
+
+<div class="room" style="background-image: url('{{ path('game_picture', {'id': 68}) }}')">
+  
+  {% for direction, door in gameState.currentRoom.getDoors() %}
+    {% if (door) %}
+    <form class="exit {{ direction }}" method="post" action="">
+      <button type="submit" name="move" value="{{ direction }}"
+        onClick="this.form.action='{{ path('proj/play_move_callback') }}';"
+      ></button>
+    </form>
+    {% endif %}
+  {% endfor %}
+
+  <div class="room-content">
+    <h3>{{ gameState.currentRoom.getName() }}</h3>
+    <p>{{ gameState.currentRoom.getDescription() }}</p>
+    <h4>Items:</h4>
+    {% for item in gameState.currentRoom.getItems() %}
+      <p>{{item.name}}, {{item.description}}</p>
+    {% endfor %}
+  </div>
+</div>
+
+
+

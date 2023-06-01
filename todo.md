@@ -190,14 +190,83 @@ Olika typer av quests:
 Minicluedo?
 
 # TODO:
-* Enkel prototyp enligt flödesdiagram
+[OK] Enkel prototyp enligt flödesdiagram
     * Gå mellan rum (lägg till i app-koden)
-* Styling
-* Bilder
-* Databas
+[OK] Bastyling
+[OK] Grunden för att visa bilder
+[OK] Databas rooms
+[OK] JSON-routes rooms
+* Bilder + lägg till några rum i db via json
+* Fixa problem med recursive
+* Recursive-problemet
+* Typografi-styling
 * Items
+* Databas items
+* JSON-routes items
 * Quests/wincons
 
 ## LÄNGRE FRAM
 * Fixa inaccessible rooms (checkaccessibility-funktionen i Map)
 * Skapa en doorgenerator-klass?
+
+
+
+
+
+
+# API DOCS
+
+
+## Add Room Info
+Add a new room info.
+
+### Endpoint
+```
+POST /proj/api/roominfo/add
+```
+
+### Request Headers
+- Content-Type: multipart/form-data
+
+### Request Body
+The request body should contain two parts: `json_data` and `img`.
+
+#### Part: json_data
+- Type: JSON
+- Description: The JSON data representing the room info.
+- Example:
+```json
+{
+  "name": "Room Name",
+  "description": "Room Description"
+}
+```
+
+#### Part: img
+- Type: File
+- Description: The image file associated with the room info.
+
+### Example Request
+```
+POST /proj/api/roominfo/add
+Content-Type: multipart/form-data
+
+----Boundary
+Content-Disposition: form-data; name="json_data"
+
+{
+  "name": "Room Name",
+  "description": "Room Description"
+}
+----Boundary
+Content-Disposition: form-data; name="img"; filename="room_image.jpg"
+Content-Type: image/jpeg
+
+[Binary image data]
+----Boundary--
+```
+
+### Response
+- Status: 201 Created
+- Body: Added room info
+
