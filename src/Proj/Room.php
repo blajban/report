@@ -7,12 +7,14 @@ namespace App\Proj;
 
 class Room
 {
+    private int $id;
     private string $name;
     private string $description;
     private array $doors;
     private array $items;
 
-    public function __construct($name, $description) {
+    public function __construct($id, $name, $description) {
+        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->doors = [
@@ -40,6 +42,11 @@ class Room
     public function getItems(): array
     {
         return $this->items;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getName(): string

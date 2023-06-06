@@ -12,7 +12,7 @@ use Exception;
 use Symfony\Component\HttpFoundation\Request;
 
 use App\Repository\BookRepository;
-
+use App\Repository\RoomInfoRepository;
 use App\Services\UtilityService;
 
 class ProjController extends AbstractController
@@ -25,21 +25,22 @@ class ProjController extends AbstractController
     }
 
     #[Route('/game_picture/{id}', name: 'game_picture')]
-    public function gamePicture(int $id, BookRepository $bookRepository): Response
+    public function gamePicture(int $id, RoomInfoRepository $roomInfoRepo): Response
     {
-        $book = $bookRepository->find($id);
+        $roomInfo = $roomInfoRepo->find($id);
 
-        if (!$book || !$book->getPicture()) {
+        if (!$roomInfo || !$roomInfo->getImg()) {
             throw new Exception('No book picture found for id ' . $id);
         }
 
-        return $this->utilityService->imageResponse($book->getPicture());
+        return $this->utilityService->imageResponse($roomInfo->getImg());
     }
 
     #[Route("/proj", name: "proj", methods: ['GET'])]
-    public function landing(SessionInterface $session): Response
+    public function landing(SessionInterface $session, RoomInfoRepository $roomInfoRepo): Response
     {
-        $game = new AdventureGame();
+        $roomInfos = $roomInfoRepo->findAll();
+        $game = new AdventureGame($roomInfos);
         
         $session->set('proj_session', $game);
 
@@ -47,12 +48,13 @@ class ProjController extends AbstractController
     }
 
     #[Route("/proj/play", name: "proj/play", methods: ['GET'])]
-    public function play(SessionInterface $session): Response
+    public function play(SessionInterface $session, RoomInfoRepository $roomInfoRepo): Response
     {
         $game = $session->get('proj_session');
 
         if (!$game) {
-            $game = new AdventureGame();
+            $roomInfos = $roomInfoRepo->findAll();
+            $game = new AdventureGame($roomInfos);
         }
 
         $session->set('proj_session', $game);

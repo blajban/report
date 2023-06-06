@@ -1,7 +1,7 @@
 {# templates/proj_room.html.twig #}
 
 
-<div class="room" style="background-image: url('{{ path('game_picture', {'id': 68}) }}')">
+<div class="room" style="background-image: url('{{ path('game_picture', {'id': gameState.currentRoom.getId() }) }}')">
   
   {% for direction, door in gameState.currentRoom.getDoors() %}
     {% if (door) %}

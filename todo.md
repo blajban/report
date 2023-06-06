@@ -128,6 +128,110 @@ As players progress, they can unlock more rooms in the mansion and uncover the d
 
 This adjusted idea should be more in line with your requirements! Let me know if you need any more help or if there's anything you'd like to change.
 
+Certainly! Here are 10 rooms designed to fit the "Echoes of Tomorrow" and "Chronos Mansion" game idea, each with a name, short description, and a suggestion for a picture:
+
+1. Quantum Laboratory
+   - Description: A futuristic laboratory with advanced scientific equipment and holographic displays.
+   - Picture: Picture of a high-tech laboratory with scientists working on futuristic gadgets.
+
+2. Time Chamber
+   - Description: A room filled with mysterious devices that manipulate time, with clocks and hourglasses scattered around.
+   - Picture: Picture of a chamber with intricate timepieces and swirling time vortexes.
+
+3. Memory Archive
+   - Description: A room with rows of memory pods, where fragments of past events are stored as holographic projections.
+   - Picture: Picture of a room with glowing memory pods and floating holographic memories.
+
+4. Astral Observatory
+   - Description: A celestial observatory with a giant telescope and holographic projections of distant galaxies.
+   - Picture: Picture of an observatory with a telescope pointing towards the stars and vivid cosmic visuals.
+
+5. Temporal Garden
+   - Description: A lush garden with exotic plants, some of which bloom with flowers that change colors over time.
+   - Picture: Picture of a vibrant garden with unique flora and fauna, emitting a futuristic glow.
+
+6. Techno-Arcade
+   - Description: An arcade room filled with futuristic gaming consoles, virtual reality stations, and neon lights.
+   - Picture: Picture of an arcade room with players immersed in virtual reality games and futuristic game cabinets.
+
+7. Cybernetics Lab
+   - Description: A laboratory dedicated to cybernetic enhancements, with robotic arms, computer terminals, and bionic prototypes.
+   - Picture: Picture of a lab with scientists working on cybernetic technologies and advanced robotic limbs.
+
+8. Echo Chamber
+   - Description: A room with sound amplification technology that echoes past conversations and whispers cryptic messages.
+   - Picture: Picture of a chamber with intricate sound equipment and soundwaves reverberating in the air.
+
+9. Dimensional Gallery
+   - Description: An art gallery showcasing paintings and sculptures that depict different dimensions and alternate realities.
+   - Picture: Picture of an art gallery with mind-bending artwork and visitors mesmerized by the displays.
+
+10. Timeless Ballroom
+    - Description: A grand ballroom frozen in time, with elegant chandeliers, opulent decorations, and ghostly echoes of waltzing couples.
+    - Picture: Picture of a magnificent ballroom with ornate architecture and a spectral dance floor.
+
+Feel free to adapt and modify these room ideas to fit your vision for the "Echoes of Tomorrow" and "Chronos Mansion" game. Customize the descriptions, add more details, and find suitable pictures to enhance the immersive experience of your adventure game!
+
+
+Certainly! Here are the 10 rooms with more immersive descriptions for the "Echoes of Tomorrow" and "Chronos Mansion" game:
+
+{
+    "name": "Quantum Laboratory",
+    "description": "You step into a sprawling quantum laboratory where shimmering energy fields surround advanced scientific equipment. Holographic displays flicker with complex equations, while scientists in futuristic attire work diligently on cutting-edge experiments that bend the very fabric of reality."
+}
+
+{
+    "name": "The Enigmatic Study",
+    "description": "Step into the grandeur of The Enigmatic Study, a room that embodies the opulence of Victorian elegance. Adorned with rich mahogany bookshelves that reach from floor to ceiling, this sanctuary of knowledge houses a vast collection of leather-bound tomes, their spines embellished with intricate golden lettering."
+}
+
+{
+    "name": "Time Chamber",
+    "description": "You venture into a chamber bathed in a soft ethereal glow, pulsating with temporal energies. Mysterious devices hum with power, each meticulously calibrated to manipulate the flow of time. In this room, clocks tick in perfect unison, and ancient hourglasses hold the secrets of past and future."
+}
+
+{
+    "name": "Memory Archive",
+    "description": "You enter a chamber adorned with rows of luminescent memory pods, each encapsulating fragments of bygone eras. As you traverse the room, holographic projections spring to life, forming vivid images and capturing the essence of distant memories. It's a sanctuary where the past intertwines with the present."
+}
+
+{
+    "name": "Astral Observatory",
+    "description": "You ascend to an observatory nestled high above, where a colossal telescope reaches toward the vast expanse of the cosmos. Here, holographic projections showcase distant galaxies and celestial wonders. As you gaze through the glass, you witness the beauty of unseen worlds and the mysteries that lie beyond."
+}
+
+{
+    "name": "Temporal Garden",
+    "description": "You step into a verdant sanctuary alive with vibrant flora from across the temporal spectrum. Luminous petals bloom with hues that shift and change, echoing the passing of time. The fragrant air carries whispers of ancient wisdom, and the tranquil atmosphere invites contemplation and introspection."
+}
+
+{
+    "name": "Techno-Arcade",
+    "description": "You immerse yourself in a pulsating techno-arcade, where neon lights flicker and energetic music fills the air. Futuristic gaming consoles and virtual reality stations beckon you to explore captivating digital realms. Amongst the electrifying ambiance, skilled players engage in thrilling competitions of skill and strategy."
+}
+
+{
+    "name": "Cybernetics Lab",
+    "description": "You enter a sleek cybernetics lab where scientists in lab coats and augmented individuals collaborate on the cutting edge of human-machine integration. Advanced robotic arms dance with precision, while computer terminals hum with streams of data. The air crackles with anticipation as the boundaries between flesh and technology blur."
+}
+
+{
+    "name": "Echo Chamber",
+    "description": "You step into an enigmatic echo chamber, its walls adorned with intricate sound amplification devices. Within this space, whispers from ages past linger, echoing through time. The air is charged with an otherworldly energy as the chamber's soundwaves intertwine, revealing cryptic messages and long-forgotten secrets."
+}
+
+{
+    "name": "Dimensional Gallery",
+    "description": "You wander through a captivating dimensional gallery, where masterful paintings and captivating sculptures transport you to parallel realities. Each artwork portrays vistas and beings from realms beyond imagination. As you explore, you feel the veil between dimensions thinning, offering glimpses into the infinite possibilities of existence."
+}
+
+{
+    "name": "Timeless Ballroom",
+    "description": "You step into a resplendent ballroom frozen in an eternal moment. Crystal chandeliers cast a warm glow upon the opulent decor, as ghostly echoes of waltzing couples resonate through the air. The faded elegance of this timeless space evokes a sense of nostalgia, where memories of grand celebrations and hidden stories intertwine."
+}
+
+
+
 
 ## Grunden
 
@@ -196,10 +300,13 @@ Minicluedo?
 [OK] Grunden för att visa bilder
 [OK] Databas rooms
 [OK] JSON-routes rooms
-* Bilder + lägg till några rum i db via json
+[OK] Bilder + lägg till några rum i db via json
+* Uppdatera rum json
+* Lägg till alla rum med placeholder-bilder
 * Fixa problem med recursive
 * Recursive-problemet
 * Typografi-styling
+* Minimap
 * Items
 * Databas items
 * JSON-routes items

@@ -120,10 +120,16 @@ class AdventureGame
     private Map $map;
     private array $rooms;
 
-    public function __construct()
+    public function __construct($roomInfos)
     {
-        foreach (ROOMS as $roomInfo) {
+        /*foreach (ROOMS as $roomInfo) {
             $room = new Room($roomInfo['name'], $roomInfo['description']);
+            $room->addItem(ITEMS[0]);
+            $this->rooms[] = $room;
+            
+        }*/
+        foreach ($roomInfos as $roomInfo) {
+            $room = new Room($roomInfo->getId(), $roomInfo->getName(), $roomInfo->getDescription());
             $room->addItem(ITEMS[0]);
             $this->rooms[] = $room;
             
