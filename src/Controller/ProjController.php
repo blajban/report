@@ -15,6 +15,22 @@ use App\Repository\BookRepository;
 use App\Repository\RoomInfoRepository;
 use App\Services\UtilityService;
 
+const ITEMS = [
+    [
+        'name' => 'Ett item',
+        'description' => 'Det här är ett item'
+    ],
+    [
+        'name' => 'Ett annat item',
+        'description' => 'Det här är ett annat item'
+    ],
+    [
+        'name' => 'Ett tredje item',
+        'description' => 'Det här är tredje ett item'
+    ]
+];
+
+
 class ProjController extends AbstractController
 {
     private UtilityService $utilityService;
@@ -40,7 +56,7 @@ class ProjController extends AbstractController
     public function landing(SessionInterface $session, RoomInfoRepository $roomInfoRepo): Response
     {
         $roomInfos = $roomInfoRepo->findAll();
-        $game = new AdventureGame($roomInfos);
+        $game = new AdventureGame($roomInfos, ITEMS);
         
         $session->set('proj_session', $game);
 
@@ -54,7 +70,7 @@ class ProjController extends AbstractController
 
         if (!$game) {
             $roomInfos = $roomInfoRepo->findAll();
-            $game = new AdventureGame($roomInfos);
+            $game = new AdventureGame($roomInfos, ITEMS);
         }
 
         $session->set('proj_session', $game);

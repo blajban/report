@@ -302,15 +302,20 @@ Minicluedo?
 [OK] JSON-routes rooms
 [OK] Bilder + lägg till några rum i db via json
 * Uppdatera rum json
-* Lägg till alla rum med placeholder-bilder
-* Fixa problem med recursive
-* Recursive-problemet
-* Typografi-styling
-* Minimap
-* Items
+[OK] Lägg till alla rum med placeholder-bilder
+[OK] Fixa problem med recursive
+[OK] Items
 * Databas items
 * JSON-routes items
+* Plocka upp/hantera items
 * Quests/wincons
+* Styling:
+    * Block
+    * Typografi
+    * Minimap
+    * Items
+* Cheats
+* Refaktorering, kodkvalitet
 
 ## LÄNGRE FRAM
 * Fixa inaccessible rooms (checkaccessibility-funktionen i Map)

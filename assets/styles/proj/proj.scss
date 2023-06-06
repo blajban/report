@@ -37,13 +37,30 @@ body {
 .room {
   display: grid;
   grid-template-rows: 1fr 7fr 5fr 1fr;
-  grid-template-columns: 1fr 12fr 1fr;
+  grid-template-columns: 1fr 9fr 3fr 1fr;
   height: 600px;
   border: 3px solid rgb(97, 97, 97);
   position: relative;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8),
               inset -2px -2px 5px rgba(255, 255, 255, 0.9);
   margin-top: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.room-items {
+  grid-row: 3;
+  grid-column: 3;
+  padding: 10px;
+  background-color: rgb(219, 219, 219);
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75),
+              inset 1px 1px 2px 0px rgba(255,255,255,0.75);
+}
+
+.room-item {
+  background-color: #ddd;
+  border: 1px solid #999;
+  padding: 10px;
 }
 
 .exit {
@@ -68,7 +85,7 @@ body {
 
 .north {
   grid-row: 1;
-  grid-column: 2;
+  grid-column: 2 / span 2;
 }
 
 .west {
@@ -78,12 +95,12 @@ body {
 
 .east {
   grid-row: 2 / span 2;
-  grid-column: 3;
+  grid-column: 4;
 }
 
 .south {
   grid-row: 4;
-  grid-column: 2;
+  grid-column: 2 / span 2;
 }
 
 .room-content {
@@ -148,28 +165,27 @@ body {
   border-right: 20px solid black;
 }
 
-
-
-
-
-// For debugging
-
-.room-container-debug {
+.minimap-container {
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 10px;
+  grid-gap: 2px;
+  width: 100px;
+  background-color: rgb(219, 219, 219);
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75),
+              inset 1px 1px 2px 0px rgba(255,255,255,0.75);
 }
 
-.room-debug {
+.minimap-room {
   background-color: #ddd;
   border: 1px solid #999;
-  padding: 20px;
+  padding: 10px;
 }
 
-.current-room-debug {
+.minimap-current {
   background-color: red;
 }
+
 
 
 

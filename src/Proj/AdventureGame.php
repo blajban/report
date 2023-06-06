@@ -13,128 +13,22 @@ use Exception;
 use App\Proj\Map;
 use App\Proj\Room;
 
-const ROOMS = [
-    [
-        'name' => 'Ett rum',
-        'description' => 'Det här är ett rum'
-    ],
-    [
-        'name' => 'Ett annat rum',
-        'description' => 'Det här är ett annat rum'
-    ],
-    [
-        'name' => 'Ett tredje rum',
-        'description' => 'Det här är ett tredje rum'
-    ],
-    [
-        'name' => 'Ett fjärde rum',
-        'description' => 'Det här är ett fjärde rum'
-    ],
-    [
-        'name' => 'Ett femte rum',
-        'description' => 'Det här är ett femte rum'
-    ],
-    [
-        'name' => 'Ett annat rum',
-        'description' => 'Det här är ett annat rum'
-    ],
-    [
-        'name' => 'Ett tredje rum',
-        'description' => 'Det här är ett tredje rum'
-    ],
-    [
-        'name' => 'Ett fjärde rum',
-        'description' => 'Det här är ett fjärde rum'
-    ],
-    [
-        'name' => 'Ett femte rum',
-        'description' => 'Det här är ett femte rum'
-    ],
-    [
-        'name' => 'Ett annat rum',
-        'description' => 'Det här är ett annat rum'
-    ],
-    [
-        'name' => 'Ett tredje rum',
-        'description' => 'Det här är ett tredje rum'
-    ],
-    [
-        'name' => 'Ett fjärde rum',
-        'description' => 'Det här är ett fjärde rum'
-    ],
-    [
-        'name' => 'Ett femte rum',
-        'description' => 'Det här är ett femte rum'
-    ],
-    [
-        'name' => 'Ett annat rum',
-        'description' => 'Det här är ett annat rum'
-    ],
-    [
-        'name' => 'Ett tredje rum',
-        'description' => 'Det här är ett tredje rum'
-    ],
-    [
-        'name' => 'Ett fjärde rum',
-        'description' => 'Det här är ett fjärde rum'
-    ],
-    [
-        'name' => 'Ett femte rum',
-        'description' => 'Det här är ett femte rum'
-    ],
-    [
-        'name' => 'Ett annat rum',
-        'description' => 'Det här är ett annat rum'
-    ],
-    [
-        'name' => 'Ett tredje rum',
-        'description' => 'Det här är ett tredje rum'
-    ],
-    [
-        'name' => 'Ett fjärde rum',
-        'description' => 'Det här är ett fjärde rum'
-    ],
-    [
-        'name' => 'Ett femte rum',
-        'description' => 'Det här är ett femte rum'
-    ]
-];
-
-const ITEMS = [
-    [
-        'name' => 'Ett item',
-        'description' => 'Det här är ett item'
-    ],
-    [
-        'name' => 'Ett annat item',
-        'description' => 'Det här är ett annat item'
-    ],
-    [
-        'name' => 'Ett tredje item',
-        'description' => 'Det här är tredje ett item'
-    ]
-];
 
 class AdventureGame
 {
     private Map $map;
     private array $rooms;
 
-    public function __construct($roomInfos)
+    public function __construct($roomInfos, $items)
     {
-        /*foreach (ROOMS as $roomInfo) {
-            $room = new Room($roomInfo['name'], $roomInfo['description']);
-            $room->addItem(ITEMS[0]);
-            $this->rooms[] = $room;
-            
-        }*/
         foreach ($roomInfos as $roomInfo) {
             $room = new Room($roomInfo->getId(), $roomInfo->getName(), $roomInfo->getDescription());
-            $room->addItem(ITEMS[0]);
+            //$room->addItem(ITEMS[0]);
             $this->rooms[] = $room;
             
         }
-        $this->map = new Map($this->rooms);
+
+        $this->map = new Map($this->rooms, $items);
     }
 
     public function move($direction)

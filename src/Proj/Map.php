@@ -13,13 +13,23 @@ class Map
     private int $width = 0;
     private int $height = 0;
 
-    public function __construct(array $rooms)
+    public function __construct(array $rooms, array $items)
     {
         $this->rooms = $rooms;
         $this->setWidthAndHeight();
         $this->generateGrid();
         $this->generateDoors();
         $this->setStartingRoom();
+        $this->distributeItems($items);
+    }
+
+    private function distributeItems($items)
+    {
+        foreach ($items as $item) {
+            $roomNo = random_int(0, count($this->rooms) - 1);
+            $this->rooms[$roomNo]->addItem($item);
+        }
+        
     }
 
     private function setWidthAndHeight()

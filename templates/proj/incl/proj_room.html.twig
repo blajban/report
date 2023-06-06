@@ -16,10 +16,18 @@
   <div class="room-content">
     <h3>{{ gameState.currentRoom.getName() }}</h3>
     <p>{{ gameState.currentRoom.getDescription() }}</p>
-    <h4>Items:</h4>
-    {% for item in gameState.currentRoom.getItems() %}
-      <p>{{item.name}}, {{item.description}}</p>
-    {% endfor %}
+  </div>
+
+  <div class="room-items">
+    <h3>Items:</h3>
+    {% if (gameState.currentRoom.getItems() )%}
+      {% for item in gameState.currentRoom.getItems() %}
+        <div class="room-item">
+          <h4>{{item.name}}</h4>
+          <p>{{item.description}}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
 </div>
 

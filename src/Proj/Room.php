@@ -14,6 +14,7 @@ class Room
     private array $items;
 
     public function __construct($id, $name, $description) {
+        $this->items = [];
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
