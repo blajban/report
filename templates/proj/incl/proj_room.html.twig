@@ -21,7 +21,7 @@
   <div class="room-items">
     <h3>Items:</h3>
     {% if (gameState.currentRoom.getItems() )%}
-      {% for item in gameState.currentRoom.getItems() %}
+      {% for itemId, item in gameState.currentRoom.getItems() %}
         <div class="room-item">
           <h4>{{item.name}}</h4>
           <p>{{item.description}}</p>

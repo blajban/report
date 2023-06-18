@@ -309,10 +309,11 @@ Minicluedo?
 [OK] Items
 [OK] Flytta dörrhanteringen till egen klass
 [OK] Flytta itemhanteringen till egen klass
-* Player-klass
+[OK] Player-klass
 * Plocka upp/hantera items / inventory
 * Databas items
 * JSON-routes items
+* Spelarnamn, sessionshantering, starta spelet
 * Kör en första vända med kodkvalitet
 * Kör en första vända med tester
 * Quests/wincons

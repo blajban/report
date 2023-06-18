@@ -17,14 +17,17 @@ use App\Services\UtilityService;
 
 const ITEMS = [
     [
+        'id' => 1,
         'name' => 'Ett item',
         'description' => 'Det här är ett item'
     ],
     [
+        'id' => 2,
         'name' => 'Ett annat item',
         'description' => 'Det här är ett annat item'
     ],
     [
+        'id' => 3,
         'name' => 'Ett tredje item',
         'description' => 'Det här är tredje ett item'
     ]

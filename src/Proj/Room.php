@@ -37,12 +37,22 @@ class Room
 
     public function addItem($item)
     {
-        $this->items[] = $item;
+        $this->items[$item['id']] = $item;
     }
 
     public function getItems(): array
     {
         return $this->items;
+    }
+
+    public function takeItem($itemId) {
+        if (array_key_exists($itemId, $this->items)) {
+            $item = $this->items[$itemId];
+            unset($this->items[$itemId]);
+            return $item;
+        }
+
+        return null;
     }
 
     public function getId(): int

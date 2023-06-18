@@ -2,25 +2,24 @@
 
 namespace App\Proj;
 
-use App\CardGame\CardGameInterface;
-use App\CardGame\CardGameTrait;
-use App\CardGame\Player;
-use App\CardGame\Bank;
-use App\CardGame\Deck;
-use App\CardGame\GameState;
+
 use Exception;
 
 use App\Proj\Map;
+use App\Proj\Player;
 use App\Proj\Room;
 
 
 class AdventureGame
 {
     private Map $map;
+    private Player $player;
     //private array $rooms;
 
     public function __construct($roomInfos, $items)
     {
+        $this->player = new Player('Erik');
+
         $rooms = [];
         foreach ($roomInfos as $roomInfo) {
             $room = new Room($roomInfo->getId(), $roomInfo->getName(), $roomInfo->getDescription());
@@ -45,7 +44,8 @@ class AdventureGame
         return [
             'currentRoom' => $this->map->getCurrentRoom(),
             'rooms' => $this->map->getRooms(),
-            'grid' => $this->map->getGrid()
+            'grid' => $this->map->getGrid(),
+            'player' => $this->player
         ];
     }
 
