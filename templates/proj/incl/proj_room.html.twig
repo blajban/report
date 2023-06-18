@@ -25,6 +25,11 @@
         <div class="room-item">
           <h4>{{item.name}}</h4>
           <p>{{item.description}}</p>
+          <form class="room-take-item" method="post" action="">
+            <button type="submit" name="takeItem" value="{{ itemId }}"
+              onClick="this.form.action='{{ path('proj/play_takeItem_callback') }}';"
+            >Pick up</button>
+          </form>
         </div>
       {% endfor %}
     {% endif %}

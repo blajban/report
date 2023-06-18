@@ -1,8 +1,16 @@
-{# templates/proj_minimap.html.twig #}
+{# templates/proj_inventory.html.twig #}
 
 
 <div class="inventory-container">
-  <h4>{{ gameState.player.getName()}}</h4>
+  <h3>{{ gameState.player.getName()}}</h3>
+  {{ dump(gameState.debug) }}
+  {{ dump(gameState.player.getInventory()) }}
+  {% for itemId, item in gameState.player.getInventory() %}
+        <div class="inventory-item">
+          <h4>{{item.name}}</h4>
+          <p>{{item.description}}</p>
+        </div>
+      {% endfor %}
 </div>
 
 

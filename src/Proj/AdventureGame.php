@@ -12,6 +12,7 @@ use App\Proj\Room;
 
 class AdventureGame
 {
+    private string $debug = 'Debug';
     private Map $map;
     private Player $player;
     //private array $rooms;
@@ -39,13 +40,26 @@ class AdventureGame
         $this->map->move($direction);
     }
 
+    public function takeItem($itemId)
+    {
+        $currentRoom = $this->map->getCurrentRoom();
+        $item = $currentRoom->takeItem($itemId);
+        $this->player->addToInventory($item);
+    }
+
+    public function setDebugText($text)
+    {
+        $this->debug = $text;
+    }
+
     public function getState(): array
     {
         return [
             'currentRoom' => $this->map->getCurrentRoom(),
             'rooms' => $this->map->getRooms(),
             'grid' => $this->map->getGrid(),
-            'player' => $this->player
+            'player' => $this->player,
+            'debug' => $this->debug
         ];
     }
 

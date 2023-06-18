@@ -324,6 +324,7 @@ Minicluedo?
     * Items
 * Cheats
 * Refaktorering, kodkvalitet
+* Ta bort debugtext
 
 ## LÄNGRE FRAM
 * Fixa inaccessible rooms (checkaccessibility-funktionen i Map)

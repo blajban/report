@@ -17,17 +17,17 @@ use App\Services\UtilityService;
 
 const ITEMS = [
     [
-        'id' => 1,
+        'id' => '1',
         'name' => 'Ett item',
         'description' => 'Det här är ett item'
     ],
     [
-        'id' => 2,
+        'id' => '2',
         'name' => 'Ett annat item',
         'description' => 'Det här är ett annat item'
     ],
     [
-        'id' => 3,
+        'id' => '3',
         'name' => 'Ett tredje item',
         'description' => 'Det här är tredje ett item'
     ]
@@ -86,18 +86,37 @@ class ProjController extends AbstractController
         ]);
     }
 
-    #[Route('/proj/play', name: 'proj/play_move_callback', methods: ['POST'])]
+    #[Route('/proj/play/move', name: 'proj/play_move_callback', methods: ['POST'])]
     public function move(SessionInterface $session, Request $request): Response
     {
         $game = $session->get('proj_session');
 
-        $session->set('proj_session', $game);
         if ($request->request->has('move')) {
             $direction = $request->request->get('move');
             $game->move($direction);
         }
 
+        $session->set('proj_session', $game);
+
         return $this->redirectToRoute('proj/play');
     }
+
+    #[Route('/proj/play/item', name: 'proj/play_takeItem_callback', methods: ['POST'])]
+    public function takeItem(SessionInterface $session, Request $request): Response
+    {
+        $game = $session->get('proj_session');
+
+        if ($request->request->has('takeItem')) {
+            $itemId = $request->request->get('takeItem');
+            $game->takeItem($itemId);
+        }
+
+        $session->set('proj_session', $game);
+
+        return $this->redirectToRoute('proj/play');
+    }
+
+
+    
 
 }
