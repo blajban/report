@@ -303,25 +303,27 @@ Minicluedo?
 [OK] Databas rooms
 [OK] JSON-routes rooms
 [OK] Bilder + lägg till några rum i db via json
-* Uppdatera rum json
 [OK] Lägg till alla rum med placeholder-bilder
 [OK] Fixa problem med recursive
 [OK] Items
 [OK] Flytta dörrhanteringen till egen klass
 [OK] Flytta itemhanteringen till egen klass
 [OK] Player-klass
-* Plocka upp/hantera items / inventory
-* Databas items
-* JSON-routes items
+[OK] Plocka upp/hantera items / inventory
+[OK] Lämna item i rum
+* Quests/wincons
 * Spelarnamn, sessionshantering, starta spelet
+* Databas items
+* Item bilder
+* JSON-routes items
 * Kör en första vända med kodkvalitet
 * Kör en första vända med tester
-* Quests/wincons
+* Uppdatera rum json
 * Styling:
     * Block
     * Typografi
     * Minimap
-    * Items
+    * Items/inventory
 * Cheats
 * Refaktorering, kodkvalitet
 * Ta bort debugtext

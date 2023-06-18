@@ -51,7 +51,7 @@ class ProjController extends AbstractController
         $roomInfo = $roomInfoRepo->find($id);
 
         if (!$roomInfo || !$roomInfo->getImg()) {
-            throw new Exception('No book picture found for id ' . $id);
+            throw new Exception('No room picture found for id ' . $id);
         }
 
         return $this->utilityService->imageResponse($roomInfo->getImg());
@@ -101,7 +101,7 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('proj/play');
     }
 
-    #[Route('/proj/play/item', name: 'proj/play_takeItem_callback', methods: ['POST'])]
+    #[Route('/proj/play/takeItem', name: 'proj/play_takeItem_callback', methods: ['POST'])]
     public function takeItem(SessionInterface $session, Request $request): Response
     {
         $game = $session->get('proj_session');
@@ -116,7 +116,21 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('proj/play');
     }
 
+    #[Route('/proj/play/dropItem', name: 'proj/play_dropItem_callback', methods: ['POST'])]
+    public function dropItem(SessionInterface $session, Request $request): Response
+    {
+        $game = $session->get('proj_session');
+
+        if ($request->request->has('dropItem')) {
+            $itemId = $request->request->get('dropItem');
+            $game->dropItem($itemId);
+        }
+
+        $session->set('proj_session', $game);
+
+        return $this->redirectToRoute('proj/play');
+    }
 
     
-
+    
 }

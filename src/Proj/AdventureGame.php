@@ -47,6 +47,13 @@ class AdventureGame
         $this->player->addToInventory($item);
     }
 
+    public function dropItem($itemId)
+    {
+        $currentRoom = $this->map->getCurrentRoom();
+        $item = $this->player->dropFromInventory($itemId);
+        $currentRoom->addItem($item);
+    }
+
     public function setDebugText($text)
     {
         $this->debug = $text;
