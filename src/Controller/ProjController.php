@@ -111,6 +111,8 @@ class ProjController extends AbstractController
             $game->takeItem($itemId);
         }
 
+        $game->updateQuests();
+
         $session->set('proj_session', $game);
 
         return $this->redirectToRoute('proj/play');
@@ -125,6 +127,8 @@ class ProjController extends AbstractController
             $itemId = $request->request->get('dropItem');
             $game->dropItem($itemId);
         }
+
+        $game->updateQuests();
 
         $session->set('proj_session', $game);
 

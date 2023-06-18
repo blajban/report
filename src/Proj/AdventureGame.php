@@ -15,6 +15,7 @@ class AdventureGame
     private string $debug = 'Debug';
     private Map $map;
     private Player $player;
+    private QuestHandler $questHandler;
     //private array $rooms;
 
     public function __construct($roomInfos, $items)
@@ -29,8 +30,9 @@ class AdventureGame
         }
 
         $itemDistributor = new ItemDistributor($items);
-
         $itemDistributor->distributeItems($rooms);
+
+        $this->questHandler = new QuestHandler($rooms, $items);
 
         $this->map = new Map($rooms, $items);
     }
@@ -52,6 +54,11 @@ class AdventureGame
         $currentRoom = $this->map->getCurrentRoom();
         $item = $this->player->dropFromInventory($itemId);
         $currentRoom->addItem($item);
+    }
+
+    public function updateQuests()
+    {
+        // TODO
     }
 
     public function setDebugText($text)

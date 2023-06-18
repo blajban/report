@@ -314,8 +314,10 @@ Minicluedo?
 * Quests/wincons
 * Spelarnamn, sessionshantering, starta spelet
 * Databas items
-* Item bilder
+* Ändra så att items blir en klass, inte en associativ array
+* Ändra så att GameRoom extendar RoomEntity
 * JSON-routes items
+( Även quests? )
 * Kör en första vända med kodkvalitet
 * Kör en första vända med tester
 * Uppdatera rum json
