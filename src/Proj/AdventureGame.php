@@ -17,18 +17,22 @@ use App\Proj\Room;
 class AdventureGame
 {
     private Map $map;
-    private array $rooms;
+    //private array $rooms;
 
     public function __construct($roomInfos, $items)
     {
+        $rooms = [];
         foreach ($roomInfos as $roomInfo) {
             $room = new Room($roomInfo->getId(), $roomInfo->getName(), $roomInfo->getDescription());
-            //$room->addItem(ITEMS[0]);
-            $this->rooms[] = $room;
+            $rooms[] = $room;
             
         }
 
-        $this->map = new Map($this->rooms, $items);
+        $itemDistributor = new ItemDistributor($items);
+
+        $itemDistributor->distributeItems($rooms);
+
+        $this->map = new Map($rooms, $items);
     }
 
     public function move($direction)

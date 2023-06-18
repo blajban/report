@@ -17,7 +17,9 @@ use App\Repository\RoomInfoRepository;
 
 use App\Services\UtilityService;
 
-
+/**
+ * @SuppressWarnings(PHPMD.ShortVariable)
+ */
 class ProjJsonController extends AbstractController
 {
     private UtilityService $utilityService;

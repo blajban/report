@@ -5,6 +5,7 @@ use Exception;
 
 
 
+
 class Map
 {
     private array $rooms = [];
@@ -13,24 +14,17 @@ class Map
     private int $width = 0;
     private int $height = 0;
 
-    public function __construct(array $rooms, array $items)
+    public function __construct(array $rooms)
     {
         $this->rooms = $rooms;
         $this->setWidthAndHeight();
         $this->generateGrid();
-        $this->generateDoors();
+        $doorGenerator = new DoorGenerator($this->grid, $this->width, $this->height);
+        $doorGenerator->generateRandomDoors();
         $this->setStartingRoom();
-        $this->distributeItems($items);
     }
 
-    private function distributeItems($items)
-    {
-        foreach ($items as $item) {
-            $roomNo = random_int(0, count($this->rooms) - 1);
-            $this->rooms[$roomNo]->addItem($item);
-        }
-        
-    }
+
 
     private function setWidthAndHeight()
     {
@@ -53,103 +47,6 @@ class Map
             $this->grid[$row][] = $room;
             $col++;
         }
-    }
-
-    private function generateDoors()
-    {
-        for ($row = 0; $row < $this->height; $row++) {
-            for ($col = 0; $col < $this->width; $col++) {
-                $this->generateWestDoor($row, $col);
-                $this->generateEastDoor($row, $col);
-                $this->generateNorthDoor($row, $col);
-                $this->generateSouthDoor($row, $col);
-                $this->generateExtraDoors($row, $col);
-            }
-        }
-
-        $this->checkAccessibility();
-    }
-
-    private function generateWestDoor($row, $col)
-    {
-        try {
-            $current = $this->grid[$row][$col];
-            $west = $this->grid[$row][$col - 1];
-            if ($west->getDoors()['east']) {
-                $current->addDoor('west', $west);
-            }
-        } catch (Exception $e) {
-            return;
-        }
-    }
-
-    private function generateEastDoor($row, $col)
-    {
-        try {
-            $current = $this->grid[$row][$col];
-            $east = $this->grid[$row][$col + 1];
-            if (random_int(0, 1) > 0) {
-                $current->addDoor('east', $east);
-            }
-        } catch (Exception $e) {
-            return;
-        }
-    }
-
-    private function generateNorthDoor($row, $col)
-    {
-        try {
-            $current = $this->grid[$row][$col];
-            $north = $this->grid[$row - 1][$col];
-            if ($north->getDoors()['south']) {
-                $current->addDoor('north', $north);
-            }
-        } catch (Exception $e) {
-            return;
-        }
-    }
-
-    private function generateSouthDoor($row, $col)
-    {
-        try {
-            $current = $this->grid[$row][$col];
-            $south = $this->grid[$row + 1][$col];
-            if (random_int(0, 1) > 0) {
-                $current->addDoor('south', $south);
-            }
-        } catch (Exception $e) {
-            return;
-        }
-    }
-    private function generateExtraDoors($row, $col)
-    {
-        try {
-            $current = $this->grid[$row][$col];
-            $doors = $current->getDoors();
-            $doorCount = 0;
-            foreach ($doors as $door) {
-                if ($door) {
-                    $doorCount++;
-                }
-            }
-            if ($doorCount < 2) {
-                if (!$doors['south']) {
-                    $south = $this->grid[$row + 1][$col];
-                    $current->addDoor('south', $south);
-                }
-                if (!$doors['east']) {
-                    $east = $this->grid[$row][$col + 1];
-                    $current->addDoor('east', $east);
-                }
-            }
-        } catch (Exception $e) {
-            return;
-        }
-    }
-
-    private function checkAccessibility()
-    {
-
     }
 
     private function setStartingRoom()

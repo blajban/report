@@ -2,9 +2,9 @@
 
 namespace App\Proj;
 
-
-
-
+/**
+ * @SuppressWarnings(PHPMD.ShortVariable)
+ */
 class Room
 {
     private int $id;

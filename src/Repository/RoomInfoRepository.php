@@ -13,6 +13,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method RoomInfo|null findOneBy(array $criteria, array $orderBy = null)
  * @method RoomInfo[]    findAll()
  * @method RoomInfo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * 
+ * @SuppressWarnings(PHPMD.ShortVariable)
+ * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 class RoomInfoRepository extends ServiceEntityRepository
 {

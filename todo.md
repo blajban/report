@@ -247,6 +247,8 @@ Spelloopen:
 [GÖR ETT FLÖDESDIAGRAM]
 [GÖR ETT ER-DIAGRAM]
 
+Vore kul att använda doorgenerator för att generera nya dörrar under spelet?!
+
 
 * Quests, random slutpunkt, dynamisk "fusklapp"
 * Databas:
@@ -305,9 +307,14 @@ Minicluedo?
 [OK] Lägg till alla rum med placeholder-bilder
 [OK] Fixa problem med recursive
 [OK] Items
+[OK] Flytta dörrhanteringen till egen klass
+[OK] Flytta itemhanteringen till egen klass
+* Player-klass
+* Plocka upp/hantera items / inventory
 * Databas items
 * JSON-routes items
-* Plocka upp/hantera items
+* Kör en första vända med kodkvalitet
+* Kör en första vända med tester
 * Quests/wincons
 * Styling:
     * Block
@@ -319,7 +326,8 @@ Minicluedo?
 
 ## LÄNGRE FRAM
 * Fixa inaccessible rooms (checkaccessibility-funktionen i Map)
-* Skapa en doorgenerator-klass?
+    * Eller gör så att dörrar läggs till överallt
+* Gör så att dörrar genereras överallt
 
 
 

@@ -30,7 +30,9 @@ const ITEMS = [
     ]
 ];
 
-
+/**
+ * @SuppressWarnings(PHPMD.ShortVariable)
+ */
 class ProjController extends AbstractController
 {
     private UtilityService $utilityService;
