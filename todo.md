@@ -298,7 +298,7 @@ Minicluedo?
 # TODO:
 [OK] Enkel prototyp enligt flödesdiagram
     * Gå mellan rum (lägg till i app-koden)
-[OK] Bastyling
+[OK] Basstyling
 [OK] Grunden för att visa bilder
 [OK] Databas rooms
 [OK] JSON-routes rooms
@@ -311,10 +311,15 @@ Minicluedo?
 [OK] Player-klass
 [OK] Plocka upp/hantera items / inventory
 [OK] Lämna item i rum
-* Quests/wincons
-* Spelarnamn, sessionshantering, starta spelet
-* Databas items
+* Quests
+    * generate quests
+* wincons
+    * Om alla quests är klara - avsluta spelet
 * Ändra så att items blir en klass, inte en associativ array
+    * Gör så att man inte kan plocka upp det om det hamnat rätt?
+* Spelarnamn, sessionshantering, starta spelet
+* KOLLA KRAVEN
+* Databas items
 * Ändra så att GameRoom extendar RoomEntity
 * JSON-routes items
 ( Även quests? )
@@ -334,6 +339,7 @@ Minicluedo?
 * Fixa inaccessible rooms (checkaccessibility-funktionen i Map)
     * Eller gör så att dörrar läggs till överallt
 * Gör så att dörrar genereras överallt
+* Gör så att rummen får en random-position? Nu är quantum laboratory alltid först, i samma ordning som i databasen.
 
 
 

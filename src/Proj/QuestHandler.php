@@ -3,61 +3,51 @@
 namespace App\Proj;
 use Exception;
 
-class Quest
-{
-    private string $name;
-    private Room $room;
-    private array $item;
-    private bool $completed = false;
-
-    public function __construct($room, $item)
-    {
-        $this->room = $room;
-        $this->item = $item;
-        $this->name = "Fetch the {$item->name} for room {$room->name}";
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getRoom(): Room
-    {
-        return $this->room;
-    }
-
-    public function getItem(): array
-    {
-        return $this->item;
-    }
-
-    public function completeQuest()
-    {
-        $this->completed = true;
-    }
-
-    public function isComplete(): bool
-    {
-        return $this->completed;
-    }
-}
 
 class QuestHandler
 {
-    private array $items = [];
-    private array $rooms = [];
     private array $quests = [];
 
     public function __construct($rooms, $items)
     {
-        $this->rooms = $rooms;
-        $this->items = $items;
-        $this->generateQuests();
+        $this->generateQuests($rooms, $items);
     }
 
-    private function generateQuests()
+    private function generateQuests($rooms, $items)
     {
         // TODO
+        $this->quests[] = new Quest($rooms[0], $items[0]);
+    }
+
+    public function getQuests(): array
+    {
+        return $this->quests;
+    }
+
+    public function checkQuestCompletion()
+    {
+        foreach ($this->quests as $quest) {
+            $targetItem = $quest->getTargetItem();
+            $room = $quest->getTargetRoom();
+
+            $roomItems = $room->getItems();
+            
+            $complete = $this->checkItemInRoom($targetItem, $roomItems);
+
+            if ($complete) {
+                $quest->completeQuest();
+            }
+        }
+    }
+
+    private function checkItemInRoom($targetItem, $roomItems): bool
+    {
+        foreach ($roomItems as $roomItem) {
+            if ($targetItem['id'] == $roomItem['id']) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

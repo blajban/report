@@ -58,12 +58,7 @@ class AdventureGame
 
     public function updateQuests()
     {
-        // TODO
-    }
-
-    public function setDebugText($text)
-    {
-        $this->debug = $text;
+        $this->questHandler->checkQuestCompletion();
     }
 
     public function getState(): array
@@ -73,8 +68,14 @@ class AdventureGame
             'rooms' => $this->map->getRooms(),
             'grid' => $this->map->getGrid(),
             'player' => $this->player,
+            'quests' => $this->questHandler->getQuests(),
             'debug' => $this->debug
         ];
+    }
+
+    public function setDebugText($text)
+    {
+        $this->debug = $text;
     }
 
 

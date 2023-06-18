@@ -3,7 +3,7 @@
 
 <div class="inventory-container">
   <h3>{{ gameState.player.getName()}}</h3>
-  {% for itemId, item in gameState.player.getInventory() %}
+      {% for itemId, item in gameState.player.getInventory() %}
         <div class="inventory-item">
           <h4>{{item.name}}</h4>
           <p>{{item.description}}</p>

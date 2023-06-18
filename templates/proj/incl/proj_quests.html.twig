@@ -3,7 +3,16 @@
 
 <div class="quest-container">
   <h3>Quests</h3>
-
+      {% for quest in gameState.quests %}
+        <div class="quest">
+          <p>{{quest.getName()}}
+            {% if (quest.isComplete()) %}
+            COMPLETED
+            {% endif %}
+          </p>
+          
+        </div>
+      {% endfor %}
 </div>
 
 
