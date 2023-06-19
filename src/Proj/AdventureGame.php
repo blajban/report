@@ -18,9 +18,9 @@ class AdventureGame
     private QuestHandler $questHandler;
     //private array $rooms;
 
-    public function __construct($roomInfos, $items, $numberOfQuests)
+    public function __construct($roomInfos, $items, $playerName, $numberOfQuests)
     {
-        $this->player = new Player('Erik');
+        $this->player = new Player($playerName);
 
         $rooms = [];
         foreach ($roomInfos as $roomInfo) {

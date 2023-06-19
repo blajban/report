@@ -69,8 +69,19 @@ class ProjController extends AbstractController
     #[Route('/proj/play/start', name: 'proj/play_start_callback', methods: ['POST'])]
     public function start(SessionInterface $session, Request $request, RoomInfoRepository $roomInfoRepo): Response
     {
+        $name = 'Player';
+        $numberOfQuests = 3;
+
+        if ($request->request->has('name')) {
+            $name = $request->request->get('name');
+        }
+
+        if ($request->request->has('numberOfQuests')) {
+            $numberOfQuests = $request->request->get('numberOfQuests');
+        }
+
         $roomInfos = $roomInfoRepo->findAll();
-        $game = new AdventureGame($roomInfos, ITEMS, 3);
+        $game = new AdventureGame($roomInfos, ITEMS, $name, $numberOfQuests);
         
         $session->set('proj_session', $game);
 
@@ -166,6 +177,16 @@ class ProjController extends AbstractController
             'heading' => "Proj",
             'gameState' => $game->getState()
         ]);
+    }
+
+    #[Route("/proj/play/reset", name: "proj/play/reset", methods: ['GET'])]
+    public function reset(SessionInterface $session): Response
+    {
+        if ($session->has('proj_session')) {
+            $session->remove('proj_session');
+        }
+
+        return $this->redirectToRoute('proj');
     }
     
     
