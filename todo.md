@@ -311,18 +311,19 @@ Minicluedo?
 [OK] Player-klass
 [OK] Plocka upp/hantera items / inventory
 [OK] Lämna item i rum
-* Quests
-    * generate quests
-* wincons
-    * Om alla quests är klara - avsluta spelet
+[OK] Quests
+    [OK] generate quests
+[OK] wincons
+[OK] Controller-flöde, sessionshantering, starta spelet
+* Spelarnamn, start/continue-knappar, antal quests, antal rum?
+* Databas items
+* JSON-routes items
 * Ändra så att items blir en klass, inte en associativ array
     * Gör så att man inte kan plocka upp det om det hamnat rätt?
-* Spelarnamn, sessionshantering, starta spelet
+* Ändra så att RoomEntity använder ett trait för olika funktioner? Istället för Roominfo/room**
+
 * KOLLA KRAVEN
-* Databas items
-* Ändra så att GameRoom extendar RoomEntity
-* JSON-routes items
-( Även quests? )
+
 * Kör en första vända med kodkvalitet
 * Kör en första vända med tester
 * Uppdatera rum json
@@ -332,6 +333,7 @@ Minicluedo?
     * Minimap
     * Items/inventory
 * Cheats
+    * Visa rum och var item finns från quests
 * Refaktorering, kodkvalitet
 * Ta bort debugtext
 
@@ -340,6 +342,8 @@ Minicluedo?
     * Eller gör så att dörrar läggs till överallt
 * Gör så att dörrar genereras överallt
 * Gör så att rummen får en random-position? Nu är quantum laboratory alltid först, i samma ordning som i databasen.
+* BUGG: använd griden när jag placerar ut randomsaker, som det är nu kan sista rummen få items men hamna utanför griden. GÄLLER ÄVEN RUM
+* Gör en updateGamestate-metod istället för att göra allt i getState/updateQuests
 
 
 

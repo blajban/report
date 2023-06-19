@@ -1,0 +1,19 @@
+{# templates/proj_start.html.twig #}
+
+{% include 'proj/incl/proj_header.html.twig' %}
+
+
+<body>
+    {% include 'proj/incl/proj_nav.html.twig' %}
+
+    <form class="start" method="post" action="">
+        <button type="submit" name="startGame" value=""
+            onClick="this.form.action='{{ path('proj/play_start_callback') }}';"
+        >Start game</button>
+    </form>
+    {% include 'proj/incl/proj_footer.html.twig' %}
+</body>
+
+</html>
+
+

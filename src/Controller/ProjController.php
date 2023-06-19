@@ -58,10 +58,19 @@ class ProjController extends AbstractController
     }
 
     #[Route("/proj", name: "proj", methods: ['GET'])]
-    public function landing(SessionInterface $session, RoomInfoRepository $roomInfoRepo): Response
+    public function landing(): Response
+    {
+        return $this->render('proj/proj_start.html.twig', [
+            'title' => "Proj",
+            'heading' => "Proj"
+        ]);
+    }
+
+    #[Route('/proj/play/start', name: 'proj/play_start_callback', methods: ['POST'])]
+    public function start(SessionInterface $session, Request $request, RoomInfoRepository $roomInfoRepo): Response
     {
         $roomInfos = $roomInfoRepo->findAll();
-        $game = new AdventureGame($roomInfos, ITEMS);
+        $game = new AdventureGame($roomInfos, ITEMS, 3);
         
         $session->set('proj_session', $game);
 
@@ -74,11 +83,11 @@ class ProjController extends AbstractController
         $game = $session->get('proj_session');
 
         if (!$game) {
-            $roomInfos = $roomInfoRepo->findAll();
-            $game = new AdventureGame($roomInfos, ITEMS);
+            return $this->redirectToRoute('proj');
         }
 
         $session->set('proj_session', $game);
+
         return $this->render('proj/proj_play.html.twig', [
             'title' => "Proj",
             'heading' => "Proj",
@@ -111,7 +120,6 @@ class ProjController extends AbstractController
             $game->takeItem($itemId);
         }
 
-        $game->updateQuests();
 
         $session->set('proj_session', $game);
 
@@ -130,11 +138,35 @@ class ProjController extends AbstractController
 
         $game->updateQuests();
 
+        if ($game->playerWins()) {
+            return $this->redirectToRoute('proj/play/end');
+        }
+
         $session->set('proj_session', $game);
 
         return $this->redirectToRoute('proj/play');
     }
 
+    #[Route("/proj/play/end", name: "proj/play/end", methods: ['GET'])]
+    public function end(SessionInterface $session): Response
+    {
+        $game = $session->get('proj_session');
+
+        if (!$game) {
+            return $this->redirectToRoute('proj');
+        }
+
+        if (!$game->playerWins()) {
+            return $this->redirectToRoute('proj/play');
+        }
+
+        $session->set('proj_session', $game);
+        return $this->render('proj/proj_end.html.twig', [
+            'title' => "Proj",
+            'heading' => "Proj",
+            'gameState' => $game->getState()
+        ]);
+    }
     
     
 }

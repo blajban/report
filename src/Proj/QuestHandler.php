@@ -8,15 +8,25 @@ class QuestHandler
 {
     private array $quests = [];
 
-    public function __construct($rooms, $items)
+    public function __construct()
     {
-        $this->generateQuests($rooms, $items);
+
     }
 
-    private function generateQuests($rooms, $items)
+    public function generateQuests($rooms, $items, $numberOfQuests)
     {
-        // TODO
-        $this->quests[] = new Quest($rooms[0], $items[0]);
+        $copiedItems = $items;
+
+        for ($i = 0; $i < $numberOfQuests; $i++) {
+            $randomRoomIndex = array_rand($rooms);
+            $room = $rooms[$randomRoomIndex];
+
+            $randomItemIndex = array_rand($copiedItems);
+            $item = $copiedItems[$randomItemIndex];
+            unset($copiedItems[$randomItemIndex]);
+
+            $this->quests[] = new Quest($room, $item);
+        }
     }
 
     public function getQuests(): array
@@ -24,13 +34,13 @@ class QuestHandler
         return $this->quests;
     }
 
-    public function checkQuestCompletion()
+    public function updateQuestCompletion()
     {
         foreach ($this->quests as $quest) {
             $targetItem = $quest->getTargetItem();
-            $room = $quest->getTargetRoom();
+            $targetRoom = $quest->getTargetRoom();
 
-            $roomItems = $room->getItems();
+            $roomItems = $targetRoom->getItems();
             
             $complete = $this->checkItemInRoom($targetItem, $roomItems);
 
@@ -49,5 +59,16 @@ class QuestHandler
         }
 
         return false;
+    }
+
+    public function allQuestsCompleted(): bool
+    {
+        foreach ($this->quests as $quest) {
+            if (!$quest->isComplete()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -18,7 +18,7 @@ class AdventureGame
     private QuestHandler $questHandler;
     //private array $rooms;
 
-    public function __construct($roomInfos, $items)
+    public function __construct($roomInfos, $items, $numberOfQuests)
     {
         $this->player = new Player('Erik');
 
@@ -32,7 +32,8 @@ class AdventureGame
         $itemDistributor = new ItemDistributor($items);
         $itemDistributor->distributeItems($rooms);
 
-        $this->questHandler = new QuestHandler($rooms, $items);
+        $this->questHandler = new QuestHandler();
+        $this->questHandler->generateQuests($rooms, $items, $numberOfQuests);
 
         $this->map = new Map($rooms, $items);
     }
@@ -56,13 +57,20 @@ class AdventureGame
         $currentRoom->addItem($item);
     }
 
+    public function playerWins(): bool
+    {
+        return $this->questHandler->allQuestsCompleted();
+    }
+
     public function updateQuests()
     {
-        $this->questHandler->checkQuestCompletion();
+        $this->questHandler->updateQuestCompletion();
     }
 
     public function getState(): array
     {
+        $this->questHandler->updateQuestCompletion();
+
         return [
             'currentRoom' => $this->map->getCurrentRoom(),
             'rooms' => $this->map->getRooms(),
