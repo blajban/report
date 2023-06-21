@@ -2,7 +2,7 @@
 
 
 <div class="inventory-container">
-  <h3>{{ gameState.player.getName()}}</h3>
+  <h3>Inventory</h3>
       {% for itemId, item in gameState.player.getInventory() %}
         <div class="inventory-item">
           <h4>{{item.getName()}}</h4>

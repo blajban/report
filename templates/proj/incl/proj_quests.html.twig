@@ -9,6 +9,11 @@
             {% if (quest.isComplete()) %}
             COMPLETED
             {% endif %}
+            <form class="room-showhint" method="post" action="">
+              <button type="submit" name="showHint" value="{{ quest.getId }}"
+                onClick="this.form.action='{{ path('proj/play_showHint_callback') }}';"
+              >Show hint</button>
+            </form>
           </p>
           
         </div>

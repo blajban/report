@@ -142,6 +142,21 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('proj/play');
     }
 
+    #[Route('/proj/play/showHint', name: 'proj/play_showHint_callback', methods: ['POST'])]
+    public function showHint(SessionInterface $session, Request $request): Response
+    {
+        $game = $session->get('proj_session');
+
+        if ($request->request->has('showHint')) {
+            $questId = $request->request->get('showHint');
+            $game->showHint($questId);
+        }
+
+        $session->set('proj_session', $game);
+
+        return $this->redirectToRoute('proj/play');
+    }
+
     #[Route("/proj/play/end", name: "proj/play/end", methods: ['GET'])]
     public function end(SessionInterface $session): Response
     {

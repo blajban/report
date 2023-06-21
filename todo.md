@@ -325,7 +325,10 @@ Minicluedo?
 [OK] Räkna antalet förflyttningar det tar att klara det
 
 * Cheats
-    * Visa rum och var item finns från quests
+    [OK] Visa target-rum
+    * Visa var item finns - fortsätt med detta, något är fel. Jag borde väl loopa igenom rummen istället?
+    * Dölj hints
+    * Ändra knapplayout så att man ser vilken quest som hintas
 
 
 * KOLLA KRAVEN

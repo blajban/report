@@ -2,22 +2,20 @@
 
 namespace App\Proj;
 
-
-use Exception;
-
 use App\Proj\Map;
 use App\Proj\Player;
-use App\Proj\Room;
+use App\Entity\Room;
 
 
 class AdventureGame
 {
     private string $debug = 'Debug';
     private int $moves = 0;
+    private $hintedRoom = null;
+    private $hintedItem = null;
     private Map $map;
     private Player $player;
     private QuestHandler $questHandler;
-    //private array $rooms;
 
     public function __construct($rooms, $items, $playerName, $numberOfQuests)
     {
@@ -62,6 +60,18 @@ class AdventureGame
         $this->questHandler->updateQuestCompletion();
     }
 
+    public function showHint($questId)
+    {
+        $this->hintedRoom = $this->questHandler->getRoomWithQuest($questId);
+        $this->hintedItem = $this->questHandler->getRoomWithQuestItem($questId, $this->map->getRooms());
+    }
+
+    public function hideHint()
+    {
+        $this->hintedRoom = null;
+        $this->hintedItem = null;
+    }
+
     public function getState(): array
     {
         $this->questHandler->updateQuestCompletion();
@@ -72,6 +82,10 @@ class AdventureGame
             'grid' => $this->map->getGrid(),
             'player' => $this->player,
             'quests' => $this->questHandler->getQuests(),
+            'hint' => [
+                'room' => $this->hintedRoom,
+                'item' => $this->hintedItem
+            ],
             'moves' => $this->moves,
             'debug' => $this->debug
         ];

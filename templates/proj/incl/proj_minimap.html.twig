@@ -6,7 +6,7 @@
 <div class="minimap-container" style="grid-template-columns: repeat({{ maxColumns }}, minmax(0, {{ columnWidth }}%))">
   {% for row in gameState.grid %}
     {% for room in row %}
-      <div class="minimap-room {% if room == gameState.currentRoom %}minimap-current{% endif %}"></div>
+      <div class="minimap-room {% if room == gameState.currentRoom %}minimap-current{% endif %} {% if room == gameState.hint.room %}minimap-roomhint{% endif %} {% if room == gameState.hint.item %}minimap-itemhint{% endif %}"></div>
     {% endfor %}
   {% endfor %}
 </div>
