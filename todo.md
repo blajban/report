@@ -297,7 +297,7 @@ Minicluedo?
 
 # TODO:
 [OK] Enkel prototyp enligt flödesdiagram
-    * Gå mellan rum (lägg till i app-koden)
+    [OK] Gå mellan rum (lägg till i app-koden)
 [OK] Basstyling
 [OK] Grunden för att visa bilder
 [OK] Databas rooms
@@ -318,13 +318,15 @@ Minicluedo?
 [OK] Spelarnamn, start/continue-knappar, antal quests, 
 [OK] Databas items
 [OK] JSON-routes items
-
 [OK] Implementera Items från databas
 [OK] Ändra så att items blir en klass, inte en associativ array
-    
 [OK] Ändra så att RoomEntity använder ett trait för olika funktioner? Istället för Roominfo/room**
-
 [OK] Byt namn på Roominfo till Room
+[OK] Räkna antalet förflyttningar det tar att klara det
+
+* Cheats
+    * Visa rum och var item finns från quests
+
 
 * KOLLA KRAVEN
 
@@ -332,17 +334,13 @@ Minicluedo?
 * Kör en första vända med kodkvalitet
 * Kör en första vända med tester
 
-
 * Styling:
     * Block
     * Typografi
     * Minimap
     * Items/inventory
-* Cheats
-    * Visa rum och var item finns från quests
 
 
-* Räkna antalet rundor det tar att klara det?
 * Göra det möjligt att välja antal rum på samma sätt som antal quests?
 * Gör så att man inte kan plocka upp item om questen redan är klarad?
 
@@ -360,7 +358,7 @@ Minicluedo?
 * Gör en updateGamestate-metod istället för att göra allt i getState/updateQuests
 * Flytta restart game-knappen från nav? Alternativt flytta knapparna från startsidan till nav
 * BUGG: om man fyller i för stort antal quests än vad spelet klarar så blir det exception
-
+* BUGG: Om man klarar spelet kan man continue
 
 
 

@@ -8,6 +8,9 @@
     <p>
         Welcome {{ gameState.player.getName() }}
     </p>
+    <p>
+        Moves: {{ gameState.moves }}
+    </p>
     {% include 'proj/incl/proj_room.html.twig' %}
     {% include 'proj/incl/proj_minimap.html.twig' %}
     {% include 'proj/incl/proj_inventory.html.twig' %}

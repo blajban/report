@@ -13,6 +13,7 @@ use App\Proj\Room;
 class AdventureGame
 {
     private string $debug = 'Debug';
+    private int $moves = 0;
     private Map $map;
     private Player $player;
     private QuestHandler $questHandler;
@@ -34,6 +35,7 @@ class AdventureGame
     public function move($direction)
     {
         $this->map->move($direction);
+        $this->moves++;
     }
 
     public function takeItem($itemId)
@@ -70,6 +72,7 @@ class AdventureGame
             'grid' => $this->map->getGrid(),
             'player' => $this->player,
             'quests' => $this->questHandler->getQuests(),
+            'moves' => $this->moves,
             'debug' => $this->debug
         ];
     }
