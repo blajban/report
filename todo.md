@@ -326,7 +326,7 @@ Minicluedo?
 
 * Cheats
     [OK] Visa target-rum
-    * Visa var item finns - fortsätt med detta, något är fel. Jag borde väl loopa igenom rummen istället?
+    [OK] Visa var item finns - fortsätt med detta, något är fel. Jag borde väl loopa igenom rummen istället?
     * Dölj hints
     * Ändra knapplayout så att man ser vilken quest som hintas
 
