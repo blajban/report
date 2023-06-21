@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Item;
 use App\Entity\RoomInfo;
 use App\Proj\AdventureGame;
 use App\Proj\Map;
@@ -14,6 +15,7 @@ use Exception;
 use Symfony\Component\HttpFoundation\Request;
 
 use App\Repository\RoomInfoRepository;
+use App\Repository\ItemRepository;
 
 use App\Services\UtilityService;
 
@@ -80,6 +82,50 @@ class ProjJsonController extends AbstractController
         $roomInfoRepository->remove($roomInfo, true);
 
         return new Response('Room info removed', Response::HTTP_OK);
+    }
+
+    #[Route("/proj/api/item", methods: ['GET'])]
+    public function allItems(ItemRepository $itemRepository): Response
+    {
+        $allItems = $itemRepository->findAll();
+
+        $jsonItems = [];
+
+        foreach ($allItems as $item) {
+            $jsonItems[] =  [
+                'id' => $item->getId(),
+                'name' => $item->getName(),
+                'description' => $item->getDescription(),
+            ];
+        }
+        return $this->json($jsonItems, 200, [], [
+            'json_encode_options' => JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+        ]);
+    }
+
+    #[Route("/proj/api/item/add", methods: ['POST'])]
+    public function addItem(Request $request, ItemRepository $itemRepository): Response
+    {
+        $jsonData = $request->getContent();
+        $data = json_decode($jsonData, true);
+
+        $item = new Item();
+        $item->setName($data['name']);
+        $item->setDescription($data['description']);
+
+        $itemRepository->save($item, true);
+
+        return new Response('Added item', Response::HTTP_CREATED);
+    }
+
+    #[Route("/proj/api/item/delete", methods: ['POST'])]
+    public function deleteItem(Request $request, ItemRepository $itemRepository): Response
+    {
+        $id = $request->request->get('id');
+        $item = $itemRepository->find($id);
+        $itemRepository->remove($item, true);
+
+        return new Response('Item removed', Response::HTTP_OK);
     }
 
 

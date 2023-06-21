@@ -316,21 +316,21 @@ Minicluedo?
 [OK] wincons
 [OK] Controller-flöde, sessionshantering, starta spelet
 [OK] Spelarnamn, start/continue-knappar, antal quests, 
+[OK] Databas items
+[OK] JSON-routes items
 
-* Databas items
-* JSON-routes items
+* Implementera Items från databas
 * Ändra så att items blir en klass, inte en associativ array
     * Gör så att man inte kan plocka upp det om det hamnat rätt?
 * Ändra så att RoomEntity använder ett trait för olika funktioner? Istället för Roominfo/room**
 
 * KOLLA KRAVEN
 
-* Räkna antalet rundor det tar att klara det?
-* Göra det möjligt att välja antal rum?
 
 * Kör en första vända med kodkvalitet
 * Kör en första vända med tester
-* Uppdatera rum json
+
+
 * Styling:
     * Block
     * Typografi
@@ -338,6 +338,12 @@ Minicluedo?
     * Items/inventory
 * Cheats
     * Visa rum och var item finns från quests
+
+
+* Räkna antalet rundor det tar att klara det?
+* Göra det möjligt att välja antal rum på samma sätt som antal quests?
+* Uppdatera rum json
+
 * Refaktorering, kodkvalitet
 * Ta bort debugtext
 
