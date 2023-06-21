@@ -53,7 +53,7 @@ class QuestHandler
     private function checkItemInRoom($targetItem, $roomItems): bool
     {
         foreach ($roomItems as $roomItem) {
-            if ($targetItem['id'] == $roomItem['id']) {
+            if ($targetItem->getId() == $roomItem->getId()) {
                 return true;
             }
         }

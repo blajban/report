@@ -11,7 +11,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Exception;
 use Symfony\Component\HttpFoundation\Request;
 
-use App\Repository\BookRepository;
+
+use App\Repository\ItemRepository;
 use App\Repository\RoomInfoRepository;
 use App\Services\UtilityService;
 
@@ -67,7 +68,7 @@ class ProjController extends AbstractController
     }
 
     #[Route('/proj/play/start', name: 'proj/play_start_callback', methods: ['POST'])]
-    public function start(SessionInterface $session, Request $request, RoomInfoRepository $roomInfoRepo): Response
+    public function start(SessionInterface $session, Request $request, RoomInfoRepository $roomInfoRepo, ItemRepository $itemRepo): Response
     {
         $name = 'Player';
         $numberOfQuests = 3;
@@ -81,7 +82,8 @@ class ProjController extends AbstractController
         }
 
         $roomInfos = $roomInfoRepo->findAll();
-        $game = new AdventureGame($roomInfos, ITEMS, $name, $numberOfQuests);
+        $items = $itemRepo->findAll();
+        $game = new AdventureGame($roomInfos, $items, $name, $numberOfQuests);
         
         $session->set('proj_session', $game);
 

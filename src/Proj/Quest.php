@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Proj;
+
+use App\Entity\Item;
 use Exception;
 
 class Quest
 {
     private string $name;
     private Room $room;
-    private array $item;
+    private Item $item;
     private bool $completed = false;
 
     public function __construct($room, $item)
     {
         $this->room = $room;
         $this->item = $item;
-        $this->name = "Fetch the {$this->item['name']} for room {$this->room->getName()}";
+        $this->name = "Fetch the {$this->item->getName()} for room {$this->room->getName()}";
     }
 
     public function getName(): string
@@ -27,7 +29,7 @@ class Quest
         return $this->room;
     }
 
-    public function getTargetItem(): array
+    public function getTargetItem(): Item
     {
         return $this->item;
     }

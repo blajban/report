@@ -5,8 +5,8 @@
   <h3>{{ gameState.player.getName()}}</h3>
       {% for itemId, item in gameState.player.getInventory() %}
         <div class="inventory-item">
-          <h4>{{item.name}}</h4>
-          <p>{{item.description}}</p>
+          <h4>{{item.getName()}}</h4>
+          <p>{{item.getDescription()}}</p>
           <form class="room-drop-item" method="post" action="">
             <button type="submit" name="dropItem" value="{{ itemId }}"
               onClick="this.form.action='{{ path('proj/play_dropItem_callback') }}';"

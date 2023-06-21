@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Proj;
+
+use App\Entity\Item;
 use Exception;
 
 
@@ -23,10 +25,10 @@ class Player
 
     public function addToInventory($item)
     {
-        $this->inventory[$item['id']] = $item;
+        $this->inventory[$item->getId()] = $item;
     }
 
-    public function dropFromInventory($itemId)
+    public function dropFromInventory($itemId): Item
     {
         if (array_key_exists($itemId, $this->inventory)) {
             $item = $this->inventory[$itemId];

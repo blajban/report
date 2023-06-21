@@ -319,9 +319,9 @@ Minicluedo?
 [OK] Databas items
 [OK] JSON-routes items
 
-* Implementera Items från databas
-* Ändra så att items blir en klass, inte en associativ array
-    * Gör så att man inte kan plocka upp det om det hamnat rätt?
+[OK] Implementera Items från databas
+[OK] Ändra så att items blir en klass, inte en associativ array
+    
 * Ändra så att RoomEntity använder ett trait för olika funktioner? Istället för Roominfo/room**
 
 * KOLLA KRAVEN
@@ -342,6 +342,8 @@ Minicluedo?
 
 * Räkna antalet rundor det tar att klara det?
 * Göra det möjligt att välja antal rum på samma sätt som antal quests?
+* Gör så att man inte kan plocka upp item om questen redan är klarad?
+
 * Uppdatera rum json
 
 * Refaktorering, kodkvalitet

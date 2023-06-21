@@ -35,7 +35,7 @@ class AdventureGame
         $this->questHandler = new QuestHandler();
         $this->questHandler->generateQuests($rooms, $items, $numberOfQuests);
 
-        $this->map = new Map($rooms, $items);
+        $this->map = new Map($rooms);
     }
 
     public function move($direction)
