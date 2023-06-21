@@ -322,7 +322,9 @@ Minicluedo?
 [OK] Implementera Items från databas
 [OK] Ändra så att items blir en klass, inte en associativ array
     
-* Ändra så att RoomEntity använder ett trait för olika funktioner? Istället för Roominfo/room**
+[OK] Ändra så att RoomEntity använder ett trait för olika funktioner? Istället för Roominfo/room**
+
+[OK] Byt namn på Roominfo till Room
 
 * KOLLA KRAVEN
 

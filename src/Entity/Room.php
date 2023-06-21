@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\RoomInfoRepository;
+use App\Proj\RoomTrait;
+use App\Repository\RoomRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: RoomInfoRepository::class)]
-class RoomInfo
+#[ORM\Entity(repositoryClass: RoomRepository::class)]
+class Room
 {
+    use RoomTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

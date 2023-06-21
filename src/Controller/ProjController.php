@@ -13,26 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 use App\Repository\ItemRepository;
-use App\Repository\RoomInfoRepository;
+use App\Repository\RoomRepository;
 use App\Services\UtilityService;
-
-const ITEMS = [
-    [
-        'id' => '1',
-        'name' => 'Ett item',
-        'description' => 'Det här är ett item'
-    ],
-    [
-        'id' => '2',
-        'name' => 'Ett annat item',
-        'description' => 'Det här är ett annat item'
-    ],
-    [
-        'id' => '3',
-        'name' => 'Ett tredje item',
-        'description' => 'Det här är tredje ett item'
-    ]
-];
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariable)
@@ -47,15 +29,15 @@ class ProjController extends AbstractController
     }
 
     #[Route('/game_picture/{id}', name: 'game_picture')]
-    public function gamePicture(int $id, RoomInfoRepository $roomInfoRepo): Response
+    public function gamePicture(int $id, RoomRepository $roomRepo): Response
     {
-        $roomInfo = $roomInfoRepo->find($id);
+        $room = $roomRepo->find($id);
 
-        if (!$roomInfo || !$roomInfo->getImg()) {
+        if (!$room || !$room->getImg()) {
             throw new Exception('No room picture found for id ' . $id);
         }
 
-        return $this->utilityService->imageResponse($roomInfo->getImg());
+        return $this->utilityService->imageResponse($room->getImg());
     }
 
     #[Route("/proj", name: "proj", methods: ['GET'])]
@@ -68,7 +50,7 @@ class ProjController extends AbstractController
     }
 
     #[Route('/proj/play/start', name: 'proj/play_start_callback', methods: ['POST'])]
-    public function start(SessionInterface $session, Request $request, RoomInfoRepository $roomInfoRepo, ItemRepository $itemRepo): Response
+    public function start(SessionInterface $session, Request $request, RoomRepository $roomRepo, ItemRepository $itemRepo): Response
     {
         $name = 'Player';
         $numberOfQuests = 3;
@@ -81,9 +63,9 @@ class ProjController extends AbstractController
             $numberOfQuests = $request->request->get('numberOfQuests');
         }
 
-        $roomInfos = $roomInfoRepo->findAll();
+        $rooms = $roomRepo->findAll();
         $items = $itemRepo->findAll();
-        $game = new AdventureGame($roomInfos, $items, $name, $numberOfQuests);
+        $game = new AdventureGame($rooms, $items, $name, $numberOfQuests);
         
         $session->set('proj_session', $game);
 
@@ -91,7 +73,7 @@ class ProjController extends AbstractController
     }
 
     #[Route("/proj/play", name: "proj/play", methods: ['GET'])]
-    public function play(SessionInterface $session, RoomInfoRepository $roomInfoRepo): Response
+    public function play(SessionInterface $session): Response
     {
         $game = $session->get('proj_session');
 

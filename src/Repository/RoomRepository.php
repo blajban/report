@@ -2,29 +2,29 @@
 
 namespace App\Repository;
 
-use App\Entity\RoomInfo;
+use App\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<RoomInfo>
+ * @extends ServiceEntityRepository<Room>
  *
- * @method RoomInfo|null find($id, $lockMode = null, $lockVersion = null)
- * @method RoomInfo|null findOneBy(array $criteria, array $orderBy = null)
- * @method RoomInfo[]    findAll()
- * @method RoomInfo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Room|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Room|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Room[]    findAll()
+ * @method Room[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  * 
  * @SuppressWarnings(PHPMD.ShortVariable)
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
-class RoomInfoRepository extends ServiceEntityRepository
+class RoomRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RoomInfo::class);
+        parent::__construct($registry, Room::class);
     }
 
-    public function save(RoomInfo $entity, bool $flush = false): void
+    public function save(Room $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -33,7 +33,7 @@ class RoomInfoRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(RoomInfo $entity, bool $flush = false): void
+    public function remove(Room $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -43,7 +43,7 @@ class RoomInfoRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return RoomInfo[] Returns an array of RoomInfo objects
+//     * @return Room[] Returns an array of Room objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -57,7 +57,7 @@ class RoomInfoRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?RoomInfo
+//    public function findOneBySomeField($value): ?Room
 //    {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')
