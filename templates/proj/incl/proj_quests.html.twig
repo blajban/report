@@ -8,25 +8,24 @@
           <p>{{quest.getName()}}
             {% if (quest.isComplete()) %}
             COMPLETED
-            {% endif %}
+            {% else %}
             
             
             
-            <form class="room-showhint" method="post" action=""></form>
-              {% if (gameState.hint.room) %}
+            
+            <form class="room-showhint" method="post">
+              {% if (quest.isHintShown()) %}
                 <button type="submit" name="hideHint" value="{{ quest.getId }}"
                   onClick="this.form.action='{{ path('proj/play_hideHint_callback') }}';"
                 >Hide hint</button>
-
               {% else %}
-
-              <button type="submit" name="showHint" value="{{ quest.getId }}"
-                onClick="this.form.action='{{ path('proj/play_showHint_callback') }}';"
-              >Show hint</button>
-              
-
+                <button type="submit" name="showHint" value="{{ quest.getId }}"
+                  onClick="this.form.action='{{ path('proj/play_showHint_callback') }}';"
+                >Show hint</button>
               {% endif %}
             </form>
+            
+            {% endif %}
             
           </p>
           

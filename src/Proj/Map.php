@@ -3,6 +3,7 @@
 namespace App\Proj;
 
 use App\Entity\Room;
+use App\Entity\Item;
 use Exception;
 
 
@@ -79,5 +80,20 @@ class Map
     {
         return $this->grid;
     }
+
+    /*
+    public function findRoomWithItem(Item $targetItem): ?Room
+    {
+        foreach ($this->rooms as $room) {
+            foreach ($room->getItems() as $item) {
+                if ($item->getId() == $targetItem->getId()) {
+                    return $room;
+                }
+            }
+        }
+        
+        return null;
+    }
+    */
 
 }

@@ -13,6 +13,7 @@ class Quest
     private Room $room;
     private Item $item;
     private bool $completed = false;
+    private bool $hintShown = false;
 
     public function __construct($id, $room, $item)
     {
@@ -50,6 +51,21 @@ class Quest
     public function isComplete(): bool
     {
         return $this->completed;
+    }
+
+    public function showHint(): void
+    {
+        $this->hintShown = true;
+    }
+
+    public function hideHint(): void
+    {
+        $this->hintShown = false;
+    }
+
+    public function isHintShown(): bool
+    {
+        return $this->hintShown;
     }
 }
 

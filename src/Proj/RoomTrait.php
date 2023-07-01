@@ -41,4 +41,15 @@ trait RoomTrait
 
         return null;
     }
+
+    public function containsItem($targetItem)
+    {
+        foreach ($this->items as $item) {
+            if ($item->getId() == $targetItem->getId()) {
+                return true;
+            }
+        }
+    
+        return false;
+    }
 }

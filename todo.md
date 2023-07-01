@@ -326,8 +326,9 @@ Minicluedo?
 
 * Cheats
     [OK] Visa target-rum
-    [OK] Visa var item finns - fortsätt med detta, något är fel. Jag borde väl loopa igenom rummen istället?
-    * Dölj hints
+    [OK] Visa var item finns
+    * Dölj hints (kolla knappen i quests-templaten, sedna controllern)
+    * Ändra så att man bara kan ha en hint aktiv i taget?
     * Ändra knapplayout så att man ser vilken quest som hintas
 
 

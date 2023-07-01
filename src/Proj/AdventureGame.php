@@ -11,11 +11,10 @@ class AdventureGame
 {
     private string $debug = 'Debug';
     private int $moves = 0;
-    private $hintedRoom = null;
-    private $hintedItem = null;
     private Map $map;
     private Player $player;
     private QuestHandler $questHandler;
+    private $hintedQuest = null;
 
     public function __construct($rooms, $items, $playerName, $numberOfQuests)
     {
@@ -62,14 +61,13 @@ class AdventureGame
 
     public function showHint($questId)
     {
-        $this->hintedRoom = $this->questHandler->getRoomWithQuest($questId);
-        $this->hintedItem = $this->questHandler->getRoomWithQuestItem($questId, $this->map->getRooms());
+        $this->hintedQuest = $this->questHandler->showHint($questId);
     }
 
     public function hideHint()
     {
-        $this->hintedRoom = null;
-        $this->hintedItem = null;
+        //$this->hintedRoom = null;
+        //$this->hintedItem = null;
     }
 
     public function getState(): array
@@ -82,10 +80,7 @@ class AdventureGame
             'grid' => $this->map->getGrid(),
             'player' => $this->player,
             'quests' => $this->questHandler->getQuests(),
-            'hint' => [
-                'room' => $this->hintedRoom,
-                'item' => $this->hintedItem
-            ],
+            'hint' => $this->hintedQuest,
             'moves' => $this->moves,
             'debug' => $this->debug
         ];
