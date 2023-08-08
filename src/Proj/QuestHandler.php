@@ -3,11 +3,14 @@
 namespace App\Proj;
 
 use App\Entity\Room;
+use App\Entity\Item;
 use Exception;
-
 
 class QuestHandler
 {
+    /**
+     * @var array<Quest> $quests
+     */
     private array $quests = [];
 
     public function __construct()
@@ -15,7 +18,12 @@ class QuestHandler
 
     }
 
-    public function generateQuests($rooms, $items, $numberOfQuests)
+    /**
+     * @param array<Room> $rooms
+     * @param array<Item> $items
+     * @return void
+     */
+    public function generateQuests($rooms, $items, int $numberOfQuests)
     {
         $copiedItems = $items;
 
@@ -31,30 +39,38 @@ class QuestHandler
         }
     }
 
+    /**
+     * @return array<Quest>
+     */
     public function getQuests(): array
     {
         return $this->quests;
     }
 
-    public function showHint($questId): Quest|null
+    public function showHint(int $questId): Quest|null
     {
         $quest = $this->getQuestWithId($questId);
-        $quest->showHint();
+        if ($quest !== null) {
+            $quest->showHint();
+        }
 
         return $quest;
     }
 
-    private function getQuestWithId($questId): Quest
+    private function getQuestWithId(int $questId): Quest|null
     {
         foreach ($this->quests as $quest) {
             if ($quest->getId() == $questId) {
                 return $quest;
             }
-        } 
+        }
 
         return null;
     }
 
+    /**
+     * @return void
+     */
     public function updateQuestCompletion()
     {
         foreach ($this->quests as $quest) {
@@ -62,7 +78,7 @@ class QuestHandler
             $targetRoom = $quest->getTargetRoom();
 
             $roomItems = $targetRoom->getItems();
-            
+
             $complete = $this->checkItemInRoom($targetItem, $roomItems);
 
             if ($complete) {
@@ -71,7 +87,10 @@ class QuestHandler
         }
     }
 
-    private function checkItemInRoom($targetItem, $roomItems): bool
+    /**
+     * @param array<Item> $roomItems
+     */
+    private function checkItemInRoom(Item $targetItem, $roomItems): bool
     {
         foreach ($roomItems as $roomItem) {
             if ($targetItem->getId() == $roomItem->getId()) {

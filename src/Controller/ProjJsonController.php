@@ -55,13 +55,24 @@ class ProjJsonController extends AbstractController
     #[Route("/proj/api/room/add", methods: ['POST'])]
     public function addRoom(Request $request, RoomRepository $roomRepository): Response
     {
-        $jsonData = $request->request->get('json_data');
+        $jsonData = (string)$request->request->get('json_data');
+
         $data = json_decode($jsonData, true);
+
+        if (!is_array($data)) {
+            return new Response('Invalid JSON data', Response::HTTP_BAD_REQUEST);
+        }
+
+        if (!isset($data['name']) || !isset($data['description'])) {
+            return new Response('Missing required fields', Response::HTTP_BAD_REQUEST);
+        }
 
         /** @var UploadedFile|null $pictureFile */
         $pictureFile = $request->files->get('img');
-        $picture = $this->utilityService->generatePictureDataFromUploaded($pictureFile);
-
+        $picture = null;
+        if ($pictureFile) {
+            $picture = $this->utilityService->generatePictureDataFromUploaded($pictureFile);
+        }
 
         $room = new Room();
         $room->setName($data['name']);
@@ -79,9 +90,13 @@ class ProjJsonController extends AbstractController
     {
         $id = $request->request->get('id');
         $room = $roomRepository->find($id);
-        $roomRepository->remove($room, true);
 
-        return new Response('Room info removed', Response::HTTP_OK);
+        if ($room) {
+            $roomRepository->remove($room, true);
+            return new Response('Room info removed', Response::HTTP_OK);
+        }
+
+        return new Response('Room not found', Response::HTTP_BAD_REQUEST);
     }
 
     #[Route("/proj/api/item", methods: ['GET'])]
@@ -107,7 +122,20 @@ class ProjJsonController extends AbstractController
     public function addItem(Request $request, ItemRepository $itemRepository): Response
     {
         $jsonData = $request->getContent();
+
+        if (!is_string($jsonData)) {
+            return new Response('Invalid input', Response::HTTP_BAD_REQUEST);
+        }
+
         $data = json_decode($jsonData, true);
+
+        if (!is_array($data)) {
+            return new Response('Invalid JSON data', Response::HTTP_BAD_REQUEST);
+        }
+
+        if (!isset($data['name']) || !isset($data['description'])) {
+            return new Response('Missing required fields', Response::HTTP_BAD_REQUEST);
+        }
 
         $item = new Item();
         $item->setName($data['name']);
@@ -123,9 +151,14 @@ class ProjJsonController extends AbstractController
     {
         $id = $request->request->get('id');
         $item = $itemRepository->find($id);
-        $itemRepository->remove($item, true);
 
-        return new Response('Item removed', Response::HTTP_OK);
+        if ($item) {
+            $itemRepository->remove($item, true);
+            return new Response('Item removed', Response::HTTP_OK);
+        }
+
+        return new Response('Item not found', Response::HTTP_BAD_REQUEST);
+        
     }
 
 

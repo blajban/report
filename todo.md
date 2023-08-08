@@ -348,10 +348,17 @@ Minicluedo?
 * Göra det möjligt att välja antal rum på samma sätt som antal quests?
 * Gör så att man inte kan plocka upp item om questen redan är klarad?
 
+* Fyll på med rum och beskrivningar
+
 * Uppdatera rum json
 
 * Refaktorering, kodkvalitet
 * Ta bort debugtext
+
+* Kodkvalitet igen
+
+### Frågetecken
+* Vad är generateAllDoors-funktionen till för? Generera dörrar istället för random-dörrar? Kanske kan man välja det när man startar spelet?
 
 ## LÄNGRE FRAM
 * Fixa inaccessible rooms (checkaccessibility-funktionen i Map)
@@ -424,3 +431,21 @@ Content-Type: image/jpeg
 - Status: 201 Created
 - Body: Added room info
 
+
+
+array<int|string, Item
+
+    /*
+    public function findRoomWithItem(Item $targetItem): ?Room
+    {
+        foreach ($this->rooms as $room) {
+            foreach ($room->getItems() as $item) {
+                if ($item->getId() == $targetItem->getId()) {
+                    return $room;
+                }
+            }
+        }
+
+        return null;
+    }
+    */

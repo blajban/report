@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  * @extends ServiceEntityRepository<Item>
  *
  * @method Item|null find($id, $lockMode = null, $lockVersion = null)

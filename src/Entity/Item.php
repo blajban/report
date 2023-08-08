@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @SuppressWarnings(PHPMD.ShortVariable)
+ */
 #[ORM\Entity(repositoryClass: ItemRepository::class)]
 class Item
 {

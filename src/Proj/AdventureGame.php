@@ -4,8 +4,9 @@ namespace App\Proj;
 
 use App\Proj\Map;
 use App\Proj\Player;
+use App\Proj\Quest;
 use App\Entity\Room;
-
+use App\Entity\Item;
 
 class AdventureGame
 {
@@ -14,9 +15,13 @@ class AdventureGame
     private Map $map;
     private Player $player;
     private QuestHandler $questHandler;
-    private $hintedQuest = null;
+    private Quest|null $hintedQuest = null;
 
-    public function __construct($rooms, $items, $playerName, $numberOfQuests)
+    /**
+     * @param array<Room> $rooms
+     * @param array<Item> $items
+     */
+    public function __construct($rooms, $items, string $playerName, int $numberOfQuests)
     {
         $this->player = new Player($playerName);
 
@@ -29,20 +34,29 @@ class AdventureGame
         $this->map = new Map($rooms);
     }
 
-    public function move($direction)
+    /**
+     * @return void
+     */
+    public function move(string $direction)
     {
         $this->map->move($direction);
         $this->moves++;
     }
 
-    public function takeItem($itemId)
+    /**
+     * @return void
+     */
+    public function takeItem(int $itemId)
     {
         $currentRoom = $this->map->getCurrentRoom();
         $item = $currentRoom->takeItem($itemId);
         $this->player->addToInventory($item);
     }
 
-    public function dropItem($itemId)
+    /**
+     * @return void
+     */
+    public function dropItem(int $itemId)
     {
         $currentRoom = $this->map->getCurrentRoom();
         $item = $this->player->dropFromInventory($itemId);
@@ -54,22 +68,43 @@ class AdventureGame
         return $this->questHandler->allQuestsCompleted();
     }
 
+    /**
+     * @return void
+     */
     public function updateQuests()
     {
         $this->questHandler->updateQuestCompletion();
     }
 
-    public function showHint($questId)
+    /**
+     * @return void
+     */
+    public function showHint(int $questId)
     {
         $this->hintedQuest = $this->questHandler->showHint($questId);
     }
 
+    /**
+     * @return void
+     */
     public function hideHint()
     {
         //$this->hintedRoom = null;
         //$this->hintedItem = null;
     }
 
+    /**
+     * @return array{
+     *     currentRoom: Room,
+     *     rooms: array<Room>,
+     *     grid: Room[][],
+     *     player: Player,
+     *     quests: array<Quest>,
+     *     hint: Quest|null,
+     *     moves: int,
+     *     debug: string
+     * }
+     */
     public function getState(): array
     {
         $this->questHandler->updateQuestCompletion();
@@ -86,7 +121,10 @@ class AdventureGame
         ];
     }
 
-    public function setDebugText($text)
+    /**
+     * @return void
+     */
+    public function setDebugText(string $text)
     {
         $this->debug = $text;
     }

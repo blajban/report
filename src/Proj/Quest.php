@@ -8,16 +8,16 @@ use Exception;
 
 class Quest
 {
-    private int $id;
+    private int $questId;
     private string $name;
     private Room $room;
     private Item $item;
     private bool $completed = false;
     private bool $hintShown = false;
 
-    public function __construct($id, $room, $item)
+    public function __construct(int $questId, Room $room, Item $item)
     {
-        $this->id = $id;
+        $this->questId = $questId;
         $this->room = $room;
         $this->item = $item;
         $this->name = "Fetch the {$this->item->getName()} for room {$this->room->getName()}";
@@ -25,7 +25,7 @@ class Quest
 
     public function getId(): int
     {
-        return $this->id;
+        return $this->questId;
     }
 
     public function getName(): string
@@ -43,6 +43,9 @@ class Quest
         return $this->item;
     }
 
+    /**
+     * @return void
+     */
     public function completeQuest()
     {
         $this->completed = true;
@@ -68,4 +71,3 @@ class Quest
         return $this->hintShown;
     }
 }
-

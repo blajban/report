@@ -1,17 +1,22 @@
 <?php
 
 namespace App\Proj;
+
+use App\Entity\Room;
 use Exception;
-
-
 
 class DoorGenerator
 {
+    /**
+     * @var Room[][]
+     */
     private array $grid = [];
     private int $width = 0;
     private int $height = 0;
 
-
+    /**
+     * @param Room[][] $roomGrid
+     */
     public function __construct(array $roomGrid, int $width, int $height)
     {
         $this->grid = $roomGrid;
@@ -19,6 +24,9 @@ class DoorGenerator
         $this->height = $height;
     }
 
+    /**
+     * @return void
+     */
     public function generateDoors()
     {
         for ($row = 0; $row < $this->height; $row++) {
@@ -28,11 +36,17 @@ class DoorGenerator
         }
     }
 
-    private function generateAllDoors($row, $col)
+    /**
+     * @return void
+     */
+    private function generateAllDoors(int $row, int $col)
     {
         // TODO
     }
 
+    /**
+     * @return void
+     */
     public function generateRandomDoors()
     {
         for ($row = 0; $row < $this->height; $row++) {
@@ -48,7 +62,10 @@ class DoorGenerator
         $this->checkAccessibility();
     }
 
-    private function generateWestDoor($row, $col)
+    /**
+     * @return void
+     */
+    private function generateWestDoor(int $row, int $col)
     {
         try {
             $current = $this->grid[$row][$col];
@@ -61,7 +78,10 @@ class DoorGenerator
         }
     }
 
-    private function generateEastDoor($row, $col)
+    /**
+     * @return void
+     */
+    private function generateEastDoor(int $row, int $col)
     {
         try {
             $current = $this->grid[$row][$col];
@@ -74,7 +94,10 @@ class DoorGenerator
         }
     }
 
-    private function generateNorthDoor($row, $col)
+    /**
+     * @return void
+     */
+    private function generateNorthDoor(int $row, int $col)
     {
         try {
             $current = $this->grid[$row][$col];
@@ -87,7 +110,10 @@ class DoorGenerator
         }
     }
 
-    private function generateSouthDoor($row, $col)
+    /**
+     * @return void
+     */
+    private function generateSouthDoor(int $row, int $col)
     {
         try {
             $current = $this->grid[$row][$col];
@@ -99,7 +125,11 @@ class DoorGenerator
             return;
         }
     }
-    private function generateExtraDoors($row, $col)
+
+    /**
+     * @return void
+     */
+    private function generateExtraDoors(int $row, int $col)
     {
         try {
             $current = $this->grid[$row][$col];

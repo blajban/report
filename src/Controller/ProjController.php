@@ -18,6 +18,7 @@ use App\Services\UtilityService;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariable)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class ProjController extends AbstractController
 {
@@ -56,17 +57,17 @@ class ProjController extends AbstractController
         $numberOfQuests = 3;
 
         if ($request->request->has('name')) {
-            $name = $request->request->get('name');
+            $name = (string) $request->request->get('name');
         }
 
         if ($request->request->has('numberOfQuests')) {
-            $numberOfQuests = $request->request->get('numberOfQuests');
+            $numberOfQuests = (int) $request->request->get('numberOfQuests');
         }
 
         $rooms = $roomRepo->findAll();
         $items = $itemRepo->findAll();
         $game = new AdventureGame($rooms, $items, $name, $numberOfQuests);
-        
+
         $session->set('proj_session', $game);
 
         return $this->redirectToRoute('proj/play');
@@ -77,7 +78,7 @@ class ProjController extends AbstractController
     {
         $game = $session->get('proj_session');
 
-        if (!$game) {
+        if (!$game || !($game instanceof AdventureGame)) {
             return $this->redirectToRoute('proj');
         }
 
@@ -95,8 +96,12 @@ class ProjController extends AbstractController
     {
         $game = $session->get('proj_session');
 
+        if (!$game instanceof AdventureGame) {
+            throw new Exception('Bad session');
+        }
+
         if ($request->request->has('move')) {
-            $direction = $request->request->get('move');
+            $direction = (string) $request->request->get('move');
             $game->move($direction);
         }
 
@@ -110,8 +115,12 @@ class ProjController extends AbstractController
     {
         $game = $session->get('proj_session');
 
+        if (!$game instanceof AdventureGame) {
+            throw new Exception('Bad session');
+        }
+
         if ($request->request->has('takeItem')) {
-            $itemId = $request->request->get('takeItem');
+            $itemId = (int) $request->request->get('takeItem');
             $game->takeItem($itemId);
         }
 
@@ -126,8 +135,12 @@ class ProjController extends AbstractController
     {
         $game = $session->get('proj_session');
 
+        if (!$game instanceof AdventureGame) {
+            throw new Exception('Bad session');
+        }
+
         if ($request->request->has('dropItem')) {
-            $itemId = $request->request->get('dropItem');
+            $itemId = (int) $request->request->get('dropItem');
             $game->dropItem($itemId);
         }
 
@@ -147,8 +160,12 @@ class ProjController extends AbstractController
     {
         $game = $session->get('proj_session');
 
+        if (!$game instanceof AdventureGame) {
+            throw new Exception('Bad session');
+        }
+
         if ($request->request->has('showHint')) {
-            $questId = $request->request->get('showHint');
+            $questId = (int) $request->request->get('showHint');
             $game->showHint($questId);
         }
 
@@ -161,6 +178,10 @@ class ProjController extends AbstractController
     public function hideint(SessionInterface $session, Request $request): Response
     {
         $game = $session->get('proj_session');
+
+        if (!$game instanceof AdventureGame) {
+            throw new Exception('Bad session');
+        }
 
         if ($request->request->has('hideHint')) {
             $game->hideHint();
@@ -176,7 +197,7 @@ class ProjController extends AbstractController
     {
         $game = $session->get('proj_session');
 
-        if (!$game) {
+        if (!$game || !$game instanceof AdventureGame) {
             return $this->redirectToRoute('proj');
         }
 
@@ -201,6 +222,6 @@ class ProjController extends AbstractController
 
         return $this->redirectToRoute('proj');
     }
-    
-    
+
+
 }

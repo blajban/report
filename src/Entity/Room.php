@@ -7,6 +7,9 @@ use App\Repository\RoomRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @SuppressWarnings(PHPMD.ShortVariable)
+ */
 #[ORM\Entity(repositoryClass: RoomRepository::class)]
 class Room
 {
@@ -24,7 +27,7 @@ class Room
     private ?string $description = null;
 
     #[ORM\Column(type: Types::BLOB)]
-    private $img = null;
+    private $img = null; /** @phpstan-ignore-line */
 
     public function getId(): ?int
     {
@@ -55,11 +58,13 @@ class Room
         return $this;
     }
 
+    /** @phpstan-ignore-next-line */
     public function getImg()
     {
         return $this->img;
     }
 
+    /** @phpstan-ignore-next-line */
     public function setImg($img): self
     {
         $this->img = $img;
