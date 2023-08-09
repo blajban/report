@@ -27,22 +27,22 @@ class DoorGenerator
     /**
      * @return void
      */
-    public function generateDoors()
+    /*public function generateDoors()
     {
         for ($row = 0; $row < $this->height; $row++) {
             for ($col = 0; $col < $this->width; $col++) {
                 $this->generateAllDoors($row, $col);
             }
         }
-    }
+    }*/
 
     /**
      * @return void
      */
-    private function generateAllDoors(int $row, int $col)
+    /*private function generateAllDoors(int $row, int $col)
     {
         // TODO
-    }
+    }*/
 
     /**
      * @return void
@@ -70,6 +70,8 @@ class DoorGenerator
         try {
             $current = $this->grid[$row][$col];
             $west = $this->grid[$row][$col - 1];
+
+            
             if ($west->getDoors()['east']) {
                 $current->addDoor('west', $west);
             }

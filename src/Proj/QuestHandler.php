@@ -11,7 +11,7 @@ class QuestHandler
     /**
      * @var array<Quest> $quests
      */
-    private array $quests = [];
+    protected array $quests = [];
 
     public function __construct()
     {
@@ -26,6 +26,10 @@ class QuestHandler
     public function generateQuests($rooms, $items, int $numberOfQuests)
     {
         $copiedItems = $items;
+
+        if ($numberOfQuests > count($items) || $numberOfQuests > count($rooms)) {
+            throw new Exception("Too many quests wanted for the number of rooms or items provided");
+        }
 
         for ($i = 0; $i < $numberOfQuests; $i++) {
             $randomRoomIndex = array_rand($rooms);

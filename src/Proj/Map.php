@@ -37,17 +37,32 @@ class Map
     /**
      * @return void
      */
-    private function setWidthAndHeight()
+    /*private function setWidthAndHeight()
     {
         $numRooms = count($this->rooms);
         $this->width = (int) floor(sqrt($numRooms));
         $this->height = (int) ceil($numRooms / $this->width);
+    }*/
+
+    private function setWidthAndHeight()
+    {
+        $numRooms = count($this->rooms);
+
+        $this->width = (int) ceil(sqrt($numRooms));
+
+        if ($numRooms == 1) {
+            $this->width = $this->height = 1;
+            return;
+        }
+
+        $this->height = (int) ceil($numRooms / $this->width);
     }
+
 
     /**
      * @return void
      */
-    private function generateGrid()
+    /*private function generateGrid()
     {
         $col = 0;
         $row = 0;
@@ -61,7 +76,23 @@ class Map
             $this->grid[$row][] = $room;
             $col++;
         }
+    }*/
+
+    private function generateGrid()
+    {
+        $col = 0;
+        $row = 0;
+        foreach ($this->rooms as $room) {
+            $this->grid[$row][$col] = $room;
+            $col++;
+
+            if ($col >= $this->width) {
+                $row++;
+                $col = 0;
+            }
+        }
     }
+
 
     /**
      * @return void

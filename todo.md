@@ -1,3 +1,5 @@
+https://dbwebb.se/kurser/mvc-v2/kmom10
+
 # Krav 1, 2, 3: Webbplats
 
 Din nya webbplats skall minst uppfylla följande krav.
@@ -9,7 +11,7 @@ Din nya webbplats skall minst uppfylla följande krav.
 * Ditt projekt skall ha en stil och ett utseende som tydligt skiljer sig från din report-sida.
     * Det skall utseendemässigt se ut som en ny webbplats så bygg en “ny” stylesheet eller modifiera din befintliga. Modifiera i någon omfattning färg, typsnitt och utseende på header och footer.
     * Skapa en separat navbar för projektet som enbart innehåller länkarna för projektet.
-    En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
+    * En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
 
 ## Repo och dokumentation
 
@@ -323,6 +325,7 @@ Minicluedo?
 [OK] Ändra så att RoomEntity använder ett trait för olika funktioner? Istället för Roominfo/room**
 [OK] Byt namn på Roominfo till Room
 [OK] Räkna antalet förflyttningar det tar att klara det
+[OK] Kör en första vända med kodkvalitet
 
 * Cheats
     [OK] Visa target-rum
@@ -331,11 +334,21 @@ Minicluedo?
     * Ändra så att man bara kan ha en hint aktiv i taget?
     * Ändra knapplayout så att man ser vilken quest som hintas
 
+* KOLLA OM MINA ÄNDRINGAR I GRID-GENERERINGEN GETT NÅGRA ANDRA BUGGAR - annars ta bort gamla koden!
+
+* Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
+* Exception om man anger fler quests än vad som är möjlig.
+* Rummen får alltid samma position (samma som i databasen). Gör så att de får en random position.
+* Säkerställ att alla rum blir accessible
+* Säkerställ att inget item placeras i ett rum som hamnar utanför kartan
+* Hints/cheats inte klart (går inte att dölja, styling, oklart vad färgerna betyder, både rum/item visas inte)
+* Inventoryn borde vara mer på spelskärmen, inte nedanför (styling). Borde också vara en liten ikon för att droppa och inte en drop item-knapp?
+* Fixa till styling på slutskärmen!
+* Gör så att man inte kan plocka upp item om questen redan är klarad?
+* Göra det möjligt att välja antal rum på samma sätt som antal quests?
 
 * KOLLA KRAVEN
 
-
-* Kör en första vända med kodkvalitet
 * Kör en första vända med tester
 
 * Styling:
@@ -344,18 +357,26 @@ Minicluedo?
     * Minimap
     * Items/inventory
 
-
-* Göra det möjligt att välja antal rum på samma sätt som antal quests?
-* Gör så att man inte kan plocka upp item om questen redan är klarad?
-
+* Refaktorering, kodkvalitet
 * Fyll på med rum och beskrivningar
-
 * Uppdatera rum json
 
-* Refaktorering, kodkvalitet
 * Ta bort debugtext
 
 * Kodkvalitet igen
+
+### BUGGAR/GENOMSPELNING 230808
+* Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
+* Exception om man anger fler quests än vad som är möjlig.
+* Rummen får alltid samma position (samma som i databasen). Gör så att de får en random position.
+* Säkerställ att alla rum blir accessible
+* Säkerställ att inget item placeras i ett rum som hamnar utanför kartan
+* Hints/cheats inte klart (går inte att dölja, styling, oklart vad färgerna betyder, både rum/item visas inte)
+* Inventoryn borde vara mer på spelskärmen, inte nedanför (styling). Borde också vara en liten ikon för att droppa och inte en drop item-knapp?
+* Fixa till styling på slutskärmen!
+* Gör så att man inte kan plocka upp item om questen redan är klarad?
+* Göra det möjligt att välja antal rum på samma sätt som antal quests?
+
 
 ### Frågetecken
 * Vad är generateAllDoors-funktionen till för? Generera dörrar istället för random-dörrar? Kanske kan man välja det när man startar spelet?
