@@ -80,9 +80,12 @@ class Map
 
     private function generateGrid()
     {
+        $shuffledRooms = $this->rooms;
+        shuffle($shuffledRooms);
+
         $col = 0;
         $row = 0;
-        foreach ($this->rooms as $room) {
+        foreach ($shuffledRooms as $room) {
             $this->grid[$row][$col] = $room;
             $col++;
 

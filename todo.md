@@ -329,6 +329,7 @@ Minicluedo?
 [OK] Kör en första vända med tester
 [OK] Presentera hur många quests som är max (= antalet items i databasen)
 [OK] Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
+[OK] Säkerställ att inget item placeras i ett rum som hamnar utanför kartan
 * Cheats
     [OK] Visa target-rum
     [OK] Visa var item finns
@@ -338,18 +339,16 @@ Minicluedo?
 
 
 
-
-
 * Rummen får alltid samma position (samma som i databasen). Gör så att de får en random position.
 * Säkerställ att alla rum blir accessible
-* Säkerställ att inget item placeras i ett rum som hamnar utanför kartan
 * Hints/cheats inte klart (går inte att dölja, styling, oklart vad färgerna betyder, både rum/item visas inte)
 * Inventoryn borde vara mer på spelskärmen, inte nedanför (styling). Borde också vara en liten ikon för att droppa och inte en drop item-knapp?
 * Fixa till styling på slutskärmen!
 * Gör så att man inte kan plocka upp item om questen redan är klarad?
 * Göra det möjligt att välja antal rum på samma sätt som antal quests?
+* Ibland är questen redan avklarad - säkerställ att items inte placeras ut i targetRoom. Alternativt att questen inte väljer targetrooom där samma item redan finns.
 
-* KOLLA KRAVEN
+
 
 
 
@@ -359,13 +358,15 @@ Minicluedo?
     * Minimap
     * Items/inventory
 
-* Refaktorering, kodkvalitet
-* Fyll på med rum och beskrivningar
-* Uppdatera rum json
+* Uppdatera rum json?
 
+* Fyll på med rum och beskrivningar
 * Ta bort debugtext
 
-* Kodkvalitet igen
+* KOLLA KRAVEN
+
+* Refaktorering
+* Kodkvalitet/csfix/linting igen
 * Tester igen
 
 ### BUGGAR/GENOMSPELNING 230808
