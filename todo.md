@@ -330,25 +330,23 @@ Minicluedo?
 [OK] Presentera hur många quests som är max (= antalet items i databasen)
 [OK] Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
 [OK] Säkerställ att inget item placeras i ett rum som hamnar utanför kartan
-* Cheats
+[OK] Rummen får alltid samma position (samma som i databasen). Gör så att de får en random position.
+[OK] Cheats
     [OK] Visa target-rum
     [OK] Visa var item finns
-    * Dölj hints (kolla knappen i quests-templaten, sedna controllern)
-    * Ändra så att man bara kan ha en hint aktiv i taget?
-    * Ändra knapplayout så att man ser vilken quest som hintas
+    [OK] Dölj hints (kolla knappen i quests-templaten, sedna controllern)
+    [OK] Ändra så att man bara kan ha en hint aktiv i taget?
+    [OK] Ändra knapplayout så att man ser vilken quest som hintas
 
 
 
-* Rummen får alltid samma position (samma som i databasen). Gör så att de får en random position.
+
 * Säkerställ att alla rum blir accessible
-* Hints/cheats inte klart (går inte att dölja, styling, oklart vad färgerna betyder, både rum/item visas inte)
-* Inventoryn borde vara mer på spelskärmen, inte nedanför (styling). Borde också vara en liten ikon för att droppa och inte en drop item-knapp?
-* Fixa till styling på slutskärmen!
 * Gör så att man inte kan plocka upp item om questen redan är klarad?
-* Göra det möjligt att välja antal rum på samma sätt som antal quests?
+
 * Ibland är questen redan avklarad - säkerställ att items inte placeras ut i targetRoom. Alternativt att questen inte väljer targetrooom där samma item redan finns.
 
-
+* Fixa till exception-test (exception ska inte längre kallas)
 
 
 
@@ -356,7 +354,9 @@ Minicluedo?
     * Block
     * Typografi
     * Minimap
-    * Items/inventory
+    * Items/inventory (borde vara mer på skärmen? ikoner? ikon för att droppa ist för knapp?)
+    * Hints/cheats (vad betyder färgerna??)
+    * Slutskärmen, startskärmen
 
 * Uppdatera rum json?
 
@@ -369,17 +369,7 @@ Minicluedo?
 * Kodkvalitet/csfix/linting igen
 * Tester igen
 
-### BUGGAR/GENOMSPELNING 230808
-* Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
-* Exception om man anger fler quests än vad som är möjlig.
-* Rummen får alltid samma position (samma som i databasen). Gör så att de får en random position.
-* Säkerställ att alla rum blir accessible
-* Säkerställ att inget item placeras i ett rum som hamnar utanför kartan
-* Hints/cheats inte klart (går inte att dölja, styling, oklart vad färgerna betyder, både rum/item visas inte)
-* Inventoryn borde vara mer på spelskärmen, inte nedanför (styling). Borde också vara en liten ikon för att droppa och inte en drop item-knapp?
-* Fixa till styling på slutskärmen!
-* Gör så att man inte kan plocka upp item om questen redan är klarad?
-* Göra det möjligt att välja antal rum på samma sätt som antal quests?
+
 
 
 ### Frågetecken
@@ -395,6 +385,7 @@ Minicluedo?
 * Flytta restart game-knappen från nav? Alternativt flytta knapparna från startsidan till nav
 * BUGG: om man fyller i för stort antal quests än vad spelet klarar så blir det exception
 * BUGG: Om man klarar spelet kan man continue
+* Göra det möjligt att välja antal rum på samma sätt som antal quests?
 
 
 

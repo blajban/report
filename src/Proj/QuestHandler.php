@@ -61,6 +61,16 @@ class QuestHandler
         return $quest;
     }
 
+    public function hideHint(int $questId)
+    {
+        $quest = $this->getQuestWithId($questId);
+        if ($quest !== null) {
+            $quest->hideHint();
+        }
+
+        return $quest;
+    }
+
     private function getQuestWithId(int $questId): Quest|null
     {
         foreach ($this->quests as $quest) {

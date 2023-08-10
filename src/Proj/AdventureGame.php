@@ -81,6 +81,10 @@ class AdventureGame
      */
     public function showHint(int $questId)
     {
+        if ($this->hintedQuest) {
+            $this->hintedQuest->hideHint();
+        }
+        
         $this->hintedQuest = $this->questHandler->showHint($questId);
     }
 
@@ -89,8 +93,10 @@ class AdventureGame
      */
     public function hideHint()
     {
-        //$this->hintedRoom = null;
-        //$this->hintedItem = null;
+        if ($this->hintedQuest) {
+            $this->hintedQuest->hideHint();
+            $this->hintedQuest = null;
+        }
     }
 
     /**
