@@ -327,6 +327,8 @@ Minicluedo?
 [OK] Räkna antalet förflyttningar det tar att klara det
 [OK] Kör en första vända med kodkvalitet
 [OK] Kör en första vända med tester
+[OK] Presentera hur många quests som är max (= antalet items i databasen)
+[OK] Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
 * Cheats
     [OK] Visa target-rum
     [OK] Visa var item finns
@@ -335,8 +337,9 @@ Minicluedo?
     * Ändra knapplayout så att man ser vilken quest som hintas
 
 
-* Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
-* Exception om man anger fler quests än vad som är möjlig.
+
+
+
 * Rummen får alltid samma position (samma som i databasen). Gör så att de får en random position.
 * Säkerställ att alla rum blir accessible
 * Säkerställ att inget item placeras i ett rum som hamnar utanför kartan

@@ -42,11 +42,22 @@ class ProjController extends AbstractController
     }
 
     #[Route("/proj", name: "proj", methods: ['GET'])]
-    public function landing(): Response
+    public function landing(SessionInterface $session, ItemRepository $itemRepo): Response
     {
+        $inSession = false;
+
+        $game = $session->get('proj_session');
+        if ($game && ($game instanceof AdventureGame)) {
+            $inSession = true;
+        }
+
+        $items = $itemRepo->findAll();
+
         return $this->render('proj/proj_start.html.twig', [
             'title' => "Proj",
-            'heading' => "Proj"
+            'heading' => "Proj",
+            'quests' => count($items),
+            'inSession' => $inSession
         ]);
     }
 

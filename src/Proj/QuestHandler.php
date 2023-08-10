@@ -28,7 +28,7 @@ class QuestHandler
         $copiedItems = $items;
 
         if ($numberOfQuests > count($items) || $numberOfQuests > count($rooms)) {
-            throw new Exception("Too many quests wanted for the number of rooms or items provided");
+            $numberOfQuests = count($items);
         }
 
         for ($i = 0; $i < $numberOfQuests; $i++) {

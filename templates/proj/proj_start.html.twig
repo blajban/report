@@ -6,32 +6,36 @@
 <body>
     {% include 'proj/incl/proj_nav.html.twig' %}
 
-    <form class="start" method="post" action="">
-        <p>
-            <input type="input" name="name" placeholder="Player name (*)" required>
-            <input type="input" name="numberOfQuests" placeholder="Number of quests" required>
-        </p>
-        <p>
-            <button type="submit" name="startGame" value=""
-                onClick="this.form.action='{{ path('proj/play_start_callback') }}';"
-            >Start new game</button>
-        </p>
-    </form>
+    {% if (inSession) %}
+        You have an active session. Press continue to play or reset game.
+        <form class="start" method="get" action="">
+            <p>
+                <button type="submit" name="continueGame" value=""
+                    onClick="this.form.action='{{ path('proj/play') }}';"
+                >Continue game</button>
+                <button type="submit" name="resetGame" value=""
+                    onClick="this.form.action='{{ path('proj/play/reset') }}';"
+                >Reset game</button>
+            </p>
+            
+        </form>
+    {% else %}
+        <form class="start" method="post" action="">
+            <p>
+                <input type="input" name="name" placeholder="Player name (*)" required>
+                <input type="input" name="numberOfQuests" placeholder="Number of quests" required>
+                (max {{ quests }} quests)
+            </p>
+            <p>
+                <button type="submit" name="startGame" value=""
+                    onClick="this.form.action='{{ path('proj/play_start_callback') }}';"
+                >Start new game</button>
+            </p>
+        </form>
+    {% endif %}
 
-    <form class="start" method="get" action="">
-        <p>
-            <button type="submit" name="continueGame" value=""
-                onClick="this.form.action='{{ path('proj/play') }}';"
-            >Continue game</button>
-            <button type="submit" name="resetGame" value=""
-                onClick="this.form.action='{{ path('proj/play/reset') }}';"
-            >Reset game</button>
-        </p>
-        
-    </form>
     {% include 'proj/incl/proj_footer.html.twig' %}
 </body>
 
 </html>
-
 
