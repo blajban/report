@@ -12,9 +12,9 @@ class AdventureGame
 {
     private string $debug = 'Debug';
     private int $moves = 0;
-    private Map $map;
-    private Player $player;
-    private QuestHandler $questHandler;
+    protected Map $map;
+    protected Player $player;
+    protected QuestHandler $questHandler;
     private Quest|null $hintedQuest = null;
 
     /**

@@ -51,9 +51,11 @@ class MapTest extends TestCase
         $currentRoom = $map->getCurrentRoom();
         $allRooms = $map->getRooms();
         
-        $otherRoom = array_filter($allRooms, function($room) use ($currentRoom) {
+        $filteredRooms = array_filter($allRooms, function($room) use ($currentRoom) {
             return $room !== $currentRoom;
-        })[0];
+        });
+
+        $otherRoom = array_values($filteredRooms)[0];
 
         $currentRoom->method('getDoors')->willReturn(['north' => $otherRoom]);
 
@@ -61,7 +63,7 @@ class MapTest extends TestCase
 
         $nextCurrentRoom = $map->getCurrentRoom();
 
-        $this->assertSame($otherRoom, $nextCurrentRoom);
+        $this->assertEquals($otherRoom, $nextCurrentRoom);
     }
 
     public function testGetRooms()

@@ -326,7 +326,7 @@ Minicluedo?
 [OK] Byt namn på Roominfo till Room
 [OK] Räkna antalet förflyttningar det tar att klara det
 [OK] Kör en första vända med kodkvalitet
-
+[OK] Kör en första vända med tester
 * Cheats
     [OK] Visa target-rum
     [OK] Visa var item finns
@@ -334,7 +334,6 @@ Minicluedo?
     * Ändra så att man bara kan ha en hint aktiv i taget?
     * Ändra knapplayout så att man ser vilken quest som hintas
 
-* KOLLA OM MINA ÄNDRINGAR I GRID-GENERERINGEN GETT NÅGRA ANDRA BUGGAR - annars ta bort gamla koden!
 
 * Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
 * Exception om man anger fler quests än vad som är möjlig.
@@ -349,7 +348,7 @@ Minicluedo?
 
 * KOLLA KRAVEN
 
-* Kör en första vända med tester
+
 
 * Styling:
     * Block
@@ -364,6 +363,7 @@ Minicluedo?
 * Ta bort debugtext
 
 * Kodkvalitet igen
+* Tester igen
 
 ### BUGGAR/GENOMSPELNING 230808
 * Gör så att enbart continue- och reset-knappen visas, och inte start new game, om ett game redan är igång?
