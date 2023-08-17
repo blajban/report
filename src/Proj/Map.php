@@ -29,20 +29,10 @@ class Map
         $this->rooms = $rooms;
         $this->setWidthAndHeight();
         $this->generateGrid();
-        $doorGenerator = new DoorGenerator($this->grid, $this->width, $this->height);
+        $doorGenerator = new DoorGenerator($this->grid);
         $doorGenerator->generateRandomDoors();
         $this->setStartingRoom();
     }
-
-    /**
-     * @return void
-     */
-    /*private function setWidthAndHeight()
-    {
-        $numRooms = count($this->rooms);
-        $this->width = (int) floor(sqrt($numRooms));
-        $this->height = (int) ceil($numRooms / $this->width);
-    }*/
 
     private function setWidthAndHeight()
     {
@@ -57,26 +47,6 @@ class Map
 
         $this->height = (int) ceil($numRooms / $this->width);
     }
-
-
-    /**
-     * @return void
-     */
-    /*private function generateGrid()
-    {
-        $col = 0;
-        $row = 0;
-        foreach ($this->rooms as $room) {
-            if ($col >= $this->width) {
-                $row++;
-                $col = 0;
-                continue;
-            }
-
-            $this->grid[$row][] = $room;
-            $col++;
-        }
-    }*/
 
     private function generateGrid()
     {
