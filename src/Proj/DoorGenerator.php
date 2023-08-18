@@ -20,14 +20,40 @@ class DoorGenerator
         $this->grid = $roomGrid;
     }
 
+    public function generateRandomDoors()
+    {
+        // 2d array to check which rooms have been visited
+        $visited = [];
+        for ($row = 0; $row < count($this->grid); $row++) {
+            for ($col = 0; $col < count($this->grid[0]); $col++) {
+                $visited[$row][$col] = false;
+            }
+        }
+
+        $rowIndex = array_rand($this->grid);
+        $colIndex = array_rand($this->grid[$rowIndex]);
+        $this->generateRandomDoorsRecursively($rowIndex, $colIndex, $visited);
+    }
+
+    /**
+     * Depth-first search algorithm. Basically starts in one room,
+     * chooses a random neighbor, if the neighbor has not been visited before,
+     * create doors and then keep going from that room. When it reaches a room
+     * with no unvisited neighbors, it goes back in the chain until it encounters
+     * an unvisited neighbor, and keeps going from there to make sure all rooms
+     * are accessible.
+     */
     private function generateRandomDoorsRecursively($row, $col, &$visited)
     {
         $visited[$row][$col] = true;
         $currentRoom = $this->grid[$row][$col];
 
         $neighbors = $this->getUnvisitedNeighbors($visited, $row, $col);
+        
+        // Shuffle to take a random path
         shuffle($neighbors);
 
+        // If neighbor not visited, create doors and keep going from that room
         foreach ($neighbors as $neighbor) {
             $nextRow = $neighbor['row'];
             $nextCol = $neighbor['col'];
@@ -53,6 +79,8 @@ class DoorGenerator
         foreach ($directions as $direction => $offset) {
             $newRow = $row + $offset[0];
             $newCol = $col + $offset[1];
+
+            // Check that the row/col is valid and doesnt go outside the grid
             if (isset($this->grid[$newRow][$newCol]) && !$visited[$newRow][$newCol]) {
                 $neighbors[] = [
                     'room' => $this->grid[$newRow][$newCol],
@@ -63,15 +91,6 @@ class DoorGenerator
         }
 
         return $neighbors;
-    }
-
-
-    public function generateRandomDoors()
-    {
-        $visited = array_fill(0, count($this->grid), array_fill(0, count($this->grid[0]), false));
-        $rowIndex = array_rand($this->grid);
-        $colIndex = array_rand($this->grid[$rowIndex]);
-        $this->generateRandomDoorsRecursively($rowIndex, $colIndex, $visited);
     }
 
     private function createDoors($currentRoom, $rowOffset, $colOffset, $nextRoom)

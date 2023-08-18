@@ -338,8 +338,8 @@ Minicluedo?
     [OK] Ändra så att man bara kan ha en hint aktiv i taget?
     [OK] Ändra knapplayout så att man ser vilken quest som hintas
 [OK] Ny algoritm för att säkerställa att alla rum blir accessible
+[OK] Gå igenom och fixa till, rensa, refaktorera doorgenerator-koden.
 
-* Gå igenom och fixa till, rensa, refaktorera doorgenerator-koden.
 * Quests
     * Gör så att man inte kan plocka upp item om questen redan är klarad?
     * Ibland är questen redan avklarad - säkerställ att items inte placeras ut i targetRoom. Alternativt att questen inte väljer targetrooom där samma item redan finns.
@@ -349,6 +349,7 @@ Minicluedo?
 
 * Styling:
     * Block
+    * Vägvalspilar syns dåligt
     * Typografi
     * Minimap
     * Items/inventory (borde vara mer på skärmen? ikoner? ikon för att droppa ist för knapp?)
