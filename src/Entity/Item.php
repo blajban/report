@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use App\Proj\Quest;
+
 /**
  * @SuppressWarnings(PHPMD.ShortVariable)
  */
@@ -21,6 +23,8 @@ class Item
 
     #[ORM\Column(length: 500)]
     private ?string $description = null;
+
+    private ?Quest $quest = null;
 
     public function getId(): ?int
     {
@@ -49,5 +53,19 @@ class Item
         $this->description = $description;
 
         return $this;
+    }
+
+    public function setQuest(Quest $quest): void
+    {
+        $this->quest = $quest;
+    }
+
+    public function isQuestComplete(): bool
+    {
+        if ($this->quest) {
+            return $this->quest->isComplete();
+        }
+
+        return false;
     }
 }

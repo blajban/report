@@ -39,7 +39,14 @@ class QuestHandler
             $item = $copiedItems[$randomItemIndex];
             unset($copiedItems[$randomItemIndex]);
 
-            $this->quests[] = new Quest($i, $room, $item);
+            while($room->containsItem($item)) {
+                $randomRoomIndex = array_rand($rooms);
+                $room = $rooms[$randomRoomIndex];
+            }
+
+            $quest = new Quest($i, $room, $item);
+            $item->setQuest($quest);
+            $this->quests[] = $quest;
         }
     }
 

@@ -342,7 +342,7 @@ Minicluedo?
 
 * Quests
     * Gör så att man inte kan plocka upp item om questen redan är klarad?
-    * Ibland är questen redan avklarad - säkerställ att items inte placeras ut i targetRoom. Alternativt att questen inte väljer targetrooom där samma item redan finns.
+    [OK] Ibland är questen redan avklarad - säkerställ att items inte placeras ut i targetRoom. Alternativt att questen inte väljer targetrooom där samma item redan finns.
 
 * Tester
     * Fixa till exception-test (exception ska inte längre kallas)
@@ -352,6 +352,7 @@ Minicluedo?
     * Vägvalspilar syns dåligt
     * Typografi
     * Minimap
+    * pickup-knapp när disabled
     * Items/inventory (borde vara mer på skärmen? ikoner? ikon för att droppa ist för knapp?)
     * Hints/cheats (vad betyder färgerna??)
     * Slutskärmen, startskärmen

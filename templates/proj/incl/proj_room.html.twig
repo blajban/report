@@ -28,6 +28,7 @@
           <form class="room-take-item" method="post" action="">
             <button type="submit" name="takeItem" value="{{ itemId }}"
               onClick="this.form.action='{{ path('proj/play_takeItem_callback') }}';"
+              {% if item.isQuestComplete() %}disabled{% endif %}
             >Pick up</button>
           </form>
         </div>
