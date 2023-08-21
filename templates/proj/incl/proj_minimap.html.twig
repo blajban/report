@@ -4,7 +4,6 @@
 {% set maxColumns = gameState.grid[0]|length %}
 {% set columnWidth = 100 / maxColumns %}
 
-{{ dump(gameState) }}
 
 <div class="minimap-container" style="grid-template-columns: repeat({{ maxColumns }}, minmax(0, {{ columnWidth }}%))">
 

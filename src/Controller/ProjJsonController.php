@@ -99,10 +99,6 @@ class ProjJsonController extends AbstractController
 
         $data = json_decode($jsonData, true);
 
-        if (!is_array($data)) {
-            return new Response('Invalid JSON data', Response::HTTP_BAD_REQUEST);
-        }
-
         if (isset($data['name'])) {
             $room->setName($data['name']);
         } 

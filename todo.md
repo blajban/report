@@ -344,14 +344,13 @@ Minicluedo?
     [OK] Ibland är questen redan avklarad - säkerställ att items inte placeras ut i targetRoom. Alternativt att questen inte väljer targetrooom där samma item redan finns.
 [OK] Tester
     [OK] Fixa till exception-test (exception ska inte längre kallas)
-
 [OK] Update room
-* Fyll på med rum och beskrivningar
-    * Saknar bilder för en del rum
+[OK] Fyll på med rum och beskrivningar
+    [OK] Saknar bilder för en del rum
 
 * Styling:
     * Block
-    * Vägvalspilar syns dåligt
+    [OK] Vägvalspilar syns dåligt
     * Typografi
     * Minimap
     * pickup-knapp när disabled
@@ -359,14 +358,12 @@ Minicluedo?
     * Hints/cheats (vad betyder färgerna??)
     * Slutskärmen, startskärmen
 
-
-* Ta bort debugtext
+* Lägg till riktiga items
 
 * KOLLA KRAVEN
 
 * Tester!
-
-* takeItem/dropItem-tester failar ibland?
+    * takeItem/dropItem-tester failar ibland?
 
 * Redovisningstexter, ingångar, bilder etc
 
