@@ -158,7 +158,7 @@ class ProjJsonController extends AbstractController
         }
 
         return new Response('Item not found', Response::HTTP_BAD_REQUEST);
-        
+
     }
 
 

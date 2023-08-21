@@ -10,19 +10,28 @@ use Exception;
 
 class AdventureGameMock extends AdventureGame
 {
-    public function changeMapObject($newMapObject)
+    /**
+     * @param Map $newMapObject
+     */
+    public function changeMapObject($newMapObject): void
     {
         $this->map = $newMapObject;
     }
 
-    public function changePlayerObject($newPlayerObject)
+    /**
+     * @param Player $newPlayerObject
+     */
+    public function changePlayerObject($newPlayerObject): void
     {
         $this->player = $newPlayerObject;
     }
 
-    public function changeQuestHandlerObject($newQuestHandlerObject)
+    /**
+     * @param QuestHandler $newQHandlerObject
+     */
+    public function changeQuestHandlerObject($newQHandlerObject): void
     {
-        $this->questHandler = $newQuestHandlerObject;
+        $this->questHandler = $newQHandlerObject;
     }
 }
 
@@ -31,14 +40,14 @@ class AdventureGameMock extends AdventureGame
  */
 class AdventureGameTest extends TestCase
 {
-    public function testConstructionAndState()
+    public function testConstructionAndState(): void
     {
-        $items = [ 
+        $items = [
             $this->createMock(Item::class),
             $this->createMock(Item::class)
         ];
 
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
@@ -48,17 +57,17 @@ class AdventureGameTest extends TestCase
         $this->assertInstanceOf("\App\Proj\AdventureGame", $adventureGame);
 
         $state = $adventureGame->getState();
-        
+
         $this->assertEquals($rooms, $state['rooms']);
         $this->assertEquals(1, count($state['quests']));
     }
 
-    public function testMove()
+    public function testMove(): void
     {
         $mockedMap = $this->createMock(Map::class);
         $mockedMap->method('move')->willReturn(null);
 
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
@@ -73,9 +82,9 @@ class AdventureGameTest extends TestCase
         $this->assertEquals(1, $moves);
     }
 
-    public function testTakeItem()
+    public function testTakeItem(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
@@ -101,9 +110,9 @@ class AdventureGameTest extends TestCase
 
     }
 
-    public function testDropItem()
+    public function testDropItem(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
@@ -117,7 +126,7 @@ class AdventureGameTest extends TestCase
 
         $mockedPlayer = $this->createMock(Player::class);
         $mockedPlayer->method('dropFromInventory')->with($itemId)->willReturn($items[0]);
-        
+
         $rooms[0]->expects($this->once())->method('addItem')->with($items[0]);
 
 
@@ -129,9 +138,9 @@ class AdventureGameTest extends TestCase
 
     }
 
-    public function testPlayerWins()
+    public function testPlayerWins(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
@@ -151,9 +160,9 @@ class AdventureGameTest extends TestCase
 
     }
 
-    public function testUpdateQuests()
+    public function testUpdateQuests(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];

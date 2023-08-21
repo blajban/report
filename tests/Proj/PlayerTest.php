@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PlayerTest extends TestCase
 {
-    public function testConstructPlayer()
+    public function testConstructPlayer(): void
     {
         $player = new Player("Test");
         $this->assertInstanceOf("\App\Proj\Player", $player);
@@ -20,10 +20,10 @@ class PlayerTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
-    public function testAddToInventoryAndGetInventory()
+    public function testAddToInventoryAndGetInventory(): void
     {
         $player = new Player("Test");
-        
+
         $item = $this->createMock(Item::class);
         $item->method('getId')->willReturn(1);
 
@@ -33,21 +33,21 @@ class PlayerTest extends TestCase
         $this->assertEquals($item, $res);
     }
 
-    public function testDropFromInventory()
+    public function testDropFromInventory(): void
     {
         $player = new Player("Test");
-        
+
         $item = $this->createMock(Item::class);
         $item->method('getId')->willReturn(1);
 
         $player->addToInventory($item);
 
-        $res = $player->dropFromInventory($item->getId());
+        $res = $player->dropFromInventory((int) $item->getId());
 
         $this->assertEquals($item, $res);
     }
 
-    public function testDropFromInentoryIfIdDontExist()
+    public function testDropFromInentoryIfIdDontExist(): void
     {
         $player = new Player("Test");
 

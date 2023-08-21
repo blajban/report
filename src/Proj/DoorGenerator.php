@@ -20,18 +20,21 @@ class DoorGenerator
         $this->grid = $roomGrid;
     }
 
-    public function generateRandomDoors()
+    public function generateRandomDoors(): void
     {
         // 2d array to check which rooms have been visited
         $visited = [];
-        for ($row = 0; $row < count($this->grid); $row++) {
-            for ($col = 0; $col < count($this->grid[0]); $col++) {
+        $rowCount = count($this->grid);
+        $colCount = count($this->grid[0]);
+
+        for ($row = 0; $row < $rowCount; $row++) {
+            for ($col = 0; $col < $colCount; $col++) {
                 $visited[$row][$col] = false;
             }
         }
 
-        $rowIndex = array_rand($this->grid);
-        $colIndex = array_rand($this->grid[$rowIndex]);
+        $rowIndex = (int) array_rand($this->grid);
+        $colIndex = (int) array_rand($this->grid[$rowIndex]);
         $this->generateRandomDoorsRecursively($rowIndex, $colIndex, $visited);
     }
 
@@ -42,14 +45,16 @@ class DoorGenerator
      * with no unvisited neighbors, it goes back in the chain until it encounters
      * an unvisited neighbor, and keeps going from there to make sure all rooms
      * are accessible.
+     * 
+     * @param array<array<bool>> $visited
      */
-    private function generateRandomDoorsRecursively($row, $col, &$visited)
+    private function generateRandomDoorsRecursively(int $row, int $col, &$visited): void
     {
         $visited[$row][$col] = true;
         $currentRoom = $this->grid[$row][$col];
 
         $neighbors = $this->getUnvisitedNeighbors($visited, $row, $col);
-        
+
         // Shuffle to take a random path
         shuffle($neighbors);
 
@@ -66,7 +71,11 @@ class DoorGenerator
         }
     }
 
-    private function getUnvisitedNeighbors($visited, $row, $col): array
+    /**
+     * @param array<array<bool>> $visited
+     * @return array<int, array{room: Room, row: int, col: int}>
+     */
+    private function getUnvisitedNeighbors(array $visited, int $row, int $col): array
     {
         $neighbors = [];
         $directions = [
@@ -76,7 +85,7 @@ class DoorGenerator
             'east' => [0, 1]
         ];
 
-        foreach ($directions as $direction => $offset) {
+        foreach ($directions as $offset) {
             $newRow = $row + $offset[0];
             $newCol = $col + $offset[1];
 
@@ -93,7 +102,7 @@ class DoorGenerator
         return $neighbors;
     }
 
-    private function createDoors($currentRoom, $rowOffset, $colOffset, $nextRoom)
+    private function createDoors(Room $currentRoom, int $rowOffset, int $colOffset, Room $nextRoom): void
     {
         $directions = [
             'north' => [-1, 0],

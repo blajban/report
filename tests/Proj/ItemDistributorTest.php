@@ -8,15 +8,14 @@ use App\Entity\Room;
 use PHPUnit\Framework\TestCase;
 use Exception;
 
-
 /**
  * Test cases for ItemDistributor class.
  */
 class ItemDistributorTest extends TestCase
 {
-    public function testConstruction()
+    public function testConstruction(): void
     {
-        $items = [ 
+        $items = [
             $this->createMock(Item::class),
             $this->createMock(Item::class)
         ];
@@ -26,7 +25,7 @@ class ItemDistributorTest extends TestCase
         $this->assertInstanceOf("\App\Proj\ItemDistributor", $itemDistributor);
     }
 
-    public function testDistributeItems()
+    public function testDistributeItems(): void
     {
 
         $items = [ $this->createMock(Item::class) ];
@@ -35,7 +34,7 @@ class ItemDistributorTest extends TestCase
 
         $room = $this->createPartialMock(Room::class, ['addItem']);
         $room->expects($this->once())->method('addItem');
-        
+
         $itemDistributor->distributeItems([$room]);
 
 

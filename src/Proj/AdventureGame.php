@@ -50,7 +50,9 @@ class AdventureGame
     {
         $currentRoom = $this->map->getCurrentRoom();
         $item = $currentRoom->takeItem($itemId);
-        $this->player->addToInventory($item);
+        if ($item) {
+            $this->player->addToInventory($item);
+        }
     }
 
     /**
@@ -60,7 +62,9 @@ class AdventureGame
     {
         $currentRoom = $this->map->getCurrentRoom();
         $item = $this->player->dropFromInventory($itemId);
-        $currentRoom->addItem($item);
+        if ($item) {
+            $currentRoom->addItem($item);
+        }
     }
 
     public function playerWins(): bool
@@ -84,7 +88,7 @@ class AdventureGame
         if ($this->hintedQuest) {
             $this->hintedQuest->hideHint();
         }
-        
+
         $this->hintedQuest = $this->questHandler->showHint($questId);
     }
 

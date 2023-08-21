@@ -339,9 +339,8 @@ Minicluedo?
     [OK] Ändra knapplayout så att man ser vilken quest som hintas
 [OK] Ny algoritm för att säkerställa att alla rum blir accessible
 [OK] Gå igenom och fixa till, rensa, refaktorera doorgenerator-koden.
-
-* Quests
-    * Gör så att man inte kan plocka upp item om questen redan är klarad?
+[OK] Quests
+    [OK] Gör så att man inte kan plocka upp item om questen redan är klarad?
     [OK] Ibland är questen redan avklarad - säkerställ att items inte placeras ut i targetRoom. Alternativt att questen inte väljer targetrooom där samma item redan finns.
 
 * Tester
@@ -358,6 +357,7 @@ Minicluedo?
     * Slutskärmen, startskärmen
 
 * Fyll på med rum och beskrivningar
+    * Saknar bilder för en del rum
 * Ta bort debugtext
 
 * KOLLA KRAVEN

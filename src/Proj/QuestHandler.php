@@ -68,7 +68,7 @@ class QuestHandler
         return $quest;
     }
 
-    public function hideHint(int $questId)
+    public function hideHint(int $questId): Quest|null
     {
         $quest = $this->getQuestWithId($questId);
         if ($quest !== null) {

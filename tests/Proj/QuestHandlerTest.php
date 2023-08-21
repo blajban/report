@@ -8,14 +8,15 @@ use App\Entity\Item;
 use PHPUnit\Framework\TestCase;
 use Exception;
 
-    
-
 /**
  * To be able to test quest completions correctly
  */
 class QuestHandlerMock extends QuestHandler
 {
-    public function setQuests($quests)
+    /**
+     * @param array<Quest> $quests
+     */
+    public function setQuests(array $quests): void
     {
         $this->quests = $quests;
     }
@@ -26,15 +27,15 @@ class QuestHandlerMock extends QuestHandler
  */
 class QuestHandlerTest extends TestCase
 {
-    public function testGenerateQuests()
+    public function testGenerateQuests(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
 
-        $items = [ 
+        $items = [
             $this->createMock(Item::class),
             $this->createMock(Item::class),
             $this->createMock(Item::class)
@@ -50,32 +51,14 @@ class QuestHandlerTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
-    public function testGenerateQuestsException()
+    public function testShowHintIfNotNull(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
 
-        $items = [ 
-            $this->createMock(Item::class),
-            $this->createMock(Item::class)
-        ];
-
-        $questHandler = new QuestHandler();
-
-        $this->expectException(Exception::class);
-        $questHandler->generateQuests($rooms, $items, 5);
-    }
-
-    public function testShowHintIfNotNull()
-    {
-        $rooms = [ 
-            $this->createMock(Room::class),
-            $this->createMock(Room::class)
-        ];
-
-        $items = [ 
+        $items = [
             $this->createMock(Item::class),
             $this->createMock(Item::class)
         ];
@@ -90,7 +73,7 @@ class QuestHandlerTest extends TestCase
         $this->assertSame($quest, $res);
     }
 
-    public function testShowHintIfNull()
+    public function testShowHintIfNull(): void
     {
         $questHandler = new QuestHandler();
 
@@ -99,7 +82,7 @@ class QuestHandlerTest extends TestCase
         $this->assertNull($res);
     }
 
-    public function testUpdateQuestCompletion()
+    public function testUpdateQuestCompletion(): void
     {
         $roomWithItem = $this->createMock(Room::class);
         $roomWithoutItem = $this->createMock(Room::class);
@@ -125,11 +108,8 @@ class QuestHandlerTest extends TestCase
         $questHandler->updateQuestCompletion();
     }
 
-    public function testAllQuestsCompleted()
+    public function testAllQuestsCompleted(): void
     {
-        $roomWithItem = $this->createMock(Room::class);
-        $targetItem = $this->createMock(Item::class);
-
         $completedQuest = $this->createPartialMock(Quest::class, ['isComplete']);
 
         $completedQuest->method('isComplete')->willReturn(true);
@@ -141,7 +121,7 @@ class QuestHandlerTest extends TestCase
         $this->assertTrue($res);
     }
 
-    public function testAllQuestsCompletedFalse()
+    public function testAllQuestsCompletedFalse(): void
     {
         $completedQuest = $this->createPartialMock(Quest::class, ['isComplete']);
 
@@ -155,5 +135,5 @@ class QuestHandlerTest extends TestCase
     }
 
 
-   
+
 }

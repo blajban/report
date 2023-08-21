@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class RoomTraitTest extends TestCase
 {
-    public function testAddDoorAndGetDoors()
+    public function testAddDoorAndGetDoors(): void
     {
         $room = new Room();
         $otherRoom = $this->createMock(Room::class);
@@ -30,7 +30,7 @@ class RoomTraitTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
-    public function testAddItemAndGetItems()
+    public function testAddItemAndGetItems(): void
     {
         $room = new Room();
         $item = $this->createMock(Item::class);
@@ -42,7 +42,7 @@ class RoomTraitTest extends TestCase
         $this->assertEquals($item, $res);
     }
 
-    public function testTakeItem()
+    public function testTakeItem(): void
     {
         $room = new Room();
         $item = $this->createMock(Item::class);
@@ -54,15 +54,15 @@ class RoomTraitTest extends TestCase
         $this->assertEquals($item, $res);
     }
 
-    public function testTakeItemIfNull()
+    public function testTakeItemIfNull(): void
     {
         $room = new Room();
-        
+
         $res = $room->takeItem(1);
         $this->assertNull($res);
     }
 
-    public function testContainsItemIfTrue()
+    public function testContainsItemIfTrue(): void
     {
         $room = new Room();
         $item = $this->createMock(Item::class);
@@ -74,7 +74,7 @@ class RoomTraitTest extends TestCase
         $this->assertTrue($res);
     }
 
-    public function testContainsItemIfFalse()
+    public function testContainsItemIfFalse(): void
     {
         $room = new Room();
         $item = $this->createMock(Item::class);

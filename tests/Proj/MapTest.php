@@ -8,15 +8,14 @@ use App\Entity\Room;
 use PHPUnit\Framework\TestCase;
 use Exception;
 
-
 /**
  * Test cases for Map class.
  */
 class MapTest extends TestCase
 {
-    public function testConstructionAndGetRooms()
+    public function testConstructionAndGetRooms(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
@@ -26,9 +25,9 @@ class MapTest extends TestCase
         $this->assertInstanceOf("\App\Proj\Map", $map);
     }
 
-    public function testGetCurrentRoom()
+    public function testGetCurrentRoom(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class)
         ];
 
@@ -39,24 +38,25 @@ class MapTest extends TestCase
         $this->assertEquals($rooms[0], $res);
     }
 
-    public function testMove()
+    public function testMove(): void
     {
         $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
-        
+
         $map = new Map($rooms);
-        
+
         $currentRoom = $map->getCurrentRoom();
         $allRooms = $map->getRooms();
-        
-        $filteredRooms = array_filter($allRooms, function($room) use ($currentRoom) {
+
+        $filteredRooms = array_filter($allRooms, function ($room) use ($currentRoom) {
             return $room !== $currentRoom;
         });
 
         $otherRoom = array_values($filteredRooms)[0];
 
+        /** @phpstan-ignore-next-line */
         $currentRoom->method('getDoors')->willReturn(['north' => $otherRoom]);
 
         $map->move('north');
@@ -66,9 +66,9 @@ class MapTest extends TestCase
         $this->assertEquals($otherRoom, $nextCurrentRoom);
     }
 
-    public function testGetRooms()
+    public function testGetRooms(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class)
         ];
@@ -80,9 +80,9 @@ class MapTest extends TestCase
         $this->assertEquals($rooms, $res);
     }
 
-    public function testGetGrid()
+    public function testGetGrid(): void
     {
-        $rooms = [ 
+        $rooms = [
             $this->createMock(Room::class),
             $this->createMock(Room::class),
             $this->createMock(Room::class),
@@ -100,7 +100,7 @@ class MapTest extends TestCase
 
         $this->assertEquals($exp, $res);
 
-        
+
     }
 
 }

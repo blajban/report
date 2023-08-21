@@ -19,7 +19,7 @@ class Map
     private array $grid = [];
     private Room $activeRoom;
     private int $width = 0;
-    private int $height = 0;
+    //private int $height = 0;
 
     /**
      * @param array<Room> $rooms
@@ -34,21 +34,21 @@ class Map
         $this->setStartingRoom();
     }
 
-    private function setWidthAndHeight()
+    private function setWidthAndHeight(): void
     {
         $numRooms = count($this->rooms);
 
         $this->width = (int) ceil(sqrt($numRooms));
 
-        if ($numRooms == 1) {
+        /*if ($numRooms == 1) {
             $this->width = $this->height = 1;
             return;
         }
 
-        $this->height = (int) ceil($numRooms / $this->width);
+        $this->height = (int) ceil($numRooms / $this->width);*/
     }
 
-    private function generateGrid()
+    private function generateGrid(): void
     {
         $shuffledRooms = $this->rooms;
         shuffle($shuffledRooms);
@@ -91,7 +91,9 @@ class Map
     {
         $doors = $this->activeRoom->getDoors();
         $nextRoom = $doors[$direction];
-        $this->activeRoom = $nextRoom;
+        if ($nextRoom) {
+            $this->activeRoom = $nextRoom;
+        }
     }
 
     /**

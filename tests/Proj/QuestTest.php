@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class QuestTest extends TestCase
 {
-    public function testConstructQuestAndGetters()
+    public function testConstructQuestAndGetters(): void
     {
         $room = $this->createMock(Room::class);
         $room->method('getName')->willReturn('ROOM');
@@ -36,7 +36,7 @@ class QuestTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
-    public function testCompleteQuest()
+    public function testCompleteQuest(): void
     {
         $room = $this->createMock(Room::class);
         $item = $this->createMock(Item::class);
@@ -52,7 +52,7 @@ class QuestTest extends TestCase
         $this->assertTrue($res);
     }
 
-    public function testShowHideHint()
+    public function testShowHideHint(): void
     {
         $room = $this->createMock(Room::class);
         $item = $this->createMock(Item::class);
