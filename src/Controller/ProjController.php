@@ -54,8 +54,8 @@ class ProjController extends AbstractController
         $items = $itemRepo->findAll();
 
         return $this->render('proj/proj_start.html.twig', [
-            'title' => "Proj",
-            'heading' => "Proj",
+            'title' => "Chronos Mansion",
+            'heading' => "Chronos Mansion",
             'quests' => count($items),
             'inSession' => $inSession
         ]);

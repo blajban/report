@@ -85,6 +85,46 @@ class ProjJsonController extends AbstractController
         return new Response('Added room info', Response::HTTP_CREATED);
     }
 
+    #[Route("/proj/api/room/update", methods: ['POST'])]
+    public function updateRoom(Request $request, RoomRepository $roomRepository): Response
+    {
+        $id = $request->request->get('id');
+        $room = $roomRepository->find($id);
+
+        if (!$room) {
+            return new Response('Room not found', Response::HTTP_BAD_REQUEST);
+        }
+
+        $jsonData = (string)$request->request->get('json_data');
+
+        $data = json_decode($jsonData, true);
+
+        if (!is_array($data)) {
+            return new Response('Invalid JSON data', Response::HTTP_BAD_REQUEST);
+        }
+
+        if (isset($data['name'])) {
+            $room->setName($data['name']);
+        } 
+        
+        if (isset($data['description'])) {
+            $room->setDescription($data['description']);
+        }
+
+        /** @var UploadedFile|null $pictureFile */
+        $pictureFile = $request->files->get('img');
+        $picture = null;
+        if ($pictureFile) {
+            $picture = $this->utilityService->generatePictureDataFromUploaded($pictureFile);
+            $room->setImg($picture);
+        }
+
+        
+        $roomRepository->save($room, true);
+
+        return new Response('Room updated', Response::HTTP_BAD_REQUEST);
+    }
+
     #[Route("/proj/api/room/delete", methods: ['POST'])]
     public function deleteRoom(Request $request, RoomRepository $roomRepository): Response
     {
@@ -93,7 +133,7 @@ class ProjJsonController extends AbstractController
 
         if ($room) {
             $roomRepository->remove($room, true);
-            return new Response('Room info removed', Response::HTTP_OK);
+            return new Response('Room deleted', Response::HTTP_OK);
         }
 
         return new Response('Room not found', Response::HTTP_BAD_REQUEST);
