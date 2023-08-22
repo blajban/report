@@ -357,6 +357,7 @@ Minicluedo?
     * Items/inventory (borde vara mer på skärmen? ikoner? ikon för att droppa ist för knapp?)
     * Hints/cheats (vad betyder färgerna??)
     * Slutskärmen, startskärmen
+    * Refaktorera, dela upp i filer
 
 * Lägg till riktiga items
 
