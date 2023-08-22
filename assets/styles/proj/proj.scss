@@ -75,6 +75,8 @@ button:hover {
   justify-content: center;
   background-color: $primary-color;
   padding: 10px 0;
+  margin-bottom: 0;
+  padding-bottom: 20px;
 }
 
 .menu-button {
@@ -94,6 +96,7 @@ button:hover {
 .room-container {
   display: flex;
   flex-wrap: wrap;
+  flex: 2;
 }
 
 .room {
@@ -101,11 +104,10 @@ button:hover {
   grid-template-rows: 1fr 7fr 5fr 1fr;
   grid-template-columns: 1fr 9fr 3fr 1fr;
   height: 600px;
-  border: 3px solid rgb(97, 97, 97);
+  border: 3px solid black;
   position: relative;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8),
               inset -2px -2px 5px rgba(255, 255, 255, 0.9);
-  margin-top: 20px;
   background-size: cover;
   background-position: center;
 }
@@ -231,9 +233,26 @@ button:hover {
   border-right: 20px solid black;
 }
 
+// Game info
+
+.game-info {
+  margin-top: 0;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background-color: rgb(219, 219, 219);
+  border: 3px solid black;
+  
+  
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8),
+              inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+}
+
 // Minimap
 
 .minimap-container {
+  margin-bottom: 20px;
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -261,3 +280,19 @@ button:hover {
 .minimap-itemhint {
   background-color: rgb(238, 241, 20);
 }
+
+
+// Inventory
+
+.inventory-container {
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75),
+              inset 1px 1px 2px 0px rgba(255,255,255,0.75);
+}
+
+// Quests
+
+.quest-container {
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75),
+              inset 1px 1px 2px 0px rgba(255,255,255,0.75);
+}
+

@@ -349,6 +349,7 @@ Minicluedo?
     [OK] Saknar bilder för en del rum
 
 * Styling:
+    * spelstatusen ska vara ovanför inventory, quests etc
     * Block
     [OK] Vägvalspilar syns dåligt
     * Typografi

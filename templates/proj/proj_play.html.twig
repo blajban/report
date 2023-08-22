@@ -5,17 +5,20 @@
 
 <body>
     {% include 'proj/incl/proj_nav.html.twig' %}
-    <p>
-        Welcome {{ gameState.player.getName() }}
-    </p>
-    <p>
-        Moves: {{ gameState.moves }}
-    </p>
-
+    
     {% include 'proj/incl/proj_room.html.twig' %}
-    {% include 'proj/incl/proj_minimap.html.twig' %}
-    {% include 'proj/incl/proj_inventory.html.twig' %}
-    {% include 'proj/incl/proj_quests.html.twig' %}
+    
+    <div class="game-info">
+            <p>
+                Welcome {{ gameState.player.getName() }}. Current moves: {{ gameState.moves }}.
+            </p>
+        {% include 'proj/incl/proj_minimap.html.twig' %}
+        {% include 'proj/incl/proj_inventory.html.twig' %}
+        {% include 'proj/incl/proj_quests.html.twig' %}
+    </div>
+    
+    
+
     {% include 'proj/incl/proj_footer.html.twig' %}
 </body>
 
