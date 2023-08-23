@@ -6,9 +6,16 @@
 <body>
     {% include 'proj/incl/proj_nav.html.twig' %}
 
+    <div class="player-info">
+        <p>
+            Complete quests and find your way out of the mansion!
+        </p>
+    </div>
+
     {% if (inSession) %}
-        You have an active session. Press continue to play or reset game.
+        
         <form class="start" method="get" action="">
+            <p>You have an active session. Press continue to play or reset game.</p>
             <p>
                 <button type="submit" name="continueGame" value=""
                     onClick="this.form.action='{{ path('proj/play') }}';"

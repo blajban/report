@@ -6,7 +6,13 @@
 <body>
     {% include 'proj/incl/proj_nav.html.twig' %}
 
-    Game finished! Completed in {{ gameState.moves }} moves.
+    <div class="player-info">
+        <p>
+            Game finished! Completed in {{ gameState.moves }} moves.
+        </p>
+    </div>
+
+    
 
 
     {% include 'proj/incl/proj_footer.html.twig' %}

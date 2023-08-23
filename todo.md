@@ -361,6 +361,9 @@ Minicluedo?
     [OK] legend
     * Refaktorera, dela upp i filer
     * style när quest är complete
+    * Ta bort gamla style-filen
+
+* Man ska inte kunna trycka på continue och gå tillbka till sin session om man redan klarat spelet 
 
 * Lägg till riktiga items
 

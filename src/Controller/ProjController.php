@@ -218,8 +218,8 @@ class ProjController extends AbstractController
 
         $session->set('proj_session', $game);
         return $this->render('proj/proj_end.html.twig', [
-            'title' => "Proj",
-            'heading' => "Proj",
+            'title' => "Chronos Mansion",
+            'heading' => "Chronos Mansion",
             'gameState' => $game->getState()
         ]);
     }
