@@ -91,6 +91,16 @@ button:hover {
   background-color: $secondary-color;
 }
 
+// Player info
+
+.player-info {
+  background-color: $secondary-color;
+  padding: 5px;
+  text-align: center;
+  //position: relative;
+}
+
+
 // Room and doors
 
 .room-container {
@@ -100,6 +110,7 @@ button:hover {
 }
 
 .room {
+  padding-top: 10px;
   display: grid;
   grid-template-rows: 1fr 7fr 5fr 1fr;
   grid-template-columns: 1fr 9fr 3fr 1fr;
