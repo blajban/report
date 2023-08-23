@@ -349,16 +349,18 @@ Minicluedo?
     [OK] Saknar bilder för en del rum
 
 * Styling:
-    * spelstatusen ska vara ovanför inventory, quests etc
     * Block
+    * start
+    * play
+    * end
     [OK] Vägvalspilar syns dåligt
-    * Typografi
-    * Minimap
+    [OK] Typografi
+    [OK] Minimap
     * pickup-knapp när disabled
     * Items/inventory (borde vara mer på skärmen? ikoner? ikon för att droppa ist för knapp?)
-    * Hints/cheats (vad betyder färgerna??)
-    * Slutskärmen, startskärmen
+    [OK] legend
     * Refaktorera, dela upp i filer
+    * style när quest är complete
 
 * Lägg till riktiga items
 

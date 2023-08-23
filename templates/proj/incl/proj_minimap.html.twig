@@ -4,16 +4,22 @@
 {% set maxColumns = gameState.grid[0]|length %}
 {% set columnWidth = 100 / maxColumns %}
 
-
-<div class="minimap-container" style="grid-template-columns: repeat({{ maxColumns }}, minmax(0, {{ columnWidth }}%))">
-
-  
-  {% for row in gameState.grid %}
-    {% for room in row %}
-      <div class="minimap-room {% if room == gameState.currentRoom %}minimap-current{% endif %}
-                               {% if gameState.hint is not null and room == gameState.hint.getTargetRoom() %}minimap-roomhint{% endif %}
-                               {% if gameState.hint is not null and room.containsItem(gameState.hint.getTargetItem()) %}minimap-itemhint{% endif %}">
-      </div>
+<div class="minimap-container">
+  <h3>Map</h3>
+  <div class="minimap" style="grid-template-columns: repeat({{ maxColumns }}, minmax(0, {{ columnWidth }}%))">
+    
+    
+    {% for row in gameState.grid %}
+      {% for room in row %}
+        <div class="minimap-room {% if room == gameState.currentRoom %}minimap-current{% endif %}
+                                {% if gameState.hint is not null and room == gameState.hint.getTargetRoom() %}minimap-roomhint{% endif %}
+                                {% if gameState.hint is not null and room.containsItem(gameState.hint.getTargetItem()) %}minimap-itemhint{% endif %}">
+        </div>
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
+  </div>
+  <p>Legend:</p>
+  <div class="minimap-room minimap-current legend"></div> Current room
+  <div class="minimap-room minimap-roomhint legend"></div> Target room hint
+  <div class="minimap-room minimap-itemhint legend"></div> Target item hint
 </div>
