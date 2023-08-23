@@ -23,8 +23,9 @@ body {
 
 $primary-color: #ffcc00;
 $secondary-color: #ff9900;
+$near-black: #222;
 
-// Buttons
+// Buttons and forms
 
 button {
   display: inline-block;
@@ -41,6 +42,20 @@ button:hover {
   background-color: $secondary-color;
   color: #fff;
   border-color: #fff;
+}
+
+input[type="input"] {
+  background-color: $near-black;
+  border: 1px solid $secondary-color;
+  color: $primary-color;
+  padding: 8px;
+  font-size: 14px;
+}
+
+// Start screen
+
+.quest-limit {
+  color: red;
 }
 
 // Top banner
@@ -275,7 +290,7 @@ button:hover {
 }
 
 .minimap-room {
-  background-color: #222;
+  background-color: $near-black;
   border: 1px solid #444;
   padding: 10px;
 }
