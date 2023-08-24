@@ -4,7 +4,7 @@
 <div class="quest-container">
   <h3>Quests</h3>
       {% for quest in gameState.quests %}
-        <div class="quest">
+        <div class="quest {% if quest.isComplete() %}completed{% endif %}">
           <p>{{quest.getName()}}
             {% if (quest.isComplete()) %}
             COMPLETED

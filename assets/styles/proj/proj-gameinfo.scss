@@ -1,0 +1,84 @@
+@import './proj-variables.scss';
+
+
+// Game info
+
+
+.game-info {
+    margin-top: 0;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 2fr;
+    border: 3px solid black;
+    position: relative;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8),
+                inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+    background-color: $light-gray;
+  }
+  
+  // Minimap
+  
+  .minimap-container {
+    grid-column: 1;
+    padding: 15px;
+  
+    p {
+      margin: 0;
+      margin-top: 30px;
+    }
+  }
+  
+  .minimap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 2px;
+    width: 100px;
+  }
+  
+  .minimap-room {
+    background-color: $near-black;
+    border: 1px solid #444;
+    padding: 10px;
+  }
+  
+  .minimap-current {
+    background-color: red;
+  }
+  
+  .minimap-roomhint {
+    background-color: rgb(9, 235, 47);
+  }
+  
+  .minimap-itemhint {
+    background-color: rgb(238, 241, 20);
+  }
+  
+  .legend {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 15px;
+    height: 15px;
+  }
+  
+  
+  // Inventory
+  
+  .inventory-container {
+    grid-column: 2;
+    border-left: 1px solid gray;
+    padding: 15px;
+  }
+  
+  // Quests
+  
+  .quest-container {
+    grid-column: 3;
+    border-left: 1px solid gray;
+    padding: 15px;
+  }
+  
+  .quest.completed {
+    background-color: #33cc33;
+    font-weight: bold;
+    text-decoration: line-through;
+  }

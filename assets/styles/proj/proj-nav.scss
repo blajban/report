@@ -1,0 +1,50 @@
+@import './proj-variables.scss';
+
+
+// Top banner
+
+.top-banner {
+    background-color: $primary-color;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+  }
+  
+  .top-banner h1 {
+    font-size: 36px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .top-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: $near-black;
+  }
+  
+  // Menu
+  
+  .menu {
+    display: flex;
+    justify-content: center;
+    background-color: $primary-color;
+    padding: 10px 0;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+  }
+  
+  .menu-button {
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0 15px;
+  }
+  
+  .menu-button:hover {
+    background-color: $secondary-color;
+  }

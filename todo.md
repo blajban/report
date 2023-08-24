@@ -349,21 +349,20 @@ Minicluedo?
     [OK] Saknar bilder för en del rum
 
 * Styling:
-    * Block
-    * start
-    * play
-    * end
+    [OK] start
+    [OK] play
+    [OK] end
     [OK] Vägvalspilar syns dåligt
     [OK] Typografi
     [OK] Minimap
-    * pickup-knapp när disabled
-    * Items/inventory (borde vara mer på skärmen? ikoner? ikon för att droppa ist för knapp?)
+    [OK] pickup-knapp när disabled
     [OK] legend
-    * Refaktorera, dela upp i filer
-    * style när quest är complete
-    * Ta bort gamla style-filen
+    [OK] style när quest är complete
+    [OK] Ta bort gamla style-filen
+    [OK] Refaktorera, dela upp i filer
 
 * Man ska inte kunna trycka på continue och gå tillbka till sin session om man redan klarat spelet 
+
 
 * Lägg till riktiga items
 
