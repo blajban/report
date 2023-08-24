@@ -30,8 +30,13 @@
         <form class="start" method="post" action="">
             <p>
                 <input type="input" name="name" placeholder="Player name (*)" required>
-                <input type="input" name="numberOfQuests" placeholder="Number of quests" required>
-                <span class="quest-limit">(max {{ quests }} quests)</span>
+                <select name="numberOfQuests">
+                    <option value="" disabled selected>How many quests?</option>
+                    {% for number in 1..quests %}
+                        <option value="{{ number }}">{{ number }}</option>
+                    {% endfor %}
+                    
+                </select>
             </p>
             <p>
                 <button type="submit" name="startGame" value=""
@@ -39,6 +44,9 @@
                 >Start new game</button>
             </p>
         </form>
+
+        
+        
     {% endif %}
 
     {% include 'proj/incl/proj_footer.html.twig' %}

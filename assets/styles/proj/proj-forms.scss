@@ -30,3 +30,11 @@ button {
     padding: 8px;
     font-size: 14px;
   }
+
+  select {
+    background-color: $near-black;
+    border: 1px solid $secondary-color;
+    color: $primary-color;
+    padding: 8px;
+    font-size: 14px;
+}

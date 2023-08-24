@@ -370,11 +370,12 @@ Minicluedo?
 [OK] Man ska inte kunna trycka på continue och gå tillbka till sin session om man redan klarat spelet 
 [OK] Lägg till riktiga items
 [OK] Docs-style
+[OK] fixa så att man måste fylla i siffra / dropdown med siffror för antalet quests
 
 * Tester!
     * takeItem/dropItem-tester failar ibland?
 
-* Ev fixa så att man måste fylla i siffra / dropdown med siffror för antalet quests
+
 * Ev göra det möjligt att välja antal rum på samma sätt som antal quests?
 
 
