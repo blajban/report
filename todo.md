@@ -9,7 +9,7 @@ Din nya webbplats skall minst uppfylla följande krav.
 [OK] Skapa en landningssida /proj som syns i navbaren på din report-sida. Denna sida är din förstasida på projektets webbplats.
 [OK] Välj ditt fokus för ditt projekt. Implementera det i din webbplats under proj/.
 * Ditt projekt skall ha en stil och ett utseende som tydligt skiljer sig från din report-sida.
-    * Det skall utseendemässigt se ut som en ny webbplats så bygg en “ny” stylesheet eller modifiera din befintliga. Modifiera i någon omfattning färg, typsnitt och utseende på header och footer.
+    [OK] Det skall utseendemässigt se ut som en ny webbplats så bygg en “ny” stylesheet eller modifiera din befintliga. Modifiera i någon omfattning färg, typsnitt och utseende på header och footer.
     * Skapa en separat navbar för projektet som enbart innehåller länkarna för projektet.
     * En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
 
@@ -96,9 +96,6 @@ Avsluta och redovisa din projektinlämning enligt följande.
 
 # Tankar/redovisning/idéer/todo
 
-* Promptar:
-- A room for a classix pixel art point and click adventure game. Set in the victorian era with three exits and one window
-- A room for a classix pixel art point and click adventure game. Set in a futuristic era in a control room setting with screens and one exit
 
 * Tog hjälp av ChatGPT för att få en bra spelidé. Efter lite diskussioner landade vi i följande:
 
@@ -233,6 +230,24 @@ Certainly! Here are the 10 rooms with more immersive descriptions for the "Echoe
 }
 
 
+### Items
+
+{
+    "name": "Vintage Pocket Watch",
+    "description": "An antique timepiece with intricate engravings."
+}
+{
+    "name": "Faded Diary",
+    "description": "A weathered diary filled with mysterious entries."
+}
+{
+    "name": "Creaky Key",
+    "description": "A rusted key with an eerie design, emitting a faint glow."
+}
+{
+    "name": "Enchanted Hourglass",
+    "description": "A mystical hourglass that seems to defy the laws of time."
+}
 
 
 ## Grunden
@@ -287,13 +302,6 @@ Vore kul att använda doorgenerator för att generera nya dörrar under spelet?!
     * ID
     * GameState 
 
-## Quests
-Om tid finns
-Annars är målet att hitta utgången.
-Olika typer av quests:
-    * "move [thing] to [room]
-    * "find [room]
-    * 
 
 Minicluedo?
 
@@ -360,38 +368,41 @@ Minicluedo?
     [OK] Ta bort gamla style-filen
     [OK] Refaktorera, dela upp i filer
 [OK] Man ska inte kunna trycka på continue och gå tillbka till sin session om man redan klarat spelet 
+[OK] Lägg till riktiga items
+[OK] Docs-style
 
 * Tester!
     * takeItem/dropItem-tester failar ibland?
 
-* Lägg till riktiga items
+* Ev fixa så att man måste fylla i siffra / dropdown med siffror för antalet quests
+* Ev göra det möjligt att välja antal rum på samma sätt som antal quests?
+
+
 * KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc
-
-
-
+    * En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
+    * API docs
+    * Det skall finnas badges som är klickbara och leder till uppdaterade Scrutinizer rapporter för build, coverage och quality.
+    * Beskriv innehållet av repot och berätta varför det finns. som beskriver innehållet i någon omfattning.
+    * Instruktion för hur man klonar och startar igång webbplatsen
+    * I sidan skall man kunna klicka på samtliga länkar/knappar för att testa ditt API.
+        [OK] Kolla detta med MOS - är inte rimligt utifrån vad jag har gjort...
+    * Skapa en sida proj/about/database, och lägg till
+        * En bild på ett ER diagram av tabellerna.
+        * För varje tabell beskriv i en mening vad som sparas i tabellen.
+        * Förklara hur du löste eventuella relationer mellan tabellerna.
+        * Berätta om du använde SQLite eller någon annan databas.
+        * Berätta om du gjorde enhetstester mot databasen.
+            * Berätta om/hur du lyckades med enhetstester på Scrutinizer med databasen.
+        * Berätta med egna ord (cirka 15 meningar) om hur du ser på fördelar, nackdelar, likheter och skillnader mellan ORM och det sätt vi jobbade med databasen i databaskursen.
+    * Från din sida proj/about, lägg till en länk till proj/about/database.
 
 * Refaktorering, snygga till koden
 * Kodkvalitet/csfix/linting sista
 
 
-### Frågetecken
-* Vad är generateAllDoors-funktionen till för? Generera dörrar istället för random-dörrar? Kanske kan man välja det när man startar spelet?
-
-## LÄNGRE FRAM
-* Fixa inaccessible rooms (checkaccessibility-funktionen i Map)
-    * Eller gör så att dörrar läggs till överallt
-* Gör så att dörrar genereras överallt
-* Gör så att rummen får en random-position? Nu är quantum laboratory alltid först, i samma ordning som i databasen.
-* BUGG: använd griden när jag placerar ut randomsaker, som det är nu kan sista rummen få items men hamna utanför griden. GÄLLER ÄVEN RUM
-* Gör en updateGamestate-metod istället för att göra allt i getState/updateQuests
-* Flytta restart game-knappen från nav? Alternativt flytta knapparna från startsidan till nav
-* BUGG: om man fyller i för stort antal quests än vad spelet klarar så blir det exception
-* BUGG: Om man klarar spelet kan man continue
-* Göra det möjligt att välja antal rum på samma sätt som antal quests?
-
-
-
+# Tankar till redovisning
+* Hade kunnat tänka sig olika typer av quester. Men har bara gjort fetch-quests.
 
 
 # API DOCS

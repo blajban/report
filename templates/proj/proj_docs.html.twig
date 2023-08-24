@@ -1,0 +1,19 @@
+{# templates/proj_docs.html.twig #}
+
+{% include 'proj/incl/proj_header.html.twig' %}
+
+
+<body>
+    {% include 'proj/incl/proj_nav.html.twig' %}
+
+    <div class="documentation">
+        {{ content|raw }}
+    </div>
+
+    {% include 'proj/incl/proj_footer.html.twig' %}
+    
+</body>
+
+</html>
+
+

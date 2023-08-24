@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap');
 @import '../../../node_modules/normalize.css/normalize';
 
 @import '../variables';
@@ -48,12 +49,17 @@ body {
 
 
 
-/*
-.test {
-  grid-row: 3;
-  padding: 10px;
-  background-color: rgb(219, 219, 219);
-  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75),
-              inset 1px 1px 2px 0px rgba(255,255,255,0.75);
-}*/
+.documentation {
 
+  h3 {
+    font-family: $font-stack;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+  p {
+    font-family: $font-stack;
+    font-size: 18px;
+  }
+}

@@ -240,5 +240,25 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('proj');
     }
 
+    #[Route("/proj/about", name: "proj/about", methods: ['GET'])]
+    public function about(): Response
+    {
+        return $this->render('proj/proj_docs.html.twig', [
+            'title' => "Chronos Mansion",
+            'heading' => "Chronos Mansion",
+            'content' => $this->utilityService->parseMarkdown('proj-about.md')
+        ]);
+    }
+
+    #[Route("/proj/about/database", name: "proj/about/database", methods: ['GET'])]
+    public function database(): Response
+    {
+        return $this->render('proj/proj_docs.html.twig', [
+            'title' => "Chronos Mansion",
+            'heading' => "Chronos Mansion",
+            'content' => $this->utilityService->parseMarkdown('proj-database.md')
+        ]);
+    }
+
 
 }
