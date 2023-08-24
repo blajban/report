@@ -93,6 +93,12 @@ class ProjController extends AbstractController
             return $this->redirectToRoute('proj');
         }
 
+        $game->updateQuests();
+
+        if ($game->playerWins()) {
+            return $this->redirectToRoute('proj/play/end');
+        }
+
         $session->set('proj_session', $game);
 
         return $this->render('proj/proj_play.html.twig', [

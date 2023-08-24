@@ -347,8 +347,7 @@ Minicluedo?
 [OK] Update room
 [OK] Fyll på med rum och beskrivningar
     [OK] Saknar bilder för en del rum
-
-* Styling:
+[OK] Styling:
     [OK] start
     [OK] play
     [OK] end
@@ -360,18 +359,17 @@ Minicluedo?
     [OK] style när quest är complete
     [OK] Ta bort gamla style-filen
     [OK] Refaktorera, dela upp i filer
-
-* Man ska inte kunna trycka på continue och gå tillbka till sin session om man redan klarat spelet 
-
-
-* Lägg till riktiga items
-
-* KOLLA KRAVEN
+[OK] Man ska inte kunna trycka på continue och gå tillbka till sin session om man redan klarat spelet 
 
 * Tester!
     * takeItem/dropItem-tester failar ibland?
 
+* Lägg till riktiga items
+* KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc
+
+
+
 
 * Refaktorering, snygga till koden
 * Kodkvalitet/csfix/linting sista
