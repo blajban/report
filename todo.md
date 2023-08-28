@@ -8,16 +8,16 @@ Din nya webbplats skall minst uppfylla följande krav.
 
 [OK] Skapa en landningssida /proj som syns i navbaren på din report-sida. Denna sida är din förstasida på projektets webbplats.
 [OK] Välj ditt fokus för ditt projekt. Implementera det i din webbplats under proj/.
-* Ditt projekt skall ha en stil och ett utseende som tydligt skiljer sig från din report-sida.
+[OK] Ditt projekt skall ha en stil och ett utseende som tydligt skiljer sig från din report-sida.
     [OK] Det skall utseendemässigt se ut som en ny webbplats så bygg en “ny” stylesheet eller modifiera din befintliga. Modifiera i någon omfattning färg, typsnitt och utseende på header och footer.
-    * Skapa en separat navbar för projektet som enbart innehåller länkarna för projektet.
-    * En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
+    [OK] Skapa en separat navbar för projektet som enbart innehåller länkarna för projektet.
+    [OK] En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
 
 ## Repo och dokumentation
 
 * Ditt git repo skall ha en README.md.
-    * Det skall finnas badges som är klickbara och leder till uppdaterade Scrutinizer rapporter för build, coverage och quality.
-    * Beskriv innehållet av repot och berätta varför det finns. som beskriver innehållet i någon omfattning.
+    [OK] Det skall finnas badges som är klickbara och leder till uppdaterade Scrutinizer rapporter för build, coverage och quality.
+    [OK] Beskriv innehållet av repot och berätta varför det finns. som beskriver innehållet i någon omfattning.
     * Instruktion för hur man klonar och startar igång webbplatsen
 
 * Innehållet i docs/ skall vara uppdaterat
@@ -377,6 +377,11 @@ Minicluedo?
         [OK] Kolla detta med MOS - är inte rimligt utifrån vad jag har gjort...
 
 
+
+* Kolla hur man klonar med databasen
+    * Hur får jag in data i databasen så att de kan spela?
+    * Ta med databasen i repot istället?
+
 * Tester!
     * takeItem/dropItem-tester failar ibland?
 * Ev göra det möjligt att välja antal rum på samma sätt som antal quests?
@@ -411,5 +416,6 @@ Minicluedo?
 * Hade kunnat tänka sig olika typer av quester. Men har bara gjort fetch-quests.
 * Skriv något i redovisningstexten om att man inte kan klicka på alla api endpoints...
 * Glöm inte bort mitt flowchart!
+* Beskriv vilka delar som är testade, kodkvalitet
 
 

@@ -81,7 +81,7 @@ curl --location --request POST 'localhost:8888/proj/api/room/update' \
 
 #### Get All Items
 
-Get a list of all items.
+Get a list of all items. ([TRY IT](/proj/api/item)).
 
 - **URL:** `/proj/api/item`
 - **Method:** `GET`
