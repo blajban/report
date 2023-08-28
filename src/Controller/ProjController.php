@@ -260,5 +260,16 @@ class ProjController extends AbstractController
         ]);
     }
 
+    #[Route("/proj/about/api", name: "proj/about/api", methods: ['GET'])]
+    public function api(): Response
+    {
+        return $this->render('proj/proj_docs.html.twig', [
+            'title' => "Chronos Mansion",
+            'heading' => "Chronos Mansion",
+            'content' => $this->utilityService->parseMarkdown('proj-api.md')
+        ]);
+    }
+
+
 
 }

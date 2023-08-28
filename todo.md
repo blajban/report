@@ -371,23 +371,29 @@ Minicluedo?
 [OK] Lägg till riktiga items
 [OK] Docs-style
 [OK] fixa så att man måste fylla i siffra / dropdown med siffror för antalet quests
+[OK] En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
+[OK] API docs
+[OK] I sidan skall man kunna klicka på samtliga länkar/knappar för att testa ditt API.
+        [OK] Kolla detta med MOS - är inte rimligt utifrån vad jag har gjort...
+
 
 * Tester!
     * takeItem/dropItem-tester failar ibland?
-
-
 * Ev göra det möjligt att välja antal rum på samma sätt som antal quests?
-
-
 * KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc
-    * En sida /proj/about som ger en kort introduktion till ditt projekt och vad det handlar om.
-    * API docs
+* Refaktorering, snygga till koden
+* Kodkvalitet/csfix/linting sista
+
+    
     * Det skall finnas badges som är klickbara och leder till uppdaterade Scrutinizer rapporter för build, coverage och quality.
     * Beskriv innehållet av repot och berätta varför det finns. som beskriver innehållet i någon omfattning.
     * Instruktion för hur man klonar och startar igång webbplatsen
-    * I sidan skall man kunna klicka på samtliga länkar/knappar för att testa ditt API.
-        [OK] Kolla detta med MOS - är inte rimligt utifrån vad jag har gjort...
+    
+        
+
+
+
     * Skapa en sida proj/about/database, och lägg till
         * En bild på ett ER diagram av tabellerna.
         * För varje tabell beskriv i en mening vad som sparas i tabellen.
@@ -398,85 +404,12 @@ Minicluedo?
         * Berätta med egna ord (cirka 15 meningar) om hur du ser på fördelar, nackdelar, likheter och skillnader mellan ORM och det sätt vi jobbade med databasen i databaskursen.
     * Från din sida proj/about, lägg till en länk till proj/about/database.
 
-* Refaktorering, snygga till koden
-* Kodkvalitet/csfix/linting sista
+
 
 
 # Tankar till redovisning
 * Hade kunnat tänka sig olika typer av quester. Men har bara gjort fetch-quests.
+* Skriv något i redovisningstexten om att man inte kan klicka på alla api endpoints...
+* Glöm inte bort mitt flowchart!
 
 
-# API DOCS
-
-
-## Add Room Info
-Add a new room info.
-
-### Endpoint
-```
-POST /proj/api/roominfo/add
-```
-
-### Request Headers
-- Content-Type: multipart/form-data
-
-### Request Body
-The request body should contain two parts: `json_data` and `img`.
-
-#### Part: json_data
-- Type: JSON
-- Description: The JSON data representing the room info.
-- Example:
-```json
-{
-  "name": "Room Name",
-  "description": "Room Description"
-}
-```
-
-#### Part: img
-- Type: File
-- Description: The image file associated with the room info.
-
-### Example Request
-```
-POST /proj/api/roominfo/add
-Content-Type: multipart/form-data
-
-----Boundary
-Content-Disposition: form-data; name="json_data"
-
-{
-  "name": "Room Name",
-  "description": "Room Description"
-}
-----Boundary
-Content-Disposition: form-data; name="img"; filename="room_image.jpg"
-Content-Type: image/jpeg
-
-[Binary image data]
-----Boundary--
-```
-
-### Response
-- Status: 201 Created
-- Body: Added room info
-
-
-
-array<int|string, Item
-
-    /*
-    public function findRoomWithItem(Item $targetItem): ?Room
-    {
-        foreach ($this->rooms as $room) {
-            foreach ($room->getItems() as $item) {
-                if ($item->getId() == $targetItem->getId()) {
-                    return $room;
-                }
-            }
-        }
-
-        return null;
-    }
-    */
