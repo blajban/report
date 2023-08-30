@@ -197,8 +197,4 @@ class ProjJsonController extends AbstractController
 
     }
 
-
-
-
-
 }

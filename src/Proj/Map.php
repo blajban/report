@@ -19,7 +19,6 @@ class Map
     private array $grid = [];
     private Room $activeRoom;
     private int $width = 0;
-    //private int $height = 0;
 
     /**
      * @param array<Room> $rooms
@@ -39,13 +38,6 @@ class Map
         $numRooms = count($this->rooms);
 
         $this->width = (int) ceil(sqrt($numRooms));
-
-        /*if ($numRooms == 1) {
-            $this->width = $this->height = 1;
-            return;
-        }
-
-        $this->height = (int) ceil($numRooms / $this->width);*/
     }
 
     private function generateGrid(): void
