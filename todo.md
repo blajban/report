@@ -382,12 +382,14 @@ Minicluedo?
 [OK] text om databasen
 [OK] Tester
 [OK] Kodkvalitet/csfix/linting sista
+[OK] Refaktorering, snygga till koden
+[OK] Generera dokumentation med phpdoc.
+[OK] Generera metrics med phpmetrics.
+
 
 * KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc
-* Refaktorering, snygga till koden
 * KOLLA SÅ ATT ALLT FUNGERAR
-
 * Kolla så att allt fungerar med ett nytt repo
 * Kolla så att allt fungerar på studentservern
 
