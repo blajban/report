@@ -387,7 +387,8 @@ Minicluedo?
 * Refaktorering, snygga till koden
 * Kodkvalitet/csfix/linting sista
 
-
+* Kolla så att allt fungerar med ett nytt repo
+* Kolla så att allt fungerar på studentservern
 
     * Skapa en sida proj/about/database, och lägg till
         * En bild på ett ER diagram av tabellerna.

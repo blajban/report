@@ -1,3 +1,4 @@
+### About
 Part of the course DV1608 - Object-Oriented Web Technologies at Blekinge Institute of Technology (BTH). 
 
 The course teaches object-oriented programming for web applications with a focus on the MVC (Model-View-Controller) design pattern. We use the PHP framework Symfony and delve into topics such as database connections with object-relational mapping (ORM), unit testing, and maintaining good code quality.
@@ -12,15 +13,10 @@ The web page in this repo features all of these concepts. The final project is C
 
 ### Get going
 1. Clone the repo: `git clone git@github.com:blajban/report.git`
-2. `composer install`
-3. `npm install` 
-4. `npm run build`
-5. `bin/console doctrine:database:create`
-6. `bin/console make:migration`
-7. `bin/console doctrine:migrations:migrate`
-8. `./fill-db.bash`
-9. `npm run start`
-10. Go to `localhost:8888`
+2. Install dependencies and prepare database: `./install.bash`
+3. Start server: `npm run start`
+4. Fill database with rooms and items: `./fill-db.bash`
+5. Go to `localhost:8888`
 
 
 
