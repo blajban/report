@@ -77,6 +77,11 @@ class ProjController extends AbstractController
 
         $rooms = $roomRepo->findAll();
         $items = $itemRepo->findAll();
+
+        if (count($rooms) < 2) {
+            throw new Exception('Not enough rooms in database');
+        }
+
         $game = new AdventureGame($rooms, $items, $name, $numberOfQuests);
 
         $session->set('proj_session', $game);

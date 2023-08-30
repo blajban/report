@@ -378,6 +378,7 @@ Minicluedo?
 [OK] Fyll databasen-script
 [OK] Instruktion för hur man klonar och startar igång webbplatsen
 [OK] Readme-fil
+[OK] Fixa till så att det blir exception om det inte finns mer än ett rum
 
 * Tester!
     * takeItem/dropItem-tester failar ibland?
