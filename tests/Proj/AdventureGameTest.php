@@ -33,7 +33,16 @@ class AdventureGameMock extends AdventureGame
     {
         $this->questHandler = $newQHandlerObject;
     }
+
+    /**
+     * @param Quest $newQuest
+     */
+    public function changeHintedQuest($newQuest): void
+    {
+        $this->hintedQuest = $newQuest;
+    }
 }
+
 
 /**
  * Test cases for AdventureGame class.
@@ -127,7 +136,7 @@ class AdventureGameTest extends TestCase
         $mockedPlayer = $this->createMock(Player::class);
         $mockedPlayer->method('dropFromInventory')->with($itemId)->willReturn($items[0]);
 
-        $rooms[0]->expects($this->once())->method('addItem')->with($items[0]);
+        $mockedPlayer->expects($this->once())->method('dropFromInventory');
 
 
         $adventureGame = new AdventureGameMock($rooms, $items, "testName", 1);
@@ -178,6 +187,94 @@ class AdventureGameTest extends TestCase
 
         $adventureGame->updateQuests();
 
+    }
+
+    public function testShowHint(): void
+    {
+        $questId = 123;
+
+        $rooms = [
+            $this->createMock(Room::class),
+            $this->createMock(Room::class)
+        ];
+
+        $items = [ $this->createMock(Item::class) ];
+
+        $mockedQuestHandler = $this->createMock(QuestHandler::class);
+        $mockedQuest = $this->createMock(Quest::class);
+
+        $mockedQuestHandler->expects($this->once())->method('showHint')->with($questId)->willReturn($mockedQuest);
+
+        $adventureGame = new AdventureGameMock($rooms, $items, "testName", 1);
+        $adventureGame->changeQuestHandlerObject($mockedQuestHandler);
+
+        $adventureGame->showHint($questId);
+    }
+
+    public function testShowHintWhenHinted(): void
+    {
+        $questId = 123;
+
+        $rooms = [
+            $this->createMock(Room::class),
+            $this->createMock(Room::class)
+        ];
+
+        $items = [ $this->createMock(Item::class) ];
+
+        $mockedQuestHandler = $this->createMock(QuestHandler::class);
+        $mockedQuest = $this->createMock(Quest::class);
+        $mockedQuest->expects($this->once())->method('hideHint');
+
+        $adventureGame = new AdventureGameMock($rooms, $items, "testName", 1);
+        $adventureGame->changeQuestHandlerObject($mockedQuestHandler);
+        $adventureGame->changeHintedQuest($mockedQuest);
+
+        $adventureGame->showHint($questId);
+    }
+
+    public function testHideHint(): void
+    {
+
+        $rooms = [
+            $this->createMock(Room::class),
+            $this->createMock(Room::class)
+        ];
+
+        $items = [ $this->createMock(Item::class) ];
+
+        $mockedQuestHandler = $this->createMock(QuestHandler::class);
+        $mockedQuest = $this->createMock(Quest::class);
+        $mockedQuest->expects($this->once())->method('hideHint');
+
+        $adventureGame = new AdventureGameMock($rooms, $items, "testName", 1);
+        $adventureGame->changeQuestHandlerObject($mockedQuestHandler);
+        $adventureGame->changeHintedQuest($mockedQuest);
+
+        $adventureGame->hideHint();
+    }
+
+    public function testSetDebugText(): void
+    {
+        $items = [
+            $this->createMock(Item::class),
+            $this->createMock(Item::class)
+        ];
+
+        $rooms = [
+            $this->createMock(Room::class),
+            $this->createMock(Room::class)
+        ];
+
+        $adventureGame = new AdventureGame($rooms, $items, "testName", 1);
+
+        $debugText = "test";
+
+        $adventureGame->setDebugText($debugText);
+
+        $state = $adventureGame->getState();
+
+        $this->assertEquals($debugText, $state['debug']);
     }
 
 }

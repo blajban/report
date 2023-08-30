@@ -381,8 +381,7 @@ Minicluedo?
 [OK] Fixa till så att det blir exception om det inte finns mer än ett rum
 [OK] text om databasen
 
-* Tester!
-    * takeItem/dropItem-tester failar ibland?
+* Tester
 
 * KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc

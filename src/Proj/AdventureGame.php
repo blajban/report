@@ -15,7 +15,7 @@ class AdventureGame
     protected Map $map;
     protected Player $player;
     protected QuestHandler $questHandler;
-    private Quest|null $hintedQuest = null;
+    protected Quest|null $hintedQuest = null;
 
     /**
      * @param array<Room> $rooms
