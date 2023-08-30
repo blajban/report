@@ -379,10 +379,11 @@ Minicluedo?
 [OK] Instruktion för hur man klonar och startar igång webbplatsen
 [OK] Readme-fil
 [OK] Fixa till så att det blir exception om det inte finns mer än ett rum
+[OK] text om databasen
 
 * Tester!
     * takeItem/dropItem-tester failar ibland?
-* Ev göra det möjligt att välja antal rum på samma sätt som antal quests?
+
 * KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc
 * Refaktorering, snygga till koden
@@ -390,16 +391,6 @@ Minicluedo?
 
 * Kolla så att allt fungerar med ett nytt repo
 * Kolla så att allt fungerar på studentservern
-
-    * Skapa en sida proj/about/database, och lägg till
-        * En bild på ett ER diagram av tabellerna.
-        * För varje tabell beskriv i en mening vad som sparas i tabellen.
-        * Förklara hur du löste eventuella relationer mellan tabellerna.
-        * Berätta om du använde SQLite eller någon annan databas.
-        * Berätta om du gjorde enhetstester mot databasen.
-            * Berätta om/hur du lyckades med enhetstester på Scrutinizer med databasen.
-        * Berätta med egna ord (cirka 15 meningar) om hur du ser på fördelar, nackdelar, likheter och skillnader mellan ORM och det sätt vi jobbade med databasen i databaskursen.
-    * Från din sida proj/about, lägg till en länk till proj/about/database.
 
 
 
