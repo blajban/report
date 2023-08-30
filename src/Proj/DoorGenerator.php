@@ -45,7 +45,7 @@ class DoorGenerator
      * with no unvisited neighbors, it goes back in the chain until it encounters
      * an unvisited neighbor, and keeps going from there to make sure all rooms
      * are accessible.
-     * 
+     *
      * @param array<array<bool>> $visited
      */
     private function generateRandomDoorsRecursively(int $row, int $col, &$visited): void

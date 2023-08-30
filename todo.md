@@ -381,11 +381,12 @@ Minicluedo?
 [OK] Fixa till så att det blir exception om det inte finns mer än ett rum
 [OK] text om databasen
 [OK] Tester
+[OK] Kodkvalitet/csfix/linting sista
 
 * KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc
 * Refaktorering, snygga till koden
-* Kodkvalitet/csfix/linting sista
+* KOLLA SÅ ATT ALLT FUNGERAR
 
 * Kolla så att allt fungerar med ett nytt repo
 * Kolla så att allt fungerar på studentservern

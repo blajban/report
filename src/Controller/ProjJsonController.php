@@ -97,12 +97,12 @@ class ProjJsonController extends AbstractController
 
         $jsonData = (string)$request->request->get('json_data');
 
-        $data = json_decode($jsonData, true);
+        $data = (array) json_decode($jsonData, true);
 
-        if (isset($data['name'])) {
+        if (isset($data['name']) && is_string($data['name'])) {
             $room->setName($data['name']);
-        } 
-        
+        }
+
         if (isset($data['description'])) {
             $room->setDescription($data['description']);
         }
@@ -115,7 +115,7 @@ class ProjJsonController extends AbstractController
             $room->setImg($picture);
         }
 
-        
+
         $roomRepository->save($room, true);
 
         return new Response('Room updated', Response::HTTP_BAD_REQUEST);
