@@ -51,6 +51,60 @@ class QuestHandlerTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
+    public function testGenerateQuestsIfNumberOfQuestsTooHigh(): void
+    {
+        $rooms = [
+            $this->createMock(Room::class),
+            $this->createMock(Room::class),
+            $this->createMock(Room::class)
+        ];
+
+        $items = [
+            $this->createMock(Item::class),
+            $this->createMock(Item::class),
+            $this->createMock(Item::class)
+        ];
+
+        $questHandler = new QuestHandler();
+
+        $questHandler->generateQuests($rooms, $items, 4);
+
+        $res = count($questHandler->getQuests());
+        $exp = 3;
+
+        $this->assertEquals($exp, $res);
+    }
+
+    public function testGenerateQuestsWhenRoomContainsItem(): void
+    {
+        $rooms = [
+            $this->createMock(Room::class),
+            $this->createMock(Room::class),
+            $this->createMock(Room::class)
+        ];
+
+        $items = [
+            $this->createMock(Item::class),
+            $this->createMock(Item::class),
+            $this->createMock(Item::class)
+        ];
+
+        $questHandler = new QuestHandler();
+
+        $rooms[0]->method('containsItem')->with($items[0])->willReturn(true);
+
+        $rooms[1]->method('containsItem')->willReturn(false);
+        $rooms[2]->method('containsItem')->willReturn(false);
+
+        $questHandler->generateQuests($rooms, $items, 3);
+
+        $res = count($questHandler->getQuests());
+        $exp = 3;
+
+        $this->assertEquals($exp, $res);
+    }
+
+
     public function testShowHintIfNotNull(): void
     {
         $rooms = [
@@ -80,6 +134,28 @@ class QuestHandlerTest extends TestCase
         $res = $questHandler->showHint(1);
 
         $this->assertNull($res);
+    }
+
+    public function testHideHint(): void
+    {
+        $rooms = [
+            $this->createMock(Room::class),
+            $this->createMock(Room::class)
+        ];
+
+        $items = [
+            $this->createMock(Item::class),
+            $this->createMock(Item::class)
+        ];
+
+        $questHandler = new QuestHandler();
+        $questHandler->generateQuests($rooms, $items, 1);
+
+        $quest = $questHandler->getQuests()[0];
+
+        $res = $questHandler->hideHint($quest->getId());
+
+        $this->assertSame($quest, $res);
     }
 
     public function testUpdateQuestCompletion(): void

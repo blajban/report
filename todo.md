@@ -380,8 +380,7 @@ Minicluedo?
 [OK] Readme-fil
 [OK] Fixa till så att det blir exception om det inte finns mer än ett rum
 [OK] text om databasen
-
-* Tester
+[OK] Tester
 
 * KOLLA KRAVEN
 * Redovisningstexter, ingångar, bilder etc
