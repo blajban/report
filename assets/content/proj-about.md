@@ -6,10 +6,10 @@ I spelet är spelaren fast i "Chronos Mansion" och ska ta sig ut genom att lösa
 
 Teknik:
 * Symfony med Twig som template engine, SCSS för styling. Inget javascript.
-* SQLite och ORM för databas ([Läs mer om databasen](/proj/about/database))
+* SQLite och ORM för databas ([Läs mer om databasen](./about/database))
 * Story och bilder är producerade med ChatGPT4 och DALL-E.
 
-Spelplanen och dörrarna mellan rummen genereras slumpmässigt inför varje spelomgång. Rum och items (som används för uppdragen) kan läggas till ([via ett API](/proj/about/api)).
+Spelplanen och dörrarna mellan rummen genereras slumpmässigt inför varje spelomgång. Rum och items (som används för uppdragen) kan läggas till ([via ett API](./about/api)).
 
 
 

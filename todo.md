@@ -387,8 +387,9 @@ Minicluedo?
 [OK] Generera metrics med phpmetrics.
 [OK] KOLLA SÅ ATT ALLT FUNGERAR
 [OK] Redovisningstexter, ingångar, bilder etc
+[OK] Flödesschemat funkar inte i rapporten
+[OK] Länk till api-sidan funkar inte från rapporten
 
-* Duger mina extra-saker? Hitta nåt annat? Quests? Items? Fylla på spelinnehåll?
 * KOLLA KRAVEN
 * Kolla så att allt fungerar med ett nytt repo
 * Kolla så att allt fungerar på studentservern

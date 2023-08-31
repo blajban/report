@@ -89,7 +89,7 @@
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
        <td class="danger small"><div align="right">0&nbsp;/&nbsp;8</div></td>
-       <td class="danger small">650</td>
+       <td class="danger small">702</td>
        <td class="danger big">       <div class="progress">
          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
            <span class="sr-only">0.00% covered (danger)</span>
@@ -184,7 +184,7 @@
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
        <td class="danger small"><div align="right">0&nbsp;/&nbsp;1</div></td>
-       <td class="danger small">30</td>
+       <td class="danger small">42</td>
        <td class="danger" colspan="3"></td>
       </tr>
 
@@ -381,12 +381,12 @@
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="97" href="#97">97</a></td><td class="col-11 codeLine"></td></tr>
     <tr class="danger d-flex"><td  class="col-1 text-right"><a id="98" href="#98">98</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$jsonData</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">(string)</span><span class="default">$request</span><span class="default">-&gt;</span><span class="default">request</span><span class="default">-&gt;</span><span class="default">get</span><span class="keyword">(</span><span class="default">'json_data'</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="99" href="#99">99</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="100" href="#100">100</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$data</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">json_decode</span><span class="keyword">(</span><span class="default">$jsonData</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">true</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="100" href="#100">100</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$data</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">(array)</span><span class="default">&nbsp;</span><span class="default">json_decode</span><span class="keyword">(</span><span class="default">$jsonData</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">true</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="101" href="#101">101</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="102" href="#102">102</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="keyword">isset</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">[</span><span class="default">'name'</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="102" href="#102">102</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="keyword">isset</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">[</span><span class="default">'name'</span><span class="keyword">]</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="default">&amp;&amp;</span><span class="default">&nbsp;</span><span class="default">is_string</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">[</span><span class="default">'name'</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
     <tr class="danger d-flex"><td  class="col-1 text-right"><a id="103" href="#103">103</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$room</span><span class="default">-&gt;</span><span class="default">setName</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">[</span><span class="default">'name'</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="104" href="#104">104</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span><span class="default">&nbsp;</span></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="105" href="#105">105</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="104" href="#104">104</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="105" href="#105">105</a></td><td class="col-11 codeLine"></td></tr>
     <tr class="danger d-flex"><td  class="col-1 text-right"><a id="106" href="#106">106</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="keyword">isset</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">[</span><span class="default">'description'</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
     <tr class="danger d-flex"><td  class="col-1 text-right"><a id="107" href="#107">107</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$room</span><span class="default">-&gt;</span><span class="default">setDescription</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">[</span><span class="default">'description'</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="108" href="#108">108</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
@@ -399,7 +399,7 @@
     <tr class="danger d-flex"><td  class="col-1 text-right"><a id="115" href="#115">115</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$room</span><span class="default">-&gt;</span><span class="default">setImg</span><span class="keyword">(</span><span class="default">$picture</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="116" href="#116">116</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="117" href="#117">117</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="118" href="#118">118</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="118" href="#118">118</a></td><td class="col-11 codeLine"></td></tr>
     <tr class="danger d-flex"><td  class="col-1 text-right"><a id="119" href="#119">119</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$roomRepository</span><span class="default">-&gt;</span><span class="default">save</span><span class="keyword">(</span><span class="default">$room</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">true</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="120" href="#120">120</a></td><td class="col-11 codeLine"></td></tr>
     <tr class="danger d-flex"><td  class="col-1 text-right"><a id="121" href="#121">121</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="keyword">new</span><span class="default">&nbsp;</span><span class="default">Response</span><span class="keyword">(</span><span class="default">'Room&nbsp;updated'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">Response</span><span class="default">::</span><span class="default">HTTP_BAD_REQUEST</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
@@ -481,11 +481,7 @@
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="197" href="#197">197</a></td><td class="col-11 codeLine"></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="198" href="#198">198</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="199" href="#199">199</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="200" href="#200">200</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="201" href="#201">201</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="202" href="#202">202</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="203" href="#203">203</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="204" href="#204">204</a></td><td class="col-11 codeLine"><span class="keyword">}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="200" href="#200">200</a></td><td class="col-11 codeLine"><span class="keyword">}</span></td></tr>
 
 </tbody>
 </table>
@@ -496,7 +492,7 @@
     <h4>Legend</h4>
     <p><span class="legend covered-by-small-tests">Covered by small (and larger) tests</span><span class="legend covered-by-medium-tests">Covered by medium (and large) tests</span><span class="legend covered-by-large-tests">Covered by large tests (and tests of unknown size)</span><span class="legend not-covered">Not covered</span><span class="legend not-coverable">Not coverable</span></p>
     <p>
-     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.26</a> using <a href="https://secure.php.net/" target="_top">PHP 8.2.4</a> and <a href="https://phpunit.de/">PHPUnit 9.6.6</a> at Wed Aug 30 8:15:18 UTC 2023.</small>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.26</a> using <a href="https://secure.php.net/" target="_top">PHP 8.2.4</a> and <a href="https://phpunit.de/">PHPUnit 9.6.6</a> at Thu Aug 31 13:25:27 UTC 2023.</small>
     </p>
     <a title="Back to the top" id="toplink" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"/></svg>

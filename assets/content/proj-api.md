@@ -2,7 +2,7 @@
 
 #### Get All Rooms
 
-Get a list of all rooms. ([TRY IT](/proj/api/room)).
+Get a list of all rooms. ([TRY IT](../api/room)).
 
 - **URL:** `/proj/api/room`
 - **Method:** `GET`
@@ -81,7 +81,7 @@ curl --location --request POST 'localhost:8888/proj/api/room/update' \
 
 #### Get All Items
 
-Get a list of all items. ([TRY IT](/proj/api/item)).
+Get a list of all items. ([TRY IT](../api/item)).
 
 - **URL:** `/proj/api/item`
 - **Method:** `GET`
