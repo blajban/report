@@ -389,11 +389,24 @@ Minicluedo?
 [OK] Redovisningstexter, ingångar, bilder etc
 [OK] Flödesschemat funkar inte i rapporten
 [OK] Länk till api-sidan funkar inte från rapporten
+[OK] Förbered ett rum att lägga till med api:n
+[OK] Kolla så att allt fungerar med ett nytt repo
+[OK] Kolla alla länkar och bilder!
+    [OK] ER-diagrammet funkar inte på studservbern
+[OK] Kolla så att allt fungerar på studentservern
+[OK] Spela igenom!
 
 * KOLLA KRAVEN
-* Kolla så att allt fungerar med ett nytt repo
-* Kolla så att allt fungerar på studentservern
+* Testa ditt projekt med dbwebb test kmom10. Se till att alla delar passerar grönt.
+
+* Tagga som v10.0.0, pusha till GitHub/Lab.
+
+* Driftsätt din applikation på studentservern. Dubbelkolla att alla delar fungerar, inklusive nollställningen av databasen.
+
+
 * Redovisningsvideo
+    [OK] manus
+    * spela in
 * Publicera
 * Lämna in
 

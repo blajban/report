@@ -6,7 +6,8 @@ Databasen används för att spara information om innehållet i spelet, det vill 
 
 room-tabellen sparar information om respektive rums id, namn, beskrivning och bild. item-tabellen sparar information om respektive items id, namn och beskrivning.
 
-![ER-diagram](/img/proj-er.png)
+![ER-diagram](../../img/proj_er.png)
+
 
 Jag har inte gjort enhetstester mot databasen.
 
